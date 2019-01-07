@@ -5,10 +5,16 @@ import My from "../components/my";
 import sMall from "../components/small";
 import sCar from "../components/scar";
 
+<<<<<<< HEAD
 import Attention from"../components/community/components/attention";
 import Friends from"../components/community/components/friends";
 import Nearby from"../components/community/components/nearby";
 
+=======
+//my二级页面路由
+import PersonalInfo from "../components/my/personalInfo";
+import Follow from "../components/my/follow"
+>>>>>>> liuna
 
 Vue.use(Router)
 
@@ -57,6 +63,7 @@ export default new Router({
         flag:false,
         requireAuth:true
       }
+      
     },
     {
       path:"/small",
@@ -75,6 +82,18 @@ export default new Router({
         flag:true,
         requireAuth:true
       }
+    },
+    //my二级页面路由
+    {
+      path:"/personalInfo",
+      name:"personalInfo",
+      component:PersonalInfo
+    },
+    {
+      path:"/follow",
+      name:"follow",
+      component:Follow
     }
+
   ]
 })
