@@ -5,6 +5,11 @@ import My from "../components/my";
 import sMall from "../components/small";
 import sCar from "../components/scar";
 
+//王金利 商城 调试路由
+import jxhq from "../components/small/wang/jxhq";
+
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +53,14 @@ export default new Router({
         flag:true,
         requireAuth:true
       }
+    },
+    
+    
+    //王金利 商城 调试路由
+    {
+    	path:"/jxhq",
+    	component:jxhq,
+    	name:"jxhq"
     }
   ]
 })
