@@ -5,6 +5,10 @@ import My from "../components/my";
 import sMall from "../components/small";
 import sCar from "../components/scar";
 
+//my二级页面路由
+import PersonalInfo from "../components/my/personalInfo";
+import Follow from "../components/my/follow"
+
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +34,7 @@ export default new Router({
         flag:false,
         requireAuth:true
       }
+      
     },
     {
       path:"/small",
@@ -48,6 +53,18 @@ export default new Router({
         flag:true,
         requireAuth:true
       }
+    },
+    //my二级页面路由
+    {
+      path:"/personalInfo",
+      name:"personalInfo",
+      component:PersonalInfo
+    },
+    {
+      path:"/follow",
+      name:"follow",
+      component:Follow
     }
+
   ]
 })

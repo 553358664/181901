@@ -10,7 +10,7 @@ import Footer from "./components/footer";
 export default {
   name: 'App',
   components: {
-    "Footer-com":Footer
+    "Footer-com":Footer,
   }
 }
 </script>
