@@ -42,8 +42,8 @@ export default {
 }
 </script>
 
-<style scoped>
-   
+<style scoped lang="scss">
+    $color:#F44C36;
     #footer{
         width: 100%;
         height: .98rem;
@@ -75,6 +75,6 @@ export default {
         font-weight:SC-Medium;
     }
     #footer>ul>li>.router-link-active{
-        color: #F44C36;
+        color: $color;
     }
 </style>
