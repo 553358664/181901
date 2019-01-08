@@ -91,7 +91,7 @@ import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-       this.handleArticle()
+//     this.handleArticle()
        this.hanle()
     },
     computed:{
