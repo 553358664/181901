@@ -4,7 +4,7 @@
             <div class="searchImg">
                 <img src="../../../../assets/community/qiu/back.png" alt="" @click="handleBack()">
             </div>
-            <input type="text" class="searchText"  ref="searchInp">
+            <input type="text" class="searchText" ref="searchInp">
             <p class="searchTit">搜索</p>
         </div>      
         <list-com/>
@@ -14,18 +14,21 @@
 
 export default {
     created(){
-        this.handleFocus()
+        
         console.log(this)
     },
     components:{
         "list-com":()=>import("./components/list")
+    },
+    mounted(){
+        this.handleFocus()
     },
   methods:{
       handleBack(){
           this.$router.back()
       },
       handleFocus(){
-        //   this.$refs.searchInp.focus()
+         this.$refs.searchInp.onfocus()
       }  
   }
 }

@@ -148,7 +148,7 @@ export default {
 .nearby{
     background:#EEEEEE;
     width:100%;
-    min-height:13.4rem;
+    height:10.5rem;
     overflow:hidden;
    .nearbyUl{
         overflow: hidden;
