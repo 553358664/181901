@@ -138,7 +138,8 @@ export default {
       console.log(this)
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
-        pullUpLoad:true
+        pullUpLoad:true,
+        hasVerticalScroll: true
     });
   }
 }
@@ -147,23 +148,30 @@ export default {
 .nearby{
     background:#EEEEEE;
     width:100%;
-    height:10.5rem;
-    overflow: hidden;
+    min-height:13.4rem;
+    overflow:hidden;
    .nearbyUl{
         overflow: hidden;
         zoom:1;   
         .nearbyLi{
-            margin:.1rem 0 0 .1rem;
-            width:3.6rem;
+            margin:1% 0 0 1%;
+            width:48%;
             float:left;
+            .nearbyImg{
+                width:100%;
+                img{
+                    width:100%
+                }
+            }
         .nearbyBox{
-                width:3.6rem;
+                width:100%;
                 height:1.74rem;
                 background:rgba(252,252,250,1);
                 border-radius:0px 0px 10px 10px;
                 .nearbyP{
-                    margin-left:.32rem;
-                    width:3.1rem;
+                    margin-left:8.9%;
+                    padding-top:1.264%;
+                    width:88.6%;
                     height:.75rem;
                     font-size:.26rem;
                     font-family:PingFang-SC-Medium;
@@ -205,5 +213,7 @@ export default {
     }
     
 }
+    
+
     
 </style>

@@ -7,7 +7,7 @@ export default {
             url:"http://localhost:3000/text"
         })
         .then((data)=>{
-            console.log(data)
+            
             commit("handleArticle",data)
         })
     }

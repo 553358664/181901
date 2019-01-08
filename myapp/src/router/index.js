@@ -33,7 +33,7 @@ export default new Router({
       redirect:"/community"
     },
     {
-      path:'search',
+      path:'/search',
       name:'search',
       component:Search,
       meta:{

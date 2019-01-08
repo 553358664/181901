@@ -4,7 +4,7 @@
             <div class="searchImg">
                 <img src="../../../../assets/community/qiu/back.png" alt="" @click="handleBack()">
             </div>
-            <input type="text" class="searchText">
+            <input type="text" class="searchText"  ref="searchInp">
             <p class="searchTit">搜索</p>
         </div>      
         <list-com/>
@@ -13,13 +13,20 @@
 <script>
 
 export default {
+    created(){
+        this.handleFocus()
+        console.log(this)
+    },
     components:{
         "list-com":()=>import("./components/list")
     },
   methods:{
       handleBack(){
           this.$router.back()
-      }
+      },
+      handleFocus(){
+        //   this.$refs.searchInp.focus()
+      }  
   }
 }
 </script>
@@ -42,7 +49,13 @@ box-shadow:.01rem .02rem .04rem 0rem rgba(0, 0, 0, 0.06);
             height:.64rem;
             background:rgba(238,238,238,1);
             border-radius:.32rem;
-            border:0
+            border:0;
+            text-align: center;
+            font-size:.26rem;
+            font-family:PingFang-SC-Regular;
+            font-weight:400;
+            color:rgba(10,10,10,1);
+            opacity:0.8;
         }
         .searchTit{
             width:.56rem;
