@@ -17,6 +17,7 @@ import Attention from"../components/community/components/attention";
 import Friends from"../components/community/components/friends";
 //附近
 import Nearby from"../components/community/components/nearby";
+import Search from"../components/community/components/search";
 
 //my二级页面路由
 import PersonalInfo from "../components/my/personalInfo";
@@ -31,7 +32,14 @@ export default new Router({
       path: '/',
       redirect:"/community"
     },
-
+    {
+      path:'search',
+      name:'search',
+      component:Search,
+      meta:{
+        flag:false
+      }
+    },
     {
       path:"/community",
       name:"community",
@@ -48,17 +56,27 @@ export default new Router({
         {
           path:"attention",
           name:"attention",
-          component:Attention
+          component:Attention,
+          meta:{
+            flag:true         
+         }
         },
         {
           path:"friends",
           name:"friends",
-          component:Friends
+          component:Friends,
+          meta:{
+             flag:true         
+          }
+
         },
         {
           path:"nearby",
           name:"nearby",
-          component:Nearby
+          component:Nearby,
+          meta:{
+            flag:true         
+         }
         }
       ]
     },
@@ -67,7 +85,7 @@ export default new Router({
       name:"my",
       component:My,
       meta:{
-        flag:false,
+        flag:true,
         requireAuth:true
       }    
     },

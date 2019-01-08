@@ -1,114 +1,13 @@
 <template>
     <div class="friends wrapper" ref="homeWrapper">
         <ul class="content friendsUl">
-            <li class="friendsLi">
+            <li class="friendsLi" v-for="(item,index) in article" :key='index'>
                 <div class="friendsImg">
                    <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
                 </div>   
                 <div class="friendsBox">
                     <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-            
-            <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
+                        {{item.centent}}
                     </p>
                     <div class="friendsUser">
                         <div class="uerImg">
@@ -128,13 +27,28 @@
 
 
 <script>
+import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
-  methods:{
+    created(){
+       this.handleArticle()
+       this.hanle()
+    },
+    computed:{
+        ...Vuex.mapState({ 
+          article:state=>state.community.articleList
+        })
+    },
 
+  methods:{
+        ...Vuex.mapActions({
+          handleArticle:"community/handleArticle"
+      }),
+      hanle(){
+          console.log(this)
+      }
   }, 
   mounted(){
-      console.log(this)
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
         pullUpLoad:true
@@ -147,7 +61,7 @@ export default {
     background:#EEEEEE;
     width:100%;
     height:10.5rem;
-    overflow: hidden;
+    overflow:hidden;
    .friendsUl{
         overflow: hidden;
         zoom:1;   

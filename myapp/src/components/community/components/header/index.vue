@@ -12,7 +12,9 @@
                 </ul>          
             </div>
             <div class="search">
-                <input type="text" class="search-input" value="大家都在看“烈焰柔情一品红”">
+                <router-link :to="{name:search}">
+                    <input type="text" class="search-input" value="大家都在看“烈焰柔情一品红”">
+                </router-link>                
             </div>
         </div>      
         <router-view/>
@@ -36,7 +38,8 @@ export default {
                    name:"nearby",
                    title:"附近" 
                 }
-            ]
+            ],
+            search:'search'
         }
     }
 }
