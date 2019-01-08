@@ -49,17 +49,15 @@ export default {
 $color:#FCFCFA;
     .fs{
         width:100%;
-        height:1.78rem;
+        height:1.48rem;
+        margin-top:.3rem;
         .header{
+            height:100%;
             box-shadow:1px 2px 4px 0px rgba(0, 0, 0, 0.06);
             .top{
-            height:.32rem;
+            height:.48rem;
             width:3.3rem;
-            margin:.39rem auto;
-            // display: flex;
-            // align-items: center;
-
-
+            margin:0 auto;
             ul{
                 height:.48rem;
                 display: flex;
@@ -81,7 +79,7 @@ $color:#FCFCFA;
         .search{
                 width:7.04rem;
                 height:.76rem;
-                 margin:0 auto;
+                 margin:.2rem auto;
                  padding-bottom:.12rem;
                 .search-input{
                     width:100%;
