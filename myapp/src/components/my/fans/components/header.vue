@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/>
-        <p class="info-middle">关注</p>
+        <p class="info-middle">粉丝</p>
     </div>
     </div>
 </template>

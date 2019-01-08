@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <img class="back" src="static/my/icon_wd_jt@2x.png"/>
+        <img class="back" :src="back"  @click="handleback()"/>
         <p class="info-middle">个人信息</p>
         <p class="keep">保存</p>
     </div>
@@ -8,7 +8,16 @@
 
 <script>
 export default {
-    
+    methods: {
+        handleback(){
+            this.$router.back();
+        }
+    },
+    data(){
+       return{
+           back:require('@/assets/my/icon_wd_jt@2x.png')
+       }
+   }
 }
 </script>
 

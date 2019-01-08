@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/>
-        <p class="info-middle">关注</p>
+        <p class="info-middle">收藏</p>
     </div>
     </div>
 </template>
@@ -30,7 +30,6 @@ export default {
         align-items: center;
         background:#FCFCFA;
         padding:0 .24rem;
-        margin-bottom: .2rem;
     }
     .back{
         width:.34rem;
