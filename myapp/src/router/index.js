@@ -7,6 +7,7 @@ import sCar from "../components/scar";
 
 //王金利 商城 调试路由
 import jxhq from "../components/small/wang/jxhq";
+import hccs from "../components/small/wang/hccs";
 
 
 
@@ -60,7 +61,16 @@ export default new Router({
     {
     	path:"/jxhq",
     	component:jxhq,
-    	name:"jxhq"
+    	name:"jxhq",
+    	meta:{
+        flag:false,
+        requireAuth:true
+      }
+    },
+    {
+    	path:"/hccs",
+    	component:hccs,
+    	name:"hccs"
     }
   ]
 })
