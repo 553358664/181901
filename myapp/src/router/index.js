@@ -1,20 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+//一级页面
+//1，社区
 import community from "../components/community";
+//2.我的
 import My from "../components/my";
+//3.商城
 import sMall from "../components/small";
+//4。购物车
 import sCar from "../components/scar";
 
-<<<<<<< HEAD
+//1.社区的二及页面
+//关注
 import Attention from"../components/community/components/attention";
+//花友圈
 import Friends from"../components/community/components/friends";
+//附近
 import Nearby from"../components/community/components/nearby";
 
-=======
 //my二级页面路由
 import PersonalInfo from "../components/my/personalInfo";
 import Follow from "../components/my/follow"
->>>>>>> liuna
 
 Vue.use(Router)
 
@@ -25,6 +31,7 @@ export default new Router({
       path: '/',
       redirect:"/community"
     },
+
     {
       path:"/community",
       name:"community",
@@ -62,8 +69,7 @@ export default new Router({
       meta:{
         flag:false,
         requireAuth:true
-      }
-      
+      }    
     },
     {
       path:"/small",
