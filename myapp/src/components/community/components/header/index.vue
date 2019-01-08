@@ -12,7 +12,9 @@
                 </ul>          
             </div>
             <div class="search">
-                <input type="text" class="search-input" value="大家都在看“烈焰柔情一品红”">
+                <router-link :to="{name:search}">
+                    <input type="text" class="search-input" value="大家都在看“烈焰柔情一品红”">
+                </router-link>                
             </div>
         </div>      
         <router-view/>
@@ -36,7 +38,8 @@ export default {
                    name:"nearby",
                    title:"附近" 
                 }
-            ]
+            ],
+            search:'search'
         }
     }
 }
@@ -58,13 +61,19 @@ $color:#FCFCFA;
 
 
             ul{
+                height:.48rem;
                 display: flex;
                 justify-content: space-between;
                 li{
                     font-size:.32rem;
+                    a{
+                        display:block;
+                        height:.48rem
+                    }
                     .router-link-active{
                         color: #0A0A0A;
-                        font-weight: bold
+                        font-weight: bold;
+                        border-bottom:.05rem solid #F44C36;
                     }
                 }
             }
@@ -82,15 +91,11 @@ $color:#FCFCFA;
                     border:0; 
                     padding-left:.3rem;   
                     text-align: center;
-                    
-                    
-
-
-font-size:.26rem;
-font-family:PingFang-SC-Regular;
-font-weight:400;
-color:rgba(10,10,10,1);
-opacity:0.8;
+                    font-size:.26rem;
+                    font-family:PingFang-SC-Regular;
+                    font-weight:400;
+                    color:rgba(10,10,10,1);
+                    opacity:0.8;
                 }
             }
         }        

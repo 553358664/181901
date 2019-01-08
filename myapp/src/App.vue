@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <Footer-com/>
+    <Footer-com  v-show="this.$route.meta.flag"></Footer-com>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import Footer from "./components/footer";
 export default {
   name: 'App',
   components: {
-    "Footer-com":Footer
+    "Footer-com":Footer,
   }
 }
 </script>

@@ -82,6 +82,7 @@
                 </div>            
             </li>
 
+            
             <li class="nearbyLi">
                 <div class="nearbyImg">
                    <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
@@ -147,6 +148,7 @@ export default {
     background:#EEEEEE;
     width:100%;
     height:10.5rem;
+    overflow: hidden;
    .nearbyUl{
         overflow: hidden;
         zoom:1;   
@@ -169,7 +171,7 @@ export default {
                     color:rgba(13,13,12,1);
                     line-height:.39rem;
                 }
-                .friendsUser{
+                .nearbyUser{
                     padding-left:.32rem;
                     padding-top:.22rem;
                     height:.87rem;
