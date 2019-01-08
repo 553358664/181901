@@ -10,6 +10,8 @@
     <Discount-com></Discount-com>
     <div class="border border2"></div>
     <FlowerOrder-com></FlowerOrder-com>
+    <div class="border"></div>
+    <Slogan-com></Slogan-com>
   </div>
 </template>
 <script>
@@ -19,6 +21,7 @@ import Nav from "./components/shopHome/nav";
 import Other from "./components/shopHome/other";
 import Discount from "./components/shopHome/discount";
 import FlowerOrder from "./components/shopHome/flowerorder";
+import Slogan from "./components/shopHome/slogan"
 export default {
   components: {
     "Header-com": Header,
@@ -26,14 +29,15 @@ export default {
     "Nav-com": Nav,
     "Other-com": Other,
     "Discount-com":Discount,
-    "FlowerOrder-com":FlowerOrder
+    "FlowerOrder-com":FlowerOrder,
+    "Slogan-com":Slogan
   }
 };
 </script>
 <style lang="scss">
 #shopHome {
     height:100%;
-    overflow: auto;
+    overflow:auto;
     padding-bottom:.98rem;
   .border {
     width: 702px;
