@@ -50,15 +50,16 @@ $color:#FCFCFA;
     .fs{
         width:100%;
         height:100%;
-        .header{
-            margin-top:.3rem;            
+        .header{          
             height:1.78rem;
             box-shadow:1px 2px 4px 0px rgba(0, 0, 0, 0.06);
             .top{
-            height:.48rem;
+            height:.87rem;
             width:3.3rem;
-            margin:.39rem auto;
+            margin:0 auto;
+            padding-top:.39rem;
             ul{
+                
                 height:.48rem;
                 display: flex;
                 justify-content: space-between;
