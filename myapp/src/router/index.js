@@ -8,6 +8,8 @@ import sCar from "../components/scar";
 //王金利 商城 调试路由
 import jxhq from "../components/small/wang/jxhq";
 import hccs from "../components/small/wang/hccs";
+import hcyh from "../components/small/wang/hcyh";
+import xptj from "../components/small/wang/xptj";
 
 
 
@@ -71,6 +73,16 @@ export default new Router({
     	path:"/hccs",
     	component:hccs,
     	name:"hccs"
+    },
+     {
+    	path:"/hcyh",
+    	component:hcyh,
+    	name:"hcyh"
+    },
+    {
+    	path:"/xptj",
+    	component:xptj,
+    	name:"xptj"
     }
   ]
 })
