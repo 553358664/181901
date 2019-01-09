@@ -7,8 +7,8 @@
 <script>
 export default {
     components:{
-        "loginSearch-com":()=>import('./loginSearch')
-        // "touristSearch-com":()=>import('./touristSearch')
+        "loginSearch-com":()=>import('./loginSearch'),
+        "torSearch-com":()=>import('./torSearch')
 
     },
     data(){
@@ -17,7 +17,7 @@ export default {
         }
     },
     methods:{
-
+        
     }
 }
 </script>
