@@ -1,15 +1,15 @@
 <template>
     <div class="content">
          <ul>
-            <li v-for="(item,index) in follows">                            
-                    <div>
-                         <router-link :to="{name:'details'}">
-                             <span><img :src="item.headPic"/></span>                                            
-                             <span>{{item.username}}</span>                     
-                         </router-link>   
-                        <p><a href="#">取消关注</a></p> 
-                     </div>
-                 <div class="line"></div>
+            <li v-for="(item,index) in fans">               
+                 <div>
+                    <router-link :to="{name:'details'}">
+                        <span><img :src="item.headPic"/></span>                                            
+                        <span>{{item.username}}</span>                     
+                    </router-link>   
+                    <p><a href="#">关注</a></p> 
+                 </div>
+                <div class="line"></div>
             </li>
         </ul>
     </div>
@@ -19,33 +19,35 @@
 export default {
      data(){
         return {          
-            follows:[
+            fans:[
                 {
-                    headPic:require("@/assets/my/wd_gz_tx1@2x.png"),
-                    username:'绿豆',                   
+                    headPic:require("@/assets/my/wd_fs_tx1@2x.png"),
+                    username:'决明子',                   
                 },
                 {
-                    headPic:require("@/assets/my/wd_gz_tx2@2x.png"),
-                    username:'燕麦粥',
+                    headPic:require("@/assets/my/wd_fs_tx2@2x.png"),
+                    username:'梅子黄时雨', 
+                   
                 },
                 {
-                    headPic:require("@/assets/my/wd_gz_tx3@2x.png"),
-                    username:'柠檬', 
+                    headPic:require("@/assets/my/wd_fs_tx3@2x.png"),
+                    username:'曼殊沙华', 
                 },
                 {
-                   headPic:require("@/assets/my/wd_gz_tx4@2x.png"),
-                   username:'核桃酥', 
+                   headPic:require("@/assets/my/wd_fs_tx4@2x.png"),
+                   username:'满天星', 
                     
                 }
             ],
-         iconRight:require('@/assets/my/icon_grxx_jt@2x.png')                
+         iconRight:require('@/assets/my/icon_grxx_jt@2x.png')    
+            
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .content{
+     .content{
         padding:0 .24rem;
         width:100%;
         background:#FCFCFA;

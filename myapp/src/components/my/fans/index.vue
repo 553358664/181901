@@ -1,14 +1,13 @@
 <template>
-   <div class="follow">
+    <div class="personalInfo">
        <Header-com/>
        <Content-com/>
     </div>
-       
-    
 </template>
+
 <script>
-import Header from "./components/header.vue";
-import Content from "./components/content.vue"
+import Header from "./components/header";
+import Content from "./components/content"
 export default {
     components:{
         "Header-com":Header,
@@ -17,7 +16,7 @@ export default {
 }
 </script>
 <style>
-     .follow{
+    .personalInfo{
         width:100%;
         height:100%;
         background:#EEEEEE;
