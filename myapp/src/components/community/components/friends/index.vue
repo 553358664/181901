@@ -1,13 +1,73 @@
 <template>
     <div class="friends wrapper" ref="homeWrapper">
         <ul class="content friendsUl">
-            <li class="friendsLi" v-for="(item,index) in article" :key='index'>
+            <li class="friendsLi">
                 <div class="friendsImg">
                    <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
                 </div>   
                 <div class="friendsBox">
                     <p class="friendsP">                      
-                        {{item.centent}}
+                        薰衣草其实是薄荷家族的一员，以“招蜂引
+                    </p>
+                    <div class="friendsUser">
+                        <div class="uerImg">
+                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                        </div> 
+                        <p class="userName">啊哈</p>  
+                        <p class="userPraise">
+                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                            <span class="praiseNum">9999</span>
+                        </p>                     
+                    </div>
+                </div>            
+            </li>
+            <li class="friendsLi">
+                <div class="friendsImg">
+                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
+                </div>   
+                <div class="friendsBox">
+                    <p class="friendsP">                      
+                        薰衣草其实是薄荷家族的一员，以“招蜂引
+                    </p>
+                    <div class="friendsUser">
+                        <div class="uerImg">
+                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                        </div> 
+                        <p class="userName">啊哈</p>  
+                        <p class="userPraise">
+                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                            <span class="praiseNum">9999</span>
+                        </p>                     
+                    </div>
+                </div>            
+            </li>
+            <li class="friendsLi">
+                <div class="friendsImg">
+                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
+                </div>   
+                <div class="friendsBox">
+                    <p class="friendsP">                      
+                        薰衣草其实是薄荷家族的一员，以“招蜂引
+                    </p>
+                    <div class="friendsUser">
+                        <div class="uerImg">
+                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                        </div> 
+                        <p class="userName">啊哈</p>  
+                        <p class="userPraise">
+                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                            <span class="praiseNum">9999</span>
+                        </p>                     
+                    </div>
+                </div>            
+            </li>
+            <li class="friendsLi">
+                <div class="friendsImg">
+                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
+                </div>   
+                <div class="friendsBox">
+                    <p class="friendsP">                      
+                        薰衣草其实是薄荷家族的一员，以“招蜂引
                     </p>
                     <div class="friendsUser">
                         <div class="uerImg">
@@ -31,7 +91,7 @@ import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-       this.handleArticle()
+//     this.handleArticle()
        this.hanle()
     },
     computed:{

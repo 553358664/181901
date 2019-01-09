@@ -1,7 +1,7 @@
 <template>
-  <div id="discount">
+  <div id="discount" class="wrapper" ref="dicountWrapper">
     <h1>限时特惠</h1>
-    <div class="discountGoods">
+    <div class="discountGoods content">
       <a href>
         <img src="@/assets/small/shopHome/nav_1.png" alt>
         <h2>9.9元包邮 | 心想事橙</h2>
@@ -26,13 +26,22 @@
   </div>
 </template>
 <script>
-export default {};
+import BScroll from "better-scroll";
+export default {
+    updated(){
+      if(!this.scroll){
+        this.scroll=new BScroll(this.$refs.dicountWrapper,{scrollX:true})
+      }
+      console.log(this.scroll)
+    }
+};
 </script>
 <style lang="scss" scoped>
 #discount {
   margin-left: 0.26rem;
   font-family: PingFang-SC-Regular;
   .discountGoods {
+    width:max-content;
     display: flex;
     overflow:auto;
     a{
