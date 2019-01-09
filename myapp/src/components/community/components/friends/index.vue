@@ -82,11 +82,14 @@ export default {
     // }
   }, 
   mounted(){
+    
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
         click:true,
-        pullUpLoad:true
-    });
+        pullUpLoad:true,
+        hasVerticalScroll:true
+    }),
+     this.hanle()
   }
 }
 </script>
