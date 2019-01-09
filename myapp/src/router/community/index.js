@@ -1,5 +1,4 @@
-// import Vue from 'vue'
-// import Router from 'vue-router'
+
 import community from "../../components/community";
 //1.社区的二及页面
 //关注
@@ -10,7 +9,6 @@ import Friends from"../../components/community/components/friends";
 import Nearby from"../../components/community/components/nearby";
 //查找
 import Search from"../../components/community/components/search";
-// Vue.use(Router)
 export default(
     [
       {
