@@ -16,5 +16,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.community{
+    height: 100%;
+}
 </style>
