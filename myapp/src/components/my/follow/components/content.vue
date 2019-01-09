@@ -1,14 +1,14 @@
 <template>
     <div class="content">
          <ul>
-            <li v-for="(item,index) in fans">               
-                <router-link :to="{}">                                       
+            <li v-for="(item,index) in follows">                            
                     <div>
-                        <span><img :src="item.headPic"/></span>
-                        <span>{{item.username}}</span>                     
-                    </div>
-                    <p><a href="#">取消关注</a></p>                                    
-                </router-link>
+                         <router-link :to="{name:'details'}">
+                             <span><img :src="item.headPic"/></span>                                            
+                             <span>{{item.username}}</span>                     
+                         </router-link>   
+                        <p><a href="#">取消关注</a></p> 
+                     </div>
                  <div class="line"></div>
             </li>
         </ul>
@@ -19,7 +19,7 @@
 export default {
      data(){
         return {          
-            fans:[
+            follows:[
                 {
                     headPic:require("@/assets/my/wd_gz_tx1@2x.png"),
                     username:'绿豆',                   
@@ -55,33 +55,28 @@ export default {
         width: 100%;
         height: 100%;
     }
-    .content>ul>li,.content>ul>li>a{
+    .content>ul>li{
         width:100%;
         height:1.4rem;
         line-height: 1.4rem;
     }
-    .content>ul>li>a{
+    .content>ul>li>div{
+        width:100%;
+        height:1.4rem;
         display: flex;
         justify-content: space-between;
         align-items: center
     }
-    .content>ul>li>a>img,.content>ul>li>a>span{
-        display: inline-block;
-    }
-    .content>ul>li>a>img{
-        display: inline-block;
-    }
-    .content>ul>li>a>div{
-        width:70%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    .content>ul>li>a>div>span{
+     .content>ul>li>div>a>span:first-child{
         display:inline-block;
         margin-right:.2rem;
+        vertical-align: middle;
     }
-    .content>ul>li>a>p>a{
+
+    .content>ul>li>div>a>img,.content>ul>li>div>a>span{
+        display: inline-block;
+    }  
+    .content>ul>li>div>p>a{
         display:inline-block;
         width:1.5rem;
         height:.48rem;

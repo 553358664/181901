@@ -2,14 +2,14 @@
     <div class="content">
          <ul>
             <li v-for="(item,index) in fans">               
-                <router-link :to="{}">                                       
-                    <div>
-                        <span><img :src="item.headPic"/></span>
+                 <div>
+                    <router-link :to="{name:'details'}">
+                        <span><img :src="item.headPic"/></span>                                            
                         <span>{{item.username}}</span>                     
-                    </div>
-                    <p><a href="#">关注</a></p>                                    
-                </router-link>
-                 <div class="line"></div>
+                    </router-link>   
+                    <p><a href="#">关注</a></p> 
+                 </div>
+                <div class="line"></div>
             </li>
         </ul>
     </div>
@@ -47,46 +47,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .content{
-        width:100%;
+     .content{
         padding:0 .24rem;
+        width:100%;
         background:#FCFCFA;
         font-size:.30rem;
     }
     .content>ul{
         width: 100%;
-        height:100%;
+        height: 100%;
     }
-    .content>ul>li,.content>ul>li>a{
+    .content>ul>li{
         width:100%;
         height:1.4rem;
         line-height: 1.4rem;
     }
-    .content>ul>li>a{
+    .content>ul>li>div{
+        width:100%;
+        height:1.4rem;
         display: flex;
         justify-content: space-between;
         align-items: center
     }
-    .content>ul>li>a>img,.content>ul>li>a>span{
-        display: inline-block;
-    }
-    .content>ul>li>a>div{
-        width:70%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    .content>ul>li>a>div>span{
+     .content>ul>li>div>a>span:first-child{
+        display:inline-block;
         margin-right:.2rem;
-    }   
-    .content>ul>li>a>p>a{
+        vertical-align: middle;
+    }
+
+    .content>ul>li>div>a>img,.content>ul>li>div>a>span{
+        display: inline-block;
+    }  
+    .content>ul>li>div>p>a{
         display:inline-block;
         width:1.5rem;
         height:.48rem;
         line-height: .48rem;
-        background:#F44C36 ;
+        border:#F44C36 .01rem solid ;
         text-align: center;
-        color:#FCFCFA ;
+        color:#F44C36;
         border-radius: .5rem;
     }
    .content>ul>li>.line{
