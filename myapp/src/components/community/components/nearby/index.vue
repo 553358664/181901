@@ -148,11 +148,12 @@ export default {
 .nearby{
     background:#EEEEEE;
     width:100%;
-    height:10.5rem;
+    height:100%;
     overflow:hidden;
    .nearbyUl{
         overflow: hidden;
-        zoom:1;   
+        zoom:1;  
+        padding-bottom:3.1rem; 
         .nearbyLi{
             margin:1% 0 0 1%;
             width:48%;
@@ -160,7 +161,7 @@ export default {
             .nearbyImg{
                 width:100%;
                 img{
-                    width:100%
+                    width:100%;
                 }
             }
         .nearbyBox{
@@ -169,9 +170,9 @@ export default {
                 background:rgba(252,252,250,1);
                 border-radius:0px 0px 10px 10px;
                 .nearbyP{
-                    margin-left:8.9%;
-                    padding-top:1.264%;
-                    width:88.6%;
+                    margin-left:5.8%;
+                    padding-top:2.64%;
+                    width:78.9%;
                     height:.75rem;
                     font-size:.26rem;
                     font-family:PingFang-SC-Medium;
@@ -180,8 +181,8 @@ export default {
                     line-height:.39rem;
                 }
                 .nearbyUser{
-                    padding-left:.32rem;
-                    padding-top:.22rem;
+                    padding-left:5.8%;
+                    padding-top:10.64%;
                     height:.87rem;
                     .uerImg{
                         float:left;

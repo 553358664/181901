@@ -17,6 +17,7 @@ import Attention from"../components/community/components/attention";
 import Friends from"../components/community/components/friends";
 //附近
 import Nearby from"../components/community/components/nearby";
+//查找
 import Search from"../components/community/components/search";
 
 //my二级页面路由
