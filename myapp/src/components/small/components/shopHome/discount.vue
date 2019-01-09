@@ -1,39 +1,41 @@
 <template>
-  <div id="discount" class="wrapper" ref="dicountWrapper">
+  <div id="discount" >
     <h1>限时特惠</h1>
-    <div class="discountGoods content">
-      <a href>
-        <img src="@/assets/small/shopHome/nav_1.png" alt>
-        <h2>9.9元包邮 | 心想事橙</h2>
-        <h3>9.9元/束</h3>
-      </a>
-      <a href>
-        <img src="@/assets/small/shopHome/nav_1.png" alt>
-        <h2>9.9元包邮 | 心想事橙</h2>
-        <h3>9.9元/束</h3>
-      </a>
-      <a href>
-        <img src="@/assets/small/shopHome/nav_1.png" alt>
-        <h2>9.9元包邮 | 心想事橙</h2>
-        <h3>9.9元/束</h3>
-      </a>
-      <a href>
-        <img src="@/assets/small/shopHome/nav_1.png" alt>
-        <h2>9.9元包邮 | 心想事橙</h2>
-        <h3>9.9元/束</h3>
-      </a>
+    <div class="wrapper" ref="dicountWrapper">
+      <div class="discountGoods content">
+        <a href>
+          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <h2>9.9元包邮 | 心想事橙</h2>
+          <h3>9.9元/束</h3>
+        </a>
+        <a href>
+          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <h2>9.9元包邮 | 心想事橙</h2>
+          <h3>9.9元/束</h3>
+        </a>
+        <a href>
+          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <h2>9.9元包邮 | 心想事橙</h2>
+          <h3>9.9元/束</h3>
+        </a>
+        <a href>
+          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <h2>9.9元包邮 | 心想事橙</h2>
+          <h3>9.9元/束</h3>
+        </a>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import BScroll from "better-scroll";
 export default {
-    updated(){
-      if(!this.scroll){
-        this.scroll=new BScroll(this.$refs.dicountWrapper,{scrollX:true})
-      }
-      console.log(this.scroll)
-    }
+  mounted() {
+    this.scroll = new BScroll(this.$refs.dicountWrapper, {
+      scrollX: true
+    });
+    console.log(this.scroll);
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -41,12 +43,10 @@ export default {
   margin-left: 0.26rem;
   font-family: PingFang-SC-Regular;
   .discountGoods {
-    width:max-content;
+    width: max-content;
     display: flex;
-    overflow:auto;
-    a{
-        margin-right:.22rem;
-        
+    a {
+      margin-right: 0.22rem;
     }
     img {
       width: 2.42rem;
