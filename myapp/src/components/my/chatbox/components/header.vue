@@ -1,8 +1,8 @@
 <template>
     <div class="header">
-        <img class="back" :src="back" @click="handleback()"/>
-        <p class="info-middle">粉丝</p>
-    </div>
+        <img class="back" :src="back" @click="handleback()"/> 
+        <p>小雪</p>
+        <p>...</p>  
     </div>
 </template>
 
@@ -22,11 +22,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .header{
+     .header{
         width:100%;
         height:.98rem;
         display:flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         background:#FCFCFA;
         padding:0 .24rem;
@@ -37,12 +38,14 @@ export default {
     .back{
         width:.34rem;
         height:.34rem;
-        margin-right:2.7rem;
     }
     p{
         font-size: .32rem;
+        color:#0A0A0A ;
     }
-
 </style>
+
+
+
 
 

@@ -1,13 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import community from "../components/community";
-import My from "../components/my";
-import sMall from "../components/small";
-import sCar from "../components/scar";
-
-import Attention from"../components/community/components/attention";
-import Friends from"../components/community/components/friends";
-import Nearby from"../components/community/components/nearby";
 
 
 //一级页面
