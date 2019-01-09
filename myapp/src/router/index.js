@@ -11,8 +11,11 @@ import My from "./my";
 import sMall from "./sMall"
 // import sMall from "../components/small";
 //4。购物车
+
 import sCar from "./scar"
 // import sCar from "../components/scar";
+import sCar from "../components/scar";
+ 
 
 //1.社区的二及页面
 // //关注
@@ -27,6 +30,12 @@ import sCar from "./scar"
 //my二级页面路由
 import PersonalInfo from "../components/my/personalInfo";
 import Follow from "../components/my/follow"
+
+//注册页面二级路由=>用户服务条款
+import ServiceTerms from "../components/register_login//serviceTerms"
+
+//登录页面路由=>忘记密码
+import ForgetPwd from "../components/register_login/ForgetPwd";
 
 Vue.use(Router)
 
@@ -123,7 +132,5 @@ export default new Router({
     //   path:"/follow",
     //   name:"follow",
     //   component:Follow
-    // }
-
-
+    // } iu
 })

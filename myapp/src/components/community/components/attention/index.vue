@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      comName: "None-com"
+      comName: "Exit-com"
     };
   },
   mounted() {
@@ -33,7 +33,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .wrapper {
-  height: 10.89rem;
+  height: 100%;
   overflow: hidden;
   background:rgba(239,239,236,1);
 }

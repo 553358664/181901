@@ -28,6 +28,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .exit {
+  padding-bottom:2.7rem;
   .exitcontent {
     margin: 0.05rem 0;
   }
