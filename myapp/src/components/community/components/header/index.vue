@@ -50,7 +50,6 @@ $color:#FCFCFA;
     .fs{
         width:100%;
         height:100%;
-
         .header{
         margin-top:.3rem;            
             height:1.78rem;
@@ -58,7 +57,7 @@ $color:#FCFCFA;
             .top{
             height:.48rem;
             width:3.3rem;
-            margin:0 auto;
+            margin:.39rem auto;
             ul{
                 height:.48rem;
                 display: flex;

@@ -15,6 +15,7 @@ export default {};
   left: 0;
   top: 0;
   width: 100%;
+  z-index:11;
   height: 0.88rem;
   background: rgba(252, 253, 248, 1);
   display: flex;

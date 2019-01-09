@@ -31,8 +31,8 @@ import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-       this.handleArticle()
-       this.hanle()
+    this.handleArticle()
+    //    this.hanle()
     },
     computed:{
         ...Vuex.mapState({ 
