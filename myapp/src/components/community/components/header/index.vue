@@ -49,17 +49,13 @@ export default {
 $color:#FCFCFA;
     .fs{
         width:100%;
-        height:1.78rem;
+        height: 100%;
         .header{
             box-shadow:1px 2px 4px 0px rgba(0, 0, 0, 0.06);
             .top{
             height:.32rem;
             width:3.3rem;
             margin:.39rem auto;
-            // display: flex;
-            // align-items: center;
-
-
             ul{
                 height:.48rem;
                 display: flex;
