@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="searchWrp">
         <component :is="Search"></component>
     </div>
 </template>
@@ -13,7 +13,7 @@ export default {
     },
     data(){
         return{
-            Search:"loginSearch-com"
+            Search:"torSearch-com"
         }
     },
     methods:{
@@ -22,5 +22,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+    .searchWrp{
+        height:100%;
+        background:#EEEEEE;
+    }
 </style>

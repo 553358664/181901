@@ -1,5 +1,8 @@
 <template>
-    <div class="friends wrapper" ref="homeWrapper">
+    <div class="friends wrapper" ref="homeWrapper" >
+        <router-link :to="{name:publish}">
+            <img src="../../../../assets/community/qiu/hover.png" alt="" class="friendsPoint">   
+        </router-link>
         <ul class="content friendsUl">
             <li class="friendsLi" v-for="(item,index) in article" :key='index'>
                 <div class="friendsImg">
@@ -30,8 +33,9 @@
 import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
-    created(){
-    // this.handleArticle()
+ 
+        this.handleArticle()
+
     //    this.hanle()
     },
     computed:{
@@ -39,18 +43,49 @@ export default {
           article:state=>state.community.articleList
         })
     },
-
-  methods:{
+    data(){
+        return{
+            // positionX:0,
+            // positionY:0,
+            publish:"publish"
+        }
+    },
+    methods:{
         ...Vuex.mapActions({
           handleArticle:"community/handleArticle"
       }),
       hanle(){
           console.log(this)
-      }
+      },
+    //   handleMove(e){
+    //     let op = e.target;    //获取目标元素
+    //     //算出鼠标相对元素的位置
+    //     let disX = e.clientX - op.offsetLeft;
+    //     let disY = e.clientY - op.offsetTop;
+    //     console.log(disX,disY)
+    //     this.$refs.homeWrapper.onmousemove = (e)=>{    //鼠标按下并移动的事件
+    //     //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+    //     let left = e.clientX - disX;  
+    //     let top = e.clientY - disY;
+
+    //     //绑定元素位置到positionX和positionY上面
+    //     this.positionX = top;
+    //     this.positionY = left;
+
+    //     //移动当前元素
+    //     op.style.left = left + 'px';
+    //     op.style.top = top + 'px';
+    //     this.$refs.homeWrapper.onmouseup = (e) => {
+    //         this.$refs.homeWrapper.onmousemove = null;
+    //         this.$refs.homeWrapper.onmouseup = null;
+    //     };
+    //   }
+    // }
   }, 
   mounted(){
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
+        click:true,
         pullUpLoad:true
     });
   }
@@ -62,10 +97,16 @@ export default {
     width:100%;
     height:100%;
     overflow:hidden;
+    position:relative;
+    .friendsPoint{
+        position: absolute;   /*定位*/
+        top:0;
+        left:0;
+    }
    .friendsUl{
         overflow: hidden;
         zoom:1;  
-        padding-bottom:3.1rem; 
+        padding-bottom:3.2rem; 
         .friendsLi{
             margin:1% 0 0 1%;
             width:48%;
