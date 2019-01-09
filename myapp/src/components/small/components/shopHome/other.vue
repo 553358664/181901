@@ -23,7 +23,14 @@ export default {};
     padding: 0 0.23rem;
     display:flex;
     justify-content: space-between;
-    
+    a{
+      width:3.42rem;
+      height:1.12rem;
+      img{
+        width:100%;
+        height:100%;
+      }
+    }
   }
 }
 </style>
