@@ -9,8 +9,19 @@ import Friends from"../../components/community/components/friends";
 import Nearby from"../../components/community/components/nearby";
 //查找
 import Search from"../../components/community/components/search";
+//发布视频
+import Publish from "../../components/community/components/publish"
 export default(
     [
+      {
+        path:'/publish',
+        name:'publish',
+        component:Publish,
+        meta:{
+          flag:false
+        }
+      },
+
       {
         path: '/',
         redirect:"/community"
