@@ -64,23 +64,23 @@ export default (
               component:Details
             },
       
-          {
-            path:"/small",
-            name:"small",
-            component:sMall,
-            meta:{
-              flag:true,
-              requireAuth:true
-            }
-          },
-          {
-            path:"/scar",
-            name:"scar",
-            component:sCar,
-            meta:{
-              flag:true,
-              requireAuth:true
-            }
-          },
+          // {
+          //   path:"/small",
+          //   name:"small",
+          //   component:sMall,
+          //   meta:{
+          //     flag:true,
+          //     requireAuth:true
+          //   }
+          // },
+          // {
+          //   path:"/scar",
+          //   name:"scar",
+          //   component:sCar,
+          //   meta:{
+          //     flag:true,
+          //     requireAuth:true
+          //   }
+          // },
     ]
 )
