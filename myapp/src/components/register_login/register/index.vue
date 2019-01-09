@@ -20,12 +20,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-//»¶Ó­Ò³Ãæ
+
 #welcomeHome {
   width: 100%;
   height: 100%;
   background: #c2c2c2;
-  //»¶Ó­Ò³ÃæÄÚÈÝ
+  
   .welcomeContent {
     width: 100%;
     height: 100%;
@@ -34,7 +34,7 @@ export default {
     // background-position: 10rem 10rem;
     display: flex;
     flex-direction: column;
-    //»¶Ó­Ò³Ãælogo
+    
     .welcomeLogo {
       width: 100%;
       height: 3.5rem;

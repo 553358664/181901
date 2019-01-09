@@ -1,11 +1,12 @@
 <template>
     <div class="loginForm">
-       <!-- 登录 -->
-        <div class="loginContent">
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password"><p>忘记密码</p></div>
-            <button>登录</button>
-        </div>
+       <!-- 登录 验证 -->
+        <form class="loginContent" @submit="checkLogin">
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username" @blur="loginUsername()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" @blur="loginPassword"><router-link to="/forgetPwd">忘记密码</router-link></div>
+            <input type="submit" id="btn" name="" value="登录"/>
+            
+        </form>
            
        
     </div>
@@ -13,7 +14,23 @@
 
 <script >
 export default {
-   
+   data(){
+   	return {
+   		username:"",
+   		password1:"",
+   	}
+   },
+   methods:{
+   	checkLogin(){
+   		
+   	},
+   	loginUsername(){
+   		
+   	},
+   	loginPassword(){
+   		
+   	}
+   }
 }
 </script>
 
@@ -73,7 +90,7 @@ export default {
             input{
                 width: .31rem;
             }
-            p{
+            a{
                 width: 1.9rem;
                 height: 100%;
                 display: flex;
@@ -83,7 +100,7 @@ export default {
             }
             margin-bottom: 1.2rem;
         }
-        button{
+        #btn{
             width:100%;
             height: .8rem;
             line-height: .8rem;

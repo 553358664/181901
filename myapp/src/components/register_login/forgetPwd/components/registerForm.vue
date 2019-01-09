@@ -1,24 +1,80 @@
 <template>
-    <div class="registerForm">
-        <!--忘记密码 -->
+    <div class="registerForm" >
+        <!-- 注册验证-->
         <div class="formContent">
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username" @blur="handleUsername()"></div>
             <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode"></section><button>获取验证码</button></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1"></div>
-            <button>修改</button>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1" @blur="handlePassword1()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2" @blur="handlePassword2()"></div>
+            <section class="dibu">
+            	<span class="tishi" v-show="flag">
+	            	{{tishi}}
+	            </span>
+	            <input type="button" id="sub" name="" value="修改" @click="checkForm()"/>
+            </section>
             
         </div>
     </div>
 </template>
 <script >
+import axios from "axios";
 export default {
     data(){
         return {
-            
+           username:"",
+           password1:"",
+           password2:"",
+           userFlag:false,
+           pwdFlag:false,
+           pwdFlag1:false,
+           tishi:"",
+           flag:false
         }
     },
     methods:{
+    	checkForm(){
+    		if(this.userFlag && this.pwdFlag && this.pwdFlag2){
+    			this.register();
+    			return true;
+    		}else{
+    			return false;
+    		}
+//  		e.preventDefault();
+    	},
+    	handleUsername(){
+    		
+    		var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    		if(reg.test(this.username)){
+    			this.userFlag = true;
+    			alert("qqq")
+    		}else{
+    			this.userFlag = false;
+    			this.flag = true;
+    			this.tishi = "手机号不符合规范";
+    		}
+    	},
+    	handlePassword1(){
+    		var reg = /^\w{6,12}$/;
+    		if(reg.test(this.password1)){
+    			this.pwdFlag = true;
+    		}else{
+    			this.pwdFlag1 = false;
+    			this.flag = true;
+    			this.tishi = "密码格式为6-12位数字字母下划线";
+    		}
+    	},
+    	handlePassword2(){
+    		if(this.password1 == this.password2){
+    			this.pwdFlag2 = true;
+    		}else{
+    			this.pwdFlag2 = false;
+    			this.flag = true;
+    			this.tishi = "两次密码输入不一致";
+    		}
+    	},
+    	register(){
+    		
+    	}
     }
 }
 </script>
@@ -33,8 +89,9 @@ export default {
         padding: 0 0.9rem 0 0.9rem;
         width: 100%;
         height: 100%;
+       
         div{
-            height: 1.55rem;
+            height: 1.5rem;
             width: 100%;
             border-bottom: 2px solid #fff;
             padding: .72rem 0 0.08rem 0;
@@ -66,6 +123,7 @@ export default {
                 background: transparent;
                 font-size: .3rem;
                 line-height: .67rem;
+                color: #fffefc;
             }
         }
         div:nth-child(1){
@@ -136,22 +194,41 @@ export default {
                 }
         }
         div:nth-child(4){
-            margin-bottom: 1rem;
+        	margin-bottom:.2rem ;
         }
-       
-        button{
-            width:100%;
-            height: .8rem;
-            line-height: .8rem;
-            display: flex;
-            outline: none;
-            border: 0;
-            background: #ff7268;
-            font-size: .3rem;
-            justify-content: center;
-            border-radius: 5px;
-            color: #fff;
+        .dibu{
+        	width: 100%;
+        	height: 1.6rem;
+        	position: relative;
+        	.tishi{
+	       		width: 100%;
+	       		height: .6rem;
+	       		margin-bottom: .2rem;
+	       		font-size: .3rem;
+	       		color: #000;
+	       		display: flex;
+	       		justify-content: center;
+	       		align-items: center;
+	       		color: #ff7268;
+	       	}
+	        #sub{
+	        	position: absolute;
+	        	left: 0;
+	        	bottom: 0;
+	            width:100%;
+	            height: .8rem;
+	            line-height: .8rem;
+	            display: flex;
+	            outline: none;
+	            border: 0;
+	            background: #ff7268;
+	            font-size: .3rem;
+	            justify-content: center;
+	            border-radius: 5px;
+	            color: #fff;
+	        }
         }
+       	
     }
     
 }
