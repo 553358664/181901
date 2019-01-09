@@ -34,7 +34,6 @@ export default {
     this.scroll = new BScroll(this.$refs.dicountWrapper, {
       scrollX: true
     });
-    console.log(this.scroll);
   }
 };
 </script>

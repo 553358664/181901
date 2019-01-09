@@ -7,7 +7,9 @@ import Follow from "../../components/my/follow";
 //个人信息 关注 粉丝 收藏 草稿 
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
-import Details from "../../components/my/details"
+import Details from "../../components/my/details";
+import sMall from "../../components/small";
+import sCar  from "../../components/scar";
 
 export default (
     [

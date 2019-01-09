@@ -77,13 +77,6 @@ export default {
     font-family: PingFang-SC-Medium;
     color: rgba(0, 0, 0, 1);
   }
-
-  .swiper-pagination-current {
-  }
-  .swiper-pagination-total {
-    font-style: normal;
-    font-size: 0.22rem;
-  }
   h4 {
     margin: 0.21rem 0 0.15rem 0.23rem;
     font-size: 0.32rem;
