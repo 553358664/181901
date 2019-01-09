@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-        <img class="back" :src="back" @click="handleback()"/>       
-        <p>关注</p>
+        <img class="back" :src="back" @click="handleback()"/>
+        <p class="info-middle">粉丝</p>
     </div>
     </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     },
      data(){
        return{
-           back:require('@/assets/my/icon_wd_jt@2x.png')
+           back:require('@/assets/my/icon_wd_jt@2x.png'),
        }
    }
 }

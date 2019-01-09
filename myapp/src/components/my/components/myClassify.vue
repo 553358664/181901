@@ -19,24 +19,24 @@ export default {
                 {
                     name:"follow",
                     title:"关注",
-                    icon:'../../../static/my/icon_wd_gz@2x.png'
+                    icon:require('../../../assets/my/icon_wd_gz@2x.png')
                     
                 },
                 {
                     name:"fans",
                     title:"粉丝",
-                    icon:'../../../static/my/icon_wd_fs@2x.png'
+                    icon:require('../../../assets/my/icon_wd_fs@2x.png')
                 },
                 {
                     name:"collection",
                     title:"收藏",
-                    icon:'../../../static/my/icon_wd_shoucang@2x.png'
+                    icon:require('../../../assets/my/icon_wd_shoucang@2x.png')
                    
                 },
                 {
                     name:"draft ",
                     title:"草稿",
-                    icon:'../../../static/my/icon_wd_cg@2x.png'
+                    icon:require('../../../assets/my/icon_wd_cg@2x.png')
                     
                     
                 }
@@ -70,8 +70,10 @@ export default {
          height:0.5rem;
      }
     .myClassify>ul>li>a>span{
-        font-size: .24rem;
+        font-size: .3rem;
+         color:#515151 ;
     }
+   
 </style>
 
 

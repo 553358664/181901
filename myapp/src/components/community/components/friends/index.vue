@@ -1,73 +1,13 @@
 <template>
     <div class="friends wrapper" ref="homeWrapper">
         <ul class="content friendsUl">
-            <li class="friendsLi">
+            <li class="friendsLi" v-for="(item,index) in article" :key='index'>
                 <div class="friendsImg">
                    <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
                 </div>   
                 <div class="friendsBox">
                     <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-            <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-            <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="friendsUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-            <li class="friendsLi">
-                <div class="friendsImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="friendsBox">
-                    <p class="friendsP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
+                        {{item.centent}}
                     </p>
                     <div class="friendsUser">
                         <div class="uerImg">
@@ -91,8 +31,8 @@ import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-//     this.handleArticle()
-       this.hanle()
+    this.handleArticle()
+    //    this.hanle()
     },
     computed:{
         ...Vuex.mapState({ 
@@ -120,23 +60,31 @@ export default {
 .friends{
     background:#EEEEEE;
     width:100%;
-    height:10.5rem;
+    height:100%;
     overflow:hidden;
    .friendsUl{
         overflow: hidden;
-        zoom:1;   
+        zoom:1;  
+        padding-bottom:3.1rem; 
         .friendsLi{
-            margin:.1rem 0 0 .1rem;
-            width:3.6rem;
+            margin:1% 0 0 1%;
+            width:48%;
             float:left;
+            .friendsImg{
+                width:100%;
+                img{
+                    width:100%;
+                }
+            }
         .friendsBox{
-                width:3.6rem;
+                width:100%;
                 height:1.74rem;
                 background:rgba(252,252,250,1);
                 border-radius:0px 0px 10px 10px;
                 .friendsP{
-                    margin-left:.32rem;
-                    width:3.1rem;
+                    margin-left:5.8%;
+                    padding-top:2.64%;
+                    width:78.9%;
                     height:.75rem;
                     font-size:.26rem;
                     font-family:PingFang-SC-Medium;
@@ -145,8 +93,8 @@ export default {
                     line-height:.39rem;
                 }
                 .friendsUser{
-                    padding-left:.32rem;
-                    padding-top:.22rem;
+                    padding-left:5.8%;
+                    padding-top:10.64%;
                     height:.87rem;
                     .uerImg{
                         float:left;
