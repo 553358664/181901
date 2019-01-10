@@ -129,18 +129,29 @@
 
 
 <script>
+import Vuex from "Vuex"
 import BScroll from "better-scroll";
 export default {
-  methods:{
+//   methods:{
 
-  }, 
+//   }, 
+    computed: {
+    //获得附近中的文章数据
+    ...Vuex.mapState({
+      nearItems: state => state.community.nearItems
+    })
+  },
+  methods:{
+    ...Vuex.mapActions({
+      handleArticle: "community/handleArticle"
+    })
+  },
   mounted(){
-    console.log(this)
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
         pullUpLoad:true,
         hasVerticalScroll: true
-    });
+    })
   }
 }
 </script>
