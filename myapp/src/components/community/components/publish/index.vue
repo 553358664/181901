@@ -8,7 +8,13 @@
         </div> 
         <div class="publishMain">
             <div contenteditable="true" class="publishInp" >{{publishMain}}</div>
-        </div> 
+            <div class="publichAdd">
+                <img src="../../../../assets/community/qiu/img.png" alt="" class="pub-left publishPer">
+                <div class="publichAdd-son  pub-left" @click="handleAdd()">                   
+                    <img src="../../../../assets/community/qiu/add.png" alt="" class="publichAdd-img">
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -22,6 +28,9 @@
              handleBack(){
                 this.$router.back()
             },
+            handleAdd(){
+                
+            }
         }
     }
 </script>
@@ -75,6 +84,27 @@
                 font-weight:500;
                 color:rgba(10,10,10,1);
                 opacity:0.8;
+            }
+            .publichAdd{
+                .pub-left{
+                    float:left;
+                    margin-left:.3rem;
+                } 
+                .publishPer{
+                    width:2.2rem;
+                    height:2.2rem;
+                }               
+               .publichAdd-son{
+                   position: relative;
+                   width:2.2rem;
+                    height:2.2rem;
+                    border:2px solid rgba(215,215,215,1);
+                    .publichAdd-img{
+                        position: absolute;
+                        top:.6rem;
+                        left:.6rem;
+                    }
+               } 
             }
         }
     }

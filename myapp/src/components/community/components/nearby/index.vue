@@ -135,7 +135,7 @@ export default {
 
 //   }, 
   mounted(){
-      console.log(this)
+    //   console.log(this)
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
         pullUpLoad:true,
