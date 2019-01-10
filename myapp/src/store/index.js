@@ -6,16 +6,17 @@ import register_login from "./register_login";
 
 import small from "./small";
 
+import Mylist from "./mylist";
 Vue.use(Vuex);
-
 const store = new Vuex.Store({
     modules:{
         community,
 
         register_login,
 
-        small
+        small,
 
+        Mylist
     }
 })
 
