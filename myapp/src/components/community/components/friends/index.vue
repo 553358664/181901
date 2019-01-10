@@ -4,7 +4,7 @@
             <img src="../../../../assets/community/qiu/hover.png" alt="" class="friendsPoint">   
         </router-link>
         <ul class="content friendsUl">
-            <li class="friendsLi" v-for="(item,index) in article" :key='index'>
+            <li class="friendsLi">
                 <div class="friendsImg">
                    <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
                 </div>   
@@ -43,8 +43,6 @@ export default {
     },
     data(){
         return{
-            // positionX:0,
-            // positionY:0,
             publish:"publish"
         }
     },
@@ -55,36 +53,14 @@ export default {
       hanle(){
           console.log(this)
       },
-    //   handleMove(e){
-    //     let op = e.target;    //获取目标元素
-    //     //算出鼠标相对元素的位置
-    //     let disX = e.clientX - op.offsetLeft;
-    //     let disY = e.clientY - op.offsetTop;
-    //     console.log(disX,disY)
-    //     this.$refs.homeWrapper.onmousemove = (e)=>{    //鼠标按下并移动的事件
-    //     //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-    //     let left = e.clientX - disX;  
-    //     let top = e.clientY - disY;
-
-    //     //绑定元素位置到positionX和positionY上面
-    //     this.positionX = top;
-    //     this.positionY = left;
-
-    //     //移动当前元素
-    //     op.style.left = left + 'px';
-    //     op.style.top = top + 'px';
-    //     this.$refs.homeWrapper.onmouseup = (e) => {
-    //         this.$refs.homeWrapper.onmousemove = null;
-    //         this.$refs.homeWrapper.onmouseup = null;
-    //     };
-    //   }
-    // }
   }, 
   mounted(){
+    this. hanle()
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
         click:true,
-        pullUpLoad:true
+        pullUpLoad:true,
+        hasVerticalScroll:true
     });
   }
 }

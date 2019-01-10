@@ -131,9 +131,9 @@
 <script>
 import BScroll from "better-scroll";
 export default {
-  methods:{
+//   methods:{
 
-  }, 
+//   }, 
   mounted(){
       console.log(this)
     this.scroll = new BScroll(this.$refs.homeWrapper,{
