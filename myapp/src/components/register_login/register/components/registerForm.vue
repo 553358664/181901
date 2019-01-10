@@ -2,79 +2,146 @@
     <div class="registerForm" >
         <!-- 注册验证-->
         <div class="formContent">
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username" @blur="handleUsername()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username.username" @blur="handleUsername()"></div>
             <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode"></section><button>获取验证码</button></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1" @blur="handlePassword1()"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2" @blur="handlePassword2()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1.password1" @blur="handlePassword1()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2.password2" @blur="handlePassword2()"></div>
             <section class="dibu">
-            	<span class="tishi" v-show="flag">
-	            	{{tishi}}
+            	<span class="tishi" v-show="tShow.tShow">
+	            	{{tishi.tishi}}
 	            </span>
-	            <input type="button" id="sub" name="" value="注册" @click="checkForm()"/>
+	            <input type="button" id="sub" name="" value="注册" @click="checkForm();"/>
             </section>
             
         </div>
     </div>
 </template>
 <script >
-import axios from "axios";
+import Vuex from "vuex"
+import axios from "axios"
 export default {
     data(){
         return {
-           username:"",
-           password1:"",
-           password2:"",
-           userFlag:false,
-           pwdFlag:false,
-           pwdFlag1:false,
-           tishi:"",
-           flag:false
+           
         }
     },
-    methods:{
-    	checkForm(){
-    		if(this.userFlag && this.pwdFlag && this.pwdFlag2){
-    			this.register();
-    			return true;
-    		}else{
-    			return false;
-    		}
-//  		e.preventDefault();
-    	},
-    	handleUsername(){
+    computed:{
+    	...Vuex.mapState({
+    		username:state=>state.register_login,
+    		password1:state=>state.register_login,
+    		password2:state=>state.register_login,
+    		tishi:state=>state.register_login,
+    		tShow:state=>state.register_login,
+    		userFlag:state=>state.register_login,
+    		pwdFlag:state=>state.register_login,
+    		pwdFlag1:state=>state.register_login,
     		
-    		var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
-    		if(reg.test(this.username)){
-    			this.userFlag = true;
-    			alert("qqq")
-    		}else{
-    			this.userFlag = false;
-    			this.flag = true;
-    			this.tishi = "手机号不符合规范";
-    		}
-    	},
-    	handlePassword1(){
-    		var reg = /^\w{6,12}$/;
-    		if(reg.test(this.password1)){
-    			this.pwdFlag = true;
-    		}else{
-    			this.pwdFlag1 = false;
-    			this.flag = true;
-    			this.tishi = "密码格式为6-12位数字字母下划线";
-    		}
+    	})
+    },
+    created(){
+	
+    },
+    methods:{
+    	...Vuex.mapMutations({
+    		handleUsername:"register_login/handleUsername",
+    			handlePassword1:"register_login/handlePassword1",
+
+    	}),
+    	...Vuex.mapActions({
+//  		addUser:"register_login/addUser",
+    		
+    	}),
+//  	checkUser(username){
+//  		axios({
+//	            method:"get",
+//	            url:"http://localhost:3000/userlist?username="+username,
+//	            
+//	        })
+//	        .then((data)=>{
+//	        	
+//	        	console.log(data.data.length)
+//	           if(data.data.length==0){
+//	           		return true;
+//	           }else{
+//	           		return false;
+//	           }
+//	        })
+//  	},
+//    	addUser(user){
+//	        axios({
+//	            method:"post",
+//	            url:"http://localhost:3000/userlist",
+//	            data:user
+//	        })
+//	        .then((data)=>{
+//	            if(data.status==201){
+//	            	return true;
+//	            }else{
+//	            	return false;
+//	            }
+//	        })
+//	   },
+    	checkForm(){
+    		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag && this.pwdFlag1.pwdFlag1){
+    		axios({
+	            method:"get",
+	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+	            
+	        })
+	        .then((data)=>{
+	        	
+	        	
+	           if(data.data.length==0){
+	           		axios({
+			            method:"post",
+			            url:"http://localhost:3000/userlist",
+			            data:{
+			            	username:this.username.username,
+			            	password:this.password1.password1
+			            }
+	        		})
+			        .then((data)=>{
+			            if(data.status==201){
+			            	alert("注册成功");
+			            	this.$router.replace("/login")
+			            }else{
+			            	alert("注册失败")
+			            }
+			        })
+	           	}else{
+	           		alert("用户名已存在")
+	           	}
+	          })
+	        }
+//  			console.log(this.username.username)
+//  			if(this.checkUser(this.username.username)){
+//  				alert(333)
+    					/*if(this.addUser({username:this.username.username,password:this.password1.password1})){
+    					alert("注册成功去登录");
+    					this.$router.replace("/login")
+    				}else{
+						alert("注册失败")
+    				}*/
+//  			}else{
+//  				alert("用户名已存在")
+//  			}
+////  			
+//				return true;
+//  			
+//  		}else{
+//  			return false;
+//  		}
     	},
     	handlePassword2(){
     		if(this.password1 == this.password2){
-    			this.pwdFlag2 = true;
+    			this.pwdFlag1.pwdFlag1 = true;
     		}else{
-    			this.pwdFlag2 = false;
-    			this.flag = true;
-    			this.tishi = "两次密码输入不一致";
+    			this.pwdFlag1.pwdFlag1 = false;
+    			this.tShow.tShow = true;
+    			this.tishi.tishi = "两次密码输入不一致";
     		}
     	},
-    	register(){
-    		
-    	}
+    	
     }
 }
 </script>
@@ -86,13 +153,17 @@ export default {
     margin-bottom: .49rem;
     
     .formContent{
-        padding: 0 0.9rem 0 0.9rem;
+        /*padding: 0 0.9rem 0 0.9rem;*/
         width: 100%;
         height: 100%;
-       
+       	display:flex;
+       	flex-direction:cloumn;
+       	justify-content: center;
+       	align-items:center;
+       	flex-wrap:wrap;
         div{
             height: 1.5rem;
-            width: 100%;
+            width: 75.86%;
             border-bottom: 2px solid #fff;
             padding: .72rem 0 0.08rem 0;
             display: flex;
@@ -101,15 +172,16 @@ export default {
                 width:.56rem;
                 height:.67rem;
                 display: flex;
-                justify-items: flex-start;
+                justify-content: flex-start;
                 align-items: center;
                 border-right: 1px solid #fff;
                 margin-right: .15rem;
+                padding-left: .03rem;
                 span{
-                    width: .5rem;
-                    height: .44rem;
+                    width: .44rem;
+                    height: .5rem;
                     img{
-                        width: 90%;
+                        width: 100%;
                         height: 100%;
                     }
                 }
@@ -124,6 +196,7 @@ export default {
                 font-size: .3rem;
                 line-height: .67rem;
                 color: #fffefc;
+                -webkit-tap-highlight-color:rgba(255,0,0,0);
             }
         }
         div:nth-child(1){
@@ -138,11 +211,14 @@ export default {
             }
         }
         div:nth-child(2){
+        	display: flex;
+        	justify-content: space-between;
             border: 0;
             section{
-                width: 2.72rem;
-                margin-right: .18rem;
-                
+                width: 47.8%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
                 border-bottom: 2px solid #fff;
                 position: relative;
                 label{
@@ -152,12 +228,12 @@ export default {
                     justify-items: flex-start;
                     align-items: center;
                     border-right: 1px solid #fff;
-                    margin-right: .15rem;
+                    
                     span{
-                        width: .5rem;
-                        height: .44rem;
+                        width: .44rem;
+                        height: .5rem;
                         img{
-                            width: 90%;
+                            width: 100%;
                             height: 100%;
                         }
                     }
@@ -166,7 +242,7 @@ export default {
                 }
                 input{
                     position: absolute;
-                    right: 0;
+                    left: .69rem;
                     bottom: 0;
                     width: 2rem;
                     height: 100%;
@@ -187,7 +263,7 @@ export default {
                     font-size: .3rem;
                     border-radius: 5px;
                     color: #fff;
-                    width: 2.76rem;
+                    width: 48.6%;
                     height: .73rem;
                     line-height: .73rem;
                     text-align: center;
@@ -197,7 +273,7 @@ export default {
         	margin-bottom:.2rem ;
         }
         .dibu{
-        	width: 100%;
+        	width: 75.86%;
         	height: 1.6rem;
         	position: relative;
         	.tishi{

@@ -1,14 +1,13 @@
 <template>
-   <div class="follow">
+    <div class="chatbox">
        <Header-com/>
        <Content-com/>
     </div>
-       
-    
 </template>
+
 <script>
-import Header from "./components/header.vue";
-import Content from "./components/content.vue"
+import Header from "./components/header";
+import Content from "./components/content"
 export default {
     components:{
         "Header-com":Header,
@@ -17,9 +16,9 @@ export default {
 }
 </script>
 <style>
-.follow{
-    height:100%;
-    width:100%;
-    background:#EEEEEE
-}
+    .chatbox{
+        height:100%;
+        width:100%;
+        background:#EEEEEE
+    }
 </style>

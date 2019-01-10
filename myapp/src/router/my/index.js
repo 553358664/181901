@@ -19,15 +19,8 @@ import Myorder from "../../components/my/order"
 import Myfriends from "../../components/my/friends"
 import Myset from "../../components/my/set"
 
-//订单下的子路由
-import Nocomment from "../../components/my/order/components/nocomment.vue"
-import Noreceive from "../../components/my/order/components/noreceive.vue"
-import Nopaid from "../../components/my/order/components/nopaid.vue"
-import Nosend from "../../components/my/order/components/nosend.vue"
-
-
-
-
+//消息聊天框
+import Chatbox from "../../components/my/chatbox"
 
 export default (
   [
@@ -104,71 +97,56 @@ export default (
     },
     //消息 文章 订单 好友 设置
     {
-      path:"/mymessage",
-      name:"mymessage",
-      component:Mymessage,
-      meta:{
+      path: "/mymessage",
+      name: "mymessage",
+      component: Mymessage,
+      meta: {
         flag: true,
         requireAuth: true
       }
     },
     {
-      path:"/myarticle",
-      name:"myarticle",
-      component:Myarticle,
-      meta:{
-        flag:false,
-        requireAuth: true
-      }
-    },
-    {
-      //默认子路由为待支付
-      path:"/myorder",
-      name:"myorder",
-      component:Myorder,
-      redirect:"/nopaid",
-      meta:{
+      path: "/chatbox",
+      name: "chatbox",
+      component: Chatbox,
+      meta: {
         flag: false,
         requireAuth: true
-      },
-      children:[
-        {
-          name:"/myorder/nocomment",
-          path:"/nocomment",
-          component:Nocomment
-        },
-        {
-          name:"/myorder/noreceive",
-          path:"/noreceive",
-          component:Noreceive
-        },
-        {
-          name:"/myorder/nopaid",
-          path:"/nopaid",
-          component:Nopaid
-        },
-        {
-          name:"/myorder/nosend",
-          path:"/nosend",
-          component:Nosend
-        }
-      ]
+      }
     },
     {
-      path:"/myfriends",
-      name:"myfriends",
-      component:Myfriends,
-      meta:{
+      path: "/myarticle",
+      name: "myarticle",
+      component: Myarticle,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    {
+      path: "/myorder",
+      name: "myorder",
+      component: Myorder,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    {
+      path: "/myfriends",
+      name: "myfriends",
+      component: Myfriends,
+      meta: {
         flag: true,
         requireAuth: true
       }
     },
     {
-      path:"/myset",
-      name:"myset",
-      component:Myset,
-      meta:{
-        flag:false,
+      path: "/myset",
+      name: "myset",
+      component: Myset,
+      meta: {
+        flag: false,
         requireAuth: true
       }
     }

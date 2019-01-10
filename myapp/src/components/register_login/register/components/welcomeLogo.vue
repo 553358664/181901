@@ -2,7 +2,7 @@
     <div class="welcomeLogo">
         
         <div class="welcomeImg">
-            <img src="../../../../assets/welogreg/welcome/dlzc_logo@2x.png" alt="">
+            <!--<img src="../../../../assets/welogreg/welcome/dlzc_logo@2x.png" alt="">-->
         </div>
     </div>
 </template>
