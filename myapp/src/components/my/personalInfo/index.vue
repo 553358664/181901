@@ -18,5 +18,6 @@ export default {
 <style>
     .personalInfo{
         padding:0 .24rem;
+        background:#FCFCFA
     }
 </style>

@@ -2,7 +2,6 @@
    <div class="follow">
        <Header-com/>
        <Content-com/>
-        这里是关注
     </div>
        
     
@@ -18,7 +17,9 @@ export default {
 }
 </script>
 <style>
-     .follow{
-        padding:0 .24rem;
-    }
+.follow{
+    height:100%;
+    width:100%;
+    background:#EEEEEE
+}
 </style>

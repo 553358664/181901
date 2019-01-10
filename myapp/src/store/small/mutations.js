@@ -4,7 +4,7 @@ export default {
         state.scrollHeight.push(params)
     },
     handleOtherTop(state,params) {
-        params -= 870;
+        params -= 840;
         state.scrollHeight.push(params)
     },
     handleDiscountTop(state,params) {

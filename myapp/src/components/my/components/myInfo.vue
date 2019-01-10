@@ -3,7 +3,7 @@
       
             <div class="userImg">
                 <router-link :to="{name:'personalInfo'}">
-                    <img src="static/my/wd_tx@2x.png"/>
+                    <img :src="headPic"/>
                 </router-link>
                 <router-view/>
             </div>
@@ -14,7 +14,11 @@
 
 <script>
 export default {
-   
+   data(){
+       return{
+           headPic:require('@/assets/my/wd_tx@2x.png')
+       }
+   }
 }
 </script>
 
@@ -22,7 +26,7 @@ export default {
     .myInfo,.myInfo>a{
         width:100%;
         height:3.75rem;
-        background: url("../../../../static/my/wd-bj@2x.png") no-repeat;
+        background:url("../../../assets/my/wd-bj@2x.png") repeat-x;
     }
     .userImg,{
         width:100%;

@@ -4,11 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from "./store";
+
+//修改全局mint-ui的scss文件
+import "./common/css/my-mint.scss";
+
 import "./common/css/reset.css";
 import "./common/css/iconfont/iconfont.css";
 import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
