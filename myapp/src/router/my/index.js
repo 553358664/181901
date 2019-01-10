@@ -19,11 +19,7 @@ import Myorder from "../../components/my/order"
 import Myfriends from "../../components/my/friends"
 import Myset from "../../components/my/set"
 
-//订单下的子路由
-import Nocomment from "../../components/my/order/components/nocomment.vue"
-import Noreceive from "../../components/my/order/components/noreceive.vue"
-import Nopaid from "../../components/my/order/components/nopaid.vue"
-import Nosend from "../../components/my/order/components/nosend.vue"
+
 
 
 
@@ -122,37 +118,13 @@ export default (
       }
     },
     {
-      //默认子路由为待支付
       path:"/myorder",
       name:"myorder",
       component:Myorder,
-      redirect:"/nopaid",
       meta:{
         flag: false,
         requireAuth: true
-      },
-      children:[
-        {
-          name:"/myorder/nocomment",
-          path:"/nocomment",
-          component:Nocomment
-        },
-        {
-          name:"/myorder/noreceive",
-          path:"/noreceive",
-          component:Noreceive
-        },
-        {
-          name:"/myorder/nopaid",
-          path:"/nopaid",
-          component:Nopaid
-        },
-        {
-          name:"/myorder/nosend",
-          path:"/nosend",
-          component:Nosend
-        }
-      ]
+      }
     },
     {
       path:"/myfriends",

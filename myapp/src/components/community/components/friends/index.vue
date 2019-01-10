@@ -34,7 +34,7 @@ import Vuex from "vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-        this.handleArticle()
+        // this.handleArticle()
     },
     computed:{
         ...Vuex.mapState({ 
@@ -53,7 +53,7 @@ export default {
           handleArticle:"community/handleArticle"
       }),
       hanle(){
-          console.log(this)
+        //   console.log(this)
       },
     //   handleMove(e){
     //     let op = e.target;    //获取目标元素
