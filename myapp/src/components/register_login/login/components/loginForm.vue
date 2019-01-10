@@ -1,10 +1,16 @@
 <template>
     <div class="loginForm">
-       <!-- 登录 -->
+       <!-- 登录 验证 -->
         <div class="loginContent">
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password"><p>忘记密码</p></div>
-            <button>登录</button>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username" @blur="handleUsername()" v-model="username.username"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" @blur="handlePassword1" v-model="password1.password1"><router-link to="/forgetPwd">忘记密码？</router-link></div>
+            <section class="dibu">
+            	<span class="tishi" v-show="tShow.tShow">
+	            	{{tishi.tishi}}
+	            </span>
+	            <input type="button" id="sub" name="" value="登录" @click="checkForm()"/>
+            </section>
+            
         </div>
            
        
@@ -12,9 +18,80 @@
 </template>
 
 <script >
+	import Vuex from "vuex"
+import axios from "axios"
 export default {
-   
-}
+   data(){
+        return {
+           
+        }
+    },
+    computed:{
+    	...Vuex.mapState({
+    		username:state=>state.register_login,
+    		password1:state=>state.register_login,
+    		
+    		tishi:state=>state.register_login,
+    		tShow:state=>state.register_login,
+    		userFlag:state=>state.register_login,
+    		pwdFlag:state=>state.register_login,
+    		
+    		
+    	})
+    },
+    methods:{
+    	checkForm(){
+    		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag ){
+    			axios({
+	            method:"get",
+	            url:"http://localhost:3000/userlist?username="+this.username.username,
+	            
+	        })
+	        .then((data)=>{
+	           console.log(data.data[0])
+	           if(data.data[0].password==this.password1.password1){
+	           	alert("登录成功！去逛逛");
+	           	this.$router.push("/")
+	           }else{
+	           	alert("用户名密码不匹配，请检查")
+				
+	           }
+	        })
+    	}
+    	
+//  				this.checkLoginUsername(this.username.username,this.password1.password1)
+//  			return true;
+//  		}else{
+//  			return false;
+//  		}
+//  		e.preventDefault();
+    	},
+    	...Vuex.mapMutations({
+    		handleUsername:"register_login/handleUsername",
+    		handlePassword1:"register_login/handlePassword1",
+//  		addUser:"register_login/addUser"
+    	}),
+    	}}
+//  	checkLoginUsername(username,password1){
+//  		axios({
+//	            method:"get",
+//	            url:"http://localhost:3000/userlist?username="+username,
+//	            
+//	        })
+//	        .then((data)=>{
+//	           if(data.data[0].password==password1){
+//	           	alert("登录成功！去逛逛");
+//	           	this.$router.push("/")
+//	           }else{
+//	           	alert("用户名密码不匹配，请检查")
+//				
+//	           }
+//				console.log(data.data[0].password)
+//	        })
+//  	},
+    	
+
+    
 </script>
 
 <style lang="scss" scoped >
@@ -23,29 +100,34 @@ export default {
      width: 100%;
      margin-bottom: .8rem;
      .loginContent{
-         padding: 0 0.9rem;
-         width: 100%;
-         height: 100%;
+        width: 100%;
+        height: 100%;
+       	display:flex;
+       	flex-direction:cloumn;
+       	justify-content: center;
+       	align-items:center;
+       	flex-wrap:wrap;
          div{
              height: 1.5rem;
-             width: 100%;
+             width: 75.86%;
              border-bottom: 2px solid #fff;
              padding: .74rem 0 0.07rem 0;
              display: flex;
-             justify-content: center;
+             justify-content: flex-end;
              label{
                 width:.56rem;
                 height:.67rem;
                 display: flex;
-                justify-items: flex-start;
+                justify-content: flex-start;
                 align-items: center;
                 border-right: 1px solid #fff;
                 margin-right: .15rem;
+                padding-left: .03rem;
                 span{
-                    width: .5rem;
-                    height: .44rem;
+                    width: .44rem;
+                    height: .5rem;
                     img{
-                        width: 90%;
+                        width: 100%;
                         height: 100%;
                     }
                 }
@@ -73,7 +155,7 @@ export default {
             input{
                 width: .31rem;
             }
-            p{
+            a{
                 width: 1.9rem;
                 height: 100%;
                 display: flex;
@@ -81,21 +163,46 @@ export default {
                 align-items: center;
                 font-size: .3rem;
             }
-            margin-bottom: 1.2rem;
+            margin-bottom: .2rem;
         }
-        button{
-            width:100%;
-            height: .8rem;
-            line-height: .8rem;
-            display: flex;
-            outline: none;
-            border: 0;
-            background: #ff7268;
-            font-size: .3rem;
-            justify-content: center;
-            border-radius: 5px;
-            color: #fff;
+        /*div:nth-child(4){
+        	margin-bottom:.2rem ;
+        }*/
+        .dibu{
+        	width: 75.86%;
+        	height: 1.6rem;
+        	position: relative;
+        	.tishi{
+	       		width: 100%;
+	       		height: .6rem;
+	       		margin-bottom: .2rem;
+	       		font-size: .3rem;
+	       		color: #000;
+	       		display: flex;
+	       		justify-content: center;
+	       		align-items: center;
+	       		color: #ff7268;
+	       	}
+	        #sub{
+	        	position: absolute;
+	        	left: 0;
+	        	bottom: 0;
+	            width:100%;
+	            height: .8rem;
+	            line-height: .8rem;
+	            display: flex;
+	            outline: none;
+	            border: 0;
+	            background: #ff7268;
+	            font-size: .3rem;
+	            justify-content: center;
+	            border-radius: 5px;
+	            color: #fff;
+	        }
         }
+       	
+    
+    
      }
  }
 </style>

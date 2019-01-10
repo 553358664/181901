@@ -37,9 +37,25 @@ import BScroll from "better-scroll";
 // Vue.component(Header.name, Header);
 // import "mint-ui/lib/style.css";
 export default {
-  created() {
-    //请求花友圈中的文章数据
-    //    this.handleArticle()
+    created(){
+        // this.handleArticle()
+    },
+    computed:{
+        ...Vuex.mapState({ 
+          article:state=>state.community.articleList
+        })
+    },
+    data(){
+        return{
+            // positionX:0,
+            // positionY:0,
+            publish:"publish"
+        }
+    },
+    methods:{
+        ...Vuex.mapActions({
+          handleArticle:"community/handleArticle"
+      }),
 
   },
   directives: {
@@ -50,8 +66,8 @@ export default {
         function handleMove(e) {
           let x = e.targetTouches[0].clientX - disX;
           let y = e.targetTouches[0].clientY - disY;
-          el.style.left = x +"px";
-          el.style.top = y + "px";
+          el.style.left = x+"px";
+          el.style.top = y+"px";
         }
         document.addEventListener("touchmove", handleMove);
         

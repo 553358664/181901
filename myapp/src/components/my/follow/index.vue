@@ -17,9 +17,9 @@ export default {
 }
 </script>
 <style>
-     .follow{
-        width:100%;
-        height:100%;
-        background:#EEEEEE;
-    }
+.follow{
+    height:100%;
+    width:100%;
+    background:#EEEEEE
+}
 </style>
