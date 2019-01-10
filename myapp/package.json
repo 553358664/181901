@@ -10,17 +10,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "awe-dnd": "^0.3.4",
-=======
+
     "better-scroll": "^1.13.4",
->>>>>>> 0bc004307c01b9d5923e50a9327e25c630f512f6
     "mint-ui": "^2.2.13",
-    "touchjs": "^0.2.14",
+
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "vue-touch": "^2.0.0-beta.4",
-    "vuedraggable": "^2.17.0"
+    "vue-router": "^3.0.1"
+
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

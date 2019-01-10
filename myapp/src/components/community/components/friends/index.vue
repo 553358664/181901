@@ -56,23 +56,6 @@ export default {
         ...Vuex.mapActions({
           handleArticle:"community/handleArticle"
       }),
-      hanle(){
-        //   console.log(this)
-      },
-    //   handleMove(e){
-    //     let op = e.target;    //获取目标元素
-    //     //算出鼠标相对元素的位置
-    //     let disX = e.clientX - op.offsetLeft;
-    //     let disY = e.clientY - op.offsetTop;
-    //     console.log(disX,disY)
-    //     this.$refs.homeWrapper.onmousemove = (e)=>{    //鼠标按下并移动的事件
-    //     //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-    //     let left = e.clientX - disX;  
-    //     let top = e.clientY - disY;
-
-    //     //绑定元素位置到positionX和positionY上面
-    //     this.positionX = top;
-    //     this.positionY = left;
 
   },
   directives: {
@@ -83,8 +66,8 @@ export default {
         function handleMove(e) {
           let x = e.targetTouches[0].clientX - disX;
           let y = e.targetTouches[0].clientY - disY;
-          el.style.left = x/100 + "rem";
-          el.style.top = y/100 + "rem";
+          el.style.left = x+"px";
+          el.style.top = y+"px";
         }
         document.addEventListener("touchmove", handleMove);
         
