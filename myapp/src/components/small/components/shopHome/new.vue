@@ -63,7 +63,7 @@ export default {
 #new {
   position: relative;
   h1 {
-    margin: 0.99rem 0 0 0.24rem;
+    margin: 0.11rem 0 0 0.24rem;
   }
   .banner-pagination {
     position: absolute;
@@ -76,13 +76,6 @@ export default {
     height: 0.3rem;
     font-family: PingFang-SC-Medium;
     color: rgba(0, 0, 0, 1);
-  }
-
-  .swiper-pagination-current {
-  }
-  .swiper-pagination-total {
-    font-style: normal;
-    font-size: 0.22rem;
   }
   h4 {
     margin: 0.21rem 0 0.15rem 0.23rem;

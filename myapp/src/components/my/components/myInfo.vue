@@ -26,7 +26,7 @@ export default {
     .myInfo,.myInfo>a{
         width:100%;
         height:3.75rem;
-        background:url("../../../assets/my/wd-bj@2x.png") no-repeat;
+        background:url("../../../assets/my/wd-bj@2x.png") repeat-x;
     }
     .userImg,{
         width:100%;
