@@ -31,6 +31,8 @@ export default {
         background:#FCFCFA;
         padding:0 .24rem;
         margin-bottom: .2rem;
+        position: fixed;
+        z-index: 10;
     }
     .back{
         width:.34rem;

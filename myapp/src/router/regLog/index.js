@@ -4,7 +4,7 @@ import Welcome from "../../components/register_login";
 import Register from "../../components/register_login/register";
 //7 登录页面路由
 import Login from "../../components/register_login/login";      //注册页面二级路由=>用户服务条款
-import ServiceTerms from "../../components/register_login//serviceTerms"
+import ServiceTerms from "../../components/register_login/serviceTerms"
 
 //登录页面路由=>忘记密码
 import ForgetPwd from "../../components/register_login/ForgetPwd";

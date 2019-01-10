@@ -37,9 +37,42 @@ import BScroll from "better-scroll";
 // Vue.component(Header.name, Header);
 // import "mint-ui/lib/style.css";
 export default {
-  created() {
-    //请求花友圈中的文章数据
-    //    this.handleArticle()
+    created(){
+        // this.handleArticle()
+    },
+    computed:{
+        ...Vuex.mapState({ 
+          article:state=>state.community.articleList
+        })
+    },
+    data(){
+        return{
+            // positionX:0,
+            // positionY:0,
+            publish:"publish"
+        }
+    },
+    methods:{
+        ...Vuex.mapActions({
+          handleArticle:"community/handleArticle"
+      }),
+      hanle(){
+        //   console.log(this)
+      },
+    //   handleMove(e){
+    //     let op = e.target;    //获取目标元素
+    //     //算出鼠标相对元素的位置
+    //     let disX = e.clientX - op.offsetLeft;
+    //     let disY = e.clientY - op.offsetTop;
+    //     console.log(disX,disY)
+    //     this.$refs.homeWrapper.onmousemove = (e)=>{    //鼠标按下并移动的事件
+    //     //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+    //     let left = e.clientX - disX;  
+    //     let top = e.clientY - disY;
+
+    //     //绑定元素位置到positionX和positionY上面
+    //     this.positionX = top;
+    //     this.positionY = left;
 
   },
   directives: {
