@@ -30,6 +30,8 @@ export default {
         align-items: center;
         background:#FCFCFA;
         padding:0 .24rem;
+        position: fixed;
+        z-index: 10;
     }
     .back{
         width:.34rem;

@@ -3,32 +3,11 @@
 import My from "../../components/my"
 import PersonalInfo from "../../components/my/personalInfo";
 import Follow from "../../components/my/follow";
-//my部分的二级页面路由
-//个人信息 关注 粉丝 收藏 草稿 消息 
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
 import Details from "../../components/my/details";
-// import News from "../../components/my/news";
-// import Chatbox from "../../components/my/chatbox";
-import sMall from "../../components/small"
-import sCar from "../../components/scar"
-
-//消息 文章 订单 好友 设置
-import Mymessage from "../../components/my/message"
-import Myarticle from "../../components/my/article"
-import Myorder from "../../components/my/order"
-import Myfriends from "../../components/my/friends"
-import Myset from "../../components/my/set"
-
-//订单下的子路由
-import Nocomment from "../../components/my/order/components/nocomment.vue"
-import Noreceive from "../../components/my/order/components/noreceive.vue"
-import Nopaid from "../../components/my/order/components/nopaid.vue"
-import Nosend from "../../components/my/order/components/nosend.vue"
-
-
-
-
+import News from "../../components/my/news";
+import Chatbox from "../../components/my/chatbox";
 
 export default (
   [
@@ -64,16 +43,16 @@ export default (
       name: "collection",
       component: Collection
     },
-      // {
-      //   path:"news",
-      //   name:"news",
-      //   component:News
-      // },
-      // {
-      //   path:"chatbox",
-      //   name:"chatbox",
-      //   component:Chatbox
-      // },
+      {
+        path:"news",
+        name:"news",
+        component:News
+      },
+      {
+        path:"chatbox",
+        name:"chatbox",
+        component:Chatbox
+      },
     //my部分的三级级页面路由：详细信息
     {
       path: "details",
@@ -144,6 +123,17 @@ export default (
           path:"/nopaid",
           component:Nopaid
         },
+        {
+          path:"news",
+          name:"news",
+          component:News
+        },
+        {
+          path:"chatbox",
+          name:"chatbox",
+          component:Chatbox
+        },
+        //my部分的三级级页面路由：详细信息
         {
           name:"/myorder/nosend",
           path:"/nosend",
