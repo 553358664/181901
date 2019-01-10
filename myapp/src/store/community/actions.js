@@ -9,6 +9,15 @@ export default {
         .then((data)=>{
             commit("handleArticle",data)
         })
+    },
+    handleNearItems({commit}){
+        axios({
+            method:"get",
+            url:"http://localhost:3000/text"
+        })
+        .then((data)=>{
+            commit("handleNearItems",data)
+        })
     }
    
 }

@@ -12,4 +12,8 @@ export default {
     }
 }
 </script>
-
+<style lang="scss" scoped>
+    .loginSearch{
+        height:100%;
+    }
+</style>

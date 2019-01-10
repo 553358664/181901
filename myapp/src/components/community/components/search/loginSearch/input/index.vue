@@ -4,21 +4,25 @@
             <div class="searchImg">
                 <img src="../../../../../../assets/community/qiu/back.png" alt="" @click="handleBack()">
             </div>
-            <input type="text" class="searchText" ref="searchInp" :value="search" @click="handleBlur()">
-            <p class="searchTit">搜索</p>
+            <div class="Mag">
+                <img src="../../../../../../assets/community/qiu/search.png" alt="">
+                <input type="text" class="searchText" ref="searchInp" :value="search" @click="handleBlur()" >
+                
+            </div>  
+             <p class="searchTit">搜索</p>                    
         </div>      
     </div>
 </template>
 <script>
 export default {
-     data(){
+    // created(){
+        
+    //     console.log(this)
+    // },
+    data(){
         return{
             search:"大家都在看“烈焰柔情一品红”"
         }
-    },
-    created(){
-        
-        console.log(this)
     },
     mounted(){
         // this.handleFocus()
@@ -29,8 +33,8 @@ export default {
       },
       handleFocus(){
          this.$refs.searchInp.onfocus()
-      } ,
-     handleBlur(){
+      },
+      handleBlur(){
            this.search=""
       }  
   }
@@ -41,6 +45,7 @@ export default {
     background:#FCFCFA;
 }
     .seaHeader{
+        
         width:100%;
         height:1.02rem;
         display: flex;
@@ -53,18 +58,27 @@ export default {
             height:.44rem;
             }
         }
-        .searchText{
-            width:5.45REM;
-            height:.64rem;
-            background:rgba(238,238,238,1);
-            border-radius:.32rem;
-            border:0;
-            text-align: center;
-            font-size:.26rem;
-            font-family:PingFang-SC-Regular;
-            font-weight:400;
-            color:rgba(10,10,10,1);
-            opacity:0.8;
+        .Mag{
+            position: relative;
+            img{
+                position: absolute;
+                top:0.19rem;
+                left:.19rem;
+            }
+            .searchText{
+                width:5.45REM;
+                height:.64rem;
+                // margin-left:.2rem;
+                background:rgba(238,238,238,1);
+                border-radius:.32rem;
+                border:0;
+                text-align: center;
+                font-size:.26rem;
+                font-family:PingFang-SC-Regular;
+                font-weight:400;
+                color:rgba(10,10,10,1);
+                opacity:0.8;
+            }
         }
         .searchTit{
             width:.56rem;

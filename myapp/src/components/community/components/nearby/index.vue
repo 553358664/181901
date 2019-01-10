@@ -1,121 +1,19 @@
 <template>
     <div class="nearby wrapper" ref="homeWrapper">
         <ul class="content nearbyUl">
-            <li class="nearbyLi">
+            <li class="nearbyLi" v-for="(item,index) in nearItems" :key="index">
                 <div class="nearbyImg">
                    <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
                 </div>   
                 <div class="nearbyBox">
                     <p class="nearbyP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
+                    {{item.centent}}
                     </p>
                     <div class="nearbyUser">
                         <div class="uerImg">
                             <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
                         </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="nearbyLi">
-                <div class="nearbyImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="nearbyBox">
-                    <p class="nearbyP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="nearbyUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="nearbyLi">
-                <div class="nearbyImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="nearbyBox">
-                    <p class="nearbyP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="nearbyUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="nearbyLi">
-                <div class="nearbyImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="nearbyBox">
-                    <p class="nearbyP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="nearbyUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-
-            
-            <li class="nearbyLi">
-                <div class="nearbyImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="nearbyBox">
-                    <p class="nearbyP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="nearbyUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
-                        </p>                     
-                    </div>
-                </div>            
-            </li>
-             <li class="nearbyLi">
-                <div class="nearbyImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
-                </div>   
-                <div class="nearbyBox">
-                    <p class="nearbyP">                      
-                        薰衣草其实是薄荷家族的一员，以“招蜂引
-                    </p>
-                    <div class="nearbyUser">
-                        <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                        </div> 
-                        <p class="userName">啊哈</p>  
+                        <p class="userName">{{item.tit}}</p>  
                         <p class="userPraise">
                             <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
                             <span class="praiseNum">9999</span>
@@ -132,9 +30,9 @@
 import Vuex from "Vuex"
 import BScroll from "better-scroll";
 export default {
-//   methods:{
-
-//   }, 
+    created(){
+       this.handleNearItems()
+    },
     computed: {
     //获得附近中的文章数据
     ...Vuex.mapState({
@@ -143,7 +41,7 @@ export default {
   },
   methods:{
     ...Vuex.mapActions({
-      handleArticle: "community/handleArticle"
+      handleNearItems: "community/handleNearItems"
     })
   },
   mounted(){

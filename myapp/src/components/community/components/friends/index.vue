@@ -50,8 +50,8 @@ export default {
         function handleMove(e) {
           let x = e.targetTouches[0].clientX - disX;
           let y = e.targetTouches[0].clientY - disY;
-          el.style.left = x/100 + "rem";
-          el.style.top = y/100 + "rem";
+          el.style.left = x +"px";
+          el.style.top = y + "px";
         }
         document.addEventListener("touchmove", handleMove);
         
