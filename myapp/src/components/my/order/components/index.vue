@@ -135,9 +135,9 @@ export default {
             viewState:state=>state.Mylist.viewState
         })
     },
-    created(){
-        this.handleHomeData();
-    },
+    // created(){
+    //     this.handleHomeData();
+    // },
     updated() {
         this.scroll = new BScroll(this.$refs.myarticleWrapper, {
             pullUpLoad: true,
