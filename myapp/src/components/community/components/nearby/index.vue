@@ -153,7 +153,7 @@ export default {
    .nearbyUl{
         overflow: hidden;
         zoom:1;  
-        padding-bottom:3.1rem; 
+        padding-bottom:3.2rem; 
         .nearbyLi{
             margin:1% 0 0 1%;
             width:48%;
