@@ -8,9 +8,9 @@
             <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2.password2" @blur="handlePassword2()"></div>
             <section class="dibu">
             	<span class="tishi" v-show="tShow.tShow">
-	            	{{tishi}}
+	            	{{tishi.tishi}}
 	            </span>
-	            <input type="button" id="sub" name="" value="注册" @click="checkForm();addUser(this.username,this.password)"/>
+	            <input type="button" id="sub" name="" value="注册" @click="checkForm();"/>
             </section>
             
         </div>
@@ -18,6 +18,7 @@
 </template>
 <script >
 import Vuex from "vuex"
+import axios from "axios"
 export default {
     data(){
         return {
@@ -33,37 +34,111 @@ export default {
     		tShow:state=>state.register_login,
     		userFlag:state=>state.register_login,
     		pwdFlag:state=>state.register_login,
-    		pwdFlag1:state=>state.register_login
+    		pwdFlag1:state=>state.register_login,
+    		
     	})
     },
     created(){
- 		this.$store.dispatch("register_login/addUser")
+	
     },
     methods:{
     	...Vuex.mapMutations({
     		handleUsername:"register_login/handleUsername",
-    		handlePassword1:"register_login/handlePassword1",
-    		addUser:"register_login/addUser"
+    			handlePassword1:"register_login/handlePassword1",
+
     	}),
-    	
-//    	...Vuex.mapActions({
-//          handleDel:"register_login/handleDel"
-//      })
+    	...Vuex.mapActions({
+//  		addUser:"register_login/addUser",
+    		
+    	}),
+//  	checkUser(username){
+//  		axios({
+//	            method:"get",
+//	            url:"http://localhost:3000/userlist?username="+username,
+//	            
+//	        })
+//	        .then((data)=>{
+//	        	
+//	        	console.log(data.data.length)
+//	           if(data.data.length==0){
+//	           		return true;
+//	           }else{
+//	           		return false;
+//	           }
+//	        })
+//  	},
+//    	addUser(user){
+//	        axios({
+//	            method:"post",
+//	            url:"http://localhost:3000/userlist",
+//	            data:user
+//	        })
+//	        .then((data)=>{
+//	            if(data.status==201){
+//	            	return true;
+//	            }else{
+//	            	return false;
+//	            }
+//	        })
+//	   },
     	checkForm(){
-    		if(this.userFlag && this.pwdFlag && this.pwdFlag2){
-				return true;
-    			
-    		}else{
-    			return false;
-    		}
+    		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag && this.pwdFlag1.pwdFlag1){
+    		axios({
+	            method:"get",
+	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+	            
+	        })
+	        .then((data)=>{
+	        	
+	        	
+	           if(data.data.length==0){
+	           		axios({
+			            method:"post",
+			            url:"http://localhost:3000/userlist",
+			            data:{
+			            	username:this.username.username,
+			            	password:this.password1.password1
+			            }
+	        		})
+			        .then((data)=>{
+			            if(data.status==201){
+			            	alert("注册成功");
+			            	this.$router.replace("/login")
+			            }else{
+			            	alert("注册失败")
+			            }
+			        })
+	           	}else{
+	           		alert("用户名已存在")
+	           	}
+	          })
+	        }
+//  			console.log(this.username.username)
+//  			if(this.checkUser(this.username.username)){
+//  				alert(333)
+    					/*if(this.addUser({username:this.username.username,password:this.password1.password1})){
+    					alert("注册成功去登录");
+    					this.$router.replace("/login")
+    				}else{
+						alert("注册失败")
+    				}*/
+//  			}else{
+//  				alert("用户名已存在")
+//  			}
+////  			
+//				return true;
+//  			
+//  		}else{
+//  			return false;
+//  		}
     	},
     	handlePassword2(){
     		if(this.password1 == this.password2){
-    			this.pwdFlag2 = true;
+    			this.pwdFlag1.pwdFlag1 = true;
     		}else{
-    			this.pwdFlag2 = false;
-    			this.flag = true;
-    			this.tishi = "两次密码输入不一致";
+    			this.pwdFlag1.pwdFlag1 = false;
+    			this.tShow.tShow = true;
+    			this.tishi.tishi = "两次密码输入不一致";
     		}
     	},
     	

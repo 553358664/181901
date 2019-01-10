@@ -2,13 +2,13 @@
     <div class="loginForm">
        <!-- 登录 验证 -->
         <div class="loginContent">
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username" @blur="loginUsername()"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" @blur="loginPassword"><router-link to="/forgetPwd">忘记密码？</router-link></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username" @blur="handleUsername()" v-model="username.username"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" @blur="handlePassword1" v-model="password1.password1"><router-link to="/forgetPwd">忘记密码？</router-link></div>
             <section class="dibu">
-            	<span class="tishi" v-show="flag">
-	            	{{tishi}}
+            	<span class="tishi" v-show="tShow.tShow">
+	            	{{tishi.tishi}}
 	            </span>
-	            <input type="button" id="sub" name="" value="注册" @click="checkForm()"/>
+	            <input type="button" id="sub" name="" value="登录" @click="checkForm()"/>
             </section>
             
         </div>
@@ -18,53 +18,80 @@
 </template>
 
 <script >
+	import Vuex from "vuex"
+import axios from "axios"
 export default {
    data(){
         return {
-           username:"",
-           password1:"",
-           password2:"",
-           userFlag:false,
-           pwdFlag:false,
-           pwdFlag1:false,
-           tishi:"",
-           flag:false
+           
         }
+    },
+    computed:{
+    	...Vuex.mapState({
+    		username:state=>state.register_login,
+    		password1:state=>state.register_login,
+    		
+    		tishi:state=>state.register_login,
+    		tShow:state=>state.register_login,
+    		userFlag:state=>state.register_login,
+    		pwdFlag:state=>state.register_login,
+    		
+    		
+    	})
     },
     methods:{
     	checkForm(){
-    		if(this.userFlag && this.pwdFlag && this.pwdFlag2){
-    			this.register();
-    			return true;
-    		}else{
-    			return false;
-    		}
+    		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag ){
+    			axios({
+	            method:"get",
+	            url:"http://localhost:3000/userlist?username="+this.username.username,
+	            
+	        })
+	        .then((data)=>{
+	           console.log(data.data[0])
+	           if(data.data[0].password==this.password1.password1){
+	           	alert("登录成功！去逛逛");
+	           	this.$router.push("/")
+	           }else{
+	           	alert("用户名密码不匹配，请检查")
+				
+	           }
+	        })
+    	}
+    	
+//  				this.checkLoginUsername(this.username.username,this.password1.password1)
+//  			return true;
+//  		}else{
+//  			return false;
+//  		}
 //  		e.preventDefault();
     	},
-    	loginUsername(){
-    		
-    		var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
-    		if(reg.test(this.username)){
-    			this.userFlag = true;
-    			alert("qqq")
-    		}else{
-    			this.userFlag = false;
-    			this.flag = true;
-    			this.tishi = "手机号不符合规范";
-    		}
-    	},
-    	loginPassword(){
-    		var reg = /^\w{6,12}$/;
-    		if(reg.test(this.password1)){
-    			this.pwdFlag = true;
-    		}else{
-    			this.pwdFlag1 = false;
-    			this.flag = true;
-    			this.tishi = "密码格式为6-12位数字字母下划线";
-    		}
-    	},
-}
-    }
+    	...Vuex.mapMutations({
+    		handleUsername:"register_login/handleUsername",
+    		handlePassword1:"register_login/handlePassword1",
+//  		addUser:"register_login/addUser"
+    	}),
+    	}}
+//  	checkLoginUsername(username,password1){
+//  		axios({
+//	            method:"get",
+//	            url:"http://localhost:3000/userlist?username="+username,
+//	            
+//	        })
+//	        .then((data)=>{
+//	           if(data.data[0].password==password1){
+//	           	alert("登录成功！去逛逛");
+//	           	this.$router.push("/")
+//	           }else{
+//	           	alert("用户名密码不匹配，请检查")
+//				
+//	           }
+//				console.log(data.data[0].password)
+//	        })
+//  	},
+    	
+
+    
 </script>
 
 <style lang="scss" scoped >

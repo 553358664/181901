@@ -7,4 +7,6 @@ export default {
     userFlag:false,
 	pwdFlag:false,
 	pwdFlag1:false,
+	flagShow:false,
+	
 }
