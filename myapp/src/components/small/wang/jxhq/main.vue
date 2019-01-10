@@ -26,9 +26,6 @@
 				</li>
 			</ul>
 		</div>
-		<div id="foot_jxhq">
-		           一直幸福到底
-	    </div>
 	</div>
 </template>
 <script>
@@ -53,20 +50,8 @@
 	}
 </script>
 <style>
-    #foot_jxhq{
-    	width:100%;
-    	height:1.43rem;
-		line-height:1.43rem;
-		text-align:center;
-		color:#999999;
-		font-size:0.24rem;
-		position:fixed;
-		bottom:0;
-		left:0;
-    }
     #main_jxhq{
-    	overflow-x:hidden;
-    	height:11rem;
+    	height:auto;
     }
 	#main_jxhq>h2{
 		height:1.07rem;

@@ -15,6 +15,11 @@
 		font-weight:bold;
 		font-size:0.32rem;
 		color:#0A0A0A;
+		position:fixed;
+		top:0;
+		left:0;
+		z-index:5;
+		background:#fff;
 	}
 	#head_xptj>i{
 		display:inline-block;

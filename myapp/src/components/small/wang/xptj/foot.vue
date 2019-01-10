@@ -1,6 +1,6 @@
 <template>
-	<div id="foot_jxhq">
-		<div class="foot_jxhq">
+	<div id="foot_xptj">
+		<div class="foot_xptj">
 		           一直幸福到底
 	    </div>
 	</div>
@@ -9,7 +9,7 @@
 	
 </script>
 <style>
-#foot_jxhq>.foot_jxhq{
+#foot_xptj>.foot_xptj{
     	width:100%;
     	height:1.43rem;
 		line-height:1.43rem;

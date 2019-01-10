@@ -6,11 +6,19 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
+    //https://www.easy-mock.com/mock/5c3465e17db0f179db202941/example/flower
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable:{
+    	"/api":{
+    		target:"https://www.easy-mock.com",
+    		changeOrigin:true,
+    		pathRewrite:{
+    		    "^/api":""
+    		}
+    	}
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

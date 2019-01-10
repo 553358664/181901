@@ -2,40 +2,38 @@
 	<div id="main_hccs">
 		<div id="list_hccs">
 			<h3>冬季限定</h3>
-			<li>玫瑰</li>
-			<li>玫瑰</li>
-			<li>玫瑰</li>
-			<li>玫瑰</li>
+			<ul v-for="(item,index) in flowerName">
+				<li>{{item}}</li>
+			</ul>
 		</div>
 		<div id="classify">
 			<div class="classify" v-for="(item,index) in result">
 				<h3>{{item.name}}</h3>
 				<div class="classify_hccs">
-					<div class="classify_l_hccs"><img :src="item.picpath" /></div>
+					<div class="classify_l_hccs"><img :src="item.picpath[0]" /></div>
 					<div class="classify_c_hccs">
-						<p class="p1">{{item.word}}</p>
-						<p class="p2">{{item.price}}</p>
+						<p class="p1">{{item.word[0]}}</p>
+						<p class="p2">{{item.price[0]}}</p>
 					</div>
 					<div class="classify_r_hccs">
 						<span></span>
 					</div>
 				</div>
-			</div>
-			
-			<div class="classify" v-for="(item,index) in result">
-				<h3>{{item.name}}</h3>
-				<div class="classify_hccs">
-					<div class="classify_l_hccs"><img :src="item.picpath" /></div>
+				<div class="classify_hccs" v-show="item.picpath.length>1?flag:!flag">
+					<div class="classify_l_hccs"><img :src="item.picpath[1]" /></div>
 					<div class="classify_c_hccs">
-						<p class="p1">{{item.word}}</p>
-						<p class="p2">{{item.price}}</p>
+						<p class="p1">{{item.word[1]}}</p>
+						<p class="p2">{{item.price[1]}}</p>
 					</div>
 					<div class="classify_r_hccs">
 						<span></span>
-					</div>
-				</div>
-			</div>
+				    </div>
+				
+			    </div>
+		
+		    </div>
 		</div>
+		
 	</div>
 </template>
 <script>
@@ -43,7 +41,9 @@
 	export default{
 		data(){
 			return{
-				result:[]
+				result:[],
+				flowerName:[],
+				flag:true
 			}
 		},
 		created(){
@@ -51,12 +51,27 @@
 		},
 		methods:{
 			handleLoad(){
-				axios({
+				/*axios({
 					url:"http://localhost:3000/data1"
 				})
 				.then((data)=>{
 					this.result = data.data;
+				});*/
+				
+				/*axios({
+					url:"http://localhost:3000/data2"
 				})
+				.then((data)=>{
+					this.flowerName = data.data;
+				});*/
+				axios({
+					url:"/api/mock/5c3465e17db0f179db202941/example/flower"
+				})
+				.then((data)=>{
+					this.result = data.data.data;
+					this.flowerName = data.data.data2;
+				})
+				
 			}
 		}
 	}
@@ -64,8 +79,7 @@
 <style>
 	#main_hccs{
 		width:100%;
-		height:20rem;
-		overflow:auto;
+		height:auto;
 		display:flex;
 		justify-content:space-between;
 		margin-top:0.14rem;
@@ -84,7 +98,7 @@
 		font-size:0.2rem;
 		border-left:0.02rem solid #F44C36;
 	}
-	#list_hccs>li{
+	#list_hccs>ul>li{
 		width:1.1rem;
 		height:0.7rem;
 		padding-left:0.1rem;
@@ -100,10 +114,11 @@
 	}
 	.classify{
 		width:6rem;
-		height:2.5rem;
+	    height:auto;
 		background:#FCFCFA;
 	}
 	.classify>.classify_hccs{
+		height:1.5rem;
 		margin-bottom:0.24rem;
 	}
 	.classify>h3{

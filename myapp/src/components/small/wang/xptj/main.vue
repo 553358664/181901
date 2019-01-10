@@ -29,6 +29,9 @@
     }
 </script>
 <style>
+    #main_xptj{
+    	padding-top:0.88rem;
+    }
     #main_xptj > #title_xptj{
     	height:1.08rem;
     	width:100%;
