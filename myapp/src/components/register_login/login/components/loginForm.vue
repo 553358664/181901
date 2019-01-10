@@ -1,12 +1,17 @@
 <template>
     <div class="loginForm">
        <!-- 登录 验证 -->
-        <form class="loginContent" @submit="checkLogin">
+        <div class="loginContent">
             <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="账号/手机号" id="username" @blur="loginUsername()"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" @blur="loginPassword"><router-link to="/forgetPwd">忘记密码</router-link></div>
-            <input type="submit" id="btn" name="" value="登录"/>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" @blur="loginPassword"><router-link to="/forgetPwd">忘记密码？</router-link></div>
+            <section class="dibu">
+            	<span class="tishi" v-show="flag">
+	            	{{tishi}}
+	            </span>
+	            <input type="button" id="sub" name="" value="注册" @click="checkForm()"/>
+            </section>
             
-        </form>
+        </div>
            
        
     </div>
@@ -15,23 +20,51 @@
 <script >
 export default {
    data(){
-   	return {
-   		username:"",
-   		password1:"",
-   	}
-   },
-   methods:{
-   	checkLogin(){
-   		
-   	},
-   	loginUsername(){
-   		
-   	},
-   	loginPassword(){
-   		
-   	}
-   }
+        return {
+           username:"",
+           password1:"",
+           password2:"",
+           userFlag:false,
+           pwdFlag:false,
+           pwdFlag1:false,
+           tishi:"",
+           flag:false
+        }
+    },
+    methods:{
+    	checkForm(){
+    		if(this.userFlag && this.pwdFlag && this.pwdFlag2){
+    			this.register();
+    			return true;
+    		}else{
+    			return false;
+    		}
+//  		e.preventDefault();
+    	},
+    	loginUsername(){
+    		
+    		var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    		if(reg.test(this.username)){
+    			this.userFlag = true;
+    			alert("qqq")
+    		}else{
+    			this.userFlag = false;
+    			this.flag = true;
+    			this.tishi = "手机号不符合规范";
+    		}
+    	},
+    	loginPassword(){
+    		var reg = /^\w{6,12}$/;
+    		if(reg.test(this.password1)){
+    			this.pwdFlag = true;
+    		}else{
+    			this.pwdFlag1 = false;
+    			this.flag = true;
+    			this.tishi = "密码格式为6-12位数字字母下划线";
+    		}
+    	},
 }
+    }
 </script>
 
 <style lang="scss" scoped >
@@ -40,29 +73,34 @@ export default {
      width: 100%;
      margin-bottom: .8rem;
      .loginContent{
-         padding: 0 0.9rem;
-         width: 100%;
-         height: 100%;
+        width: 100%;
+        height: 100%;
+       	display:flex;
+       	flex-direction:cloumn;
+       	justify-content: center;
+       	align-items:center;
+       	flex-wrap:wrap;
          div{
              height: 1.5rem;
-             width: 100%;
+             width: 75.86%;
              border-bottom: 2px solid #fff;
              padding: .74rem 0 0.07rem 0;
              display: flex;
-             justify-content: center;
+             justify-content: flex-end;
              label{
                 width:.56rem;
                 height:.67rem;
                 display: flex;
-                justify-items: flex-start;
+                justify-content: flex-start;
                 align-items: center;
                 border-right: 1px solid #fff;
                 margin-right: .15rem;
+                padding-left: .03rem;
                 span{
-                    width: .5rem;
-                    height: .44rem;
+                    width: .44rem;
+                    height: .5rem;
                     img{
-                        width: 90%;
+                        width: 100%;
                         height: 100%;
                     }
                 }
@@ -98,21 +136,46 @@ export default {
                 align-items: center;
                 font-size: .3rem;
             }
-            margin-bottom: 1.2rem;
+            margin-bottom: .2rem;
         }
-        #btn{
-            width:100%;
-            height: .8rem;
-            line-height: .8rem;
-            display: flex;
-            outline: none;
-            border: 0;
-            background: #ff7268;
-            font-size: .3rem;
-            justify-content: center;
-            border-radius: 5px;
-            color: #fff;
+        /*div:nth-child(4){
+        	margin-bottom:.2rem ;
+        }*/
+        .dibu{
+        	width: 75.86%;
+        	height: 1.6rem;
+        	position: relative;
+        	.tishi{
+	       		width: 100%;
+	       		height: .6rem;
+	       		margin-bottom: .2rem;
+	       		font-size: .3rem;
+	       		color: #000;
+	       		display: flex;
+	       		justify-content: center;
+	       		align-items: center;
+	       		color: #ff7268;
+	       	}
+	        #sub{
+	        	position: absolute;
+	        	left: 0;
+	        	bottom: 0;
+	            width:100%;
+	            height: .8rem;
+	            line-height: .8rem;
+	            display: flex;
+	            outline: none;
+	            border: 0;
+	            background: #ff7268;
+	            font-size: .3rem;
+	            justify-content: center;
+	            border-radius: 5px;
+	            color: #fff;
+	        }
         }
+       	
+    
+    
      }
  }
 </style>

@@ -17,13 +17,10 @@
     </div>
 </template>
 <script >
-import axios from "axios";
+
 export default {
     data(){
         return {
-           username:"",
-           password1:"",
-           password2:"",
            userFlag:false,
            pwdFlag:false,
            pwdFlag1:false,
@@ -101,15 +98,16 @@ export default {
                 width:.56rem;
                 height:.67rem;
                 display: flex;
-                justify-items: flex-start;
+                justify-content: flex-start;
                 align-items: center;
                 border-right: 1px solid #fff;
                 margin-right: .15rem;
+                padding-left: .03rem;
                 span{
-                    width: .5rem;
-                    height: .44rem;
+                    width: .44rem;
+                    height: .5rem;
                     img{
-                        width: 90%;
+                        width: 100%;
                         height: 100%;
                     }
                 }
@@ -154,10 +152,10 @@ export default {
                     border-right: 1px solid #fff;
                     margin-right: .15rem;
                     span{
-                        width: .5rem;
-                        height: .44rem;
+                        width: .44rem;
+                        height: .5rem;
                         img{
-                            width: 90%;
+                            width: 100%;
                             height: 100%;
                         }
                     }
