@@ -1,5 +1,5 @@
 <template>
-  <div id="flowerorder">
+  <div id="flowerorder" ref="flower">
     <h1>鲜花订购</h1>
     <div class="Nature">
       <h2>
@@ -131,7 +131,23 @@
   </div>
 </template>
 <script>
-export default {};
+import Vuex from "vuex";
+export default {
+   data() {
+    return {
+      flowerTop: ""
+    };
+  },
+  mounted(){
+    this.flowerTop = this.$refs.flower.offsetTop;
+    this.handleFlowerTop(this.flowerTop)
+  },
+    methods: {
+    ...Vuex.mapMutations({
+      handleFlowerTop: "small/handleFlowerTop"
+    }),
+  }
+};
 </script>
 <style lang="scss" scoped>
 #flowerorder {

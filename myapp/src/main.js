@@ -13,7 +13,11 @@ import "./common/css/iconfont/iconfont.css";
 import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
 
+
 Vue.config.productionTip = false
+
+Vue.config.productionTip = false;
+
 
 /* eslint-disable no-new */
 new Vue({

@@ -34,20 +34,28 @@ export default {
 <style lang="scss" scoped>
     .middle{
         width:100%;
-        height:2.7rem;
+        height:2.4rem;
         background:#FCFCFA ;        
-        padding:.24rem 0 .24rem .24rem;
+        padding:.24rem 0 .14rem .24rem;
     }
     .middle-info{
         width:100%;
-        height:1.7rem;
+        height:1.4rem;
+    }
+    .middle-info-r>span:first-child{
+        font-size: .32rem;
+        color:#0A0A0A 
+    }
+    .middle-info-r>span:nth-of-type(2),.middle-info-r>span:nth-of-type(3){
+        font-size: .26rem;
+        color:#96969A 
     }
     .line{
         width:100%;
         height:.02rem;
         float:right;
         background:#D6D6D6;
-        margin-top:.5rem;
+        margin-top:.2rem;
     }
     .middle-info>span{
         float: left;
@@ -64,6 +72,8 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding-right:.24rem;
+        height:.6rem;
+        line-height: .6rem;
     }
 </style>
 

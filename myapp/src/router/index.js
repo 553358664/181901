@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+
 //一级页面
 //1，社区
 import community from "./community"
