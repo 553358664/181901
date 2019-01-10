@@ -1,5 +1,5 @@
 <template>
-  <div id="discount" >
+  <div id="discount" ref="discount">
     <h1>限时特惠</h1>
     <div class="wrapper" ref="dicountWrapper">
       <div class="discountGoods content">
@@ -29,11 +29,24 @@
 </template>
 <script>
 import BScroll from "better-scroll";
+import Vuex from "vuex";
 export default {
+   data() {
+    return {
+      discountTop: ""
+    };
+  },
   mounted() {
+    this.discountTop = this.$refs.discount.offsetTop;
+    this.handleDiscountTop(this.discountTop)
     this.scroll = new BScroll(this.$refs.dicountWrapper, {
       scrollX: true
     });
+  },
+    methods: {
+    ...Vuex.mapMutations({
+      handleDiscountTop: "small/handleDiscountTop"
+    }),
   }
 };
 </script>

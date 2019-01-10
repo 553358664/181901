@@ -1,17 +1,17 @@
 <template>
   <div id="shopHome">
-    <Header-com></Header-com>
+    <Header-com @Move="handleMove" :scrollT="scrollToggle"></Header-com>
     <div class="wrapper" ref="shopHomeWrapper">
       <div class="content">
         <New-com></New-com>
         <div class="border"></div>
         <Nav-com></Nav-com>
         <div class="border"></div>
-        <Other-com></Other-com>
-        <div class="border"></div>
         <Discount-com></Discount-com>
         <div class="border border2"></div>
         <FlowerOrder-com></FlowerOrder-com>
+        <div class="border"></div>
+        <Other-com ref="other"></Other-com>
         <div class="border"></div>
         <Slogan-com></Slogan-com>
       </div>
@@ -27,6 +27,7 @@ import Discount from "./components/shopHome/discount";
 import FlowerOrder from "./components/shopHome/flowerorder";
 import Slogan from "./components/shopHome/slogan";
 import BScroll from "better-scroll";
+import Vuex from "vuex";
 export default {
   components: {
     "Header-com": Header,
@@ -37,26 +38,51 @@ export default {
     "FlowerOrder-com": FlowerOrder,
     "Slogan-com": Slogan
   },
+  data(){
+    return{
+      scrollToggle:""
+    }
+  },
+   computed: {
+    ...Vuex.mapState({
+      scrollHeight: state => 
+      state.small.scrollHeight,
+    })
+  },
   mounted() {
-    this.scroll=new BScroll(this.$refs.shopHomeWrapper)
-  }
+    this.scroll = new BScroll(this.$refs.shopHomeWrapper, {
+      pullUpLoad: true,
+      click: true,
+      probeType: 3
+    });
+    this.scroll.on("scroll",({x,y})=>{
+      this.scrollToggle=y
+    })
+  },
+  methods: {
+    handleMove(index) {
+      this.scrollIndex = index;
+      this.scroll.scrollTo(0, -this.scrollHeight[index],1000);
+    },
+  },
+ 
 };
 </script>
 <style lang="scss">
 #shopHome {
   height: 100%;
-  >.wrapper{
-    height:100%;
-    position:fixed;
-    top:.88rem;
-    width:100%;
-    >.content{
+  > .wrapper {
+    height: 100%;
+    position: fixed;
+    top: 0.88rem;
+    width: 100%;
+    > .content {
       padding-bottom: 1.9rem;
     }
   }
   .border {
     width: 7.02rem;
-    height: .01rem;
+    height: 0.01rem;
     background: rgba(150, 150, 154, 1);
     margin: 0.4rem auto;
   }

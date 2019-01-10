@@ -1,10 +1,6 @@
 <template>
     <div class="toLogin">
-       
-             <router-link to="/login">登录</router-link>
-        
-           
-       
+        <router-link to="/login">登录</router-link>
     </div>
 </template>
 

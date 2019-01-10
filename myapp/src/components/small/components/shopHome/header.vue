@@ -1,13 +1,51 @@
 <template>
   <div id="header">
-    <a class="action">新品推荐</a>
-    <a>限时特惠</a>
-    <a>鲜花订购</a>
-    <a>花边小物</a>
+    <a
+      v-for="(item,index) in nav"
+      :class="index==navIndex?'active':''"
+      @click="handle(index)"
+    >{{item}}</a>
   </div>
 </template>
 <script>
-export default {};
+import Vuex from "vuex";
+export default {
+  data() {
+    return {
+      nav: ["新品推荐", "限时特惠", "鲜花订购", "花边小物"],
+      navIndex: 0
+    };
+  },
+  computed: {
+    ...Vuex.mapState({
+      scrollHeight: state => state.small.scrollHeight
+    })
+  },
+  props: ["scrollT"],
+  watch: {
+    scrollT(newval, oldval) {
+      var scrollIndex=this.handleIndex(-newval);
+      this.navIndex=scrollIndex
+    }
+  },
+  methods: {
+    handle(index) {
+      (this.navIndex = index), this.$emit("Move", index);
+    },
+    handleIndex(X) {
+      var len = this.scrollHeight.length;
+      for (var i = 0; i < len; i++) {
+        if (X <= this.scrollHeight[i]-5) {
+          break;
+        }
+      }
+      if (i == 0) {
+        i = 1;
+      }
+      return i-1;
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 #header {
@@ -15,7 +53,7 @@ export default {};
   left: 0;
   top: 0;
   width: 100%;
-  z-index:11;
+  z-index: 11;
   height: 0.88rem;
   background: rgba(252, 253, 248, 1);
   display: flex;
@@ -27,7 +65,7 @@ export default {};
     font-weight: bold;
     color: rgba(0, 0, 0, 1);
   }
-  .action {
+  .active {
     color: rgba(244, 76, 54, 1);
   }
 }
