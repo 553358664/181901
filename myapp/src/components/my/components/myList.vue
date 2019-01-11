@@ -2,11 +2,7 @@
     <div class="myList">
          <ul>
             <li v-for="(item,index) in myLists">
-<<<<<<< HEAD
                 <router-link :to="{name:item.route}">
-=======
-                <router-link :to="{name:item.name}">
->>>>>>> 4334556673ca1828657c19535e7e470e0690ced6
                    <img class="icon-left" :src="item.icon"/>
                    <span>{{item.title}}</span>
                    <img class="icon-right" :src="iconRight" />
@@ -21,7 +17,7 @@ export default {
     data(){
         return {
             myLists:[
-                {   name:"news",               
+                {              
                     icon:require('@/assets/my/icon_wd_xx@2x.png'),
                     title:"消息",
                     route:"mymessage"            

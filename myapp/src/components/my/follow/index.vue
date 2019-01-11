@@ -8,12 +8,15 @@
 </template>
 <script>
 import Header from "./components/header.vue";
-import Content from "./components/content.vue"
+import Content from "./components/content.vue";
+import Vuex from "vuex";
+
 export default {
     components:{
         "Header-com":Header,
-        "Content-com":Content
-    }
+        "Content-com":Content,
+    },
+    
 }
 </script>
 <style>

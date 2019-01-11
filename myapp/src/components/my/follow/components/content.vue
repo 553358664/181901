@@ -1,13 +1,13 @@
 <template>
      <div class="wrapper" ref="followWrapper">
          <ul class="content ful">
-            <li v-for="(item,index) in follows">                            
+            <li v-for="(item,index) in myList">                            
                     <div>
-                         <router-link :to="{name:item.name}">
+                         <router-link :to="{name:router}">
                              <span><img :src="item.headPic"/></span>                                            
                              <span>{{item.username}}</span>                     
                          </router-link>   
-                        <p><a href="#">取消关注</a></p> 
+                        <p class="cancle">取消关注</p>
                      </div>
                  <div class="line"></div>
             </li>
@@ -24,64 +24,21 @@ export default {
             scrollY:true,
             click:true
         })
-        console.log(this.scroll);
+        // console.log(this.scroll);
+    },
+    created(){
+        this.$store.dispatch("my/handleGet")     
+    },
+    computed:{
+        ...Vuex.mapState({
+            myList:state=>state.my.myList
+        })
     },
      data(){
-        return {          
-            follows:[
-                {
-                    name:"details",
-                    headPic:require("@/assets/my/wd_gz_tx1@2x.png"),
-                    username:'绿豆',                   
-                },
-                {
-                    name:'details',
-                    headPic:require("@/assets/my/wd_gz_tx2@2x.png"),
-                    username:'燕麦粥',
-                },
-                {
-                    name:'details',
-                    headPic:require("@/assets/my/wd_gz_tx3@2x.png"),
-                    username:'柠檬', 
-                },
-                {
-                   name:'details',
-                   headPic:require("@/assets/my/wd_gz_tx4@2x.png"),
-                   username:'核桃酥', 
-                },
-                {
-                    name:'details',
-                    headPic:require("@/assets/my/wd_gz_tx3@2x.png"),
-                    username:'柠檬', 
-                },
-                {
-                    name:'details',
-                   headPic:require("@/assets/my/wd_gz_tx4@2x.png"),
-                   username:'核桃酥', 
-                },
-                {
-                    name:'details',
-                    headPic:require("@/assets/my/wd_gz_tx3@2x.png"),
-                    username:'柠檬', 
-                },
-                {
-                    name:'details',
-                   headPic:require("@/assets/my/wd_gz_tx4@2x.png"),
-                   username:'核桃酥', 
-                },
-                {
-                    name:'details',
-                    headPic:require("@/assets/my/wd_gz_tx3@2x.png"),
-                    username:'柠檬', 
-                },
-                {
-                    name:'details',
-                   headPic:require("@/assets/my/wd_gz_tx4@2x.png"),
-                   username:'核桃酥', 
-                },
-                
-            ],
-         iconRight:require('@/assets/my/icon_grxx_jt@2x.png') ,
+        return { 
+                flag:true,   
+                router:"details",           
+                iconRight:require('@/assets/my/icon_grxx_jt@2x.png') ,
                        
         }
     }
@@ -124,7 +81,7 @@ export default {
     .wrapper>.content>li>div>a>img,.wrapper>.content>li>div>a>span{
         display: inline-block;
     }  
-    .wrapper>.content>li>div>p>a{
+    .wrapper>.content>li>div>.cancle{
         display:inline-block;
         width:1.5rem;
         height:.48rem;
