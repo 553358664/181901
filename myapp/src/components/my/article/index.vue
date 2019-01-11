@@ -46,6 +46,7 @@ export default {
             hasVerticalScroll: true
         });
         this.scroll.on("pullingUp", () => {});
+        console.log(this.scroll);
   }
 }
 </script>
