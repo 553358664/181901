@@ -3,7 +3,8 @@
         <!-- 忘记密码验证-->
         <div class="formContent">
             <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username.username" @blur="handleUsername()"></div>
-            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode"></section><button>获取验证码</button></div>
+            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode" v-model="authCode" @blur="checkCode()" ></section><span v-show="sendAuthCode" class="auth_text auth_text_blue"  @click="getAuthCode()">获取验证码</span>
+    <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue">{{auth_time}} </span> 秒之后重新获取</span></div>
             <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1.password1" @blur="handlePassword1()"></div>
             <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2.password2" @blur="handlePassword2()"></div>
             <section class="dibu">
@@ -22,7 +23,12 @@ import axios from "axios"
 export default {
     data(){
         return {
+           authCode:"",
            
+           sendAuthCode:true,/*布尔值，通过v-show控制显示‘获取按钮’还是‘倒计时’ */
+        	auth_time: 0,
+        	codeFlag:false,
+        	
         }
     },
     computed:{
@@ -49,8 +55,57 @@ export default {
     	}),
     	...Vuex.mapActions({
 //  		addUser:"register_login/addUser",
+			handleCode:"register/login/handleCode"
     		
     	}),
+    	
+    	
+       
+        getAuthCode() {
+    		axios({
+	            method:"get",
+	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+	            
+	        }).then((data)=>{
+	        	if(data.data.length!=0){
+	        		this.sendAuthCode = false;
+		            this.auth_time = 30;
+		           // console.log(data.data[0].password)
+		            var auth_timetimer =  setInterval(()=>{
+		                this.auth_time--;
+		                
+		                if(this.auth_time<=0){
+		                    this.sendAuthCode = true;
+		                    clearInterval(auth_timetimer);
+		                }
+		            }, 1000);
+		            
+	        	}else{
+	        		alert("用户名不存在")
+	        	}
+//	        	 this.checkCode();
+//		            if(a == data.data[0].password){
+//		            	this.codeFlag = true;
+//		            	console.log(this.codeFlag)
+//		            	alert(111111)
+//		            }else{
+//		            	this.codeFlag = false;
+//		            	alert(22222)
+//		            }
+	        })
+            
+        },
+        checkCode(){
+        	return this.authCode;
+        },
+//      handleCode(){
+//      	if(this.authCode == this.authCode1){
+//      		this.codeFlag = true;
+//      		alert("right")
+//      	}else{
+//      		alert("err");
+//      	}
+//      },
     	checkForm(){
     		//表单验证
     		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag && this.pwdFlag1.pwdFlag1){
@@ -160,7 +215,7 @@ export default {
                 flex: 1;
                 width: 5rem;
                 background: transparent;
-                font-size: .3rem;
+                font-size: .34rem;
                 line-height: .67rem;
                 color: #fffefc;
                 -webkit-tap-highlight-color:rgba(255,0,0,0);
@@ -216,14 +271,14 @@ export default {
                     outline: none;
                     border: 0;
                     background: transparent;
-                    font-size: .3rem;
+                    font-size: .34rem;
                     line-height: .67rem;
                 }
             
                 
                
             }
-             button{
+             .auth_text{
                     outline: none;
                     border: 0;
                     background: #ff7268;

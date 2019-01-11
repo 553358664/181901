@@ -8,5 +8,5 @@ export default {
 	pwdFlag:false,
 	pwdFlag1:false,
 	flagShow:false,
-	
+	authCode1:"",
 }
