@@ -16,7 +16,7 @@
                         <p class="userName">{{item.tit}}</p>  
                         <p class="userPraise">
                             <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">9999</span>
+                            <span class="praiseNum">{{item.prise}}</span>
                         </p>                     
                     </div>
                 </div>            
@@ -81,7 +81,7 @@ export default {
                 .nearbyP{
                     margin-left:5.8%;
                     padding-top:2.64%;
-                    width:78.9%;
+                    width:79.9%;
                     height:.75rem;
                     font-size:.26rem;
                     font-family:PingFang-SC-Medium;

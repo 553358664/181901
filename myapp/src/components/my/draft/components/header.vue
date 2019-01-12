@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-        <img class="back" :src="back" @click="handleback()"/>       
-        <p>关注</p>
+        <img class="back" :src="back" @click="handleback()"/>
+        <p class="info-middle">草稿箱</p>
     </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
         align-items: center;
         background:#FCFCFA;
         padding:0 .24rem;
+        margin-bottom: .2rem;
         position: fixed;
         z-index: 10;
     }
@@ -42,5 +43,3 @@ export default {
     }
 
 </style>
-
-

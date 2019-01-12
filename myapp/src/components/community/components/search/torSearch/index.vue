@@ -1,5 +1,5 @@
 <template>
-    <div class="loginSearch"> 
+    <div class="torSearch"> 
         <input-com/>   
         <list-com/>
     </div>

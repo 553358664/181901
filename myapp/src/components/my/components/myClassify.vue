@@ -1,7 +1,7 @@
 <template>
     <div class="myClassify">
         <ul>
-            <li v-for="(item,index) in myNavs">
+            <li v-for="(item,index) in myNavs" :key="index">
                 <router-link :to="{name:item.name}">
                     <img :src="item.icon"/>
                     <span>{{item.title}}</span>
@@ -34,11 +34,10 @@ export default {
                    
                 },
                 {
-                    name:"draft ",
+                    name:"draft",
                     title:"草稿",
                     icon:require('../../../assets/my/icon_wd_cg@2x.png')
-                    
-                    
+                            
                 }
             ]
         }

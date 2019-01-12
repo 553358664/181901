@@ -7,11 +7,11 @@ import Follow from "../../components/my/follow";
 //个人信息 关注 粉丝 收藏 草稿 
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
-
 import Details from "../../components/my/details"
 import sMall from "../../components/small"
 import sCar from "../../components/scar"
 
+import Draft from "../../components/my/draft";
 //消息 文章 订单 好友 设置
 import Mymessage from "../../components/my/message"
 import Myarticle from "../../components/my/article"
@@ -41,32 +41,22 @@ export default (
       component: PersonalInfo
     },
     {
-      path: "/my",
-      name: "my",
-      component: My,
-      meta: {
-        flag: true,
-        requireAuth: true
-      }
-    },
-    //my部分的二级页面路由
-    {
-      path: "personalInfo",
-      name: "personalInfo",
-      component: PersonalInfo
-    },
-    {
-      path: "follow",
+      path: "/follow",
       name: "follow",
       component: Follow
     },
     {
-      path: "fans",
+      path: "/fans",
       name: "fans",
       component: Fans
     },
     {
-      path: "collection",
+      path: "/draft",
+      name: "draft",
+      component: Draft
+    },
+    {
+      path: "/collection",
       name: "collection",
       component: Collection
     },

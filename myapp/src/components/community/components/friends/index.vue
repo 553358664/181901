@@ -5,20 +5,20 @@
     </router-link>
     <div class="friends wrapper" ref="homeWrapper">
       <ul class="content friendsUl">
-        <li class="friendsLi">
+        <li class="friendsLi" v-for="(item,index) in article" :key="index">
           <div class="friendsImg">
             <img src="../../../../assets/community/qiu/img_1.png" alt>
           </div>
           <div class="friendsBox">
-            <p class="friendsP">以爱之名—紫色爱丽丝，愿你收获希望和</p>
+            <p class="friendsP">{{item.centent}}</p>
             <div class="friendsUser">
               <div class="uerImg">
                 <img src="../../../../assets\community\qiu\content_icon-like2.png" alt>
               </div>
-              <p class="userName">啊哈</p>
+              <p class="userName">{{item.tit}}</p>
               <p class="userPraise">
                 <img src="../../../../assets\community\qiu\content_icon-like2.png" alt>
-                <span class="praiseNum">9999</span>
+                <span class="praiseNum">{{item.prise}}</span>
               </p>
             </div>
           </div>
@@ -37,51 +37,33 @@ import BScroll from "better-scroll";
 // Vue.component(Header.name, Header);
 // import "mint-ui/lib/style.css";
 export default {
-    created(){
-        // this.handleArticle()
-    },
-    computed:{
-        ...Vuex.mapState({ 
-          article:state=>state.community.articleList
-        })
-    },
-    data(){
-        return{
-            // positionX:0,
-            // positionY:0,
-            publish:"publish"
-        }
-    },
-    methods:{
-        ...Vuex.mapActions({
-          handleArticle:"community/handleArticle"
-      }),
-
+  created() {
+    this.handleArticle()
+  },
+  computed: {
+    //获取花友圈的数据
+    ...Vuex.mapState({
+      article: state => state.community.articleList
+    })
   },
   directives: {
+    //浮点的拖拽
     drap(el, { val }) {
-      el.addEventListener("touchstart", function(e) {         
+      el.addEventListener("touchstart", function(e) {
         let disX = e.targetTouches[0].clientX - el.offsetLeft;
         let disY = e.targetTouches[0].clientY - el.offsetTop;
         function handleMove(e) {
           let x = e.targetTouches[0].clientX - disX;
           let y = e.targetTouches[0].clientY - disY;
-          el.style.left = x+"px";
-          el.style.top = y+"px";
+          el.style.left = x + "px";
+          el.style.top = y + "px";
         }
         document.addEventListener("touchmove", handleMove);
-        
         document.addEventListener("touchend", function() {
           document.removeEventListener("touchmove", handleMove);
         });
       });
     }
-  },
-  computed: {
-    //获得花友圈中的文章数据
-    ...Vuex.mapState({
-      article: state => state.community.articleList
-    })
   },
   data() {
     return {
@@ -144,7 +126,7 @@ export default {
         .friendsP {
           margin-left: 5.8%;
           padding-top: 2.64%;
-          width: 78.9%;
+          width: 79.9%;
           height: 0.75rem;
           font-size: 0.26rem;
           font-family: PingFang-SC-Medium;

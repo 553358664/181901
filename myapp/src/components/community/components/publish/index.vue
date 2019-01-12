@@ -1,5 +1,6 @@
 <template>
     <div class="publish">
+        <input type="file" accept="image/*" capture="camera">
         <div class="seaHeader">
             <div class="publishImg">
                 <img src="../../../../assets/community/qiu/back.png" alt="" @click="handleBack()" >
