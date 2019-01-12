@@ -15,8 +15,8 @@
         <div class="stateshow">
           <div class="stateshowleft">
             <div class="checkimg" v-show="item.state==1?true:false" @click="checkchange(index)">
-              <img src="../../../../assets/my/yq/icon_wddd_yuan@2x.png" v-show="item.checkflag">
-              <img src="../../../../assets/my/yq/icon_dd_dzf@2x.png" v-show="!item.checkflag">
+              <img src="../../../../assets/my/yq/icon_wddd_yuan@2x.png" v-show="!item.checkflag">
+              <img src="../../../../assets/my/yq/icon_dd_dzf@2x.png" v-show="item.checkflag">
             </div>
             <div class="shopimg">
               <img src="../../../../assets/my/yq/icon_dd_dp@2x.png">
@@ -75,9 +75,9 @@
         </div>
       </div>
     </div>
-    <div class="payfooter" v-show="false">
-      <div class="payall">合并支付</div>
     </div>
+    <div class="payfooter" v-show="viewState==1&&totalpay">
+      <div class="payall">合并支付</div>
     </div>
   </div>
 </template>
@@ -86,6 +86,11 @@ import Vuex from "vuex";
 import BScroll from "better-scroll";
 
 export default {
+  data(){
+    return{
+      totalpay:false,
+    }
+  },
   filters: {
     price(n, p) {
       return (n * (p * 10)) / 10;
@@ -100,7 +105,7 @@ export default {
     //传入index改变item.checkflag
     ...Vuex.mapMutations({
       checkchange: "Mylist/checkchange"
-    })
+    }),
   },
   computed: {
     ...Vuex.mapState({
@@ -115,19 +120,37 @@ export default {
     })
   },
   created() {
-    this.handleHomeData();
+    //模拟数据注释防止报错
+    // this.handleHomeData();
   },
   updated() {
-    //避免出现因updated产生的点击事件多次触发的情况
+    //避免出现因updated产生的点击事件多次触发的情况\
     if (!this.scroll) {
       this.scroll = new BScroll(this.$refs.myarticleWrapper, {
         hasVerticalScroll: true,
         click: true
       });
-    }
+    };
+
+    //是否打开合并支付
+
+    var rs = this.goodsList.some((item)=>{
+      return item.checkflag == true;
+    })
+    this.totalpay = rs;
   }
 };
 </script>
+
+
+
+
+
+
+
+
+
+
 <style lang="scss" scoped>
 .total {
   height: 88%;

@@ -43,15 +43,6 @@ export default (
       name: "personalInfo",
       component: PersonalInfo
     },
-    {
-      path: "/my",
-      name: "my",
-      component: My,
-      meta: {
-        flag: true,
-        requireAuth: true
-      }
-    },
     //my部分的二级页面路由
     {
       path: "personalInfo",
