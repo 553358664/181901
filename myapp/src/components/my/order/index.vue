@@ -22,28 +22,28 @@
   </div>
 </template>
 <script>
-// import Orderlist from "./components";
+import Orderlist from "./components";
 import Vuex from "vuex";
 import BScroll from "better-scroll";
 
 export default {
-    // computed: {
-    //     ...Vuex.mapState({
-    //         //订单可视状态
-    //         viewState:state=>state.Mylist.viewState
-    //     })
-    // },
-    // methods:{
-    //     handleToggle(index){
-    //         this.activeIndex = index;
-    //     },
-    //     ...Vuex.mapMutations({
-    //         viewstatechange:"Mylist/viewstatechange"
-    //     })
-    // },
-    // components:{
-    //     "Orderlist-com":Orderlist
-    // },
+    computed: {
+        ...Vuex.mapState({
+            //订单可视状态
+            viewState:state=>state.Mylist.viewState
+        })
+    },
+    methods:{
+        handleToggle(index){
+            this.activeIndex = index;
+        },
+        ...Vuex.mapMutations({
+            viewstatechange:"Mylist/viewstatechange"
+        })
+    },
+    components:{
+        "Orderlist-com":Orderlist
+    },
     data(){
         return {
             activeIndex:0,

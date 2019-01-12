@@ -13,11 +13,11 @@
             <p class="friendsP">{{item.centent}}</p>
             <div class="friendsUser">
               <div class="uerImg">
-                <img src="../../../../assets\community\qiu\content_icon-like2.png" alt>
+                <img src="../../../../assets\community\qiu\content_icon_like@2x.png" alt>
               </div>
               <p class="userName">{{item.tit}}</p>
               <p class="userPraise">
-                <img src="../../../../assets\community\qiu\content_icon-like2.png" alt>
+                <img src="../../../../assets\community\qiu\content_icon-like2@2x.png" alt>
                 <span class="praiseNum">{{item.prise}}</span>
               </p>
             </div>
@@ -38,7 +38,7 @@ import BScroll from "better-scroll";
 // import "mint-ui/lib/style.css";
 export default {
   created() {
-    this.handleArticle()
+    // this.handleArticle()
   },
   computed: {
     //获取花友圈的数据

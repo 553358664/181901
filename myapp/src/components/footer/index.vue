@@ -69,10 +69,12 @@ export default {
      #footer>ul>li>a>i{
          font-size: .38rem;
      }
-    #footer>ul>li>a>span{
-        font-size: .23rem;
+   a{
+        font-size: .24rem;
         font-family:PingFang-SC-Medium;
         font-weight:SC-Medium;
+        font-weight:500;
+        color:rgba(8,8,8,1);
     }
     #footer>ul>li>.router-link-active{
         color: $color;

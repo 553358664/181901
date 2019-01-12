@@ -31,7 +31,7 @@ import Vuex from "Vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-    //    this.handleNearItems()
+       this.handleNearItems()
        
     },
     computed: {
