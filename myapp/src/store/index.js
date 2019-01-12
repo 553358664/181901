@@ -8,17 +8,17 @@ import register_login from "./register_login";
 
 import small from "./small";
 
-// import Mylist from "./mylist";
+import Mylist from "./mylist";
 Vue.use(Vuex);
 const store = new Vuex.Store({
     modules:{
         community,
         my,
         register_login,
-
+        
         small,
 
-        // Mylist
+        Mylist
     }
 })
 
