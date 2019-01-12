@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import Orderlist from "./components";
+// import Orderlist from "./components";
 import Vuex from "vuex";
 import BScroll from "better-scroll";
 
