@@ -2,82 +2,88 @@
   <div class="wrraper total" ref="myarticleWrapper">
     <!--没有该类订单的页面-->
     <div class="content">
-    <div class="noorder" v-show="!viewp[viewState-1]">
-      <div class="noorderimg">
-        <img src="../../../../assets/my/yq/icon_wddd_dd@2x.png">
+      <div class="noorder" v-show="!viewp[viewState-1]">
+        <div class="noorderimg">
+          <img src="../../../../assets/my/yq/icon_wddd_dd@2x.png">
+        </div>
+        <div class="noorderdes">您还没有相关的订单</div>
       </div>
-      <div class="noorderdes">您还没有相关的订单</div>
-    </div>
 
-    <!--有该类订单的页面-->
-    <div class="ordershow">
-      <div v-for="(item,index) in goodsList" v-show="item.state==viewState?true:false" :key="index">
-        <div class="stateshow">
-          <div class="stateshowleft">
-            <div class="checkimg" v-show="item.state==1?true:false" @click="checkchange(index)">
-              <img src="../../../../assets/my/yq/icon_wddd_yuan@2x.png" v-show="item.checkflag">
-              <img src="../../../../assets/my/yq/icon_dd_dzf@2x.png" v-show="!item.checkflag">
+      <!--有该类订单的页面-->
+      <div class="ordershow">
+        <div
+          v-for="(item,index) in goodsList"
+          v-show="item.state==viewState?true:false"
+          :key="index"
+        >
+          <div class="stateshow">
+            <div class="stateshowleft">
+              <div class="checkimg" v-show="item.state==1?true:false" @click="checkchange(index)">
+                <img src="../../../../assets/my/yq/icon_wddd_yuan@2x.png" v-show="item.checkflag">
+                <img src="../../../../assets/my/yq/icon_dd_dzf@2x.png" v-show="!item.checkflag">
+              </div>
+              <div class="shopimg">
+                <img src="../../../../assets/my/yq/icon_dd_dp@2x.png">
+              </div>
+              <div class="shopinfo">
+                <span>花7的店</span>
+              </div>
             </div>
-            <div class="shopimg">
-              <img src="../../../../assets/my/yq/icon_dd_dp@2x.png">
-            </div>
-            <div class="shopinfo">
-              <span>花7的店</span>
-            </div>
-          </div>
-          <div class="stateshowright">
-            <span v-show="item.state==1">等待买家付款</span>
-            <span v-show="item.state==2">买家已付款</span>
-            <span v-show="item.state==3">买家已发货</span>
-            <span v-show="item.state==4">交易成功</span>
-          </div>
-        </div>
-        <div class="datashow">
-          <div class="shopcover">
-            <img src="../../../../assets/my/yq/wd_dd_sp1@2x.png">
-          </div>
-          <div class="detailinfo">
-            <div class="describe">
-              <div class="shopnameleft">┌</div>
-              <span class="shopname">{{item.shopname}}</span>
-              <div class="shopnameright">┘</div>
-              <div class="interval">|</div>
-              <span class="shopdes">{{item.shopdirec}}</span>
-            </div>
-            <div class="shopcolor">
-              <span class="shopcolordata">{{item.fications}}</span>
-            </div>
-            <div class="shopnum">
-              <span class="shopprice">￥{{item.price}}</span>
-              <span class="shopcount">x{{item.count}}</span>
+            <div class="stateshowright">
+              <span v-show="item.state==1">等待买家付款</span>
+              <span v-show="item.state==2">买家已付款</span>
+              <span v-show="item.state==3">买家已发货</span>
+              <span v-show="item.state==4">交易成功</span>
             </div>
           </div>
-        </div>
-        <div class="moneyshow">
-          <div class="moneycount">共
-            <span class="moneycountdata">{{item.count}}</span> 件商品
+          <div class="datashow">
+            <div class="shopcover">
+              <img src="../../../../assets/my/yq/wd_dd_sp1@2x.png">
+            </div>
+            <div class="detailinfo">
+              <div class="describe">
+                <div class="shopnameleft">┌</div>
+                <span class="shopname">{{item.shopname}}</span>
+                <div class="shopnameright">┘</div>
+                <div class="interval">|</div>
+                <span class="shopdes">{{item.shopdirec}}</span>
+              </div>
+              <div class="shopcolor">
+                <span class="shopcolordata">{{item.fications}}</span>
+              </div>
+              <div class="shopnum">
+                <span class="shopprice">￥{{item.price}}</span>
+                <span class="shopcount">x{{item.count}}</span>
+              </div>
+            </div>
           </div>
-          <div class="totalmoney">合计: ￥
-            <span class="totalmoneydata">{{item.count|price(item.price)}}</span>
+          <div class="moneyshow">
+            <div class="moneycount">
+              共
+              <span class="moneycountdata">{{item.count}}</span> 件商品
+            </div>
+            <div class="totalmoney">
+              合计: ￥
+              <span class="totalmoneydata">{{item.count|price(item.price)}}</span>
+            </div>
           </div>
-        </div>
-        <div class="options">
-          <div class="space"></div>
-          <div class="s1cancellist" v-show="item.state==1? true : false">取消订单</div>
-          <div class="s1paynow" v-show="item.state==1? true : false">立即支付</div>
-          <div class="s2sendnow" v-show="item.state==2? true : false">提醒发货</div>
-          <div class="s3logistics" v-show="item.state==3? true : false">查看物流</div>
-          <div class="s3extend" v-show="item.state==3? true : false">延长收货</div>
-          <div class="s3confirm" v-show="item.state==3? true : false">确认收货</div>
-          <div class="s4logistics" v-show="item.state==4? true : false">查看物流</div>
-          <div class="s4sell" v-show="item.state==4? true : false">卖了换钱</div>
-          <div class="s4comment" v-show="item.state==4? true : false">立即评价</div>
+          <div class="options">
+            <div class="space"></div>
+            <div class="s1cancellist" v-show="item.state==1? true : false">取消订单</div>
+            <div class="s1paynow" v-show="item.state==1? true : false">立即支付</div>
+            <div class="s2sendnow" v-show="item.state==2? true : false">提醒发货</div>
+            <div class="s3logistics" v-show="item.state==3? true : false">查看物流</div>
+            <div class="s3extend" v-show="item.state==3? true : false">延长收货</div>
+            <div class="s3confirm" v-show="item.state==3? true : false">确认收货</div>
+            <div class="s4logistics" v-show="item.state==4? true : false">查看物流</div>
+            <div class="s4sell" v-show="item.state==4? true : false">卖了换钱</div>
+            <div class="s4comment" v-show="item.state==4? true : false">立即评价</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="payfooter" v-show="false">
-      <div class="payall">合并支付</div>
-    </div>
+      <div class="payfooter" v-show="false">
+        <div class="payall">合并支付</div>
+      </div>
     </div>
   </div>
 </template>

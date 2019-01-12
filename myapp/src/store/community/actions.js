@@ -18,6 +18,16 @@ export default {
         .then((data)=>{
             commit("handleNearItems",data)
         })
-    }
-   
+    },
+    handlePicShow({commit,dispatch},params){
+        axios({
+            method:"get",
+            url:"http://localhost:3000/text",
+        })
+        .then((data)=>{
+            data[params].show=!data[params].show
+            dispatch("handleArticle",data)
+            console.log(data[params].show)
+        })
+    } 
 }

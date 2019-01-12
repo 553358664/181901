@@ -5,4 +5,7 @@ export default {
     handleNearItems(state,params){
         state.nearItems = params
     }
+    // handlePicShow(state,params){
+    //     state.articleList = params
+    // }
 }

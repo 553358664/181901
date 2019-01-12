@@ -16,10 +16,21 @@
                 <img src="../../../../assets\community\qiu\content_icon_like@2x.png" alt>
               </div>
               <p class="userName">{{item.tit}}</p>
-              <p class="userPraise">
-                <img src="../../../../assets\community\qiu\content_icon-like2@2x.png" alt>
+              <div class="userPraise">
+                <div class="praiseImg" >
+                  <img
+                    src="../../../../assets\community\qiu\content_icon-like2@2x.png"
+                    alt
+                    v-show="item.show"
+                  >
+                  <img
+                    src="../../../../assets\community\qiu\content_icon_like@2x.png"
+                    alt
+                    v-show="!item.show"
+                  >
+                </div>
                 <span class="praiseNum">{{item.prise}}</span>
-              </p>
+              </div>
             </div>
           </div>
         </li>
@@ -38,7 +49,7 @@ import BScroll from "better-scroll";
 // import "mint-ui/lib/style.css";
 export default {
   created() {
-    // this.handleArticle()
+    this.handleArticle();
   },
   computed: {
     //获取花友圈的数据
@@ -48,7 +59,7 @@ export default {
   },
   directives: {
     //浮点的拖拽
-    drap(el, { val }) {
+    drap(el) {
       el.addEventListener("touchstart", function(e) {
         let disX = e.targetTouches[0].clientX - el.offsetLeft;
         let disY = e.targetTouches[0].clientY - el.offsetTop;
@@ -68,12 +79,13 @@ export default {
   data() {
     return {
       publish: "publish",
-      flag: true
+      flag: false
     };
   },
   methods: {
     ...Vuex.mapActions({
-      handleArticle: "community/handleArticle"
+      handleArticle: "community/handleArticle",
+      handlePicShow: "community/handlePicShow"
     })
   },
   mounted() {
@@ -141,6 +153,10 @@ export default {
           .uerImg {
             float: left;
             margin-right: 0.1rem;
+            img {
+              widows: 0.31rem;
+              height: 0.27rem;
+            }
           }
           .userName {
             float: left;
@@ -154,6 +170,10 @@ export default {
             margin-right: 0.32rem;
             display: flex;
             justify-content: center;
+            img {
+              width: 0.31rem;
+              height: 0.27rem;
+            }
             .praiseNum {
               margin-left: 0.1rem;
               font-size: 0.2rem;
