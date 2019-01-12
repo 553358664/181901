@@ -1,13 +1,13 @@
 <template>
   <div id="nav">
-    <a class="ohter1">
+    <router-link  to="/xptj" class="ohter1">
       <h2>新年开运</h2>
       <h2>79元起还送2只花瓶</h2>
-    </a>
-    <a class="ohter2">
+    </router-link>
+    <router-link to="/hccs" class="ohter2">
       <h2>花材超市升级</h2>
       <h2>4.7元/束起 送手套花瓶</h2>
-    </a>
+    </router-link>
   </div>
 </template>
 <script>

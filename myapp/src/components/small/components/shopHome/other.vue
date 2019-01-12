@@ -2,12 +2,12 @@
   <div id="other" ref="other">
     <h1>花边小屋</h1>
     <div class="otherNav">
-      <a href>
+      <router-link to="/hcyh">
         <img src="@/assets/small/shopHome/other_1.png" alt>
-      </a>
-      <a href>
+      </router-link>
+      <router-link to ="/jxhq">
         <img src="@/assets/small/shopHome/other_2.png" alt>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
