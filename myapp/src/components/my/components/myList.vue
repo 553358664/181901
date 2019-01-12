@@ -45,38 +45,43 @@ export default {
             ],
             iconRight:require('@/assets/my/icon_grxx_jt@2x.png')    
         }
-    }
-}
+      
+      iconRight: require("@/assets/my/icon_grxx_jt@2x.png")
+    },
+  }
+
 </script>
 
 <style lang="scss" scoped>
-    .myList{
-        width: 100%;
-        height:7.16rem;
-        padding: .32rem .64rem;       
-    }
-    .myList>ul{
-        width: 100%;
-        height: 100%;
-    }
-    .myList>ul,.myList>ul>li,.myList>ul>li>a{
-        width:100%;
-        height:1rem;
-        line-height: 1rem;
-        border-bottom: 1px solid #E2E2E2 ;
-    }
-    .myList>ul>li>a{
-        display: flex;
-        justify-content: space-around;
-        align-items: center
-    }
-   
-    .myList>ul>li>a>span{
-        align-items: center;
-        width:88%;
-        font-size:.28rem;
-        color:#383838 ;
-    }
+.myList {
+  width: 100%;
+  height: 7.16rem;
+  padding: 0.32rem 0.64rem;
+}
+.myList > ul {
+  width: 100%;
+  height: 100%;
+}
+.myList > ul,
+.myList > ul > li,
+.myList > ul > li > a {
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+.myList > ul > li > a {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.myList > ul > li > a > span {
+  align-items: center;
+  width: 88%;
+  font-size: 0.28rem;
+  color: #383838;
+}
 </style>
 
 

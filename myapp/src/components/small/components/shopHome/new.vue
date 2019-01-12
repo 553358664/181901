@@ -1,5 +1,5 @@
 <template>
-  <div id="new">
+  <div id="new" ref="new">
     <h1>新品推荐</h1>
     <h3 class="swiper-pagination banner-pagination"></h3>
     <div class="banner">
@@ -26,8 +26,21 @@
 </template>
 <script>
 import Swiper from "swiper";
+import Vuex from "vuex";
 export default {
+   data() {
+    return {
+      newTop: ""
+    };
+  },
+    methods: {
+    ...Vuex.mapMutations({
+      handleNewTop: "small/handleNewTop"
+    }),
+  },
   mounted() {
+    this.newTop = this.$refs.new.offsetTop;
+    this.handleNewTop(this.newTop)
     new Swiper(this.$refs.banner, {
       loop: true,
       autoplay: {
