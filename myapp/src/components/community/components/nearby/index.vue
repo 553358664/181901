@@ -31,7 +31,8 @@ import Vuex from "Vuex"
 import BScroll from "better-scroll";
 export default {
     created(){
-       this.handleNearItems()
+    //    this.handleNearItems()
+       
     },
     computed: {
     //获得附近中的文章数据

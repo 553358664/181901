@@ -3,7 +3,10 @@
         <!-- 注册验证-->
         <div class="formContent">
             <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username.username" @blur="handleUsername()"></div>
-            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode"></section><button>获取验证码</button></div>
+            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode"></section>    
+            	<span v-show="sendAuthCode" class="auth_text auth_text_blue"  @click="getAuthCode">获取验证码</span>
+    <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue">{{auth_time}} </span> 秒之后重新获取</span>
+</div>
             <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1.password1" @blur="handlePassword1()"></div>
             <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2.password2" @blur="handlePassword2()"></div>
             <section class="dibu">
@@ -22,7 +25,9 @@ import axios from "axios"
 export default {
     data(){
         return {
-           
+           autoCode:"获取验证码",
+           sendAuthCode:true,/*布尔值，通过v-show控制显示‘获取按钮’还是‘倒计时’ */
+        	auth_time: 0, /*倒计时 计数器*/
         }
     },
     computed:{
@@ -51,6 +56,29 @@ export default {
 //  		addUser:"register_login/addUser",
     		
     	}),
+    	getAuthCode() {
+    		axios({
+	            method:"get",
+	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+	            
+	        }).then((data)=>{
+	        	if(data.data.length==0){
+	        		this.sendAuthCode = false;
+		            this.auth_time = 30;
+		            var auth_timetimer =  setInterval(()=>{
+		                this.auth_time--;
+		                if(this.auth_time<=0){
+		                    this.sendAuthCode = true;
+		                    clearInterval(auth_timetimer);
+		                }
+		            }, 1000);
+	        	}else{
+	        		alert("用户名已存在")
+	        	}
+	        })
+            
+        },
+
 //  	checkUser(username){
 //  		axios({
 //	            method:"get",
@@ -83,15 +111,15 @@ export default {
 //	   },
     	checkForm(){
     		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag && this.pwdFlag1.pwdFlag1){
-    		axios({
-	            method:"get",
-	            				url:"http://localhost:3000/userlist?username="+this.username.username,
-	            
-	        })
-	        .then((data)=>{
-	        	
-	        	
-	           if(data.data.length==0){
+//  		axios({
+//	            method:"get",
+//	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+//	            
+//	        })
+//	        .then((data)=>{
+//	        	
+//	        	
+//	           if(data.data.length==0){
 	           		axios({
 			            method:"post",
 			            url:"http://localhost:3000/userlist",
@@ -108,10 +136,10 @@ export default {
 			            	alert("注册失败")
 			            }
 			        })
-	           	}else{
-	           		alert("用户名已存在")
-	           	}
-	          })
+//	           	}else{
+//	           		alert("用户名已存在")
+//	           	}
+//	          })
 	        }
 //  			console.log(this.username.username)
 //  			if(this.checkUser(this.username.username)){
@@ -256,7 +284,7 @@ export default {
                 
                
             }
-             button{
+             .auth_text{
                     outline: none;
                     border: 0;
                     background: #ff7268;

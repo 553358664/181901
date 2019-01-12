@@ -20,6 +20,9 @@ export default {
 			state.tishi = "密码格式为6-12位数字字母下划线";
 		}
 	},
+//	handleCode(state,params){
+//		console.log(state,params)
+//	}
 //	addUser(state,params){
 //	
 //		if(status==200){
