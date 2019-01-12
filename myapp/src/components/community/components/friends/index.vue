@@ -38,7 +38,7 @@ import BScroll from "better-scroll";
 // import "mint-ui/lib/style.css";
 export default {
     created(){
-        // this.handleArticle()
+        this.handleArticle()
     },
     computed:{
         ...Vuex.mapState({ 
@@ -56,6 +56,22 @@ export default {
         ...Vuex.mapActions({
           handleArticle:"community/handleArticle"
       }),
+<<<<<<< HEAD
+=======
+      hanle(){
+          console.log(this)
+      },
+    //   handleMove(e){
+    //     let op = e.target;    //获取目标元素
+    //     //算出鼠标相对元素的位置
+    //     let disX = e.clientX - op.offsetLeft;
+    //     let disY = e.clientY - op.offsetTop;
+    //     console.log(disX,disY)
+    //     this.$refs.homeWrapper.onmousemove = (e)=>{    //鼠标按下并移动的事件
+    //     //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+    //     let left = e.clientX - disX;  
+    //     let top = e.clientY - disY;
+>>>>>>> f7dfbf03de730ca011d28bc4a4127ccc50331644
 
   },
   directives: {

@@ -1,5 +1,16 @@
 import axios from "../../lib";
 export default{
+//	handleCode({commit,state}){
+//		axios({
+//          	method:"get",
+//	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+//	            }).then((data)=>{
+//	            	commit("handleCode",data);
+////	            	alert(data.data[0].password);
+////	            	this.authCode1 == data.data[0].password;
+////	            	alert(this.authCode1)
+//	            })
+//	}
 //	addUser({commit,state},user){
 //      axios({
 //          method:"post",
