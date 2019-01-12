@@ -1,13 +1,26 @@
 //my部分的二级页面路由
-//个人信息 关注 粉丝 收藏 草稿 
+// 关注 粉丝 收藏 草稿 
 import My from "../../components/my"
-import PersonalInfo from "../../components/my/personalInfo";
 import Follow from "../../components/my/follow";
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
-import Details from "../../components/my/details";
-import News from "../../components/my/news";
-import Chatbox from "../../components/my/chatbox";
+// import Draft from "../../components/my/draft";
+
+//个人信息 详细信息
+import PersonalInfo from "../../components/my/personalInfo";
+import Details from "../../components/my/details"
+import sMall from "../../components/small"
+import sCar from "../../components/scar"
+
+//消息 文章 订单 好友 设置
+import Mymessage from "../../components/my/message"
+import Myarticle from "../../components/my/article"
+import Myorder from "../../components/my/order"
+import Myfriends from "../../components/my/friends"
+import Myset from "../../components/my/set"
+
+//消息聊天框
+import Chatbox from "../../components/my/chatbox"
 
 export default (
   [
@@ -21,12 +34,14 @@ export default (
         requireAuth: true
       }
     },
-   
-    //my部分的二级页面路由
     {
-      path: "personalInfo",
-      name: "personalInfo",
-      component: PersonalInfo
+      path: "/my",
+      name: "my",
+      component: My,
+      meta: {
+        flag: true,
+        requireAuth: true
+      }
     },
     {
       path: "follow",
@@ -43,23 +58,18 @@ export default (
       name: "collection",
       component: Collection
     },
-      {
-        path:"news",
-        name:"news",
-        component:News
-      },
-      {
-        path:"chatbox",
-        name:"chatbox",
-        component:Chatbox
-      },
-    //my部分的三级级页面路由：详细信息
+    
+     //my部分的三级级页面路由：详细信息
+    {
+      path: "personalInfo",
+      name: "personalInfo",
+      component: PersonalInfo
+    },
     {
       path: "details",
       name: "details",
       component: Details
     },
-
     {
       path: "/small",
       name: "small",
@@ -80,82 +90,56 @@ export default (
     },
     //消息 文章 订单 好友 设置
     {
-      path:"/mymessage",
-      name:"mymessage",
-      component:Mymessage,
-      meta:{
+      path: "/mymessage",
+      name: "mymessage",
+      component: Mymessage,
+      meta: {
         flag: true,
         requireAuth: true
       }
     },
     {
-      path:"/myarticle",
-      name:"myarticle",
-      component:Myarticle,
-      meta:{
-        flag:false,
-        requireAuth: true
-      }
-    },
-    {
-      //默认子路由为待支付
-      path:"/myorder",
-      name:"myorder",
-      component:Myorder,
-      redirect:"/nopaid",
-      meta:{
+      path: "/chatbox",
+      name: "chatbox",
+      component: Chatbox,
+      meta: {
         flag: false,
         requireAuth: true
-      },
-      children:[
-        {
-          name:"/myorder/nocomment",
-          path:"/nocomment",
-          component:Nocomment
-        },
-        {
-          name:"/myorder/noreceive",
-          path:"/noreceive",
-          component:Noreceive
-        },
-        {
-          name:"/myorder/nopaid",
-          path:"/nopaid",
-          component:Nopaid
-        },
-        {
-          path:"news",
-          name:"news",
-          component:News
-        },
-        {
-          path:"chatbox",
-          name:"chatbox",
-          component:Chatbox
-        },
-        //my部分的三级级页面路由：详细信息
-        {
-          name:"/myorder/nosend",
-          path:"/nosend",
-          component:Nosend
-        }
-      ]
+      }
     },
     {
-      path:"/myfriends",
-      name:"myfriends",
-      component:Myfriends,
-      meta:{
+      path: "/myarticle",
+      name: "myarticle",
+      component: Myarticle,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    {
+      path: "/myorder",
+      name: "myorder",
+      component: Myorder,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    {
+      path: "/myfriends",
+      name: "myfriends",
+      component: Myfriends,
+      meta: {
         flag: true,
         requireAuth: true
       }
     },
     {
-      path:"/myset",
-      name:"myset",
-      component:Myset,
-      meta:{
-        flag:false,
+      path: "/myset",
+      name: "myset",
+      component: Myset,
+      meta: {
+        flag: false,
         requireAuth: true
       }
     }
