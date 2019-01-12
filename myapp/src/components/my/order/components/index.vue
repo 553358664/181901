@@ -110,7 +110,7 @@ export default {
       //订单可视状态
       viewState: state => state.Mylist.viewState,
 
-      //视窗状态
+      //订单分类视窗状态
       viewp: state => state.Mylist.viewp
     })
   },
