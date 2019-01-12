@@ -17,7 +17,7 @@ export default {
     data(){
         return {
             myLists:[
-                {               
+                {              
                     icon:require('@/assets/my/icon_wd_xx@2x.png'),
                     title:"消息",
                     route:"mymessage"            

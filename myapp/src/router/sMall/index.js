@@ -1,4 +1,4 @@
-import sMall from "../../components/small"
+import sMall from "../../components/small";
 
 export default (
     [
