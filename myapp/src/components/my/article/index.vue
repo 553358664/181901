@@ -9,26 +9,16 @@
         </div>
         <div class="myarticle wrraper" ref="myarticleWrapper">
             <ul class="content">
-                <li>
+                <li v-for="(item,index) in articleList">
                     <div class="cover">
                         <img src="../../../assets/my/yq/wd_wz_tp@2x.png"/>
                     </div>
                     <div class="describe">
-                        南蛇藤，其植株姿态优美，茎、蔓、叶、果都具有较高的观赏价值，是城市垂直绿化的优良树种...   
+                        {{item.content|Castration(item)}}  
                     </div>
-                    <div class="more">
-                        展开全部
-                    </div>
-                </li>
-                <li>
-                    <div class="cover">
-                        <img src="../../../assets/my/yq/wd_wz_tp@2x.png"/>
-                    </div>
-                    <div class="describe">
-                        南蛇藤，其植株姿态优美，茎、蔓、叶、果都具有较高的观赏价值，是城市垂直绿化的优良树种...   
-                    </div>
-                    <div class="more">
-                        展开全部
+                    <div class="more" v-if="item.content.length>25" @click="speard(index)">
+                        <span v-show="!item.speard">展开全部</span>
+                        <span v-show="item.speard">收起内容</span>
                     </div>
                 </li>
             </ul>
@@ -39,15 +29,50 @@
 
 <script>
 import BScroll from "better-scroll";
+import Vuex from "vuex";
 export default {
+    filters:{
+        Castration(c,i){
+            if( c.length>25){
+                if(i.speard==false){
+                    return c.slice(0,25)+"..."
+                }
+                else{
+                    return c
+                }
+            }
+            else{
+                return c
+            }
+        }
+    },
     mounted() {
         this.scroll = new BScroll(this.$refs.myarticleWrapper, {
             pullUpLoad: true,
-            hasVerticalScroll: true
+            hasVerticalScroll: true,
+            click:true,
         });
         this.scroll.on("pullingUp", () => {});
-        console.log(this.scroll);
-  }
+    },
+    created(){
+        //模拟数据注释防止报错
+        //this.handleAtData();
+    },
+    methods:{
+        //获取文章数据
+        ...Vuex.mapActions({
+            handleAtData: "Myarticle/handleAtList",
+        }),
+        ...Vuex.mapMutations({
+            speard:"Myarticle/changespeard"
+        })
+    },
+    computed: {
+        ...Vuex.mapState({
+        //文章数据 [{},{}]
+            articleList: state => state.Myarticle.articleList,
+        })
+    },
 }
 </script>
 
@@ -78,9 +103,11 @@ export default {
         }
         .myarticle{
             margin-top: .88rem;
+            overflow: hidden;
             height:92%;
             >ul>li{
                 margin-top: .2rem;
+                padding-bottom: .2rem;
                 background: white;
                 .cover{
                     width: 100%;
