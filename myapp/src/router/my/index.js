@@ -71,6 +71,15 @@ export default (
       component: Details
     },
     {
+      path: "/chatbox",
+      name: "chatbox",
+      component: Chatbox,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    {
       path: "/small",
       name: "small",
       component: sMall,
@@ -98,15 +107,7 @@ export default (
         requireAuth: true
       }
     },
-    {
-      path: "/chatbox",
-      name: "chatbox",
-      component: Chatbox,
-      meta: {
-        flag: false,
-        requireAuth: true
-      }
-    },
+    
     {
       path: "/myarticle",
       name: "myarticle",

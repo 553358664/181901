@@ -47,9 +47,9 @@ export default {
         }
       
       iconRight: require("@/assets/my/icon_grxx_jt@2x.png")
-    },
+    
   }
-
+}
 </script>
 
 <style lang="scss" scoped>
