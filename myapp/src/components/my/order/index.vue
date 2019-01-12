@@ -11,7 +11,6 @@
     </div>
     <ul class="orderlist">
       <li v-for="(item,index) in navs" 
-        :key="index" 
         :class="activeIndex == index?'active':''"
         @click="handleToggle(index),viewstatechange(index+1)"
         >
