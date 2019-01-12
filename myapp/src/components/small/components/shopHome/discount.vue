@@ -3,26 +3,26 @@
     <h1>限时特惠</h1>
     <div class="wrapper" ref="dicountWrapper">
       <div class="discountGoods content">
-        <a href>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
-        <a href>
+        </router-link>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
-        <a href>
+        </router-link>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
-        <a href>
+        </router-link>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
+        </router-link>
       </div>
     </div>
   </div>

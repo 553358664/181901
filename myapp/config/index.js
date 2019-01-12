@@ -11,6 +11,15 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+<<<<<<< HEAD
+      "/api":{
+    		target:"https://www.easy-mock.com",
+    		changeOrigin:true,
+    		pathRewrite:{
+    		    "^/api":""
+    		}
+    	}
+=======
       
       //模拟数据 easy-mock ——liuna
       //https://www.easy-mock.com/mock/5c37efe8c0c3ac784264cd1c/example/my
@@ -23,6 +32,7 @@ module.exports = {
       }
 
 
+>>>>>>> 175a49de62af7abe3e172a50c2f13f551f21f799
     },
 
     // Various Dev Server settings
