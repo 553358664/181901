@@ -30,28 +30,30 @@ export default {
     width: 100%;
     height: 100%;
     background: url(../../../assets/welogreg/welcome/dlzc_bj@2x.png) no-repeat;
-    //  background-size: 150% 150%;
-    // background-position: 10rem 10rem;
+    background-size: 100% 100%;
     display: flex;
+    align-items: center;
     flex-direction: column;
-    
-   .welcomeLogo {
-      width: 100%;
-      height: 4rem;
+    padding-top: 1.43rem;
+    .welcomeLogo {
+      width: 1.96rem;
+      height: 2.6rem;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       margin-bottom: .36rem;
+      background: url(../../../assets/welogreg/welcome/dlzc_logo@2x.png) no-repeat;
+       background-size: 100% 100%;
       .welcomeImg {
-        width: 1.96rem;
-        height: 2.6rem;
-        img {
+        width: 100%;
+        height: 100%;
+
+        /*img {
           width: 100%;
           height: 100%;
-        }
+        }*/
       }
-    }
-   
+     }
   }
 }
 </style>

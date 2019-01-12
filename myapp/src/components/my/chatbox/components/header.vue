@@ -2,7 +2,7 @@
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/> 
         <p>小雪</p>
-        <p>...</p>  
+        <img :src="more"/>  
     </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
      data(){
        return{
            back:require('@/assets/my/icon_wd_jt@2x.png'),
+           more:require('@/assets/my/icon_gwc_more@2x.png')
        }
    }
 }

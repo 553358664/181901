@@ -2,7 +2,7 @@
     <div class="myClassify">
         <ul>
             <li v-for="(item,index) in myNavs">
-                <router-link :to="{name:item.name}">
+                <router-link :to="{name:item.router}">
                     <img :src="item.icon"/>
                     <span>{{item.title}}</span>
                 </router-link>
@@ -17,24 +17,24 @@ export default {
         return {
             myNavs:[
                 {
-                    name:"follow",
+                    router:"follow",
                     title:"关注",
                     icon:require('../../../assets/my/icon_wd_gz@2x.png')
                     
                 },
                 {
-                    name:"fans",
+                    router:"fans",
                     title:"粉丝",
                     icon:require('../../../assets/my/icon_wd_fs@2x.png')
                 },
                 {
-                    name:"collection",
+                    router:"collection",
                     title:"收藏",
                     icon:require('../../../assets/my/icon_wd_shoucang@2x.png')
                    
                 },
                 {
-                    name:"draft ",
+                    router:"draft",
                     title:"草稿",
                     icon:require('../../../assets/my/icon_wd_cg@2x.png')
                     

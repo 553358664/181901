@@ -1,22 +1,51 @@
 <template>
     <div class="content">
          <ul>
-            <li v-for="(item,index) in contents">               
-                <router-link :to="{}">    
-                        <span class="classify">{{item.classify}}</span>                
-                        <span><img :src="item.headPic"/>
-                            <img class="icon-right" :src="iconRight"/>  
-                        </span>
-                                        
-                </router-link>
+            <li> 
+                <span>头像</span>                
+                <span><img :src="headPic"/>
+                    <img class="icon-right" :src="iconRight"/>  
+                </span>
+            </li>
+             <li> 
+                <span>昵称</span>                
+                <span><i>{{myList.username}}</i>
+                    <img class="icon-right" :src="iconRight"/>  
+                </span>
+            </li>
+            <li> 
+                <span>性别</span>                
+                <span><i>{{myList.sex}}</i>
+                    <img class="icon-right" :src="iconRight"/>  
+                </span>
+            </li>
+            <li> 
+                <span>出生年月</span>                
+                <span><i>{{myList.time}}</i>
+                    <img class="icon-right" :src="iconRight"/>  
+                </span>
+            </li>
+            <li> 
+                <span>个性签名</span>                
+                <span><i>{{myList.autograph}}</i>
+                    <img class="icon-right" :src="iconRight"/>  
+                </span>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+import Vuex from "vuex";
 export default {
-     
+    created(){
+        this.$store.dispatch("my/handleGet")     
+    },
+    computed:{
+        ...Vuex.mapState({
+            myList:state=>state.my.myList
+        })
+    },
     data(){
         return {          
             contents:[
@@ -43,6 +72,7 @@ export default {
                    
                 }
             ],
+         headPic:require('@/assets/my/wd_tx@2x.png'),
          iconRight:require('@/assets/my/icon_grxx_jt@2x.png')    
             
         }
@@ -61,13 +91,13 @@ export default {
         width: 100%;
         height: 100%;
     }
-    .content>ul,.content>ul>li,.content>ul>li>a{
+    .content>ul,.content>ul>li{
         width:100%;
         height:1.4rem;
         line-height: 1.4rem;
         border-bottom: 1px solid #D6D6D6 ;
     }
-    .content>ul>li>a{
+    .content>ul>li{
         display: flex;
         justify-content: space-between;
         align-items: center
@@ -77,6 +107,9 @@ export default {
     }
     span>img{
         vertical-align: middle
+    }
+    span>i{
+        font-size:.26rem;
     }
   
     
