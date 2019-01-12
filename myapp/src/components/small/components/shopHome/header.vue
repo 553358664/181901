@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     handle(index) {
-      (this.navIndex = index), this.$emit("Move", index);
+      this.navIndex = index;
+       this.$emit("Move", index);
     },
     handleIndex(X) {
       var len = this.scrollHeight.length;
@@ -55,7 +56,7 @@ export default {
   width: 100%;
   z-index: 11;
   height: 0.88rem;
-  background: rgba(252, 253, 248, 1);
+  background: #FCFCFA;
   display: flex;
   justify-content: space-between;
   align-items: center;

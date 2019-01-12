@@ -3,6 +3,7 @@
     <Header-com @Move="handleMove" :scrollT="scrollToggle"></Header-com>
     <div class="wrapper" ref="shopHomeWrapper">
       <div class="content">
+        <router-view/>
         <New-com></New-com>
         <div class="border"></div>
         <Nav-com></Nav-com>

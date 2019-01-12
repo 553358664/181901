@@ -11,14 +11,13 @@
     </div>
     <ul class="orderlist">
       <li v-for="(item,index) in navs" 
-        :key="index" 
         :class="activeIndex == index?'active':''"
         @click="handleToggle(index),viewstatechange(index+1)"
         >
         <span>{{item.title}}</span>
       </li>
     </ul>
-    <Orderlist-com></Orderlist-com>
+    <!-- <Orderlist-com></Orderlist-com> -->
   </div>
 </template>
 <script>
@@ -42,7 +41,7 @@ export default {
         })
     },
     components:{
-        "Orderlist-com":Orderlist
+        // "Orderlist-com":Orderlist
     },
     data(){
         return {

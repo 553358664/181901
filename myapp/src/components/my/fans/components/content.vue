@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper" ref="fansWrapper">
          <ul class="content">
-            <li v-for="(item,index) in fans">               
+            <li v-for="(item,index) in myList">               
                  <div>
                     <router-link :to="{name:'details'}">
                         <span><img :src="item.headPic"/></span>                                            
@@ -21,65 +21,20 @@ import BScroll from "better-scroll";
 export default {
      mounted(){
         this.scroll = new BScroll(this.$refs.fansWrapper,{
-            scrollY:true
+            scrollY:true,
+            click:true
         })
-        console.log(this.scroll);
+        // console.log(this.scroll);
     },
-     data(){
-        return {          
-            fans:[
-                {
-                    headPic:require("@/assets/my/wd_fs_tx1@2x.png"),
-                    username:'决明子',                   
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx2@2x.png"),
-                    username:'梅子黄时雨',
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx3@2x.png"),
-                    username:'曼殊沙华', 
-                },
-                {
-                   headPic:require("@/assets/my/wd_fs_tx4@2x.png"),
-                   username:'满天星',
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx1@2x.png"),
-                    username:'决明子',                   
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx2@2x.png"),
-                    username:'梅子黄时雨',
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx3@2x.png"),
-                    username:'曼殊沙华', 
-                },
-                {
-                   headPic:require("@/assets/my/wd_fs_tx4@2x.png"),
-                   username:'满天星',
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx1@2x.png"),
-                    username:'决明子',                   
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx2@2x.png"),
-                    username:'梅子黄时雨',
-                },
-                {
-                    headPic:require("@/assets/my/wd_fs_tx3@2x.png"),
-                    username:'曼殊沙华', 
-                },
-                {
-                   headPic:require("@/assets/my/wd_fs_tx4@2x.png"),
-                   username:'满天星',
-                }
-            ]
-            
-        }
-    }
+     created(){
+        this.$store.dispatch("my/handleGet")     
+    },
+    computed:{
+        ...Vuex.mapState({
+            myList:state=>state.my.myList
+        })
+    },
+    
 }
 </script>
 
