@@ -11,7 +11,7 @@
 
     <!--有该类订单的页面-->
     <div class="ordershow">
-      <div v-for="(item,index) in goodsList" v-show="item.state==viewState?true:false">
+      <div v-for="(item,index) in goodsList" v-show="item.state==viewState?true:false" :key="index">
         <div class="stateshow">
           <div class="stateshowleft">
             <div class="checkimg" v-show="item.state==1?true:false" @click="checkchange(index)">
@@ -121,7 +121,7 @@ export default {
   },
   created() {
     //模拟数据注释防止报错
-    // this.handleHomeData();
+    this.handleHomeData();
   },
   updated() {
     //避免出现因updated产生的点击事件多次触发的情况\

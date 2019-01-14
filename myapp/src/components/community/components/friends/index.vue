@@ -85,7 +85,7 @@ export default {
   methods: {
     ...Vuex.mapActions({
       handleArticle: "community/handleArticle",
-      handlePicShow: "community/handlePicShow"
+      // handlePicShow: "community/handlePicShow"
     })
   },
   mounted() {

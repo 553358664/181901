@@ -4,13 +4,9 @@ import My from "../../components/my"
 import Follow from "../../components/my/follow";
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
-<<<<<<< HEAD
-=======
-// import Draft from "../../components/my/draft";
 
 //个人信息 详细信息
 import PersonalInfo from "../../components/my/personalInfo";
->>>>>>> master
 import Details from "../../components/my/details"
 import sMall from "../../components/small"
 import sCar from "../../components/scar"
@@ -44,10 +40,6 @@ export default (
       name: "personalInfo",
       component: PersonalInfo
     },
-<<<<<<< HEAD
-    {
-      path: "/follow",
-=======
     //my部分的二级页面路由
     {
       path: "personalInfo",
@@ -56,7 +48,6 @@ export default (
     },
     {
       path: "follow",
->>>>>>> master
       name: "follow",
       component: Follow
     },

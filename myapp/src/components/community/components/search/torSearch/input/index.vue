@@ -1,80 +1,94 @@
 <template>
     <div class="search">
         <div class="seaHeader">
-            <div class="searchImg">
-                <img src="../../../../../../assets/community/qiu/back.png" alt="" @click="handleBack()">
-            </div>
-            <input type="text" class="searchText" ref="searchInp" :placeholder="search" @click="handleBlur()" :autofocus="autofocus">
-            <p class="searchTit">搜索</p>
-        </div>      
+        <div class="searchImg">
+            <img src="../../../../../../assets/community/qiu/back.png" alt @click="handleBack() ">
+        </div>
+        <input
+            v-focus
+           
+            type="text"
+            class="searchText"
+            ref="searchInp"
+            :placeholder="search"
+            @click="handleBlur()"
+            :autofocus="autofocus"
+        >
+        <p class="searchTit" @click="handleSearch()">搜索</p>
+        </div>
     </div>
 </template>
 <script>
 export default {
-     data(){
-        return{
-            search:"大家都在看“烈焰柔情一品红”",
-            autofocus:"autofocus"
-        }
+  data() {
+    return {
+      search: "大家都在看“烈焰柔情一品红”",
+      autofocus: "autofocus"
+    };
+  },
+  created() {
+    console.log(this);
+  },
+  methods: {
+    handleBack() {
+      this.$router.back();
     },
-    created(){      
-        console.log(this)
+    handleBlur() {
+      this.search = "";
     },
-    mounted(){
-        // this.handleFocus()
+    handleSearch() {
+
     },
-  methods:{
-      handleBack(){
-          this.$router.back()
-      },
-      handleFocus(){
-         this.$refs.searchInp.onfocus()
-      } ,
-     handleBlur(){
-           this.search=""
-      }  
+
+  },
+  directives:{
+      focus:{
+          function (el) {
+              el.focus()
+          }
+      }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-.search{
-    background:#FCFCFA;
+.search {
+  background: #fcfcfa;
 }
-    .seaHeader{ 
-        width:100%;
-        height:1.02rem;
-        display: flex;
-        justify-content: space-around;
-        align-items:center;
-        box-shadow:.01rem .02rem .04rem 0rem rgba(0, 0, 0, 0.06);
-        .searchImg{
-            img{
-            width:.22rem;
-            height:.44rem;
-            }
-        }
-        .searchText{
-            width:5.45REM;
-            height:.64rem;
-            background:rgba(238,238,238,1);
-            border-radius:.32rem;
-            border:0;
-            text-align: center;
-            font-size:.26rem;
-            font-family:PingFang-SC-Regular;
-            font-weight:400;
-            color:rgba(10,10,10,1);
-            opacity:0.8;
-        }
-        .searchTit{
-            width:.56rem;
-            height:.27rem;
-            font-size:.28rem;
-            font-family:PingFang-SC-Bold;
-            font-weight:bold;
-            color:rgba(7,7,7,1);
-            margin-bottom:.13rem;
-            margin-right:.12rem;
-        }
+.seaHeader {
+  width: 100%;
+  height: 1.02rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0.01rem 0.02rem 0.04rem 0rem rgba(0, 0, 0, 0.06);
+  .searchImg {
+    img {
+      width: 0.22rem;
+      height: 0.44rem;
     }
+  }
+  .searchText {
+    width: 5.45rem;
+    height: 0.64rem;
+    background: rgba(238, 238, 238, 1);
+    border-radius: 0.32rem;
+    border: 0;
+    text-align: center;
+    font-size: 0.26rem;
+    font-family: PingFang-SC-Regular;
+    font-weight: 400;
+    color: rgba(10, 10, 10, 1);
+    opacity: 0.8;
+  }
+  .searchTit {
+    width: 0.56rem;
+    height: 0.27rem;
+    font-size: 0.28rem;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(7, 7, 7, 1);
+    margin-bottom: 0.13rem;
+    margin-right: 0.12rem;
+  }
+}
 </style>
