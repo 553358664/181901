@@ -177,13 +177,15 @@ export default {
       background:#fff;
       margin-top:.65rem;
       margin-right:.1rem;
-      border:1px solid #777;
+      border:.01rem solid #777;
       img{
         width:100%;
         height:100%;
       }
     }
     .noBorder{
+      width:.39rem;
+      height:.33rem;
     border:none;
   }
   .goods {
