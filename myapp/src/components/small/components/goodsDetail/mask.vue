@@ -13,13 +13,14 @@ export default {};
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 21;
   .fade-enter,
   .fade-leave-to {
     opacity: 0;
   }
   .fade-enter-active,
   .fade-leave-active {
-    transition: all 200ms;
+    transition: all 3000ms;
   }
 }
 </style>

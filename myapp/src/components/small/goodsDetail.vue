@@ -1,5 +1,8 @@
 <template>
   <div id="goodsDetail">
+    <transition name="fade">
+      <Mask-com v-show="flag"></Mask-com>
+    </transition>
     <Header-com></Header-com>
     <div class="wrapper" ref="detailsWrapper">
       <div class="content">
@@ -15,9 +18,6 @@
     </div>
     <transition name="slide">
       <GoodsSelect-com v-show="flag" @handleQuit="handleQuit" :select="flagButton"></GoodsSelect-com>
-    </transition>
-    <transition name="fade">
-      <Mask-com v-show="flag"></Mask-com>
     </transition>
     <div id="goodsFooter">
       <a to="/" class="toShopCar" @click="handleCar">加入购物车</a>

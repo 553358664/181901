@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 #goodsShow {
   width: 100%;
-  height: 0.8rem;
+  height: 1.2rem;
   background: #f44c36;
   color:#f9eff0;
   font-weight: 400;
@@ -56,10 +56,10 @@ export default {
   padding:.15rem .25rem 0;
   justify-content: space-between;
   font-family: PingFangSC-Regular;
-  font-size:.18rem;
+  font-size:.28rem;
   .left{
       .price{
-          font-size:.22rem;
+          font-size:.44rem;
       }
       .point{
           margin-right: .05rem;
@@ -72,10 +72,11 @@ export default {
   .right{
       div{
           display: flex;
+           margin-top:.2rem;
            .time{
-          width:.25rem;
-          height:.25rem;
-          line-height: .25rem;
+          width:.35rem;
+          height:.35rem;
+          line-height: .35rem;
           display: block;
           background:#f9eff0;
           color:#151515;

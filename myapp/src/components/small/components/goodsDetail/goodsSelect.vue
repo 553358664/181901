@@ -70,7 +70,7 @@ export default {
   bottom: 0;
   background: #f7f7f7;
   width: 100%;
-  z-index: 11;
+  z-index: 22;
   .border {
     width: 100%;
     height: 0.01rem;
@@ -87,7 +87,7 @@ export default {
       width:100%;
       height:100%;
       display: block;
-      font-size: 32px;
+      font-size: .32rem;
       font-family: PingFangSC-Regular;
       font-weight: 400;
       color: rgba(255, 255, 255, 1);
@@ -101,6 +101,7 @@ export default {
     position: absolute;
     right: 0.24rem;
     top: 0.14rem;
+    background-size:100%
   }
   .goodsIntro {
     width: 100%;
@@ -112,6 +113,10 @@ export default {
         width: 1.42rem;
         height: 1.42rem;
         margin-top: -0.5rem;
+        img{
+          width:100%;
+          height:100%
+        }
       }
       .goodsInfo {
         margin-left: 0.14rem;
@@ -162,7 +167,7 @@ export default {
         bottom: -0.12rem;
         right: 0.35rem;
         height: 0.53rem;
-        border: 0.01rem solid rgba(224, 224, 224, 1);
+
         border-radius: 0.02rem;
         font-size: 0.24rem;
         font-family: PingFangSC-Light;
@@ -174,7 +179,7 @@ export default {
           width: 0.66rem;
           height: 0.53rem;
           background: rgba(244, 244, 244, 1);
-          border: 0.01rem solid rgba(224, 224, 224, 1);
+          border: 0;
           border-radius: 0.02rem;
         }
         input {

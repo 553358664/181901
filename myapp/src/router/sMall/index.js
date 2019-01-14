@@ -48,7 +48,11 @@ export default (
     {
     	path:"/hccs",
     	component:hccs,
-    	name:"hccs"
+      name: "hccs",
+      meta:{
+        flag:false,
+        requireAuth:true
+      }
     },
      {
     	path:"/hcyh",
