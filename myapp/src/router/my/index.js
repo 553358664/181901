@@ -1,12 +1,16 @@
 //my部分的二级页面路由
-//个人信息 关注 粉丝 收藏 草稿 
+// 关注 粉丝 收藏 草稿 
 import My from "../../components/my"
-import PersonalInfo from "../../components/my/personalInfo";
 import Follow from "../../components/my/follow";
-//my部分的二级页面路由
-//个人信息 关注 粉丝 收藏 草稿 
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
+<<<<<<< HEAD
+=======
+// import Draft from "../../components/my/draft";
+
+//个人信息 详细信息
+import PersonalInfo from "../../components/my/personalInfo";
+>>>>>>> master
 import Details from "../../components/my/details"
 import sMall from "../../components/small"
 import sCar from "../../components/scar"
@@ -40,8 +44,19 @@ export default (
       name: "personalInfo",
       component: PersonalInfo
     },
+<<<<<<< HEAD
     {
       path: "/follow",
+=======
+    //my部分的二级页面路由
+    {
+      path: "personalInfo",
+      name: "personalInfo",
+      component: PersonalInfo
+    },
+    {
+      path: "follow",
+>>>>>>> master
       name: "follow",
       component: Follow
     },
@@ -60,13 +75,27 @@ export default (
       name: "collection",
       component: Collection
     },
-    //my部分的三级级页面路由：详细信息
+    
+     //my部分的三级级页面路由：详细信息
+    {
+      path: "personalInfo",
+      name: "personalInfo",
+      component: PersonalInfo
+    },
     {
       path: "details",
       name: "details",
       component: Details
     },
-
+    {
+      path: "/chatbox",
+      name: "chatbox",
+      component: Chatbox,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
     {
       path: "/small",
       name: "small",
@@ -95,15 +124,7 @@ export default (
         requireAuth: true
       }
     },
-    {
-      path: "/chatbox",
-      name: "chatbox",
-      component: Chatbox,
-      meta: {
-        flag: false,
-        requireAuth: true
-      }
-    },
+    
     {
       path: "/myarticle",
       name: "myarticle",

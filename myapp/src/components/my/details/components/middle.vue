@@ -4,8 +4,8 @@
             <span><img :src="headPic"/></span>
             <div class="middle-info-r">
                 <span>{{username}}</span>
-                <span>ID号：{{id}}</span>
-                <span>地址：{{adress}}</span>
+                <span>ID号：{{myList.ID}}</span>
+                <span>地址：{{myList.adress}}</span>
             </div>
             <div class="line"></div>
         </div>
@@ -18,12 +18,21 @@
 </template>
 
 <script>
+import Vuex from "vuex";
 export default {
+    created(){
+        this.$store.dispatch("my/handleGet")     
+    },
+    computed:{
+        ...Vuex.mapState({
+            myList:state=>state.my.myList
+        })
+    },
     data(){
         return{
             headPic:require("@/assets/my/wd_gz_tx1@2x.png"),
             username:'绿豆', 
-            id:'73937482',
+            ID:'73937482',
             adress:'北京，朝阳区',
             iconRight:require('@/assets/my/icon_grxx_jt@2x.png')
         }
@@ -34,16 +43,16 @@ export default {
 <style lang="scss" scoped>
     .middle{
         width:100%;
-        height:2.4rem;
+        height:2.6rem;
         background:#FCFCFA ;        
         padding:.24rem 0 .14rem .24rem;
     }
     .middle-info{
         width:100%;
-        height:1.4rem;
+        height:1.6rem;
     }
     .middle-info-r>span:first-child{
-        font-size: .32rem;
+        font-size: .34rem;
         color:#0A0A0A 
     }
     .middle-info-r>span:nth-of-type(2),.middle-info-r>span:nth-of-type(3){
@@ -55,7 +64,7 @@ export default {
         height:.02rem;
         float:right;
         background:#D6D6D6;
-        margin-top:.2rem;
+        margin-top:.3rem;
     }
     .middle-info>span{
         float: left;
@@ -74,6 +83,9 @@ export default {
         padding-right:.24rem;
         height:.6rem;
         line-height: .6rem;
+    }
+    .middleTag p{
+        font-size:.28rem;
     }
 </style>
 

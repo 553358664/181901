@@ -11,14 +11,14 @@
     </div>
     <ul class="orderlist">
       <li v-for="(item,index) in navs" 
-        :key="index" 
         :class="activeIndex == index?'active':''"
         @click="handleToggle(index),viewstatechange(index+1)"
+        :key="index"
         >
         <span>{{item.title}}</span>
       </li>
     </ul>
-    <Orderlist-com></Orderlist-com>
+    <!-- <Orderlist-com></Orderlist-com> -->
   </div>
 </template>
 <script>
@@ -27,23 +27,23 @@ import Vuex from "vuex";
 import BScroll from "better-scroll";
 
 export default {
-    // computed: {
-    //     ...Vuex.mapState({
-    //         //订单可视状态
-    //         viewState:state=>state.Mylist.viewState
-    //     })
-    // },
-    // methods:{
-    //     handleToggle(index){
-    //         this.activeIndex = index;
-    //     },
-    //     ...Vuex.mapMutations({
-    //         viewstatechange:"Mylist/viewstatechange"
-    //     })
-    // },
-    // components:{
-    //     // "Orderlist-com":Orderlist
-    // },
+    computed: {
+        ...Vuex.mapState({
+            //订单可视状态
+            viewState:state=>state.Mylist.viewState
+        })
+    },
+    methods:{
+        handleToggle(index){
+            this.activeIndex = index;
+        },
+        ...Vuex.mapMutations({
+            viewstatechange:"Mylist/viewstatechange"
+        })
+    },
+    components:{
+        // "Orderlist-com":Orderlist
+    },
     data(){
         return {
             activeIndex:0,

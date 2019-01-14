@@ -26,8 +26,13 @@ export default {
         })
         .then((data)=>{
             data[params].show=!data[params].show
+<<<<<<< HEAD
             dispatch("handleArticle",data)
             console.log(data[params].show)
+=======
+            // dispatch("handleArticle",data)
+            // console.log(data[params].show)
+>>>>>>> master
         })
     } 
 }

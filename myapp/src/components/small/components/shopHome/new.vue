@@ -1,5 +1,6 @@
 <template>
   <div id="new" ref="new">
+    <router-link to="/xptj">
     <h1>新品推荐</h1>
     <h3 class="swiper-pagination banner-pagination"></h3>
     <div class="banner">
@@ -22,6 +23,7 @@
     </div>
     <h4>新年开运 | 79元起NEE</h4>
     <h5>旧的年尾，新的年初，奖励自己一束开运红花，还送花瓶</h5>
+    </router-link>
   </div>
 </template>
 <script>
