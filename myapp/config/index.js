@@ -17,10 +17,10 @@ module.exports = {
     		pathRewrite:{
     		    "^/api":""
     		}
-    	},
+    	}
       
-      // 模拟数据 easy-mock ——liuna
-      // https://www.easy-mock.com/mock/5c37efe8c0c3ac784264cd1c/example/my
+      //模拟数据 easy-mock ——liuna
+      //https://www.easy-mock.com/mock/5c37efe8c0c3ac784264cd1c/example/my
       // "/my":{
       //   target:"https://www.easy-mock.com",
       //   changeOrigin:true,
