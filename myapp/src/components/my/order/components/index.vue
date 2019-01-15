@@ -121,7 +121,7 @@ export default {
   },
   created() {
     //模拟数据注释防止报错
-    // this.handleHomeData();
+    this.handleHomeData();
   },
   updated() {
     //避免出现因updated产生的点击事件多次触发的情况\
@@ -133,7 +133,6 @@ export default {
     };
 
     //是否打开合并支付
-
     var rs = this.goodsList.some((item)=>{
       return item.checkflag == true;
     })
@@ -141,11 +140,6 @@ export default {
   }
 };
 </script>
-
-
-
-
-
 
 
 
