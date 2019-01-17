@@ -1,11 +1,11 @@
 <template>
-    <div class="publish">
-        <input type="file" accept="image/*" capture="camera">
+    <div class="publish">jlk
+        <img :src="pic" alt="">
         <div class="seaHeader">
             <div class="publishImg">
                 <img src="../../../../assets/community/qiu/back.png" alt="" @click="handleBack()" >
             </div>
-            <p class="publishTit">发布</p>
+            <p class="publishTit" @click="handlepublish()">发布</p>
         </div> 
         <div class="publishMain">
             <div contenteditable="true" class="publishInp" >{{publishMain}}</div>
@@ -19,14 +19,19 @@
     </div>
 </template>
 <script>
+import Vuex from "vuex"
     export default {
         data(){
             return{
-                publishMain:"zhang"
+                publishMain:"zhang",
+                pic:""
             }
         },
         methods:{
-             handleBack(){
+            ...Vuex.mapActions({
+                handlepublish:"communty/handlepublish"
+            }),
+            handleBack(){
                 this.$router.back()
             },
             handleAdd(){

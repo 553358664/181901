@@ -11,17 +11,9 @@ import Nearby from"../../components/community/components/nearby";
 import Search from"../../components/community/components/search";
 //发布视频
 import Publish from "../../components/community/components/publish"
+import Logistics from "../../components/my/order/components/logistics"
 export default(
     [
-      {
-        path:'/publish',
-        name:'publish',
-        component:Publish,
-        meta:{
-          flag:false
-        }
-      },
-
       {
         path: '/',
         redirect:"/community"
@@ -46,7 +38,11 @@ export default(
           requireAuth:false
         },
         children:[
-  
+          {
+            path:"logistics",
+            name:"logistics",
+            commponent:Logistics
+          },
           {
             path:"attention",
             name:"attention",

@@ -3,20 +3,20 @@
         <ul class="content nearbyUl">
             <li class="nearbyLi" v-for="(item,index) in nearItems" :key="index">
                 <div class="nearbyImg">
-                   <img src="../../../../assets/community/qiu/img_1.png" alt=""> 
+                   <img :src="item.articleCover" alt=""> 
                 </div>   
                 <div class="nearbyBox">
                     <p class="nearbyP">                      
-                    {{item.centent}}
+                    {{item.articleTitle}}
                     </p>
                     <div class="nearbyUser">
                         <div class="uerImg">
                             <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
                         </div> 
-                        <p class="userName">{{item.tit}}</p>  
+                        <p class="userName">{{item.username}}</p>  
                         <p class="userPraise">
                             <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
-                            <span class="praiseNum">{{item.prise}}</span>
+                            <span class="praiseNum">{{item.praise}}</span>
                         </p>                     
                     </div>
                 </div>            

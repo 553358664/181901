@@ -66,7 +66,7 @@
           <div class="s1cancellist" v-show="item.state==1? true : false">取消订单</div>
           <div class="s1paynow" v-show="item.state==1? true : false">立即支付</div>
           <div class="s2sendnow" v-show="item.state==2? true : false">提醒发货</div>
-          <div class="s3logistics" v-show="item.state==3? true : false">查看物流</div>
+          <div class="s3logistics" v-show="item.state==3? true : false"><router-link to="logistics">查看物流</router-link></div>
           <div class="s3extend" v-show="item.state==3? true : false">延长收货</div>
           <div class="s3confirm" v-show="item.state==3? true : false">确认收货</div>
           <div class="s4logistics" v-show="item.state==4? true : false">查看物流</div>
@@ -346,6 +346,9 @@ export default {
     > div:last-child {
       color: rgba(244, 76, 54, 1);
       border: 1px solid rgba(244, 76, 54, 1);
+      >a{
+        color: rgba(244, 76, 54, 1);
+      }
     }
   }
 }

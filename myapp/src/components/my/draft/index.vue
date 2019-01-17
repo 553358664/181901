@@ -25,19 +25,5 @@ export default {
         height:100%;
         position: relative;
         background:url(../../../assets/community/qiu/draft.png) no-repeat center #eeeeee;
-        // .zero{
-        //     position:absolute;
-        //     left:21%;
-        //     top:60.8%;
-        //     p{  
-        //         text-align: center;
-        //         font-size:.34rem;
-        //         font-family:PingFang-SC-Regular;
-        //         margin-bottom:.2rem;
-        //         font-weight:bold;
-        //         color:rgba(182,182,182,1);
-        //         z-index:-999;
-        //     }
-        // }
     }
 </style>

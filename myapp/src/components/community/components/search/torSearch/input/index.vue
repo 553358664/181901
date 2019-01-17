@@ -1,52 +1,47 @@
 <template>
-    <div class="search">
-        <div class="seaHeader">
-        <div class="searchImg">
-            <img src="../../../../../../assets/community/qiu/back.png" alt @click="handleBack() ">
-        </div>
-        <input
-            v-focus
-           
-            type="text"
-            class="searchText"
-            ref="searchInp"
-            :placeholder="search"
-            @click="handleBlur()"
-            :autofocus="autofocus"
-        >
-        <p class="searchTit" @click="handleSearch()">搜索</p>
-        </div>
+  <div class="search">
+    <div class="seaHeader">
+      <div class="searchImg">
+        <img src="../../../../../../assets/community/qiu/back.png" alt @click="handleBack() ">
+      </div>
+      <input
+        v-focus="flag"
+        type="text"
+        class="searchText"
+        ref="searchInp"
+        :placeholder="search"       
+        v-model="search"
+        @input="handleTouchUp(search)"
+      >
+      <p class="searchTit" @click="handleSearch(search)">搜索</p>
     </div>
+  </div>
 </template>
 <script>
+import axios from "../../../../../../lib";
+import Vuex from "vuex"
 export default {
   data() {
     return {
-      search: "大家都在看“烈焰柔情一品红”",
-      autofocus: "autofocus"
+      search: "",
+      flag: true
     };
   },
-  created() {
-    console.log(this);
-  },
   methods: {
+    ...Vuex.mapActions({
+      handleSearch : "community/handleSearch",
+      handleTouchUp:"community/handleTouchUp"
+    }),
     handleBack() {
       this.$router.back();
-    },
-    handleBlur() {
-      this.search = "";
-    },
-    handleSearch() {
-
-    },
-
+    }
   },
-  directives:{
-      focus:{
-          function (el) {
-              el.focus()
-          }
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
       }
+    }
   }
 };
 </script>
@@ -79,6 +74,7 @@ export default {
     font-weight: 400;
     color: rgba(10, 10, 10, 1);
     opacity: 0.8;
+    outline:none;
   }
   .searchTit {
     width: 0.56rem;

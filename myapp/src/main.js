@@ -12,22 +12,10 @@ import "./common/css/reset.css";
 import "./common/css/iconfont/iconfont.css";
 import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
-// //请求的拦截
-// axios.interceptors.request.use((config)=>{
-//   if(config.method == "post"){
-//     config.data = qs.stringify(config.data);   
-//   }
-//   return config;
-// })
+import "./mock";
+import Observer from "./observer";
 
-// //响应的拦截
-// axios.interceptors.response.use((res)=>{
-//   if(res.status){
-//     return res.data
-//   }
-// })
-Vue.config.productionTip = false
-
+Vue.prototype.Observer = Observer;
 
 
 /* eslint-disable no-new */

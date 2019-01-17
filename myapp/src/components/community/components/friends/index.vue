@@ -1,35 +1,31 @@
 <template>
   <div class="friendsOuter" ref="out">
-    <router-link :to="{name:publish}">
-      <img src="../../../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="flag">
+    <router-link :to="{name:this.publish}">
+      <img src="../../../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="this.flag">
     </router-link>
     <div class="friends wrapper" ref="homeWrapper">
       <ul class="content friendsUl">
         <li class="friendsLi" v-for="(item,index) in article" :key="index">
           <div class="friendsImg">
-            <img src="../../../../assets/community/qiu/img_1.png" alt>
+            <img :src="item.articleCover" alt>
           </div>
           <div class="friendsBox">
-            <p class="friendsP">{{item.centent}}</p>
+            <p class="friendsP">{{item.articleTitle}}</p>
             <div class="friendsUser">
               <div class="uerImg">
                 <img src="../../../../assets\community\qiu\content_icon_like@2x.png" alt>
               </div>
-              <p class="userName">{{item.tit}}</p>
+              <p class="userName">{{item.username}}</p>
               <div class="userPraise">
-                <div class="praiseImg" >
+                <div class="praiseImg" @click="handlePraise(item.artickeId,item.praise)">
                   <img
                     src="../../../../assets\community\qiu\content_icon-like2@2x.png"
                     alt
-                    v-show="item.show"
+                    v-if="item.show"
                   >
-                  <img
-                    src="../../../../assets\community\qiu\content_icon_like@2x.png"
-                    alt
-                    v-show="!item.show"
-                  >
+                  <img src="../../../../assets\community\qiu\content_icon_like@2x.png" alt v-else>
                 </div>
-                <span class="praiseNum">{{item.prise}}</span>
+                <span class="praiseNum">{{item.praise}}</span>
               </div>
             </div>
           </div>
@@ -41,12 +37,16 @@
 
 
 <script>
-// import Vue from "vue";
+import Vue from "vue";
 import Vuex from "vuex";
 import BScroll from "better-scroll";
+
+// import Mint from "mint-ui";
 // import { Header } from "mint-ui";
 // Vue.component(Header.name, Header);
 // import "mint-ui/lib/style.css";
+// Vue.use(Mint)
+
 export default {
   created() {
     this.handleArticle();
@@ -57,6 +57,7 @@ export default {
       article: state => state.community.articleList
     })
   },
+
   directives: {
     //浮点的拖拽
     drap(el) {
@@ -79,21 +80,23 @@ export default {
   data() {
     return {
       publish: "publish",
-      flag: false
+      flag: true
     };
   },
   methods: {
     ...Vuex.mapActions({
       handleArticle: "community/handleArticle",
-      // handlePicShow: "community/handlePicShow"
+      handlePraise: "community/handlePraise"
     })
   },
   mounted() {
-    this.scroll = new BScroll(this.$refs.homeWrapper, {
-      click: true,
-      pullUpLoad: true,
-      hasVerticalScroll: true
-    });
+    if (!this.scroll) {
+      this.scroll = new BScroll(this.$refs.homeWrapper, {
+        click: true,
+        pullUpLoad: true,
+        hasVerticalScroll: true
+      });
+    }
   }
 };
 </script>

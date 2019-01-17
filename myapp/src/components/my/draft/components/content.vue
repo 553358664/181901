@@ -1,7 +1,7 @@
 <template>
   <div class="draftContent">
     <ul class="draftMain">
-      <li class="draftList" v-for="(item,index) in list" :key="index">{{item.content}}</li>
+      <li class="draftList" v-for="(item,index) in list" :key="index" @click="handleDraft()">{{item.content}}</li>
     </ul>
   </div>
 </template>
@@ -10,7 +10,7 @@
 import Vuex from "vuex";
 export default {
   created() {
-    // this.handleContent();
+    this.handleContent();
   },
   computed: {
     ...Vuex.mapState({
@@ -21,7 +21,10 @@ export default {
     //请求数据
     ...Vuex.mapActions({
       handleContent: "Mydraft/handleContent"
-    })
+    }),
+    handleDraft(){
+      
+    }
   }
 };
 </script>

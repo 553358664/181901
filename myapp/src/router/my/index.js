@@ -19,6 +19,8 @@ import Myorder from "../../components/my/order"
 import Myfriends from "../../components/my/friends"
 import Myset from "../../components/my/set"
 
+
+
 //消息聊天框
 import Chatbox from "../../components/my/chatbox"
 
@@ -66,7 +68,6 @@ export default (
       name: "collection",
       component: Collection
     },
-    
      //my部分的三级级页面路由：详细信息
     {
       path: "personalInfo",

@@ -1,24 +1,18 @@
 <template>
     <div class="searchWrp">
-        <component :is="Search"></component>
+        <torSearch-com/>
     </div>
 </template>
 
 <script>
 export default {
-    components:{
-        "loginSearch-com":()=>import('./loginSearch'),
-        "torSearch-com":()=>import('./torSearch')
+    created(){
 
     },
-    data(){
-        return{
-            Search:"torSearch-com"
-        }
-    },
-    methods:{
-        
+    components:{
+        "torSearch-com":()=>import('./torSearch')
     }
+   
 }
 </script>
 <style lang="scss" scoped>
