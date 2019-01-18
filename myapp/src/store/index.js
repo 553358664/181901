@@ -2,10 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 import community from "./community";
 import my from "./my";
-Vue.use(Vuex);
-
 import register_login from "./register_login";
-
+import scar from "./scar"
 import small from "./small";
 
 // import Mylist from "./mylist";
@@ -17,7 +15,7 @@ const store = new Vuex.Store({
         register_login,
 
         small,
-
+        scar,
         // Mylist
     }
 })

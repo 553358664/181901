@@ -3,5 +3,10 @@ export default {
     scrollHeight: [],
     //wjl hccs
     result:[],
-    flowerName:[]
+    flowerName: [],
+    //商城
+    discount: [],
+    goodsDetail: [],
+    goodsSelect: [],
+    sCar: [],
 }

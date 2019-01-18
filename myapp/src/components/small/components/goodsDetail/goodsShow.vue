@@ -1,10 +1,10 @@
 <template>
   <div id="goodsShow">
     <div class="left">
-      <span class="price">{{9.90|price}}</span><span class="point">.</span>
-      <span class="priceDecimal">{{9.90|priceDecimal}}</span>
+      <span class="price">{{goodsDetail.goodsPrice|price}}</span><span class="point">.</span>
+      <span class="priceDecimal">{{goodsDetail.goodsPrice|priceDecimal}}</span>
       <div class="group">
-        <span class="oldPrice">{{49.00|oldPrice}}</span>
+        <span class="oldPrice">{{goodsDetail.goodsOldPrice|oldPrice}}</span>
         <span>5人拼团价</span>
       </div>
     </div>
@@ -20,7 +20,13 @@
   </div>
 </template>
 <script>
+import Vuex from "vuex";
 export default {
+    computed:{
+        ...Vuex.mapState({
+            goodsDetail:state=>state.small.goodsDetail
+        })
+    },
     filters:{
         price(val){
             val=Number(val).toFixed(2);

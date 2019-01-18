@@ -1,11 +1,18 @@
 <template>
   <div id="goodsSlogan">
-    <h1>9.9包邮|心想事橙 混合花束 温暖上心</h1>
-    <h2>2019潘通色珊瑚橙色为你开运，云南直发</h2>
+    <h1>{{goodsDetail.goodsName}}</h1>
+    <h2>{{goodsDetail.goodsDescription}}</h2>
   </div>
 </template>
 <script>
-export default {};
+ import Vuex from "vuex";
+export default {
+   computed:{
+        ...Vuex.mapState({
+            goodsDetail:state=>state.small.goodsDetail
+        })
+    },
+};
 </script>
 <style lang="scss" scoped>
 #goodsSlogan {

@@ -4,59 +4,31 @@
       <img src="@/assets/small/submitOrder/icon_shop.png" alt>
       花7的店
     </div>
-
     <ul class="order">
-      <li>
+     <li v-for="(item,index) in goods">
         <div class="goods">
           <div class="goodsPic">
-            <img src alt>
+            <img :src="item.goodsImg">
           </div>
           <div class="left">
-            <div class="goodsName">「单头康乃馨」|10枝，粉色、红色、橙fdasafsdfdsa</div>
-            <div class="goodsKind">红色（10枝）</div>
+            <div class="goodsName">{{item.goodsName}}</div>
+            <div class="goodsKind">{{item.goodsSize}}</div>
           </div>
           <div class="right">
-            <div class="goodsPrice">{{39.60|price}}</div>
-            <div class="goodsOldPrice">{{39.60|price}}</div>
-            <div class="goodsNum">{{3|num}}</div>
+            <div class="goodsPrice">{{item.goodsPrice|price}}</div>
+            <div class="goodsOldPrice">{{item.goodsOldPrice|price}}</div>
+            <div class="goodsNum">{{item.goodsNum|num}}</div>
           </div>
         </div>
         <div class="count">
           <div class="changeNum">
-            <button>-</button>
-            <input type="text" value="1">
-            <button>+</button>
+            <button @click="handleReduce(index)">-</button>
+            <input type="text" :value="item.goodsNum">
+            <button @click="handleAdd(index)">+</button>
           </div>
           <h2>
             小计:
-            <span class="countPrice">{{39.60|countPrice(3)}}</span>
-          </h2>
-        </div>
-      </li>
-     <li>
-        <div class="goods">
-          <div class="goodsPic">
-            <img src alt>
-          </div>
-          <div class="left">
-            <div class="goodsName">「单头康乃馨」|10枝，粉色、红色、橙fdasafsdfdsa</div>
-            <div class="goodsKind">红色（10枝）</div>
-          </div>
-          <div class="right">
-            <div class="goodsPrice">{{39.60|price}}</div>
-            <div class="goodsOldPrice">{{39.60|price}}</div>
-            <div class="goodsNum">{{3|num}}</div>
-          </div>
-        </div>
-        <div class="count">
-          <div class="changeNum">
-            <button>-</button>
-            <input type="text" value="3">
-            <button>+</button>
-          </div>
-          <h2>
-            小计:
-            <span class="countPrice">{{39.60|countPrice(3)}}</span>
+            <span class="countPrice">{{item.goodsNum|countPrice(item.goodsPrice)}}</span>
           </h2>
         </div>
       </li>
@@ -64,7 +36,16 @@
   </div>
 </template>
 <script>
+import Vuex from "vuex";
 export default {
+  computed:{
+    ...Vuex.mapState({
+      goods:state=>state.small.goodsSelect
+    })
+  },
+  created(){
+    console.log(this.goods)
+  },
   filters: {
     price(val) {
       val = Number(val).toFixed(2);
@@ -73,9 +54,15 @@ export default {
     num(val) {
       return "×" + val;
     },
-    countPrice(p, n) {
-      return "￥" + Number(n * p).toFixed(2);
+    countPrice(n,p) {
+      return "￥" + (Number(n * p*10)/10).toFixed(2);
     }
+  },
+  methods:{
+    ...Vuex.mapMutations({
+        handleReduce:"small/handleReduce",
+        handleAdd:"small/handleAdd"
+    })
   }
 };
 </script>
@@ -137,6 +124,7 @@ export default {
     .left {
       margin-left: 0.14rem;
       height: 100%;
+      width:6rem;
       .goodsName {
         font-size: 0.22rem;
         font-family: PingFang-SC-Regular;

@@ -18,7 +18,7 @@
       </div>
       <router-link to="/payOk">
         确认付款
-        <span>{{38.88|price}}</span>
+        <span>{{result|price}}</span>
       </router-link>
     </mt-popup>
     <Header-com></Header-com>
@@ -34,7 +34,7 @@
       <a @click="handleSubmit">提交订单</a>
       <div>
         合计:
-        <span class="TotalPrice">{{39.60|price}}</span>
+        <span class="TotalPrice">{{result|price}}</span>
       </div>
     </div>
   </div>
@@ -47,6 +47,7 @@ import address from "./components/submitOrder/address";
 import express from "./components/submitOrder/express";
 import message from "./components/submitOrder/message";
 import Vue from "vue";
+import Vuex from "vuex";
 import { Popup } from "mint-ui";
 Vue.component(Popup.name, Popup);
 export default {
@@ -54,6 +55,11 @@ export default {
     return {
       flag: false
     };
+  },
+  computed:{
+       ...Vuex.mapGetters({
+      result:"small/result"
+    })
   },
   components: {
     "Header-com": Header,

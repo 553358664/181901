@@ -1,72 +1,46 @@
 <template>
   <div id="sCarMain">
     <div class="shopName">
-      <img src="@/assets/small/submitOrder/icon_shop.png" alt>
+      <div class="check" :class="checkAll?'noBorder':''" @click="handleCheckAll(),ifChecked()">
+            <img src="@/assets/scar/check.png" v-show="checkAll">
+          </div>
+      <div class="shopPic"><img src="@/assets/small/submitOrder/icon_shop.png" alt></div>
       花7的店
     </div>
     <ul class="order">
       <!-- <mt-checklist v-model="value" :options="options"></mt-checklist> -->
-      <li>
+      <li v-for="(item,index) in sCarList">
         <div class="goodsItem">
-          <div class="check" :class="flagCheck?'noBorder':''" @click="handleCheck">
-            <img src="@/assets/scar/check.png" v-show="flagCheck" alt>
+          <div class="check" :class="item.flagCheck?'noBorder':''" @click="handleCheck(index),ifChecked()">
+            <img src="@/assets/scar/check.png" v-show="item.flagCheck" alt>
           </div>
           <div class="goods">
             <div class="goodsPic">
-            <img src alt>
+            <img :src=item.goodsImg>
           </div>
           <div class="left">
-            <div class="goodsName">「单头康乃馨」|10枝，粉色、红色、橙fdasafsdfdsa</div>
-            <div class="goodsKind">红色（10枝）</div>
+            <div class="goodsName">{{item.goodsName}}</div>
+            <div class="goodsKind">{{item.goodsSize}}</div>
           </div>
           <div class="right">
-            <div class="goodsPrice">{{39.60|price}}</div>
-            <div class="goodsOldPrice">{{39.60|price}}</div>
-            <div class="goodsNum">{{3|num}}</div>
+            <div class="goodsPrice">{{item.goodsPrice|price}}</div>
+            <div class="goodsOldPrice">{{item.goodsOldPrice|price}}</div>
+            <div class="goodsNum">{{item.goodsNum |num}}</div>
           </div>
           </div>
         </div>
         <div class="count">
+          <div>
+
+          </div>
           <div class="changeNum">
-            <button>-</button>
-            <input type="text" value="1">
-            <button>+</button>
+            <button @click="handleReduce(index)">-</button>
+            <input type="text" :value="item.goodsNum">
+            <button @click="handleAdd(index)">+</button>
           </div>
           <h2>
             小计:
-            <span class="countPrice">{{39.60|countPrice(3)}}</span>
-          </h2>
-        </div>
-      </li>
-       <li>
-        <div class="goodsItem">
-          <div class="check" :class="flagCheck?'noBorder':''" @click="handleCheck">
-            <img src="@/assets/scar/check.png" v-show="flagCheck" alt>
-          </div>
-          <div class="goods">
-            <div class="goodsPic">
-            <img src alt>
-          </div>
-          <div class="left">
-            <div class="goodsName">「单头康乃馨」|10枝，粉色、红色、橙fdasafsdfdsa</div>
-            <div class="goodsKind">红色（10枝）</div>
-          </div>
-          <div class="right">
-            <div class="goodsPrice">{{39.60|price}}</div>
-            <div class="goodsOldPrice">{{39.60|price}}</div>
-            <div class="goodsNum">{{3|num}}</div>
-          </div>
-          </div>
-        </div>
-        <div class="count">
-          <div class="changeNum">
-            <button>-</button>
-            <input type="text" value="1">
-            <button>+</button>
-          </div>
-          <h2>
-            小计:
-            <span class="countPrice">{{39.60|countPrice(3)}}</span>
+            <span class="countPrice">{{item.goodsNum|countPrice(item.goodsPrice)}}</span>
           </h2>
         </div>
       </li>
@@ -77,31 +51,16 @@
 /* import Vue from "vue";
 import { Checklist } from "mint-ui";
 Vue.component(Checklist.name, Checklist); */
+import Vuex from "vuex";
 export default {
-  data() {
-    return {
-      /* value: [],
-      //checklist设置
-      options: [
-        {
-          label: "选项A",
-          value: "A",
-        },
-        {
-          label: "选项B",
-          value: "B",
-        },
-        {
-          label: "选项C",
-          value: "C"
-        },
-        {
-          label: "选项D",
-          value: "D"
-        }
-      ] */
-      flagCheck:false
-    };
+  updated(){
+  this.ifChecked()
+  },
+  computed:{
+    ...Vuex.mapState({
+      sCarList:state=>state.scar.sCarList,
+      checkAll:state=>state.scar.checkAll
+    }),
   },
   filters: {
     price(val) {
@@ -111,18 +70,40 @@ export default {
     num(val) {
       return "×" + val;
     },
-    countPrice(p, n) {
+    countPrice(n, p) {
       return "￥" + Number(n * p).toFixed(2);
     }
   },
   methods:{
-    handleCheck(){
-      this.flagCheck=!this.flagCheck
-    }
+    ...Vuex.mapMutations({
+        handleReduce:"scar/handleReduce",
+        handleAdd:"scar/handleAdd",
+        handleCheck:"scar/handleCheck",
+        handleCheckAll:"scar/handleCheckAll",
+        ifChecked:"scar/ifChecked"
+    })
   }
 };
 </script>
 <style lang="scss" scoped>
+ .check{
+    display:inline-block;
+      width:.33rem;
+      height:.33rem;
+      border-radius: 50%;
+      background:#fff;
+      margin-top:.65rem;
+      margin-right:.1rem;
+      border:.02rem solid #777;
+      vertical-align: bottom;
+      img{
+        width:100%;
+        height:100%;
+      }
+    }
+   .noBorder{
+    border:none;
+    }
 .changeNum {
   vertical-align: bottom;
   height: 0.33rem;
@@ -154,11 +135,16 @@ export default {
   padding: 0.31rem 0 0.31rem 0.26rem;
   .shopName {
     margin-bottom: 0.34rem;
-    img {
+    
+    .shopPic {
       display: inline-block;
       width: 0.3rem;
       height: 0.3rem;
       vertical-align: bottom;
+      img{
+        width:100%;
+        height:100%;
+      }
     }
   }
   .order li {
@@ -167,26 +153,6 @@ export default {
   }
   .goodsItem{
     display:flex;
-    justify-content: space-around;
-  }
-  .check{
-    display:inline-block;
-      width:.39rem;
-      height:.33rem;
-      border-radius: 50%;
-      background:#fff;
-      margin-top:.65rem;
-      margin-right:.1rem;
-      border:.01rem solid #777;
-      img{
-        width:100%;
-        height:100%;
-      }
-    }
-    .noBorder{
-      width:.39rem;
-      height:.33rem;
-    border:none;
   }
   .goods {
     display: flex;
@@ -196,6 +162,7 @@ export default {
     font-size: 0.2rem;
     background: #f7f7f7;
     padding: 0.1rem 0.27rem 0.1rem 0;
+    width:7rem;
     .goodsPic {
       img {
         width: 1.63rem;
@@ -205,6 +172,7 @@ export default {
     }
     .left {
       margin-left: 0.14rem;
+      width:3.8rem;
       height: 100%;
       .goodsName {
         font-size: 0.22rem;
