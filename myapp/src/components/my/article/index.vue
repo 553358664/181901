@@ -11,12 +11,12 @@
             <ul class="content">
                 <li v-for="(item,index) in articleList" :key="index">
                     <div class="cover">
-                        <img src="../../../assets/my/yq/wd_wz_tp@2x.png"/>
+                        <img :src="item.articleCover">
                     </div>
                     <div class="describe">
-                        {{item.content|Castration(item)}}  
+                        {{item.articleContent|Castration(item)}}  
                     </div>
-                    <div class="more" v-if="item.content.length>25" @click="speard(index)">
+                    <div class="more" v-if="item.articleContent.length>40" @click="speard(index)">
                         <span v-show="!item.speard">展开全部</span>
                         <span v-show="item.speard">收起内容</span>
                     </div>
@@ -33,9 +33,9 @@ import Vuex from "vuex";
 export default {
     filters:{
         Castration(c,i){
-            if( c.length>25){
+            if( c.length>40){
                 if(i.speard==false){
-                    return c.slice(0,25)+"..."
+                    return c.slice(0,40)+"..."
                 }
                 else{
                     return c
@@ -56,7 +56,7 @@ export default {
     },
     created(){
         //模拟数据注释防止报错
-        //this.handleAtData();
+        this.handleAtData();
     },
     methods:{
         //获取文章数据

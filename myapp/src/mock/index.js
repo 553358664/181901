@@ -14,4 +14,11 @@ Mock.mock(/\/article/,"get",Api.article)
 
 //修改数据
 // Mock.mock(/\/ModifyShop/,"post",Api.modifyShop)
+import ApiArticle from "../api/article";
+import ApiMylist from "../api/mylist";
+
+//获取文章数据
+Mock.mock(/\/article/,"get",ApiArticle.article)
+Mock.mock(/\/mylist/,"get",ApiMylist.myList)
+
 

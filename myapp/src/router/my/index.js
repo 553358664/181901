@@ -20,6 +20,12 @@ import Myfriends from "../../components/my/friends"
 import Myset from "../../components/my/set"
 
 
+//设置3级页面
+import Opinion from "../../components/my/set/opinion"
+import Updatepw from "../../components/my/set/updatepw.vue"
+
+//立即评价
+import Discuss from "../../components/my/order/components/discuss.vue"
 
 //消息聊天框
 import Chatbox from "../../components/my/chatbox"
@@ -152,6 +158,35 @@ export default (
         flag: false,
         requireAuth: true
       }
-    }
+    },
+    //我的=>设置=>三级页面
+    {
+      path: "/opinion",
+      name: "opinion",
+      component: Opinion,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    {
+      path: "/updatepw",
+      name: "updatepw",
+      component: Updatepw,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
+    //立即评价
+    {
+      path: "/discuss",
+      name: "discuss",
+      component: Discuss,
+      meta: {
+        flag: false,
+        requireAuth: true
+      }
+    },
   ]
 )

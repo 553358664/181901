@@ -6,16 +6,20 @@ import router from './router'
 import store from "./store";
 //修改全局mint-ui的scss文件
 import "./common/css/my-mint.scss";
-// import axios from "axios"
-// import qs from "qs"
+
 import "./common/css/reset.css";
 import "./common/css/iconfont/iconfont.css";
 import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
-import "./mock";
-import Observer from "./observer";
+// import "../node_modules/touchjs/dist/touch-0.2.14.js"
+// Vue.config.productionTip = false
+// Vue.use(VueDnd)
 
-Vue.prototype.Observer = Observer;
+
+import "./mock";
+
+
+Vue.config.productionTip = false
 
 
 /* eslint-disable no-new */
