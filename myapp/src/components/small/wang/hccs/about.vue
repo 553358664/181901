@@ -1,13 +1,15 @@
 <template>
-	<div id="about_hccs">
-		 <div id="about_ewm"></div>
-		 <p id="about_p1">长按图片【识别二维码】关注微信号</p>
-		 <p id="about_p2">你还可以</p>
-		 <p id="about_p3">1.打开微信，点击“添加朋友”</p>
-		 <p id="about_p4">2.点击“公众号”</p>
-		 <p id="about_p5">3.搜索公众号：huaqiforyou</p>
-		 <p id="about_p6">4.点击“关注”，完成</p>
-	</div>
+		<div id="about_hccs">
+			 <div id="about_ewm"></div>
+			 <p id="about_p1">长按图片【识别二维码】关注微信号</p>
+			 <p id="about_p2">你还可以</p>
+			 <p id="about_p3">1.打开微信，点击“添加朋友”</p>
+			 <p id="about_p4">2.点击“公众号”</p>
+			 <p id="about_p5">3.搜索公众号：huaqiforyou</p>
+			 <p id="about_p6">4.点击“关注”，完成</p>
+		 <Foot-com/>
+		</div>
+
 </template>
 <style>
 	#about_hccs{
@@ -69,5 +71,10 @@
 	}
 </style>
 <script>
-	
+	import Foot from "./foot.vue";
+	export default{
+		components:{
+			"Foot-com":Foot
+		}
+	}
 </script>

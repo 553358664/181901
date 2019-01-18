@@ -1,10 +1,12 @@
 <template>
 	<div id="main_hccs">
-		<div id="list_hccs">
-			<h3>冬季限定</h3>
-			<ul v-for="(item,index) in flowerName">
-				<li>{{item}}</li>
-			</ul>
+		<div id="list_support">
+			<div id="list_hccs" v-show="!val">
+				<h3>冬季限定</h3>
+				<ul v-for="(item,index) in flowerName">
+					<li>{{item}}</li>
+				</ul>
+			</div>
 		</div>
 		<div id="classify">
 			<div class="classify" v-for="(item,index) in result">
@@ -44,6 +46,9 @@
 			return{
 				flag:true
 			}
+		},
+		props:{
+			val:Boolean
 		},
 		computed:{
 			...Vuex.mapState({
@@ -95,6 +100,10 @@
 		justify-content:space-between;
 		margin-top:0.14rem;
 		background:#FCFCFA;
+	}
+	#list_support{
+		width:1.2rem;
+		height:auto;
 	}
 	#list_hccs{
 		width:1.2rem;
