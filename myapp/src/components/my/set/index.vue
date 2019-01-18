@@ -13,25 +13,25 @@
                     <div class="Setlistleft">开启位置</div>
                     <div class="Setlistright"> <Switch-com v-model="flag"></Switch-com> </div>
                 </li>
+                <router-link to="updatepw">
                 <li>
                     <div class="Setlistleft">账号与安全</div>
                     <div class="Setlistright">
                         <img src="../../../assets/my/yq/icon_grxx_jt @3x.png">
                     </div>
                 </li>
+                </router-link>
+                <router-link to="opinion">
                 <li>
                     <div class="Setlistleft">意见反馈</div>
                     <div class="Setlistright">
                         <img src="../../../assets/my/yq/icon_grxx_jt @3x.png">
                     </div>
                 </li>
+                </router-link>
                 <li @click="handdle()">
                     <div class="Setlistleft">检查更新</div>
                     <div class="Setlistright">花7 1.0</div>
-                </li>
-                <li>
-                    <div class="Setlistleft">清除缓存</div>
-                    <div class="Setlistright">28.5M</div>
                 </li>
             </ul>
         </div>
@@ -103,7 +103,7 @@ export default {
         line-height: 1rem;
         border-bottom: 1px solid #E2E2E2;
     }
-    .SetmyList>ul>li{
+    .SetmyList ul li{
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -122,7 +122,7 @@ export default {
         width: 100%;
         height: .98rem;
         background:rgba(244,76,54,1);
-        font-size:32px;
+        font-size:.32rem;
         font-family:PingFang-SC-Regular;
         font-weight:bold;
         color:rgba(255,254,254,1);
