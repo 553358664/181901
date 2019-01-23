@@ -1,15 +1,17 @@
 <template>
     <div class="registerForm" >
-        <!-- 忘记密码验证-->
+        <!-- 注册验证-->
         <div class="formContent">
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username.username" @blur="handleUsername()"></div>
-            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode" v-model="authCode" @blur="checkCode()" ></section><span v-show="sendAuthCode" class="auth_text auth_text_blue"  @click="getAuthCode()">获取验证码</span>
-    <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue">{{auth_time}} </span> 秒之后重新获取</span></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1.password1" @blur="handlePassword1()"></div>
-            <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2.password2" @blur="handlePassword2()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username" @blur="handleUsername()" autocomplete="off"></div>
+            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode" @blur="handleVcode()" v-model="tCode"></section>    
+            	<span v-show="sendAuthCode" class="auth_text auth_text_blue"  @click="getAuthCode">获取验证码</span>
+    <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue">{{auth_time}} </span> 秒之后重新获取</span>
+</div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_mm@2x.png"></span></label><input type="password" placeholder="密码" id="password" v-model="password1" @blur="handlePassword1()"></div>
+            <div><label><span><img src="../../../../assets/welogreg/register/icon_qrmm@2x.png"></span></label><input type="password" placeholder="确认密码" id="password1" v-model="password2" @blur="handlePassword2()"></div>
             <section class="dibu">
-            	<span class="tishi" v-show="tShow.tShow">
-	            	{{tishi.tishi}}
+            	<span class="tishi" v-show="tShow">
+	            	{{tishi}}
 	            </span>
 	            <input type="button" id="sub" name="" value="修改" @click="checkForm();"/>
             </section>
@@ -23,96 +25,106 @@ import axios from "axios"
 export default {
     data(){
         return {
-           authCode:"",
-           
-           sendAuthCode:true,/*布尔值，通过v-show控制显示‘获取按钮’还是‘倒计时’ */
-        	auth_time: 0,
-        	codeFlag:false,
-        	
+            autoCode:"获取验证码",
+	        sendAuthCode:true,/*布尔值，通过v-show控制显示‘获取按钮’还是‘倒计时’ */
+	        auth_time: 0, /*倒计时 计数器*/
+	        vCode:"55",
+	        tCode:"",
+	        flagCode:false,
+	        username:"",
+		    password1:"",
+		    password2:"",
+		    tishi:"",
+		    tShow:false,
+		    userFlag:false,
+			pwdFlag:false,
+			pwdFlag1:false,
+			flagShow:false,
+			authCode1:"",
         }
     },
     computed:{
-    	...Vuex.mapState({
-    		username:state=>state.register_login,
-    		password1:state=>state.register_login,
-    		password2:state=>state.register_login,
-    		tishi:state=>state.register_login,
-    		tShow:state=>state.register_login,
-    		userFlag:state=>state.register_login,
-    		pwdFlag:state=>state.register_login,
-    		pwdFlag1:state=>state.register_login,
-    		
-    	})
+    	
     },
     created(){
 	
     },
     methods:{
-    	...Vuex.mapMutations({
-    		handleUsername:"register_login/handleUsername",
-    			handlePassword1:"register_login/handlePassword1",
-
-    	}),
+//  	...Vuex.mapMutations({
+//  		handleUsername:"register_login/handleUsername",
+//  			handlePassword1:"register_login/handlePassword1",
+//
+//  	}),
     	...Vuex.mapActions({
 //  		addUser:"register_login/addUser",
-			handleCode:"register/login/handleCode"
     		
     	}),
-    	
-    	
-       
-        getAuthCode() {
+    	handleUsername(){
+    	var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    		if(reg.test(this.username)){
+    			this.userFlag = true;
+    			
+    		}else{
+    			this.userFlag = false;
+    			this.tShow = true;
+    			this.tishi = "手机号不符合规范";
+    		}
+	    },
+	    handlePassword1(){
+			var reg = /^\w{6,12}$/;
+			if(reg.test(this.password1)){
+				this.pwdFlag = true;
+			}else{
+				this.pwdFlag = false;
+				this.tShow = true;
+				this.tishi = "密码格式为6-12位数字字母下划线";
+			}
+		},
+    	getAuthCode() {
     		axios({
 	            method:"get",
-	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+	            				url:"http://localhost:3000/userlist?username="+this.username,
 	            
 	        }).then((data)=>{
 	        	if(data.data.length!=0){
 	        		this.sendAuthCode = false;
 		            this.auth_time = 30;
-		           // console.log(data.data[0].password)
 		            var auth_timetimer =  setInterval(()=>{
 		                this.auth_time--;
-		                
 		                if(this.auth_time<=0){
 		                    this.sendAuthCode = true;
 		                    clearInterval(auth_timetimer);
 		                }
 		            }, 1000);
-		            
+		            console.log(data,99999,data.status);
+		            this.vCode = data.status;
+		            console.log(this.vCode,88888);
+		            alert(this.vCode)
 	        	}else{
-	        		alert("用户名不存在")
+	        		alert("用户名不存在");
+	        		this.tShow = true;
+	        		this.tishi = "用户名不存在";
 	        	}
-//	        	 this.checkCode();
-//		            if(a == data.data[0].password){
-//		            	this.codeFlag = true;
-//		            	console.log(this.codeFlag)
-//		            	alert(111111)
-//		            }else{
-//		            	this.codeFlag = false;
-//		            	alert(22222)
-//		            }
 	        })
             
         },
-        checkCode(){
-        	return this.authCode;
-        },
-//      handleCode(){
-//      	if(this.authCode == this.authCode1){
-//      		this.codeFlag = true;
-//      		alert("right")
-//      	}else{
-//      		alert("err");
-//      	}
-//      },
+		handleVcode(){
+			if(this.tCode == this.vCode){
+				
+				this.flagCode=true;
+			}else{
+				this.flagCode=false;
+				this.tShow = true;
+	        	this.tishi= "验证码输入不正确";
+			}
+		},
     	checkForm(){
-    		//表单验证
-    		if(this.userFlag.userFlag && this.pwdFlag.pwdFlag && this.pwdFlag1.pwdFlag1){
-    			//查询需要修改的数据
-    		axios({
+    		
+    		if(this.userFlag && this.pwdFlag && this.pwdFlag1){
+    			alert(55555555555)
+    		      		axios({
 	            method:"get",
-	            				url:"http://localhost:3000/userlist?username="+this.username.username,
+	            				url:"http://localhost:3000/userlist?username="+this.username,
 	  
 	            
 	        })
@@ -124,7 +136,7 @@ export default {
 	        		url:"http://localhost:3000/userlist/"+aaaa.data[0].id,
 	        		data:{
 	        			
-	        			"password":this.password1.password1
+	        			"password":this.password1
 	        		}
 	        	}).then((data)=>{
 	        		if(data.status==200){
@@ -134,6 +146,7 @@ export default {
 	        	})
 	           
 	          })
+	        
 	        }
 //  			console.log(this.username.username)
 //  			if(this.checkUser(this.username.username)){
@@ -156,11 +169,11 @@ export default {
     	},
     	handlePassword2(){
     		if(this.password1 == this.password2){
-    			this.pwdFlag1.pwdFlag1 = true;
+    			this.pwdFlag1 = true;
     		}else{
-    			this.pwdFlag1.pwdFlag1 = false;
-    			this.tShow.tShow = true;
-    			this.tishi.tishi = "两次密码输入不一致";
+    			this.pwdFlag1 = false;
+    			this.tShow = true;
+    			this.tishi= "两次密码输入不一致";
     		}
     	},
     	
