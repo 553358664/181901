@@ -4,9 +4,11 @@
 		<div class="wrapper" ref="wrapper_hccs">
 			<div class="content">
 				<Banner-com/>
-		        <Main-com/>
+		        <Main-com :val="flag"/>
 			</div>
 		</div>
+		    <Nav-com v-show="flag"></Nav-com>
+		<Foot-com/>
 	</div>
 </template>
 <script>
@@ -15,12 +17,21 @@
     import Head from "../../components/goodsDetail/header";
     import Main from "./main.vue";
     import Banner from "./banner.vue";
+    import Nav from "./nav.vue";
+    import Foot from "./foot.vue";
     import BScroll from "better-scroll";
 	export default{
+		data(){
+			return{
+				flag:false
+			}
+		},
 		components:{
 			"Head-com":Head,
 			"Main-com":Main,
-			"Banner-com":Banner
+			"Banner-com":Banner,
+			"Nav-com":Nav,
+			"Foot-com":Foot
 		},
 		computed:{
 			...Vuex.mapState({
@@ -30,10 +41,18 @@
 		mounted(){
 			
 				this.scroll=new BScroll(this.$refs.wrapper_hccs,{
-					pullUpLoad:true
+					pullUpLoad:true,
+					probeType:2
 				});
 				this.scroll.on("pullingUp",()=>{
 					this.handleUpdate();
+			   });
+			   this.scroll.on("scroll",({x,y})=>{
+			    	if(y<-710){
+			    		this.flag=true
+			    	}else{
+			    		this.flag=false
+			    	}
 			    })
 			
 		},

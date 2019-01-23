@@ -4,65 +4,122 @@
     <div class="goodsIntro">
       <div class="goodsMain">
         <div class="goodsPic">
-          <img src="@/assets/small/goodsDetail/goods_pic.png" alt>
+          <img :src="goodsDetail.goodsImg" alt>
         </div>
         <div class="goodsInfo">
-          <h1>「多头玫瑰」| 4枝，黄色、橙色、粉色、红...</h1>
-          <h2>¥10.45</h2>
+          <h1>{{goodsDetail.goodsName}}</h1>
+          <h2>{{goodsDetail.goodsPrice|price}}</h2>
         </div>
       </div>
       <div class="border"></div>
       <div class="Kind">
         <h3>规格:</h3>
         <ul>
-          <li>
-            <label><input type="radio" name="kind">黄色系 (4枝)</label>
-          </li>
-          <li>
-            <label><input type="radio" name="kind">黄色系 (4枝)</label>
-          </li>
-          <li>
-            <label><input type="radio" name="kind">黄色系 (4枝)</label>
-          </li>
-          <li>
-            <label><input type="radio" name="kind">黄色系 (4枝)</label>
-          </li>
-          <li>
-            <label><input type="radio" name="kind">黄色系 (4枝)</label>
-          </li>
+          <label v-for="(item,index) in goodsDetail.goods">
+            <li :class="index==checkIndex?'active':''" @click="handleClick(index)">
+              <input type="radio" name="kind">
+              {{item.name}}
+            </li>
+          </label>
         </ul>
       </div>
       <div class="border"></div>
       <div class="numSelect">
         <h3>购买数量:</h3>
         <div class="goodsNum">
-          <button>-</button>
-          <input type="text" value="1">
-          <button>+</button>
+          <button @click=handleReduce>-</button>
+          <input type="text" ref="num" v-model="number">
+          <button @click=handleAdd>+</button>
         </div>
       </div>
     </div>
-    <div class="selectFooter">
-      <router-link :to="select?'/submitOrder':''" class="toOk" >确定</router-link>
+    <div class="selectFooter" @click="handleOk">
+      <router-link :to="select&&checkIndex>0?'/submitOrder':''">确定</router-link>
     </div>
   </div>
 </template>
 <script>
+import Vuex from "vuex";
+import { Toast } from "mint-ui";
 export default {
-  props:["select"],
-    methods:{
-        handle(){
-            this.$emit("handleQuit")
-        }
+  data() {
+    return {
+      checkIndex: -1,
+      number:1
+    };
+  },
+  filters: {
+    price(val) {
+      val = Number(val).toFixed(2);
+      return "￥" + val;
     }
+  },
+  props: ["select"],
+  computed: {
+    ...Vuex.mapState({
+      goodsDetail: state => state.small.goodsDetail
+    }),
+  },
+  methods: {
+    handleReduce(){
+      this.number--;
+      if(this.number<=0){
+        this.number=1
+      }
+    },
+    handleAdd(){
+      this.number++;
+    },
+    handle() {
+      this.$emit("handleQuit");
+    },
+    handleClick(index) {
+      this.checkIndex = index;
+    },
+    ...Vuex.mapMutations({
+      handleSelect: "small/handleSelect",
+    }),
+    ...Vuex.mapActions({
+      handleAddSCar:"scar/handleAddSCar"
+    }),
+    handleOk(index) {
+      if(this.checkIndex==-1){
+        return
+      }
+      if (!this.select) {
+        this.handle();
+        Toast({
+          message: "已添加至购物车",
+          position: "middle",
+          duration: 1500
+        });
+      }
+      var obj = {};
+      obj.goodsId = this.goodsDetail.goodsId;
+      obj.goodsName = this.goodsDetail.goodsName;
+      obj.goodsPrice = this.goodsDetail.goodsPrice;
+      obj.goodsOldPrice = this.goodsDetail.goodsOldPrice;
+      obj.goodsNum = Number(this.$refs.num.value);
+      obj.goodsImg = this.goodsDetail.goodsImg;
+      obj.goodsSize = this.goodsDetail.goods[this.checkIndex].name;
+      //obj.kind=this.goodsDetail.goods
+      if(this.select){
+        this.handleSelect(obj);
+      }else{
+        this.handleAddSCar(obj)
+      }
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
-.slide-enter,.slide-leave-to{
+.slide-enter,
+.slide-leave-to {
   transform: translateY(100%);
 }
-.slide-enter-active,.slide-leave-active{
-  transition: all 300ms
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 300ms;
 }
 #goodsSelect {
   position: absolute;
@@ -70,7 +127,7 @@ export default {
   bottom: 0;
   background: #f7f7f7;
   width: 100%;
-  z-index: 11;
+  z-index: 22;
   .border {
     width: 100%;
     height: 0.01rem;
@@ -84,10 +141,10 @@ export default {
     margin-top: 0.22rem;
     text-align: center;
     a {
-      width:100%;
-      height:100%;
+      width: 100%;
+      height: 100%;
       display: block;
-      font-size: 32px;
+      font-size: 0.32rem;
       font-family: PingFangSC-Regular;
       font-weight: 400;
       color: rgba(255, 255, 255, 1);
@@ -101,6 +158,7 @@ export default {
     position: absolute;
     right: 0.24rem;
     top: 0.14rem;
+    background-size: 100%;
   }
   .goodsIntro {
     width: 100%;
@@ -112,6 +170,10 @@ export default {
         width: 1.42rem;
         height: 1.42rem;
         margin-top: -0.5rem;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
       .goodsInfo {
         margin-left: 0.14rem;
@@ -151,6 +213,9 @@ export default {
           font-weight: 300;
           color: rgba(10, 10, 10, 1);
         }
+        .active {
+          border: 0.01rem solid #f00;
+        }
       }
     }
     .numSelect {
@@ -162,7 +227,7 @@ export default {
         bottom: -0.12rem;
         right: 0.35rem;
         height: 0.53rem;
-        border: 0.01rem solid rgba(224, 224, 224, 1);
+
         border-radius: 0.02rem;
         font-size: 0.24rem;
         font-family: PingFangSC-Light;
@@ -174,7 +239,7 @@ export default {
           width: 0.66rem;
           height: 0.53rem;
           background: rgba(244, 244, 244, 1);
-          border: 0.01rem solid rgba(224, 224, 224, 1);
+          border: 0;
           border-radius: 0.02rem;
         }
         input {
@@ -182,7 +247,7 @@ export default {
           width: 0.66rem;
           height: 0.4rem;
           border: none;
-           text-align: center;
+          text-align: center;
         }
       }
     }

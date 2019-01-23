@@ -17,11 +17,11 @@
         <span>{{item.title}}</span>
       </li>
     </ul>
-    <!-- <Orderlist-com></Orderlist-com> -->
+    <orderlist-com></orderlist-com>
   </div>
 </template>
 <script>
-// import Orderlist from "./components";
+import Orderlist from "./components";
 import Vuex from "vuex";
 import BScroll from "better-scroll";
 
@@ -41,7 +41,7 @@ export default {
         })
     },
     components:{
-        // "Orderlist-com":Orderlist
+        "orderlist-com":Orderlist
     },
     data(){
         return {

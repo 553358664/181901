@@ -4,55 +4,31 @@
       <img src="@/assets/small/submitOrder/icon_shop.png" alt>
       花7的店
     </div>
-
     <ul class="order">
-      <li>
+     <li v-for="(item,index) in goods">
         <div class="goods">
           <div class="goodsPic">
-            <img src alt>
+            <img :src="item.goodsImg">
           </div>
           <div class="left">
-            <div class="goodsName">「单头康乃馨」|10枝，粉色、红色、橙fdasafsdfdsa</div>
-            <div class="goodsKind">红色（10枝）</div>
+            <div class="goodsName">{{item.goodsName}}</div>
+            <div class="goodsKind">{{item.goodsSize}}</div>
           </div>
           <div class="right">
-            <div class="goodsPrice">{{39.60|price}}</div>
-            <div class="goodsOldPrice">{{39.60|price}}</div>
-            <div class="goodsNum">{{3|num}}</div>
+            <div class="goodsPrice">{{item.goodsPrice|price}}</div>
+            <div class="goodsOldPrice">{{item.goodsOldPrice|price}}</div>
+            <div class="goodsNum">{{item.goodsNum|num}}</div>
           </div>
         </div>
         <div class="count">
-          <h1>
-          总共<span class="countNum">3</span>件商品
-          </h1>
+          <div class="changeNum">
+            <button @click="handleReduce(index)">-</button>
+            <input type="text" :value="item.goodsNum">
+            <button @click="handleAdd(index)">+</button>
+          </div>
           <h2>
             小计:
-            <span class="countPrice">{{39.60|countPrice(3)}}</span>
-          </h2>
-        </div>
-      </li>
-      <li>
-        <div class="goods">
-          <div class="goodsPic">
-            <img src alt>
-          </div>
-          <div class="left">
-            <div class="goodsName">「单头康乃馨」|10枝，粉色、红色、橙fdasafsdfdsa</div>
-            <div class="goodsKind">红色（10枝）</div>
-          </div>
-          <div class="right">
-            <div class="goodsPrice">{{39.60|price}}</div>
-            <div class="goodsOldPrice">{{39.60|price}}</div>
-            <div class="goodsNum">{{3|num}}</div>
-          </div>
-        </div>
-        <div class="count">
-          <h1>
-          总共<span class="countNum">3</span>件商品
-          </h1>
-          <h2>
-            小计:
-            <span class="countPrice">{{39.60|countPrice(3)}}</span>
+            <span class="countPrice">{{item.goodsNum|countPrice(item.goodsPrice)}}</span>
           </h2>
         </div>
       </li>
@@ -60,7 +36,16 @@
   </div>
 </template>
 <script>
+import Vuex from "vuex";
 export default {
+  computed:{
+    ...Vuex.mapState({
+      goods:state=>state.small.goodsSelect
+    })
+  },
+  created(){
+    console.log(this.goods)
+  },
   filters: {
     price(val) {
       val = Number(val).toFixed(2);
@@ -69,13 +54,44 @@ export default {
     num(val) {
       return "×" + val;
     },
-    countPrice(p, n) {
-      return "￥"+Number(n * p).toFixed(2);
+    countPrice(n,p) {
+      return "￥" + (Number(n * p*10)/10).toFixed(2);
     }
+  },
+  methods:{
+    ...Vuex.mapMutations({
+        handleReduce:"small/handleReduce",
+        handleAdd:"small/handleAdd"
+    })
   }
 };
 </script>
 <style lang="scss" scoped>
+.changeNum {
+        vertical-align: bottom;
+        height: 0.33rem;
+        border-radius: 0.02rem;
+        font-size: 0.24rem;
+        font-family: PingFangSC-Light;
+        font-weight: 300;
+        color: rgba(150, 150, 154, 1);
+        text-align: center;
+        button {
+          font-size: 0.24rem;
+          width: 0.46rem;
+          height: 0.33rem;
+          background: rgba(244, 244, 244, 1);
+          border: none;
+          border-radius: 0.02rem;
+        }
+        input {
+          font-size: 0.24rem;
+          width: 0.46rem;
+          height: 0.3rem;
+          border: none;
+           text-align: center;
+        }
+      }
 #orderMain {
   width: 100%;
   background: #fff;
@@ -99,7 +115,7 @@ export default {
     color: rgba(150, 150, 154, 1);
     font-size: 0.2rem;
     background: #f7f7f7;
-    padding: 0.1rem 0.27rem 0.1rem 0;    
+    padding: 0.1rem 0.27rem 0.1rem 0;
     img {
       width: 1.63rem;
       height: 1.62rem;
@@ -108,6 +124,7 @@ export default {
     .left {
       margin-left: 0.14rem;
       height: 100%;
+      width:6rem;
       .goodsName {
         font-size: 0.22rem;
         font-family: PingFang-SC-Regular;
@@ -129,11 +146,11 @@ export default {
     }
   }
   .count {
-    margin-top:.18rem;
+    margin-top: 0.18rem;
     display: flex;
-    padding-right:.27rem;
+    padding-right: 0.27rem;
     justify-content: flex-end;
-    line-height:.27rem;
+    line-height: 0.27rem;    
     h1 {
       font-size: 0.2rem;
       font-family: PingFang-SC-Regular;
@@ -145,9 +162,9 @@ export default {
       font-family: PingFang-SC-Regular;
       font-weight: bold;
       color: rgba(10, 10, 10, 1);
-      margin-left:.24rem;
+      margin-left: 0.24rem;
       .countPrice {
-        font-size: .26rem;
+        font-size: 0.26rem;
         font-family: PingFang-SC-Regular;
         font-weight: bold;
         color: rgba(244, 76, 54, 1);
