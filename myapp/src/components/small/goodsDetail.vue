@@ -1,10 +1,13 @@
 <template>
   <div id="goodsDetail">
+    <transition name="fade">
+      <Mask-com v-show="flag"></Mask-com>
+    </transition>
     <Header-com></Header-com>
     <div class="wrapper" ref="detailsWrapper">
       <div class="content">
         <div class="goods">
-          <img src="@/assets/small/goodsDetail/discount_goods_1.png" alt>
+          <img :src="goodsDetail.goodsImg" alt>
         </div>
         <GoodsShow-com></GoodsShow-com>
         <GoodsSlogan-com></GoodsSlogan-com>
@@ -16,9 +19,6 @@
     <transition name="slide">
       <GoodsSelect-com v-show="flag" @handleQuit="handleQuit" :select="flagButton"></GoodsSelect-com>
     </transition>
-    <transition name="fade">
-      <Mask-com v-show="flag"></Mask-com>
-    </transition>
     <div id="goodsFooter">
       <a to="/" class="toShopCar" @click="handleCar">加入购物车</a>
       <a class="toOrder" @click="handleOrder">立即购买</a>
@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+ import Vuex from "vuex";
 import Header from "./components/goodsDetail/header";
 import GoodsShow from "./components/goodsDetail/goodsShow";
 import GoodsSlogan from "./components/goodsDetail/goodsSlogan";
@@ -40,10 +41,16 @@ export default {
     "GoodsSelect-com": GoodsSelect,
     "Mask-com": Mask
   },
+  computed:{
+        ...Vuex.mapState({
+            goodsDetail:state=>state.small.goodsDetail,
+        })
+    },
   data(){
     return{
       flagButton:"",
-       flag: false
+       flag: false,
+       id:""
     }
   },
   mounted() {
@@ -53,6 +60,7 @@ export default {
     });
   },
   created(){
+    this.handleDetail(this.$route.params.id)
     this.$on("handle1",this.handleClick);
     this.$on("handle2",this.handleClick);
   },
@@ -70,7 +78,10 @@ export default {
     handleOrder(){
       this.flagButton=true;
       this.$emit("handle2",this.flagButton)
-    }
+    },
+     ...Vuex.mapActions({
+            handleDetail:"small/handleDetail"
+        })
   }
 };
 </script>

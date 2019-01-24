@@ -23,8 +23,7 @@
     			url:"/api/mock/5c3465e17db0f179db202941/example/newgoods"
     		})
     		.then((data)=>{
-				this.result=data.data4;
-			
+				this.result=data.data.data4;
     		})
     	}
     }

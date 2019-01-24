@@ -1,5 +1,5 @@
 import sCar from "../../components/scar"
-
+import payOk from "../../components/scar/payOk"
 export default (
     [
         {
@@ -7,7 +7,16 @@ export default (
             name:"scar",
             component:sCar,
             meta:{
-                flag:true,
+                flag:false,
+                requireAuth:true
+            }
+        },
+        {
+            path:"/payOk",
+            name:"payOk",
+            component:payOk,
+            meta:{
+                flag:false,
                 requireAuth:true
             }
         }
