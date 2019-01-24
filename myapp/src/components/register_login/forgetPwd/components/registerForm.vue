@@ -110,9 +110,9 @@ export default {
 		                    clearInterval(auth_timetimer);
 		                }
 		            }, 1000);
-		            console.log(data,99999,data.status);
+//		            console.log(data,99999,data.status);
 		            this.vCode = data.status;
-		            console.log(this.vCode,88888);
+//		            console.log(this.vCode,88888);
 		            Toast({
 		                message:"您的验证码为"+this.vCode,
 		                duration: 3000
@@ -154,7 +154,7 @@ export default {
 	        })
 	        .then((aaaa)=>{
 	        	//通过id进行修改
-	        	console.log(aaaa.data[0].id)
+//	        	console.log(aaaa.data[0].id)
 	        	axios({
 	        		method:"patch",
 	        		url:"http://localhost:3000/userlist/"+aaaa.data[0].id,
@@ -163,6 +163,7 @@ export default {
 	        			"password":this.password1
 	        		}
 	        	}).then((data)=>{
+//	        		console.log(data)
 	        		if(data.status==200){
 	        			Toast({
 				                message:"修改成功，去登录",

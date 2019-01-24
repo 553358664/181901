@@ -132,9 +132,9 @@ export default {
 		                    clearInterval(auth_timetimer);
 		                }
 		            }, 1000);
-		            console.log(data,99999,data.status);
+		            //console.log(data,99999,data.status);
 		            this.vCode = data.status;
-		            console.log(this.vCode,88888);
+		           // console.log(this.vCode,88888);
 		            
 		            Toast({
 		                message:"您的验证码为"+this.vCode,
@@ -182,7 +182,7 @@ export default {
 			        .then((data)=>{
 			        	
 			            if(data.status==201){
-			            	console.log(data,33333333)
+			            	//console.log(data,33333333)
 			            	Toast({
 				                message:"注册成功，去登录",
 				                duration: 1000

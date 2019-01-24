@@ -17,20 +17,20 @@ let data = Mock.mock({
         }
     ]
 })
-console.log(data)
+//console.log(data)
 let userList = data.data
 const userinfo = (config)=>{
     return userList
 }
 let registerList = data.data;
 const register = (config)=>{
-	console.log(config)
+	//console.log(config)
 	var username = config.body.split("=")[1];
-	console.log(username);
-	console.log(data.data[1])
+	//console.log(username);
+	//console.log(data.data[1])
 	for(var i = 0;i < data.data.length;i ++){
 		if(data.data[i].username == username){
-			console.log(i)
+			//console.log(i)
 			return i;
 		}
 	} 
