@@ -44,29 +44,29 @@ export default (
       }
     },
     {
-      path: "follow",
+      path: "/follow",
       name: "follow",
       component: Follow
     },
     {
-      path: "fans",
+      path: "/fans",
       name: "fans",
       component: Fans
     },
     {
-      path: "collection",
+      path: "/collection",
       name: "collection",
       component: Collection
     },
     
      //my部分的三级级页面路由：详细信息
     {
-      path: "personalInfo",
+      path: "/personalInfo",
       name: "personalInfo",
       component: PersonalInfo
     },
     {
-      path: "details",
+      path: "/details",
       name: "details",
       component: Details
     },

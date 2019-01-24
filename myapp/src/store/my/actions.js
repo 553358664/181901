@@ -8,7 +8,6 @@ export default {
         })
         .then((data)=>{
             commit("handleGet",data.data.data)
-            console.log(data.data);
         })
     }
 }
