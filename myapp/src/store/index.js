@@ -3,8 +3,9 @@ import Vuex from "vuex";
 import community from "./community";
 import my from "./my";
 import Myarticle from "./myarticle";
-Vue.use(Vuex);
 import register_login from "./register_login";
+import register_login from "./register_login";
+import scar from "./scar"
 import small from "./small";
 <<<<<<< HEAD
 
@@ -26,6 +27,8 @@ const store = new Vuex.Store({
         Mydraft,
 
         Myarticle,
+        scar,
+        // Mylist
     }
 })
 

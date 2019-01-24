@@ -12,7 +12,7 @@ import Vuex from "vuex";
 export default {
   data() {
     return {
-      nav: ["新品推荐", "限时特惠", "鲜花订购", "花边小物"],
+      nav: ["新品推荐","限时特惠", "鲜花订购","花边小屋"],
       navIndex: 0
     };
   },
@@ -36,7 +36,7 @@ export default {
     handleIndex(X) {
       var len = this.scrollHeight.length;
       for (var i = 0; i < len; i++) {
-        if (X <= this.scrollHeight[i]-5) {
+        if (X <= this.scrollHeight[i]-2) {
           break;
         }
       }
