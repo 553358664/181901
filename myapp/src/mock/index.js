@@ -10,7 +10,7 @@
 import Api from "../api/community/friends";
 import Mock from "mockjs"
 // 获取数据
-Mock.mock(/\/article/,"get",Api.article)
+Mock.mock(/\/friendsArticle/,"get",Api.article)
 
 //修改数据
 // Mock.mock(/\/ModifyShop/,"post",Api.modifyShop)

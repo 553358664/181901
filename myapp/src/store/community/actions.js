@@ -7,7 +7,7 @@ export default {
   }) {
     axios({
         method: "get",
-        url: "/article"
+        url: "/friendsArticle"
       })
       .then((data) => {
         commit("handleArticle", data)
@@ -19,7 +19,7 @@ export default {
   }) {
     axios({
         method: "get",
-        url: "/article"
+        url: "/friendsArticle"
       })
       .then((data) => {
         commit("handleNearItems", data)

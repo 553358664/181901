@@ -19,7 +19,7 @@
               <div class="userPraise">
                 <div class="praiseImg" @click="handlePraise(item.artickeId,item.praise)">
                   <img
-                    src="../../../../assets\community\qiu\content_icon-like2@2x.png"
+                    :src="item.userPhoto"
                     alt
                     v-if="item.show"
                   >
@@ -40,13 +40,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import BScroll from "better-scroll";
-
-// import Mint from "mint-ui";
-// import { Header } from "mint-ui";
-// Vue.component(Header.name, Header);
-// import "mint-ui/lib/style.css";
-// Vue.use(Mint)
-
 export default {
   created() {
     this.handleArticle();

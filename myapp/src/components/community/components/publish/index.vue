@@ -1,5 +1,5 @@
 <template>
-    <div class="publish">jlk
+    <div class="publish">
         <img :src="pic" alt="">
         <div class="seaHeader">
             <div class="publishImg">

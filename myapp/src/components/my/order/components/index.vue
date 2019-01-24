@@ -69,7 +69,9 @@
           <div class="s3logistics" v-if="item.orderStatus==3? true : false">查看物流</div>
           <div class="s3extend" v-if="item.orderStatus==3? true : false">延长收货</div>
           <div class="s3confirm" v-if="item.orderStatus==3? true : false">确认收货</div>
-          <div class="s4logistics" v-if="item.orderStatus==4? true : false">查看物流</div>
+          <div class="s4logistics" v-if="item.orderStatus==4? true : false">
+            查看物流
+            </div>
           <div class="s4comment" v-if="item.orderStatus==4? true : false">
             <router-link to="discuss">
               立即评价
@@ -343,14 +345,9 @@ export default {
     }
     > div:last-child {  
       border: 1px solid rgba(244, 76, 54, 1);
-<<<<<<< HEAD
-      >a{
         color: rgba(244, 76, 54, 1);
-=======
-      color: rgba(244, 76, 54, 1);
       >a{
          color: rgba(244, 76, 54, 1);
->>>>>>> master
       }
     }
   }

@@ -19,6 +19,14 @@ export default(
         redirect:"/community"
       },
       {
+        path:'/publish',
+        name:'publish',
+        component:Publish,
+        meta:{
+          flag:false
+        }
+      },
+      {
         path:'/search',
         name:'search',
         component:Search,
