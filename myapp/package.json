@@ -10,17 +10,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-
     "better-scroll": "^1.13.4",
     "mint-ui": "^2.2.13",
-<<<<<<< HEAD
-
-=======
     "mockjs": "^1.0.1-beta3",
->>>>>>> 72220bf217cf8ddee7ec5b3d5037c864a13ce3e0
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
-
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -61,7 +55,7 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "vuex": "^3.0.1",
+    "vuex": "^3.1.0",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
