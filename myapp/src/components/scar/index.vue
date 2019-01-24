@@ -1,16 +1,10 @@
 <template>
-<<<<<<< HEAD
-    <div>
-        这里是购物车
-        
-=======
   <div id="sCar">
     <Header-com></Header-com>
     <div class="wrapper" ref="sCarWrapper">
       <div class="content">
         <ScarMain-com></ScarMain-com>
       </div>
->>>>>>> master
     </div>
     <div class="sCarFooter">
       <div class="compute">
@@ -29,10 +23,6 @@ import Header from "../small/components/goodsDetail/header";
 import BScroll from "better-scroll";
 import ScarMain from "./components/scarMain";
 export default {
-<<<<<<< HEAD
-	
-}
-=======
   components: {
     "Header-com": Header,
     "ScarMain-com": ScarMain
@@ -75,7 +65,6 @@ export default {
    
   }
 };
->>>>>>> master
 </script>
 <style lang="scss" scoped>
 .sCarFooter {
