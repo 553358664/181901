@@ -12,7 +12,7 @@ import Vuex from "vuex";
 export default {
   data() {
     return {
-      nav: ["新品推荐", "限时特惠", "鲜花订购", "花边小物"],
+      nav: ["新品推荐","限时特惠", "鲜花订购","花边小屋"],
       navIndex: 0
     };
   },
@@ -30,12 +30,13 @@ export default {
   },
   methods: {
     handle(index) {
-      (this.navIndex = index), this.$emit("Move", index);
+      this.navIndex = index;
+       this.$emit("Move", index);
     },
     handleIndex(X) {
       var len = this.scrollHeight.length;
       for (var i = 0; i < len; i++) {
-        if (X <= this.scrollHeight[i]-5) {
+        if (X <= this.scrollHeight[i]-2) {
           break;
         }
       }
@@ -55,7 +56,7 @@ export default {
   width: 100%;
   z-index: 11;
   height: 0.88rem;
-  background: rgba(252, 253, 248, 1);
+  background: #FCFCFA;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -3,26 +3,31 @@
     <h1>限时特惠</h1>
     <div class="wrapper" ref="dicountWrapper">
       <div class="discountGoods content">
-        <a href>
+            <router-link  v-for="(item,index) in discount" :key="item.id" :to="'/goodsDetail/'+item.goodsId">
+              <img :src="item.goodsImg">
+              <h2>{{item.goodsName}}</h2>
+              <h3>{{item.goodsPrice|price}}</h3>
+            </router-link>
+        <!--  <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
-        <a href>
+        </router-link>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
-        <a href>
+        </router-link>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
-        <a href>
+        </router-link>
+        <router-link :to="{name:'goodsDetail'}">
           <img src="@/assets/small/shopHome/nav_1.png" alt>
           <h2>9.9元包邮 | 心想事橙</h2>
           <h3>9.9元/束</h3>
-        </a>
+        </router-link>-->
       </div>
     </div>
   </div>
@@ -31,22 +36,40 @@
 import BScroll from "better-scroll";
 import Vuex from "vuex";
 export default {
-   data() {
+  filters:{
+    price(val){
+            val=Number(val).toFixed(2);
+            return "￥"+val
+        },
+  },
+  data() {
     return {
       discountTop: ""
     };
   },
+  computed:{
+    ...Vuex.mapState({
+      discount:state=>state.small.discount
+    })
+  },
   mounted() {
     this.discountTop = this.$refs.discount.offsetTop;
-    this.handleDiscountTop(this.discountTop)
+    this.handleDiscountTop(this.discountTop);
     this.scroll = new BScroll(this.$refs.dicountWrapper, {
       scrollX: true
     });
   },
-    methods: {
+  created() {
+    this.handleDiscount();
+  },
+  methods: {
     ...Vuex.mapMutations({
-      handleDiscountTop: "small/handleDiscountTop"
+      handleDiscountTop: "small/handleDiscountTop",
+      handleGoods:"small/handleGoods"
     }),
+    ...Vuex.mapActions({
+      handleDiscount: "small/handleDiscount",
+    })
   }
 };
 </script>
@@ -56,9 +79,10 @@ export default {
   font-family: PingFang-SC-Regular;
   .discountGoods {
     width: max-content;
-    display: flex;
+     display: flex;
     a {
       margin-right: 0.22rem;
+      text-align: center;
     }
     img {
       width: 2.42rem;

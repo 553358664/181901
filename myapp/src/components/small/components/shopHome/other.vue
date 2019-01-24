@@ -2,17 +2,18 @@
   <div id="other" ref="other">
     <h1>花边小屋</h1>
     <div class="otherNav">
-      <a href>
+      <router-link to="/hcyh">
         <img src="@/assets/small/shopHome/other_1.png" alt>
-      </a>
-      <a href>
+      </router-link>
+      <router-link to ="/jxhq">
         <img src="@/assets/small/shopHome/other_2.png" alt>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
 <script>
 import Vuex from "vuex";
+import Vue from "vue";
 export default {
   data() {
     return {
@@ -20,8 +21,16 @@ export default {
     };
   },
   mounted() {
-    this.otherTop = this.$refs.other.offsetTop;
+   /*  this.$nextTick(()=>{
+       this.otherTop = this.$refs.other.offsetTop;
+    console.log(this.otherTop)
     this.handleOtherTop(this.otherTop)
+    }) */
+    setTimeout(()=>{
+       this.otherTop = this.$refs.other.offsetTop;
+    this.handleOtherTop(this.otherTop)
+    },100)
+   
   },
   methods: {
     ...Vuex.mapMutations({

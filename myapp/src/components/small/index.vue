@@ -3,15 +3,18 @@
     <Header-com @Move="handleMove" :scrollT="scrollToggle"></Header-com>
     <div class="wrapper" ref="shopHomeWrapper">
       <div class="content">
+        <router-view/>
         <New-com></New-com>
-        <div class="border"></div>
+        <div class="border1"></div>
         <Nav-com></Nav-com>
+        <div class="border1"></div>
+        <Market-com></Market-com>    
         <div class="border"></div>
         <Discount-com></Discount-com>
         <div class="border border2"></div>
         <FlowerOrder-com></FlowerOrder-com>
         <div class="border"></div>
-        <Other-com ref="other"></Other-com>
+        <Other-com></Other-com>
         <div class="border"></div>
         <Slogan-com></Slogan-com>
       </div>
@@ -22,6 +25,7 @@
 import Header from "./components/shopHome/header";
 import New from "./components/shopHome/new";
 import Nav from "./components/shopHome/nav";
+import Market from "./components/shopHome/market";
 import Other from "./components/shopHome/other";
 import Discount from "./components/shopHome/discount";
 import FlowerOrder from "./components/shopHome/flowerorder";
@@ -36,7 +40,8 @@ export default {
     "Other-com": Other,
     "Discount-com": Discount,
     "FlowerOrder-com": FlowerOrder,
-    "Slogan-com": Slogan
+    "Slogan-com": Slogan,
+    "Market-com":Market
   },
   data(){
     return{
@@ -81,6 +86,12 @@ export default {
     }
   }
   .border {
+    width: 7.02rem;
+    height: 0.02rem;
+    background: rgba(150, 150, 154, 1);
+    margin: 0.4rem auto;
+  }
+  .border1{
     width: 7.02rem;
     height: 0.01rem;
     background: rgba(150, 150, 154, 1);
