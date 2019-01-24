@@ -7,7 +7,8 @@ export default {
             url:"/my/mock/5c37efe8c0c3ac784264cd1c/example/my",
         })
         .then((data)=>{
-            commit("handleGet",data.data)
+            commit("handleGet",data.data.data)
+            console.log(data.data);
         })
     }
 }

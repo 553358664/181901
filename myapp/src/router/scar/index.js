@@ -7,7 +7,7 @@ export default (
             name:"scar",
             component:sCar,
             meta:{
-                flag:true,
+                flag:false,
                 requireAuth:true
             }
         }
