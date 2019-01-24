@@ -7,7 +7,7 @@
                              <span><img :src="item.headPic"/></span>                                            
                              <span>{{item.username}}</span>                     
                          </router-link>   
-                        <p class="cancle">取消关注</p>
+                        <p class="cancle"  @click="handleCancle($event)">取消关注</p>
                      </div>
                  <div class="line"></div>
             </li>
@@ -36,11 +36,24 @@ export default {
     },
      data(){
         return { 
-                flag:true,   
+                cancle:true, 
                 router:"details",           
-                iconRight:require('@/assets/my/icon_grxx_jt@2x.png') ,
-                       
+                iconRight:require('@/assets/my/icon_grxx_jt@2x.png') ,             
         }
+    },
+    methods:{
+       
+       handleCancle(e){
+            this.cancle=!this.cancle
+            if(this.cancle){
+                 e.target.className="cancle";
+                 e.target.innerHTML="取消关注"
+            }else{
+                 e.target.className="ok";
+                  e.target.innerHTML="关注"
+            }
+        
+       }
     }
 }
 </script>
@@ -89,6 +102,16 @@ export default {
         border:#F44C36 .01rem solid ;
         text-align: center;
         color:#F44C36;
+        border-radius: .5rem;
+    }
+    .wrapper>.content>li>div>.ok{
+        display:inline-block;
+        width:1.5rem;
+        height:.48rem;
+        line-height: .48rem;
+        text-align: center;
+        background:#F44C36;
+        color: #EEEEEE;
         border-radius: .5rem;
     }
    .wrapper>.content>li>.line{

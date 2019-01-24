@@ -68,14 +68,21 @@ export default {
   width: 100%;
   height: 1rem;
   line-height: 1rem;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 0.01rem solid #e2e2e2;
 }
 .myList > ul > li > a {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
+.myList>ul>li>a>.icon-left{
+    width:.34rem;
+    height:.34rem;
+}
+.myList>ul>li>a>.icon-right{
+    width:.24rem;
+    height:.24rem;
+}
 .myList > ul > li > a > span {
   align-items: center;
   width: 88%;

@@ -64,10 +64,14 @@ export default {
         display: flex;
     }
     .wrapper>.content>li>a>span{
-        width:25%;
+        width:32%;
+    }
+    .wrapper>.content>li>a>span>img{
+        width:2.2rem;
+        height:2.2rem;
     }
     .wrapper>.content>li>a>.article{
-        width:75%;
+        width:67%;
         padding-left:.3rem;
     }
     .wrapper>.content>li>a>.article>.title{

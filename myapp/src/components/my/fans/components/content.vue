@@ -7,7 +7,7 @@
                         <span><img :src="item.headPic"/></span>                                            
                         <span>{{item.username}}</span>                     
                     </router-link>   
-                    <p><a href="#">关注</a></p> 
+                    <p class="ok" @click="handleFollow($event)">关注</p> 
                  </div>
                 <div class="line"></div>
             </li>
@@ -34,6 +34,20 @@ export default {
             myList:state=>state.my.myList
         })
     },
+    methods:{
+         handleFollow(e){
+            this.ok=!this.ok
+            if(this.ok){
+                 e.target.className="ok";
+                 e.target.innerHTML="关注"
+                
+            }else{
+                 e.target.className="cancle";
+                 e.target.innerHTML="取消关注"
+            }
+        
+       }
+    }
     
 }
 </script>
@@ -74,7 +88,7 @@ export default {
     .wrapper>.content>li>div>a>img,.wrapper>.content>li>div>a>span{
         display: inline-block;
     }  
-    .wrapper>.content>li>div>p>a{
+    .wrapper>.content>li>div>.ok{
         display:inline-block;
         width:1.5rem;
         height:.48rem;
@@ -82,6 +96,16 @@ export default {
         text-align: center;
         background:#F44C36;
         color: #EEEEEE;
+        border-radius: .5rem;
+    }
+    .wrapper>.content>li>div>.cancle{
+        display:inline-block;
+        width:1.5rem;
+        height:.48rem;
+        line-height: .48rem;
+        border:#F44C36 .01rem solid ;
+        text-align: center;
+        color:#F44C36;
         border-radius: .5rem;
     }
    .wrapper>.content>li>.line{
