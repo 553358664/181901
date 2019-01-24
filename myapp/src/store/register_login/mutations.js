@@ -8,6 +8,10 @@ export default {
     			state.userFlag = false;
     			state.tShow = true;
     			state.tishi = "手机号不符合规范";
+    			setTimeout(()=>{
+    				state.tShow = false;
+    			},2000)
+    			
     		}
     		
     },

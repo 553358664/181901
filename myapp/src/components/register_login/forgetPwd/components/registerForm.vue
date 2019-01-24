@@ -20,8 +20,13 @@
     </div>
 </template>
 <script >
+	import Vue from 'vue';
 import Vuex from "vuex"
-import axios from "axios"
+import axios from "axios";
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css';
+Vue.use(MintUI);
+import { Toast } from 'mint-ui';
 export default {
     data(){
         return {
@@ -66,8 +71,13 @@ export default {
     			
     		}else{
     			this.userFlag = false;
-    			this.tShow = true;
-    			this.tishi = "手机号不符合规范";
+//  			this.tShow = true;
+//  			this.tishi = "手机号不符合规范";
+				Toast({
+		                message:"手机号不符合规范",
+		                duration: 1000
+		    	})
+    			
     		}
 	    },
 	    handlePassword1(){
@@ -76,8 +86,12 @@ export default {
 				this.pwdFlag = true;
 			}else{
 				this.pwdFlag = false;
-				this.tShow = true;
-				this.tishi = "密码格式为6-12位数字字母下划线";
+//				this.tShow = true;
+//				this.tishi = "密码格式为6-12位数字字母下划线";
+				Toast({
+		                message:"密码格式为6-12位数字字母下划线",
+		                duration: 1000
+		    })
 			}
 		},
     	getAuthCode() {
@@ -99,29 +113,39 @@ export default {
 		            console.log(data,99999,data.status);
 		            this.vCode = data.status;
 		            console.log(this.vCode,88888);
-		            alert(this.vCode)
+		            Toast({
+		                message:"您的验证码为"+this.vCode,
+		                duration: 3000
+		            })
 	        	}else{
-	        		alert("用户名不存在");
-	        		this.tShow = true;
-	        		this.tishi = "用户名不存在";
+	        		Toast({
+		                message:"用户名不存在",
+		                duration: 1000
+		        	})
 	        	}
 	        })
             
         },
 		handleVcode(){
 			if(this.tCode == this.vCode){
-				
+				this.tShow= true;
+	        	this.tishi = "验证码输入正确";
 				this.flagCode=true;
+				setTimeout(()=>{
+    				this.tShow = false;
+    			},2000)
 			}else{
 				this.flagCode=false;
-				this.tShow = true;
-	        	this.tishi= "验证码输入不正确";
+				Toast({
+		                message:"验证码输入不正确",
+		                duration: 1000
+		        	})
 			}
 		},
     	checkForm(){
     		
     		if(this.userFlag && this.pwdFlag && this.pwdFlag1){
-    			alert(55555555555)
+    			
     		      		axios({
 	            method:"get",
 	            				url:"http://localhost:3000/userlist?username="+this.username,
@@ -140,32 +164,25 @@ export default {
 	        		}
 	        	}).then((data)=>{
 	        		if(data.status==200){
-	        			alert("修改密码成功，去登录");
-	        			this.$router.replace("/login");
+	        			Toast({
+				                message:"修改成功，去登录",
+				                duration: 1000
+				        	})
+			            	setTimeout(()=>{
+			            		this.$router.replace("/login")
+			            	},3000)
 	        		}
 	        	})
 	           
 	          })
 	        
+	        }else{
+	        	Toast({
+	               message:"请检查信息是否填写正确",
+	                duration: 1000
+	        	})
 	        }
-//  			console.log(this.username.username)
-//  			if(this.checkUser(this.username.username)){
-//  				alert(333)
-    					/*if(this.addUser({username:this.username.username,password:this.password1.password1})){
-    					alert("注册成功去登录");
-    					this.$router.replace("/login")
-    				}else{
-						alert("注册失败")
-    				}*/
-//  			}else{
-//  				alert("用户名已存在")
-//  			}
-////  			
-//				return true;
-//  			
-//  		}else{
-//  			return false;
-//  		}
+
     	},
     	handlePassword2(){
     		if(this.password1 == this.password2){

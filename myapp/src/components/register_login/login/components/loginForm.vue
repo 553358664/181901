@@ -18,8 +18,13 @@
 </template>
 
 <script >
-	import Vuex from "vuex"
-import axios from "axios"
+import Vuex from "vuex"
+import axios from "axios";
+import Vue from 'vue';
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css';
+Vue.use(MintUI);
+import { Toast } from 'mint-ui';
 export default {
    data(){
         return {
@@ -45,14 +50,29 @@ export default {
 		var reg = /^\w{6,12}$/;
 		if(reg.test(this.password1)){
 			this.pwdFlag = true;
+			
 		}else{
 			this.pwdFlag = false;
 			this.tShow.tShow = true;
 			this.tishi.tishi = "密码格式为6-12位数字字母下划线";
+//			Toast({
+//		                message:"密码格式为6-12位数字字母下划线",
+//		                duration: 1000
+//		    })
 		}
 	},
     	checkForm(){
     		if(this.userFlag.userFlag && this.pwdFlag ){
+    			var data={
+    				username:this.username.username,
+		            password:this.password
+    			}
+//  			axios.post("/register",{
+//						username:this.username.username,
+//		            	password:this.password
+//					}).then((data)=>{
+//						console.log(data,"mock")
+//					});
     			axios({
 	            method:"get",
 	            url:"http://localhost:3000/userlist?username="+this.username.username,
@@ -61,15 +81,29 @@ export default {
 	        .then((data)=>{
 	           console.log(data.data[0])
 	           if(data.data[0].password==this.password1){
-	           	alert("登录成功！去逛逛");
-	           	this.$router.push("/");
-	           	alert(this.username.username);
+	           	localStorage.setItem("username",this.username.username)
+	           	Toast({
+	                message:"注册成功，去登录",
+	                duration: 1000
+	        	})
+            	setTimeout(()=>{
+            		this.$router.replace("/")
+            	},3000)
+			            		
 	           }else{
-	           	alert("用户名密码不匹配，请检查")
+	           		Toast({
+	                message:"用户名密码不匹配，请检查",
+	                duration: 1000
+	        	})
 				
 	           }
 	        })
 	        
+    	}else{
+    		Toast({
+	               message:"请检查信息是否填写正确",
+	                duration: 1000
+	        	})
     	}
     	
     	},
@@ -131,7 +165,7 @@ export default {
                 flex: 1;
                 width: 5rem;
                 background: transparent;
-                font-size: .3rem;
+                font-size: .34rem;
                 line-height: .67rem;
             }
          }
@@ -153,7 +187,7 @@ export default {
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                font-size: .3rem;
+                font-size: .34rem;
             }
             margin-bottom: .2rem;
         }
@@ -168,7 +202,7 @@ export default {
 	       		width: 100%;
 	       		height: .6rem;
 	       		margin-bottom: .2rem;
-	       		font-size: .3rem;
+	       		font-size: .34rem;
 	       		color: #000;
 	       		display: flex;
 	       		justify-content: center;

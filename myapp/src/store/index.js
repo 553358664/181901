@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import community from "./community";
 import my from "./my";
 import Myarticle from "./myarticle";
-import register_login from "./register_login";
+
 import register_login from "./register_login";
 import scar from "./scar"
 import small from "./small";

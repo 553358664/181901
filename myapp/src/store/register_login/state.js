@@ -1,6 +1,6 @@
 export default {
     username:"",
-    
+    token:"",
     
     tishi:"",
     tShow:false,
