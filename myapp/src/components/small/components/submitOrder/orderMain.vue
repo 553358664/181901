@@ -43,9 +43,6 @@ export default {
       goods:state=>state.small.goodsSelect
     })
   },
-  created(){
-    console.log(this.goods)
-  },
   filters: {
     price(val) {
       val = Number(val).toFixed(2);
