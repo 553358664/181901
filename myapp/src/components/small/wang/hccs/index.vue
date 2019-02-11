@@ -14,7 +14,7 @@
 <script>
     import Vuex from "vuex";
     import axios from "axios";
-    import Head from "../../components/goodsDetail/header";
+    import Head from "./head.vue";
     import Main from "./main.vue";
     import Banner from "./banner.vue";
     import Nav from "./nav.vue";
