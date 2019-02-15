@@ -35,8 +35,8 @@ export default {
 	}, */
 	handleDiscount({ commit, state },params) {
 		axios({
-			method: "get",
-			url: "http://localhost:3000/data",
+			method: "post",
+			url: "/discount",
 		})
 			.then((data) => {
 				commit("handleDiscountM",data.data)
@@ -46,10 +46,10 @@ export default {
 	
 		axios({
 			method: "get",
-			url: "http://localhost:3000/data?goodsId="+params,
-			data: {
-				//goodsId=params
-			}
+			url: "/find?"+params,
+			/* data: {
+				goodsId:params
+			} */
 		})
 			.then((data) => {
 				commit("handleDetailM",data.data)

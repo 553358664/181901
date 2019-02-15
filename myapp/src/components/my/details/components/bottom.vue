@@ -46,6 +46,10 @@ export default {
         width:100%;
         height:1rem;
         padding-right:.24rem;
+        img{
+            width:.24rem;
+            height:.24rem;
+        }
     }
     .bottomPage2{
         display: flex;
@@ -54,13 +58,17 @@ export default {
         width:100%;
         height:.8rem;
         padding-right:.24rem;
+        img{
+            width:.24rem;
+            height:.24rem;
+        }
     }
     .bottomPage1>p,.bottomPage2>p{
         font-size:.28rem;
     }
     .line{
         width:100%;
-        height:.02rem;
+        height:.01rem;
         float:right;
         background:#D6D6D6;
     }

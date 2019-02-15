@@ -55,6 +55,11 @@ export default {
         font-size: .34rem;
         color:#0A0A0A 
     }
+    .middle-info>span>img{
+        display:inline-block;
+        width:1.2rem;
+        height:1.2rem;
+    }
     .middle-info-r>span:nth-of-type(2),.middle-info-r>span:nth-of-type(3){
         font-size: .26rem;
         color:#96969A 
@@ -86,6 +91,10 @@ export default {
     }
     .middleTag p{
         font-size:.28rem;
+    }
+    .middleTag>img{
+        width:.24rem;
+        height:.24rem;
     }
 </style>
 

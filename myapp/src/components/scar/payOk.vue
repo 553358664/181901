@@ -1,6 +1,5 @@
 <template>
   <div id="payOk">
-    <Header-com></Header-com>
     <div class="ok">
       <div class="okPic">
         <img src="@/assets/scar/payOk.png">
@@ -11,11 +10,7 @@
   </div>
 </template>
 <script>
-import Header from "../small/components/goodsDetail/header";
 export default {
-  components: {
-    "Header-com": Header
-  }
 };
 </script>
 <style lang="scss" scoped>
