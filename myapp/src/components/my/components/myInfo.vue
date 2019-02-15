@@ -27,6 +27,7 @@ export default {
         width:100%;
         height:3.75rem;
         background:url("../../../assets/my/wd-bj@2x.png") repeat-x;
+        background-size:contain;
     }
     .userImg,{
         width:100%;
@@ -35,7 +36,7 @@ export default {
         justify-content: center;
         align-items: center
     }
-    .userImg>img{
+    .userImg>a>img{
         width:1.34rem;
         height:1.34rem;
         text-align: center

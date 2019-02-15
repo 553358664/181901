@@ -3,31 +3,31 @@
          <ul>
             <li> 
                 <span>头像</span>                
-                <span><img :src="headPic"/>
+                <span><img class="headPic" :src="headPic"/>
                     <img class="icon-right" :src="iconRight"/>  
                 </span>
             </li>
              <li> 
                 <span>昵称</span>                
-                <span><i>{{myList.username}}</i>
+                <span><i>{{contents.username}}</i>
                     <img class="icon-right" :src="iconRight"/>  
                 </span>
             </li>
             <li> 
                 <span>性别</span>                
-                <span><i>{{myList.sex}}</i>
+                <span><i>{{contents.sex}}</i>
                     <img class="icon-right" :src="iconRight"/>  
                 </span>
             </li>
             <li> 
                 <span>出生年月</span>                
-                <span><i>{{myList.time}}</i>
+                <span><i>{{contents.time}}</i>
                     <img class="icon-right" :src="iconRight"/>  
                 </span>
             </li>
             <li> 
                 <span>个性签名</span>                
-                <span><i>{{myList.autograph}}</i>
+                <span><i>{{contents.autograph}}</i>
                     <img class="icon-right" :src="iconRight"/>  
                 </span>
             </li>
@@ -48,33 +48,16 @@ export default {
     },
     data(){
         return {          
-            contents:[
-                {
-                    classify:'头像',
-                    headPic:require('@/assets/my/wd_tx@2x.png')                 
-                },
-                {
-                    classify:'昵称',
-                    username:"小小爱花者",
-                },
-                {
-                    classify:'性别',
-                    sex:"男"
-                },
-                {
-                   classify:'出生年月',
-                    brith:"2019-01-01"
-                    
-                },
-                {
-                    classify:'个性签名',
-                    autograph :"设置属于自己的个性签名"
-                   
-                }
-            ],
+            contents:{
+                
+                    headPic:require('@/assets/my/wd_tx@2x.png') ,                  
+                    username:"小小爱花者",     
+                    sex:"女",
+                    brith:"1996-01-01",
+                    autograph :"你笑起来真好看"        
+            },
          headPic:require('@/assets/my/wd_tx@2x.png'),
          iconRight:require('@/assets/my/icon_grxx_jt@2x.png')    
-            
         }
     },
     
@@ -102,14 +85,23 @@ export default {
         justify-content: space-between;
         align-items: center
     }
+    .headPic{
+        width:1.2rem;
+        height:1.2rem;
+    }
     span,span>img,.icon-right{
         display: inline-block;
+    }
+    span>.icon-right{
+        width:.24rem;
+        height:.24rem;
     }
     span>img{
         vertical-align: middle
     }
     span>i{
-        font-size:.26rem;
+        font-size:.28rem;
+        font-style: normal;
     }
   
     

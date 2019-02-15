@@ -1,7 +1,6 @@
 export default {
   handleSCarM(state, params) {
     state.sCarList = params
-    console.log(state.sCarList)
   },
   handleReduce(state, index) {
     if (state.sCarList[index].goodsNum <= 1) {

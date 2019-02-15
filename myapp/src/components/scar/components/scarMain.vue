@@ -30,8 +30,8 @@
           </div>
         </div>
         <div class="count">
-          <div>
-
+          <div class="del"> 
+            删除
           </div>
           <div class="changeNum">
             <button @click="handleReduce(index)">-</button>
@@ -200,7 +200,9 @@ export default {
     padding-right: 0.27rem;
     justify-content: flex-end;
     line-height: 0.27rem;
-    h1 {
+    .del {
+      flex:1;
+      margin-left:0.6rem;
       font-size: 0.2rem;
       font-family: PingFang-SC-Regular;
       font-weight: bold;

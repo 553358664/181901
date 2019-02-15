@@ -2,13 +2,13 @@
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/> 
         <p>详细资料</p>
-        <img :src="more"/> 
+        <img class="more" :src="more"/> 
     </div>
 </template>
 
 <script>
 export default {
-    methods: {
+    methods: {       
         handleback(){
             this.$router.back();
         }
@@ -37,6 +37,10 @@ export default {
     .back{
         width:.34rem;
         height:.34rem;
+    }
+    .more{
+        width:.48rem;
+        height:.2rem;
     }
     p{
         font-size: .32rem;

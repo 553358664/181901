@@ -1,4 +1,4 @@
-'use strict'
+﻿'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
@@ -17,23 +17,33 @@ module.exports = {
     		pathRewrite:{
     		    "^/api":""
     		}
-    	}
+    	},
       
       //模拟数据 easy-mock ——liuna
       //https://www.easy-mock.com/mock/5c37efe8c0c3ac784264cd1c/example/my
-      // "/my":{
-      //   target:"https://www.easy-mock.com",
-      //   changeOrigin:true,
-      //   pathRewrite:{
-      //     "^/my":""
-      //   }
-      // }
+      "/my":{
+        target:"https://www.easy-mock.com",
+        changeOrigin:true,
+        pathRewrite:{
+          "^/my":""
+        }
+      },
+        //接入图灵机器人
+        //http://openapi.tuling123.com/openapi/api/v2?key=430a4686bbbb417f891a24ccf16728ca&userid=1&info=%2211%22
+        "/chat":{
+          target:"http://www.tuling123.com",
+          changeOrigin:true,
+          pathRewrite:{
+            "^/chat":""
+          }
+        }
+  
 
-
-    },
+  },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
+    //192.168.43.178
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

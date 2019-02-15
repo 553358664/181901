@@ -55,7 +55,7 @@ export default (
       component: PersonalInfo
     },
     {
-      path: "follow",
+      path: "/follow",
       name: "follow",
       component: Follow
     },
@@ -76,12 +76,12 @@ export default (
     },
      //my部分的三级级页面路由：详细信息
     {
-      path: "personalInfo",
+      path: "/personalInfo",
       name: "personalInfo",
       component: PersonalInfo
     },
     {
-      path: "details",
+      path: "/details",
       name: "details",
       component: Details
     },

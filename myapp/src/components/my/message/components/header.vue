@@ -2,7 +2,7 @@
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/> 
         <p>商家信息</p>
-        <img :src="more"/>    
+        <img class="more" :src="more"/>    
     </div>
 </template>
 
@@ -35,6 +35,10 @@ export default {
         margin-bottom: .2rem;
         position: fixed;
         z-index: 10;
+    }
+    .more{
+        width:.48rem;
+        height:.2rem;
     }
     .back{
         width:.34rem;
