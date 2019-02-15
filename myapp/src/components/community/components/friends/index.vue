@@ -1,10 +1,8 @@
 <template>
   <div class="friendsOuter" ref="out">
-    <router-link :to="{name:this.publish}">
-      <img src="../../../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="this.flag">
-    </router-link>
-    <div class="friends wrapper" ref="homeWrapper">
+    <div class="friends wrapper" ref="homeWrapper">     
       <ul class="content friendsUl">
+        <router-link :to="{name:this.like}">
         <li class="friendsLi" v-for="(item,index) in article" :key="index">
           <div class="friendsImg">
             <img :src="item.articleCover" alt>
@@ -13,23 +11,24 @@
             <p class="friendsP">{{item.articleTitle}}</p>
             <div class="friendsUser">
               <div class="uerImg">
-                <img src="../../../../assets\community\qiu\content_icon_like@2x.png" alt>
+                <img :src="item.userPhoto" alt>
               </div>
-              <p class="userName">{{item.username}}</p>
+              <p class="userName">{{item.authorname}}</p>
               <div class="userPraise">
-                <div class="praiseImg" @click="handlePraise(item.artickeId,item.praise)">
+                <div class="praiseImg" @click="handlePraise(item.artickeId,item.authorname)">
                   <img
-                    :src="item.userPhoto"
+                    src="../../../../assets\community\qiu/content_icon_like@2x.png"
                     alt
                     v-if="item.show"
                   >
-                  <img src="../../../../assets\community\qiu\content_icon_like@2x.png" alt v-else>
+                  <img src="../../../../assets\community\qiu\content_icon-like2@2x.png" alt v-else>
                 </div>
                 <span class="praiseNum">{{item.praise}}</span>
               </div>
             </div>
           </div>
         </li>
+        </router-link>
       </ul>
     </div>
   </div>
@@ -50,60 +49,44 @@ export default {
       article: state => state.community.articleList
     })
   },
-
-  directives: {
-    //浮点的拖拽
-    drap(el) {
-      el.addEventListener("touchstart", function(e) {
-        let disX = e.targetTouches[0].clientX - el.offsetLeft;
-        let disY = e.targetTouches[0].clientY - el.offsetTop;
-        function handleMove(e) {
-          let x = e.targetTouches[0].clientX - disX;
-          let y = e.targetTouches[0].clientY - disY;
-          el.style.left = x + "px";
-          el.style.top = y + "px";
-        }
-        document.addEventListener("touchmove", handleMove);
-        document.addEventListener("touchend", function() {
-          document.removeEventListener("touchmove", handleMove);
-        });
-      });
+  watch: {
+    article(newVal,oldVal){
+      this.scroll.finishPullUp();
+      this.scroll.refresh();
     }
   },
   data() {
     return {
-      publish: "publish",
-      flag: true
+      flag: true,
+      like: "searchArticle",
     };
   },
   methods: {
     ...Vuex.mapActions({
       handleArticle: "community/handleArticle",
-      handlePraise: "community/handlePraise"
+      handlePraise: "community/handlePraise",
+      handleGoodsUpdate:"community/handleGoodsUpdate"
     })
   },
   mounted() {
+    this.userId = Cookies.get("userIdx")
     if (!this.scroll) {
       this.scroll = new BScroll(this.$refs.homeWrapper, {
         click: true,
         pullUpLoad: true,
-        hasVerticalScroll: true
+        hasVerticalScroll: true,
+        probeType:2
       });
     }
+    this.scroll.on("pullingUp", () => {
+      this.handleGoodsUpdate();
+    });
   }
 };
 </script>
 <style scoped lang="scss">
 .friendsOuter {
   height: 100%;
-  .friendsPoint {
-    z-index: 999;
-    position: absolute; /*定位*/
-    top: 50%;
-    right: 0;
-    height: 0.84rem;
-    width: 0.84rem;
-  }
 }
 .friends {
   background: #eeeeee;
@@ -115,7 +98,7 @@ export default {
   .friendsUl {
     overflow: hidden;
     zoom: 1;
-    padding-bottom: 3.2rem;
+    padding-bottom: 3rem;
     .friendsLi {
       margin: 1% 0 0 1%;
       width: 48%;

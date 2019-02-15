@@ -8,6 +8,7 @@ import scar from "./scar"
 import small from "./small";
 import Mydraft from "./mydraft"
 import Mylist from "./mylist";
+import searchActicle from "./searchActicle";
 Vue.use(Vuex);
 const store = new Vuex.Store({
     modules:{
@@ -22,6 +23,7 @@ const store = new Vuex.Store({
 
         Myarticle,
         scar,
+        searchActicle
         // Mylist
     }
 })

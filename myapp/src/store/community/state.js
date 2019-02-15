@@ -3,5 +3,6 @@ export default {
     nearItems:[],
     fuzzyQuery:[],
     my:[],
-    searchList:[]
+    searchList:[],
+    pageindex:1
 }

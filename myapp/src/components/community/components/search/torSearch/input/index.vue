@@ -2,7 +2,9 @@
   <div class="search">
     <div class="seaHeader">
       <div class="searchImg">
-        <img src="../../../../../../assets/community/qiu/back.png" alt @click="handleBack() ">
+        <router-link :to="{name:this.back}">
+        <img src="../../../../../../assets/community/qiu/back.png" alt>
+        </router-link>
       </div>
       <input
         v-focus="flag"
@@ -24,17 +26,15 @@ export default {
   data() {
     return {
       search: "",
-      flag: true
+      flag: true,
+      back:"friends"
     };
   },
   methods: {
     ...Vuex.mapActions({
       handleSearch : "community/handleSearch",
       handleTouchUp:"community/handleTouchUp"
-    }),
-    handleBack() {
-      this.$router.back();
-    }
+    })
   },
   directives: {
     focus: {

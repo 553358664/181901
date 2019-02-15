@@ -3,53 +3,68 @@ import axios from "../../lib";
 export default {
     //花友圈获得数据
   handleArticle({
-    commit
+    commit,state
   }) {
     axios({
-        method: "get",
-        url: "/friendsArticle"
+        method: "post",
+        url: "/friendsArticle",
+        data:{
+          PageIndex:JSON.stringify(state.pageindex),
+          PageSize:10
+        }
       })
       .then((data) => {
         commit("handleArticle", data)
       })
+  },
+  //下拉获取数据
+  handleGoodsUpdate({dispatch}){
+    dispatch("handleArticle")
   },
   //附近获得数据
   handleNearItems({
     commit
   }) {
     axios({
-        method: "get",
+        method: "post",
         url: "/friendsArticle"
       })
       .then((data) => {
         commit("handleNearItems", data)
       })
   },
+  handleDraft({commit},num){
+    axios({
+      method:"post",
+      url:"/friendsArticle?"+num
+    })
+  },
   //点赞获得的数据
-  handlePraise({
-    commit,
-    dispatch
-  }, {
-    id,
-    praise
-  }) {
-    axios.get('/article?+articleId=' + id)
-      .then((data) => {
-        dispatch("handleArticle")
+  handlePraise({commit,dispatch}, {id,praise}) {
+    axios({
+      method:"post",
+      url:'/article',
+      data:{
+        
+      }
+    })
+      .then((params) => {
+        dispatch("handleArticle",params)
       })
   },
   //上传文章
-  handlepublish({
-    commit
-  }, params) {
+  handlepublish({commit}, params) {
     axios({
-      method: "get",
-      url: "article?"
+      method: "post",
+      url: "article",
+      data:{
+        content:params.content
+      }
     })
   },
   //搜索文章
   handleSearch({commit}, params) {
-    axios.post('/search',{
+    axios.post('/searchArticle',{
       fuzzyQuery:params
     })
     .then((data)=>{
@@ -58,7 +73,7 @@ export default {
   },
   //用户搜索输入时获取相关的内容
   handleTouchUp({commit},params){
-    axios.post('/list',{
+    axios.post('/searchArticle',{
         list:params
     })
     .then((data)=>{
@@ -67,58 +82,3 @@ export default {
   }
 }
 
-
-
-
-
-
-// export default {
-//     handleArticle({commit},){
-//         axios({
-//             method:"get",
-//             url:"http://localhost:3000/text"
-//         })
-//         .then((data)=>{
-//             commit("handleArticle",data)
-//         })
-//     },
-//     handleNearItems({commit}){
-//         axios({
-//             method:"get",
-//             url:"http://localhost:3000/text"
-//         })
-//         .then((data)=>{
-//             commit("handleNearItems",data)
-//         })
-//     },
-//     handlePraise({commit,dispatch},index){
-//         axios({
-//             method:"patch",
-
-//             // headers:{
-//             //     "Content-type":"application/X-www-form-urlencoded"
-//             // },
-
-//             url:"http://localhost:3000/text/"+index,
-//             data:{
-//                 "show":true
-//             }
-
-//         })
-//         .then((data)=>{
-//             // data.show =!data.show
-//             console.log(data)
-//             dispatch("handleArticle")
-//         })
-//     }
-//     // handlePicShow({commit,dispatch},params){
-//     //     axios({
-//     //         method:"get",
-//     //         url:"http://localhost:3000/text",
-//     //     })
-//     //     .then((data)=>{
-//     //         data[params].show=!data[params].show
-//     //         dispatch("handleArticle",data)
-//     //     })
-//     // } 
-// }

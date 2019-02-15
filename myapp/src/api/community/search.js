@@ -1,6 +1,6 @@
 const Mock  = require("mockjs");
 let data = Mock.mock({
-    "article|10":[
+    "data|20":[
         {
             "artickeId|+1":1,
             "articleCover":"@Image('360x480','#c33', '#ffffff','花友圈')",
@@ -13,12 +13,14 @@ let data = Mock.mock({
     ]
 })
 
-let friendArticke = data.article;
 
-const article =(config)=>{
-    return friendArticke
+
+let searchData = data.data;
+
+const search =(config)=>{
+    return searchData
 }
 
 export default {
-    article
+    search
 }

@@ -1,41 +1,45 @@
 <template>
     <div class="publish">
-        <img :src="pic" alt="">
+        <!-- <img :src="pic" alt=""> -->
         <div class="seaHeader">
             <div class="publishImg">
-                <img src="../../../../assets/community/qiu/back.png" alt="" @click="handleBack()" >
+                <img src="../../../../assets/community/qiu/back.png" alt="" @click="handleBack(),handleDraft()" >
             </div>
-            <p class="publishTit" @click="handlepublish()">发布</p>
+            <p class="publishTit" @click="handlepublishB()">发布</p>
         </div> 
         <div class="publishMain">
-            <div contenteditable="true" class="publishInp" >{{publishMain}}</div>
-            <div class="publichAdd">
-                <img src="../../../../assets/community/qiu/img.png" alt="" class="pub-left publishPer">
-                <div class="publichAdd-son  pub-left" @click="handleAdd()">                   
-                    <img src="../../../../assets/community/qiu/add.png" alt="" class="publichAdd-img">
-                </div>
-            </div>
+            <div contenteditable="true" class="publishInp" ref="content">{{publishMain}}</div>
         </div>
     </div>
 </template>
 <script>
 import Vuex from "vuex"
+import axios from "axios";
+import Cookies from "js-cookie";
     export default {
         data(){
             return{
-                publishMain:"zhang",
-                pic:""
+                publishMain:"请输入",
+                userId:""
             }
         },
         methods:{
             ...Vuex.mapActions({
-                handlepublish:"communty/handlepublish"
+                handlepublish:"communty/handlepublish",
+                handleDraft:"communty/handleDraft"
             }),
             handleBack(){
                 this.$router.back()
             },
-            handleAdd(){
-                
+            handleAdd(e){
+                this.publishImg = e.target.files["0"].name                
+            },
+            handle(){
+                handlepublish(this.$refs.content.innerHTML)
+            },
+            handlepublishB(){
+                this.userId = Cookies.get("userId")
+                handlepublish({content:this.$refs.content.innerHTML,userId:this.userId})
             }
         }
     }

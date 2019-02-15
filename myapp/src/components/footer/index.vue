@@ -1,5 +1,8 @@
 <template>
     <div id="footer">
+        <router-link :to="{name:this.publish}">
+            <img src="../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="this.flag">
+        </router-link>
         <ul>
             <li v-for="(item,index) in navs" :key="index">
                 <router-link :to="{name:item.name}">
@@ -13,8 +16,30 @@
 
 <script>
 export default {
+    directives: {
+    //浮点的拖拽
+    drap(el) {
+      el.addEventListener("touchstart", function(e) {
+        let disX = e.targetTouches[0].clientX - el.offsetLeft;
+        let disY = e.targetTouches[0].clientY - el.offsetTop;
+        function handleMove(e) {
+          let x = e.targetTouches[0].clientX - disX;
+          let y = e.targetTouches[0].clientY - disY;
+          let l = Math.max(Math.min(e.targetTouches[0].pageX-e.targetTouches[0].radiusX/2,x),0)
+          el.style.left = l + "px";
+          el.style.top = y + "px";
+        }
+        document.addEventListener("touchmove", handleMove);
+        document.addEventListener("touchend", function() {
+          document.removeEventListener("touchmove", handleMove);
+        });
+      });
+    }
+  },
     data(){
         return {
+            publish: "publish",
+            flag :true,
             navs:[
                 {
                     name:"community",
@@ -44,7 +69,16 @@ export default {
 
 <style scoped lang="scss">
     $color:#F44C36;
+    .friendsPoint {
+    z-index: 999;
+    position: absolute; /*定位*/
+    top:-2rem;
+    right: 0;
+    height: 0.84rem;
+    width: 0.84rem;
+  }
     #footer{
+        position: relative;
         width: 100%;
         height: .98rem;
         position: fixed;

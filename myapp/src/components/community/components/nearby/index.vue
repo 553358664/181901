@@ -1,6 +1,7 @@
 <template>
     <div class="nearby wrapper" ref="homeWrapper">
         <ul class="content nearbyUl">
+            <router-link :to="{name:this.like}">
             <li class="nearbyLi" v-for="(item,index) in nearItems" :key="index">
                 <div class="nearbyImg">
                    <img :src="item.articleCover" alt=""> 
@@ -11,16 +12,24 @@
                     </p>
                     <div class="nearbyUser">
                         <div class="uerImg">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                           <img :src="item.userPhoto" alt>
                         </div> 
                         <p class="userName">{{item.username}}</p>  
-                        <p class="userPraise">
-                            <img src="../../../../assets\community\qiu\content_icon-like2.png" alt="">
+                        <div class="userPraise">
+                            <div class="praiseImg" @click="handlePraise(item.artickeId)">
+                                <img
+                                    src="../../../../assets\community\qiu/content_icon_like@2x.png"
+                                    alt
+                                    v-if="item.show"
+                                >
+                                <img src="../../../../assets\community\qiu\content_icon-like2@2x.png" alt v-else>
+                            </div>
                             <span class="praiseNum">{{item.praise}}</span>
-                        </p>                     
+                        </div>                     
                     </div>
                 </div>            
             </li>
+            </router-link>
         </ul>
     </div>
 </template>
@@ -33,6 +42,11 @@ export default {
     created(){
        this.handleNearItems()
        
+    },
+    data(){
+      return{
+          like:"searchArticle"
+      }  
     },
     computed: {
     //获得附近中的文章数据
@@ -48,6 +62,7 @@ export default {
   mounted(){
     this.scroll = new BScroll(this.$refs.homeWrapper,{
         //只有设置成true pullingUp才能使用
+        click: true,
         pullUpLoad:true,
         hasVerticalScroll: true
     })
@@ -110,6 +125,10 @@ export default {
                         margin-right:.32rem;
                         display: flex;
                         justify-content: center;
+                            img {
+                                width: 0.31rem;
+                                height: 0.27rem;
+                            }
                         .praiseNum{
                             margin-left:.1rem;
                             font-size:.20rem;

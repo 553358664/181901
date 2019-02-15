@@ -9,9 +9,11 @@ import Friends from"../../components/community/components/friends";
 import Nearby from"../../components/community/components/nearby";
 //查找
 import Search from"../../components/community/components/search";
-//发布视频
+//发布
 import Publish from "../../components/community/components/publish"
 import Logistics from "../../components/my/order/components/logistics"
+
+import SearchArticle from "../../components/community/components/article"
 export default(
     [
       {
@@ -19,11 +21,21 @@ export default(
         redirect:"/community"
       },
       {
+        path:'/searchArticle',
+        name:'searchArticle',
+        component:SearchArticle,
+        meta:{
+          flag:false,
+          requireAuth:true
+        }
+      },
+      {
         path:'/publish',
         name:'publish',
         component:Publish,
         meta:{
-          flag:false
+          flag:false,
+          requireAuth:true
         }
       },
       {

@@ -3,7 +3,7 @@ import axios from "../../lib";
 export default {
     handleContent({commit}){
         axios({
-            method:"get",
+            method:"post",
             url:"http://localhost:3000/draft"
         })
         .then((data)=>{
