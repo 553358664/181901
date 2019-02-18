@@ -3,53 +3,38 @@
     <div class="wrapper" ref="dicountWrapper">
       <div class="marketGoods content">
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <img src="@/assets/small/shopHome/meigui.png" alt>
           <h2>玫瑰</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <img src="@/assets/small/shopHome/baihe.png" alt>
           <h2>百合</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
+          <img src="@/assets/small/shopHome/kangnaixin.png" alt>
           <h2>康乃馨</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>洋桔梗</h2>
+          <img src="@/assets/small/shopHome/xiuqiu.png" alt>
+          <h2>绣球</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>玫瑰</h2>
+          <img src="@/assets/small/shopHome/lanhua.png" alt>
+          <h2>兰花</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>百合</h2>
+          <img src="@/assets/small/shopHome/ju.png" alt>
+          <h2>菊花</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>康乃馨</h2>
+          <img src="@/assets/small/shopHome/xiangrikui.png" alt>
+          <h2>向日葵</h2>
         </router-link>
         <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>洋桔梗</h2>
+          <img src="@/assets/small/shopHome/lamei.png" alt>
+          <h2>腊梅</h2>
         </router-link>
-        <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>玫瑰</h2>
-        </router-link>
-        <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>百合</h2>
-        </router-link>
-        <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>康乃馨</h2>
-        </router-link>
-        <router-link :to="{name:'hccs'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>洋桔梗</h2>
-        </router-link>
+        
       </div>
     </div>
   </div>

@@ -4,17 +4,17 @@
 		<div class="wrapper" ref="wrapper_hccs">
 			<div class="content">
 				<Banner-com/>
-		        <Main-com :val="flag"/>
+		        <Main-com :val="flag" @handleTo="handleTo" />
 			</div>
 		</div>
-		    <Nav-com v-show="flag"></Nav-com>
+		    <Nav-com :class="flag?'active':''" @handleTo="handleTo"></Nav-com>
 		<Foot-com/>
 	</div>
 </template>
 <script>
     import Vuex from "vuex";
     import axios from "axios";
-    import Head from "./head.vue";
+    import Head from "../../components/goodsDetail/header";
     import Main from "./main.vue";
     import Banner from "./banner.vue";
     import Nav from "./nav.vue";
@@ -42,19 +42,20 @@
 			
 				this.scroll=new BScroll(this.$refs.wrapper_hccs,{
 					pullUpLoad:true,
-					probeType:2
+					probeType:2,
+					click:true
 				});
-				this.scroll.on("pullingUp",()=>{
+				/*this.scroll.on("pullingUp",()=>{
 					this.handleUpdate();
-			   });
+			   });*/
 			   this.scroll.on("scroll",({x,y})=>{
 			    	if(y<-710){
 			    		this.flag=true
 			    	}else{
 			    		this.flag=false
 			    	}
-			    })
-			
+			    });
+			  
 		},
 		watch:{
 			result(newVal,oldVal){
@@ -65,12 +66,20 @@
 		methods:{
 			...Vuex.mapActions({
 				handleUpdate:"small/handleUpdate"
-			})
+			}),
+			handleTo(val){
+				this.scroll.scrollTo(0,val,300,"bounce")
+			}
 		}
 		
 	}
 </script>
 <style scoped>
+    .active{
+    	position:fixed;
+		top:0.88rem;
+		left:0;
+    }
 	#app_hccs{
 		width:100%;
 		height:100%;
@@ -80,6 +89,6 @@
 		width:100%;
 	}
 	#app_hccs>.wrapper>.content{
-		
+		padding-bottom:1rem;
 	}
 </style>
