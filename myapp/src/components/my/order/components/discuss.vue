@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="Setset">
         <div class="Sethead">
             <router-link to="myorder" class="Setback">
@@ -18,7 +18,11 @@
                     <img src="../../../../assets/my/yq/icon_wd_shoucang@2x.png" v-show="shopstar<=item">
                 </li>
             </ul>
-            <span>非常好</span>
+            <span v-if="shopstar==5">非常满意</span>
+            <span v-if="shopstar==4">较为满意</span>
+            <span v-if="shopstar==3">基本满意</span>
+            <span v-if="shopstar==2">感觉一般</span>
+            <span v-if="shopstar==1">体验极差</span>
         </div>
         <textarea class="usercommet" placeholder="宝贝满足你的期待吗？说说它的优点和美中不足的地方吧"></textarea>
         <div class="withname">
