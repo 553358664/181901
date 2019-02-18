@@ -13,6 +13,7 @@
 </template>
 <script>
 import Vuex from "vuex";
+import Vue from "vue";
 export default {
   data() {
     return {
@@ -20,8 +21,16 @@ export default {
     };
   },
   mounted() {
-    this.otherTop = this.$refs.other.offsetTop;
+   /*  this.$nextTick(()=>{
+       this.otherTop = this.$refs.other.offsetTop;
+    console.log(this.otherTop)
     this.handleOtherTop(this.otherTop)
+    }) */
+    setTimeout(()=>{
+       this.otherTop = this.$refs.other.offsetTop;
+    this.handleOtherTop(this.otherTop)
+    },1000)
+   
   },
   methods: {
     ...Vuex.mapMutations({

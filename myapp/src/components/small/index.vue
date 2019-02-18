@@ -14,7 +14,7 @@
         <div class="border border2"></div>
         <FlowerOrder-com></FlowerOrder-com>
         <div class="border"></div>
-        <Other-com ref="other"></Other-com>
+        <Other-com></Other-com>
         <div class="border"></div>
         <Slogan-com></Slogan-com>
       </div>

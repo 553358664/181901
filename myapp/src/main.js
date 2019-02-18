@@ -7,6 +7,7 @@ import store from "./store";
 
 //修改全局mint-ui的scss文件
 import "./common/css/my-mint.scss";
+import "./common/css/liuna-mint.scss"
 
 import "./common/css/reset.css";
 import "./common/css/iconfont/iconfont.css";

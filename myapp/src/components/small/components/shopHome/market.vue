@@ -1,5 +1,5 @@
 <template>
-  <div id="discount" ref="discount">
+  <div id="market" ref="discount">
     <div class="wrapper" ref="dicountWrapper">
       <div class="marketGoods content">
         <router-link :to="{name:'hccs'}">
@@ -66,7 +66,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#discount {
+#market {
   margin-left: 0.26rem;
   font-family: PingFang-SC-Regular;
   .marketGoods {

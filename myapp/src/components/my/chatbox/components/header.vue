@@ -1,8 +1,8 @@
 <template>
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/> 
-        <p>小雪</p>
-        <img :src="more"/>  
+        <p>张良</p>
+        <img class="more" :src="more"/>  
     </div>
 </template>
 
@@ -39,6 +39,10 @@ export default {
     .back{
         width:.34rem;
         height:.34rem;
+    }
+    .more{
+        width:.48rem;
+        height:.2rem;
     }
     p{
         font-size: .32rem;

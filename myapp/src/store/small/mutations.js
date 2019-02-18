@@ -6,17 +6,18 @@ export default {
   },
   handleOtherTop(state, params) {
     //params -= 840;
-    params *= .87
+    params *= .95
     state.scrollHeight.push(params)
   },
   handleDiscountTop(state, params) {
     //params -= 500
-    params *= .35
+    params *= .7
     state.scrollHeight.push(params)
   },
   handleFlowerTop(state, params) {
+   
     //params -= 500
-    params *= .74
+    params *= .72
     state.scrollHeight.push(params)
   },
   //wjl hccs
@@ -39,7 +40,6 @@ export default {
   handleSelect(state, params) {
     state.goodsSelect = []
     state.goodsSelect.push(params)
-    console.log(state.goodsSelect)
   },
   handleReduce(state, index) {
     if (state.goodsSelect[index].goodsNum <= 1) {
@@ -53,6 +53,5 @@ export default {
   },
   handleSCarM(state, params) {
     state.ScarList = params
-    console.log(state.ScarList)
   },
 }

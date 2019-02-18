@@ -4,8 +4,8 @@
       <li v-for="(item,index) in messageList">
         <!-- <img :src="headPic"/> -->
         <img
-          :src="(item.isSelf?'headPic':'headPic')"
-          :class="'img'+(item.isSelf?'right':'left')">
+          :src="item.isSelf ? headPic:AI"
+          :class="'img'+(item.isSelf ? 'right':'left')">
         
         <span :class="'span'+(item.isSelf?'right':'left')">{{item.message}}</span>
       </li>
@@ -33,6 +33,7 @@ export default {
       //聊天窗口的内容
       messageList: [],
       headPic: require("@/assets/my/wd_fs_tx1@2x.png"),
+      AI:require("@/assets/my/qiuqiu.png"),
       data: {}
     };
   },
@@ -43,23 +44,27 @@ export default {
         message: this.inputVal,
         isSelf: true
       });
-        // //接入图灵机器人接口
-        // axios({
-        //     method: "post",
-        //     url:"api/openapi/api/v2",
-        //     data: {
-        //         "perception": {
-        //             "inputText": {
-        //             "text": "附近的酒店"
-        //             },
-        //             "userInfo": {
-        //             "apiKey": "430a4686bbbb417f891a24ccf16728ca"
-        //             }
-        //         }
-        //     }
-        // }).then(data => {
-        //     console.log(data);
-        // });
+        //接入图灵机器人接口
+        axios({
+            method: "post",
+            url:"/chat/openapi/api?key=430a4686bbbb417f891a24ccf16728ca&userid=1&info="+this.inputVal,
+            // url:"/chat/openapi/api",
+            headers:{
+                "Content-type":"application/x-www-form-urlencoded"
+                },
+            // data:{
+            //         "userid":"1",//添加id,实现上下文连贯
+            //         "apikey":"2465e182e4154777a3a02da0ccaa6c88",
+            //         "info":this.inputVal
+            //     }
+        }).then(data => {
+            console.log(this.inputVal);
+            // 三.获取机器人接口内容,也将内容渲染到页面
+                            this.messageList.push({
+                                message:data.data.text,
+                                isSelf:false
+                            })
+        });
         this.inputVal = ""; //最后清除文本框
         }
       }
@@ -72,6 +77,8 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0.24rem;
+  position:fixed;
+  top:1.1rem;
 }
 
 .content > li {
@@ -95,10 +102,16 @@ export default {
 
 .content li img.imgleft {
   float: left;
+  width:.6rem;
+  height:.6rem;
+  margin-right: .2rem;
 }
 
 .content li img.imgright {
   float: right;
+  width:.6rem;
+  height:.6rem;
+  margin-left: .2rem;
 }
 
 .content li span.spanleft {

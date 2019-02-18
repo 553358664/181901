@@ -5,7 +5,7 @@ export default {
   }) {
     axios({
         method: "get",
-        url: "http://localhost:53000/data",
+        url: "/scar",
         data: {}
       })
       .then((data) => {
@@ -29,14 +29,13 @@ export default {
         }
       })
       .then((data) => {
-        console.log(data)
+  
       })
   },
-  handleToOrder({ commit, dispatch, state, rootState }) {
+  handleToOrder({ commit,  state, rootState }) {
     rootState.small.goodsSelect = [];
     state.sCarList.map((item) => {
         if (item.flagCheck) {
-            console.log(1)
          rootState.small.goodsSelect.push(item)
       }
   })

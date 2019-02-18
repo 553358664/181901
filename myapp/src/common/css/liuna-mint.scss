@@ -1,0 +1,30 @@
+//我的 => 个人信息 => mint-ui
+.mint-cell{
+    width:100%;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    .mint-cell-title{
+        font-size:.28rem;
+    }
+    .mint-cell-value.is-link{
+        font-size:.28rem
+        
+    }
+    .mint-cell-allow-right::after{
+        width:.15rem;
+        height:.15rem;
+    }
+}
+.mint-cell-swipe, .mint-cell-wrapper,.mint-cell-value{
+    width:100%;
+    height:1.6rem;
+    
+}
+.mint-cell-swipe-button{
+    width:1.2rem;
+    text-align: center;
+    display: inline-block;
+    padding: 0 .3rem;
+    line-height: 1.6rem;
+}

@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      comName: "Exit-com"
+      comName: "None-com"
     };
   },
   mounted() {
