@@ -1,34 +1,43 @@
 <template>
   <div class="article">
     <div class="describe1">
-      <span class="describe1span">看我做的最火辣的花束，热烈奔放，秀色可餐，颜值爆表</span>
+      <slot name="content" class="describe1span"></slot>  
     </div>
     <div class="describe2">
       <div class="fabulous">
         <div class="fabulousimg">
           <img src="../../../../../../assets/community/yq/btn_icon_like@2x.png">
         </div>
-        <span class="fabulousnum">9999</span>
+        <slot name="Fabulous" class="describe1span"></slot>  
       </div>
       <div class="collection">
         <div class="collectionimg">
           <img src="../../../../../../assets/community/yq/btn_icon_shoucang@2x.png">
         </div>
-        <span class="collectionnum">9999</span>
+        <slot name="Collection" class="describe1span"></slot>  
       </div>
       <div class="comment">
         <div class="commentimg">
           <img src="../../../../../../assets/community/yq/btn_icon_pinglun@2x.png">
         </div>
-        <span class="commentnum">9999</span>
+        <slot name="Forward" class="describe1span"></slot>  
       </div>
     </div>
     <!-- 是否存在评论 -->
     <div class="exit" v-show="flag">
         <ul>
-            <li><span class="commenter">八阿哥：</span><span class="content">小哥哥菊花不会痛吗</span></li>
-            <li><span class="commenter">齐德龙东强：</span><span class="content">一楼你知道的太多了</span></li>
-            <li class="more">查看更多评论</li>
+            <li>
+              <slot name="commenter1" class="commenter"></slot>
+              <slot name="comment1" class="content"></slot>
+            </li>
+            <li>
+              <slot name="commenter2" class="commenter"></slot>
+              <slot name="comment2" class="content"></slot>
+            </li>
+            <li>
+              <slot name="commenter3" class="commenter"></slot>
+              <slot name="comment3" class="content"></slot>
+            </li>   
         </ul>
     </div>
     <div class="bottom">
@@ -39,8 +48,8 @@
         <div class="writecomment">写点评论</div>
       </div>
       <div class="right">
-        <span class="data">12-12</span>
-        <span class="time">12:12</span>
+        <slot name="createTime1" class="data"></slot>
+        <slot name="createTime2" class="data"></slot>
       </div>
     </div>
   </div>
@@ -62,7 +71,6 @@ export default {
   background: white;
   .describe1 {
     width: 6.42rem;
-    height: 0.75rem;
     margin: 0 auto;
         .describe1span{
         font-size: 0.28rem;
@@ -108,11 +116,9 @@ export default {
       flex-wrap: wrap;
       >li{
         width: 100%;
-        height: .23rem;
         margin: .15rem 0 .15rem .13rem
       }
       .commenter{
-        height:.23rem;
         font-size:.24rem;
         font-family:PingFang-SC-Bold;
         font-weight:bold;
