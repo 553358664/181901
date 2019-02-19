@@ -2,6 +2,7 @@ import {getNum} from "../../utils/community/getNum"
 export default {
     //获取首页花友圈数据
     handleArticle(state,params){
+<<<<<<< HEAD
         state.articleList = [...state.articleList,...params]
         state.userId = localStorage.getItem("userId")    
         state.pageindexF++;
@@ -62,5 +63,11 @@ export default {
         }else{
             state.publishCode==-1
         }       
+=======
+        state.articleList = params
+    },
+    attentionList(state,params){
+        state.attention=params;
+>>>>>>> master
     }
 }

@@ -1,4 +1,5 @@
 export default {
+<<<<<<< HEAD
     //花友圈的数据
     articleList:[],
     //附近的数据
@@ -20,4 +21,8 @@ export default {
     //搜索的具体文章
     searchArticle:[],
     publishCode:0
+=======
+    articleList:[],
+    attention:[]
+>>>>>>> master
 }

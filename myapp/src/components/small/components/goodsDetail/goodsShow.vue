@@ -65,7 +65,7 @@ export default {
     countDown() {
       let date = new Date();
       let now = date.getTime();
-      let endDate = new Date("2019-2-17");
+      let endDate = new Date("2019-2-28");
       let end = endDate.getTime();
       let time = end - now;
       this.d=Math.floor(time/1000/60/60/24);

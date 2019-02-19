@@ -2,14 +2,14 @@
   <div class="user">
     <div class="top">
       <div class="headimg">
-        <img class="portrait" src="../../../../../../assets/community/yq/img_2@2x.png">
+          <slot name="userImg" class="portrait"></slot>  
       </div>
-      <span class="topname">喜欢肉夹馍</span>
+      <slot name="userName" class="topname"></slot>
       <div class="space"></div>
       <div class="attention">已关注</div>
     </div>
     <div class="bottom">
-      <img class="cover" src="../../../../../../assets/community/yq/img_1@2x.png">
+      <slot name="coverImg" class="cover"></slot>
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
       border-radius: 50%;
       margin-left: 0.32rem;
       .portrait {
+        border-radius: 50%;
         width: 100%;
         height: 100%;
       }

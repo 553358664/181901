@@ -1,12 +1,7 @@
 <template>
 	<div id="main_hccs">
 		<div id="list_support">
-			<div id="list_hccs" v-show="!val">
-				<h3>冬季限定</h3>
-				<ul v-for="(item,index) in flowerName">
-					<li>{{item}}</li>
-				</ul>
-			</div>
+			<Nav-com v-show="!val" ></Nav-com>
 		</div>
 		<div id="classify">
 			<div class="classify" v-for="(item,index) in result">
@@ -39,6 +34,7 @@
 	</div>
 </template>
 <script>
+    import Nav from "./nav";
     import Vuex from "vuex";
     import axios from "axios";
 	export default{
@@ -46,6 +42,9 @@
 			return{
 				flag:true
 			}
+		},
+		components:{
+			"Nav-com":Nav
 		},
 		props:{
 			val:Boolean
@@ -58,10 +57,13 @@
 			})
 		},
 		methods:{
-			
 			...Vuex.mapActions({
 				handleLoad:"small/handleLoad"
 			}),
+			
+			/*handleTo(val){
+               this.$emit("handleTo",val)
+			}*/
 			//handleLoad(){
 				/*axios({
 					url:"http://localhost:3000/data1"
@@ -83,9 +85,9 @@
 //					this.result = data.data.data;
 //					this.flowerName = data.data.data2;
 //				})
-//				
 //			}
-		},
+          },
+		
 		created(){
 			this.handleLoad();
 			    

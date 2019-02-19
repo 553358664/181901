@@ -1,5 +1,4 @@
 import axios from "../../lib";
-
 export default {
     //花友圈获得数据
   handleArticle({
@@ -140,6 +139,7 @@ export default {
         data.map((item)=>{
             item.speard = false;
         })
+<<<<<<< HEAD
         commit("handleSearch",data);  
     })
   },
@@ -165,3 +165,40 @@ export default {
   }
 }
 
+=======
+        .then((data)=>{
+            commit("handleArticle",data)
+        })
+    },
+    handleNearItems({commit}){
+        axios({
+            method:"get",
+            url:"http://localhost:3000/text"
+        })
+        .then((data)=>{
+            commit("handleNearItems",data)
+        })
+    },
+    handlePicShow({commit,dispatch},params){
+        axios({
+            method:"get",
+            url:"http://localhost:3000/text",
+        })
+        .then((data)=>{
+            data[params].show=!data[params].show
+            // dispatch("handleArticle",data)
+            // console.log(data[params].show)
+        })
+    },
+    attentionList({commit}){
+        axios({
+          method:"get",
+            url:"/myattention"
+        })
+        .then((data)=>{         
+          console.log(data.data);
+          commit("attentionList",data.data)
+        })
+    }
+}
+>>>>>>> master

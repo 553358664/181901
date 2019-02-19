@@ -126,7 +126,6 @@ export default {
     })
   },
   created() {
-    //模拟数据注释防止报错
     this.handleHomeData();
   },
   updated() {
