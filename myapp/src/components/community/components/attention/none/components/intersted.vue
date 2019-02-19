@@ -31,7 +31,6 @@ export default {
         this.scroll = new BScroll(this.$refs.tabsWrapper,{
             scrollX: true
         })
-        console.log(this.scroll);
     },
     data() {
         return {

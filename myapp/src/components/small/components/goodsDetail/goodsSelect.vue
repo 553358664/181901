@@ -28,7 +28,7 @@
         <h3>购买数量:</h3>
         <div class="goodsNum">
           <button @click=handleReduce>-</button>
-          <input type="text" ref="num" v-model="number">
+          <input type="text" v-model="number">
           <button @click=handleAdd>+</button>
         </div>
       </div>
@@ -99,7 +99,7 @@ export default {
       obj.goodsName = this.goodsDetail.goodsName;
       obj.goodsPrice = this.goodsDetail.goodsPrice;
       obj.goodsOldPrice = this.goodsDetail.goodsOldPrice;
-      obj.goodsNum = Number(this.$refs.num.value);
+      obj.goodsNum = Number(this.number);
       obj.goodsImg = this.goodsDetail.goodsImg;
       obj.goodsSize = this.goodsDetail.goods[this.checkIndex].name;
       //obj.kind=this.goodsDetail.goods

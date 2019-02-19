@@ -22,7 +22,6 @@ const store = new Vuex.Store({
 
         Myarticle,
         scar,
-        // Mylist
     }
 })
 

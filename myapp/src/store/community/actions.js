@@ -1,5 +1,4 @@
 import axios from "../../lib";
-
 export default {
     handleArticle({commit}){
         axios({
@@ -29,5 +28,15 @@ export default {
             // dispatch("handleArticle",data)
             // console.log(data[params].show)
         })
-    } 
+    },
+    attentionList({commit}){
+        axios({
+          method:"get",
+            url:"/myattention"
+        })
+        .then((data)=>{         
+          console.log(data.data);
+          commit("attentionList",data.data)
+        })
+    }
 }
