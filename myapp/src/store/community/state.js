@@ -1,7 +1,6 @@
 export default {
-<<<<<<< HEAD
     //花友圈的数据
-    articleList:[],
+    articleListA:[],
     //附近的数据
     nearItems:[],
     //模糊查询列表
@@ -20,9 +19,7 @@ export default {
     yn:-1,
     //搜索的具体文章
     searchArticle:[],
-    publishCode:0
-=======
+    publishCode:0,
     articleList:[],
     attention:[]
->>>>>>> master
 }

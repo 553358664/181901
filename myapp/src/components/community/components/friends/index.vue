@@ -46,7 +46,7 @@ export default {
   computed: {
     //获取花友圈的数据
     ...Vuex.mapState({
-      article: state => state.community.articleList,
+      article: state => state.community.articleListA,
       userId:state => state.community.userId,
       yn:state => state.community.yn
     })
