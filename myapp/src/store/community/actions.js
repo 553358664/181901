@@ -154,9 +154,10 @@ export default {
         }
     })
     .then((data)=>{  
-      console.log(data)
-            data.speard = false;
-        commit("handleSearchAt",data);  
+      data.map((item)=>{
+        item.speard = false
+      })
+      commit("handleSearchAt",data);  
     })
   },
   changespeard({commit}){

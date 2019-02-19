@@ -14,8 +14,6 @@ let data = Mock.mock({
     ]
 })
 
-
-
 let searchData = data.search;
 
 const search =(config)=>{
