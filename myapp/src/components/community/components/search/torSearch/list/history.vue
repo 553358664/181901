@@ -5,13 +5,20 @@
       <img src="../../../../../../assets/community/qiu/del.png" alt @click="handleDel()">
     </div>
     <ul class="searchMain">
-      <li class="searchList" v-for="(item,index) in my" :key="index" ref="list" @click="handleSearch(item)">{{item}}</li>
+      <li class="searchList" v-for="(item,index) in my" :key="index" ref="list" @click="handleSearch(item.Record)">
+        <router-link :to="{name:'searchArticle'}">
+          {{item.Record}}
+        </router-link>
+      </li>        
     </ul>
   </div>
 </template>
 <script>
 import Vuex from "vuex";
 export default {
+  created(){
+    this.handleHistory()
+  },
   computed: {
     ...Vuex.mapState({
       my: state => state.community.my
@@ -19,6 +26,7 @@ export default {
   },
   methods: {
     ...Vuex.mapActions({
+      handleHistory:"community/handleHistory",
       handleSearch: "community/handleSearch",
       handleDel:"community/handleDel"
     })

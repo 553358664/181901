@@ -1,11 +1,13 @@
 <template>
     <div class="nearby wrapper" ref="homeWrapper">
         <ul class="content nearbyUl">
-            <router-link :to="{name:this.like}">
+            
             <li class="nearbyLi" v-for="(item,index) in nearItems" :key="index">
-                <div class="nearbyImg">
+                <router-link :to="{name:'searchArticle'}">
+                <div class="nearbyImg" @click="handleSearch(item.articleId)">
                    <img :src="item.articleCover" alt=""> 
-                </div>   
+                </div> 
+                </router-link>
                 <div class="nearbyBox">
                     <p class="nearbyP">                      
                     {{item.articleTitle}}
@@ -14,22 +16,22 @@
                         <div class="uerImg">
                            <img :src="item.userPhoto" alt>
                         </div> 
-                        <p class="userName">{{item.username}}</p>  
+                        <p class="userName">{{item.userName}}</p>  
                         <div class="userPraise">
-                            <div class="praiseImg" @click="handlePraise(item.artickeId)">
+                            <div class="praiseImg" @click="handlePraiseN(item.articleId,userId)">
                                 <img
-                                    src="../../../../assets\community\qiu/content_icon_like@2x.png"
+                                    src="../../../../assets\community\qiu/content_icon_like.png"
                                     alt
-                                    v-if="item.show"
+                                    v-if="item.praiseShow"
                                 >
-                                <img src="../../../../assets\community\qiu\content_icon-like2@2x.png" alt v-else>
+                                <img src="../../../../assets\community\qiu\content_icon-like2.png" alt v-else>
                             </div>
-                            <span class="praiseNum">{{item.praise}}</span>
+                            <span class="praiseNum">{{item.praiseCount}}</span>
                         </div>                     
                     </div>
                 </div>            
             </li>
-            </router-link>
+            
         </ul>
     </div>
 </template>
@@ -41,31 +43,48 @@ import BScroll from "better-scroll";
 export default {
     created(){
        this.handleNearItems()
-       
     },
-    data(){
-      return{
-          like:"searchArticle"
-      }  
+    watch: {
+    nearItems(newVal,oldVal){
+      this.scroll.finishPullUp();
+      this.scroll.refresh();
     },
+    yn(newVal,oldVal){
+      if(newVal>=0){
+        return
+      }
+      else{
+        this.$router.push("/register")
+      }
+    }
+  },
     computed: {
     //获得附近中的文章数据
     ...Vuex.mapState({
-      nearItems: state => state.community.nearItems
+        nearItems: state => state.community.nearItems,
+        userId:state => state.community.userId,
+        yn:state => state.community.yn
     })
   },
   methods:{
     ...Vuex.mapActions({
-      handleNearItems: "community/handleNearItems"
+      handleNearItems: "community/handleNearItems",
+      handleGoodsUpdate:"community/handleNearUpdate",
+      handlePraiseN:"community/handlePraiseN"
     })
   },
   mounted(){
-    this.scroll = new BScroll(this.$refs.homeWrapper,{
-        //只有设置成true pullingUp才能使用
+     if (!this.scroll) {
+      this.scroll = new BScroll(this.$refs.homeWrapper, {
         click: true,
-        pullUpLoad:true,
-        hasVerticalScroll: true
-    })
+        pullUpLoad: true,
+        hasVerticalScroll: true,
+        probeType:2
+      });
+    }
+    this.scroll.on("pullingUp", () => {
+      this.handleGoodsUpdate();
+    });
   }
 }
 </script>

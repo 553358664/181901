@@ -1,34 +1,34 @@
 <template>
   <div class="friendsOuter" ref="out">
     <div class="friends wrapper" ref="homeWrapper">     
-      <ul class="content friendsUl">
-        <router-link :to="{name:this.like}">
+      <ul class="content friendsUl">   
         <li class="friendsLi" v-for="(item,index) in article" :key="index">
-          <div class="friendsImg">
+          <router-link :to="{name:'searchArticle'}">
+          <div class="friendsImg" @click="handleSearchAt(item.articleId)">
             <img :src="item.articleCover" alt>
           </div>
+          </router-link>
           <div class="friendsBox">
             <p class="friendsP">{{item.articleTitle}}</p>
             <div class="friendsUser">
               <div class="uerImg">
                 <img :src="item.userPhoto" alt>
               </div>
-              <p class="userName">{{item.authorname}}</p>
+              <p class="userName">{{item.userName}}</p>
               <div class="userPraise">
-                <div class="praiseImg" @click="handlePraise(item.artickeId,item.authorname)">
+                <div class="praiseImg" @click="handlePraiseF(item.articleId,userId)">
                   <img
-                    src="../../../../assets\community\qiu/content_icon_like@2x.png"
+                    src="../../../../assets\community\qiu/content_icon_like.png"
                     alt
-                    v-if="item.show"
+                    v-if="item.praiseShow"
                   >
-                  <img src="../../../../assets\community\qiu\content_icon-like2@2x.png" alt v-else>
+                  <img src="../../../../assets\community\qiu\content_icon-like2.png" alt v-else>
                 </div>
-                <span class="praiseNum">{{item.praise}}</span>
+                <span class="praiseNum">{{item.praiseCount}}</span>
               </div>
             </div>
           </div>
-        </li>
-        </router-link>
+        </li>        
       </ul>
     </div>
   </div>
@@ -46,30 +46,39 @@ export default {
   computed: {
     //获取花友圈的数据
     ...Vuex.mapState({
-      article: state => state.community.articleList
+      article: state => state.community.articleList,
+      userId:state => state.community.userId,
+      yn:state => state.community.yn
     })
   },
   watch: {
     article(newVal,oldVal){
       this.scroll.finishPullUp();
       this.scroll.refresh();
+    },
+    yn(newVal,oldVal){     
+      if(newVal>=0){
+        return
+      }
+      else{
+        this.$router.push("/register")
+      }
     }
   },
   data() {
     return {
-      flag: true,
-      like: "searchArticle",
+      flag: true
     };
   },
   methods: {
     ...Vuex.mapActions({
       handleArticle: "community/handleArticle",
-      handlePraise: "community/handlePraise",
-      handleGoodsUpdate:"community/handleGoodsUpdate"
+      handlePraiseF: "community/handlePraiseF",
+      handleGoodsUpdate:"community/handleGoodsUpdate",
+      handleSearchAt:"community/handleSearchAt"
     })
   },
   mounted() {
-    this.userId = Cookies.get("userIdx")
     if (!this.scroll) {
       this.scroll = new BScroll(this.$refs.homeWrapper, {
         click: true,

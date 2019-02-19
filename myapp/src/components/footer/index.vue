@@ -1,8 +1,6 @@
 <template>
     <div id="footer">
-        <router-link :to="{name:this.publish}">
-            <img src="../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="this.flag">
-        </router-link>
+            <img src="../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="this.flag" @click="handlePublish()">
         <ul>
             <li v-for="(item,index) in navs" :key="index">
                 <router-link :to="{name:item.name}">
@@ -15,30 +13,47 @@
 </template>
 
 <script>
+import Vue from "vue"
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+import { Toast } from 'mint-ui';
+Vue.use(Mint);
 export default {
     directives: {
     //浮点的拖拽
-    drap(el) {
-      el.addEventListener("touchstart", function(e) {
-        let disX = e.targetTouches[0].clientX - el.offsetLeft;
-        let disY = e.targetTouches[0].clientY - el.offsetTop;
-        function handleMove(e) {
-          let x = e.targetTouches[0].clientX - disX;
-          let y = e.targetTouches[0].clientY - disY;
-          let l = Math.max(Math.min(e.targetTouches[0].pageX-e.targetTouches[0].radiusX/2,x),0)
-          el.style.left = l + "px";
-          el.style.top = y + "px";
-        }
-        document.addEventListener("touchmove", handleMove);
-        document.addEventListener("touchend", function() {
-          document.removeEventListener("touchmove", handleMove);
+        drap(el) {
+        el.addEventListener("touchstart", function(e) {
+            let disX = e.targetTouches[0].clientX - el.offsetLeft;
+            let disY = e.targetTouches[0].clientY - el.offsetTop;
+            function handleMove(e) {
+            let x = e.targetTouches[0].clientX - disX;
+            let y = e.targetTouches[0].clientY - disY;
+            let l = Math.max(Math.min(e.targetTouches[0].pageX-e.targetTouches[0].radiusX/2,x),0)
+            el.style.left = l + "px";
+            el.style.top = y + "px";
+            }
+            document.addEventListener("touchmove", handleMove);
+            document.addEventListener("touchend", function() {
+            document.removeEventListener("touchmove", handleMove);
+            });
         });
-      });
-    }
-  },
+        }
+    },
+    methods:{
+        handlePublish(){
+            let userId = localStorage.getItem("userId")
+            // if(userId){
+                this.$router.push("/publish")
+            // }else{
+            //     Toast({
+            //         message:"请先登陆",
+            //         duration: 3000
+            //     }) 
+            // }
+        }
+    },
     data(){
         return {
-            publish: "publish",
             flag :true,
             navs:[
                 {

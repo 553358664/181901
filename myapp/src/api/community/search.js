@@ -1,21 +1,22 @@
 const Mock  = require("mockjs");
 let data = Mock.mock({
-    "data|20":[
+    "search|10":[
         {
-            "artickeId|+1":1,
+            "articleId|+1":1,
             "articleCover":"@Image('360x480','#c33', '#ffffff','花友圈')",
             "userPhoto":"@Image('31x27','#c33', '#ffffff','花友圈')",
+            "articleContent":"@csentence(15,150)",
             "articleTitle":"@csentence(1,15)",
-            "authorname":"@csentence(2,8)",
-            "praise|0-100":10,
-            "show|1":Mock.Random.boolean(1,2,false)
+            "userName":"@csentence(2,8)",
+            "praiseCount|0-100":10,
+            "praiseShow|1":false
         }
     ]
 })
 
 
 
-let searchData = data.data;
+let searchData = data.search;
 
 const search =(config)=>{
     return searchData

@@ -15,7 +15,11 @@
         v-model="search"
         @input="handleTouchUp(search)"
       >
-      <p class="searchTit" @click="handleSearch(search)">搜索</p>
+      <p class="searchTit" @click="handleSearch(search)">
+        <router-link :to="{name:'searchArticle'}">
+        搜索
+        </router-link>
+        </p>
     </div>
   </div>
 </template>

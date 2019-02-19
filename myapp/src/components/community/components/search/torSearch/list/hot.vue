@@ -6,23 +6,31 @@
     <ul class="searchMain">
       <li
         class="searchList"
-        v-for="(item,index) in my"
+        v-for="(item,index) in hot"
         :key="index"
-        @click="handleSearch(item)"
-      >{{item}}</li>
+        @click="handleSearch(item.Record)"
+      >
+      <router-link :to="{name:'searchArticle'}">
+      {{item.Record}}
+      </router-link>
+      </li>
     </ul>
   </div>
 </template>
 <script>
 import Vuex from "vuex"
 export default {
+  created(){
+    this.handleHot()
+  },
   computed: {
     ...Vuex.mapState({
-      my: state => state.community.my
+      hot: state => state.community.hot
     })
   },
   methods:{
       ...Vuex.mapActions({
+          handleHot:"community/handleHot",
           handleSearch:"community/handleSearch"
       })
   }

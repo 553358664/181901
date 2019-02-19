@@ -13,10 +13,10 @@ let data = Mock.mock({
     ]
 })
 
-let friendArticke = data.article;
+let nearbyArticke = data.article;
 
 const article =(config)=>{
-    return friendArticke
+    return nearbyArticke
 }
 
 export default {

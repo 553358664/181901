@@ -1,12 +1,13 @@
 <template>
   <div class="searchList">
-    <router-link :to="{name:this.searchArticle}">
+    
       <ul class="searchMain">       
-        <li class="searchCentent" v-for="(item,index) in list" :key="index">
-            {{item.articleTitle}}          
-          </li>
-      </ul>
-    </router-link>
+        <li class="searchCentent" v-for="(item,index) in list" :key="index" @click="handleSearch(item.articleTitle)">
+          <router-link :to="{name:'searchArticle'}">
+            {{item.articleTitle}}     
+          </router-link>
+        </li>
+      </ul>   
         <history-com/>   
         <hot-com/>
   </div>
@@ -14,14 +15,6 @@
 <script>
 import Vuex from "vuex";
 export default {
-  created(){
-    // console.log(this.list)
-  },
-  data(){
-    return{
-      searchArticle:"searchArticle"
-    }
-  },
   computed: {
     ...Vuex.mapState({
       list: state => state.community.fuzzyQuery
@@ -32,9 +25,9 @@ export default {
     "hot-com": () => import("./hot")
   },
   methods:{
-    handleData(){
-      
-    }
+    ...Vuex.mapActions({
+      handleSearch:"community/handleSearch"
+    })
   }
 };
 </script>

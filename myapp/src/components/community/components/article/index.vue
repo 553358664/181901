@@ -8,6 +8,7 @@
         <div class="myarticle wrraper" ref="myarticleWrapper">
             <ul class="content">
                 <li v-for="(item,index) in list" :key="index">
+                    <div class="tit">{{item.articleTitle}}</div>
                     <div class="cover">
                         <img :src="item.articleCover">
                     </div>
@@ -52,17 +53,9 @@ export default {
         });
         this.scroll.on("pullingUp", () => {});
     },
-    created(){
-        //模拟数据注释防止报错
-        this.handleAtData();
-    },
     methods:{
-        //获取文章数据
-        ...Vuex.mapActions({
-            handleAtData: "searchActicle/handleAtList",
-        }),
         ...Vuex.mapMutations({
-            speard:"searchActicle/changespeard"
+            speard:"community/changespeard"
         }),
         handleback(){
             this.$router.back()
@@ -71,7 +64,7 @@ export default {
     computed: {
         ...Vuex.mapState({
         //文章数据 [{},{}]
-            list: state => state.searchActicle.articleList,
+            list: state => state.community.searchArticle,
         })
     },
 }
@@ -82,7 +75,7 @@ export default {
     .article{
         width: 100%;
         height:100%;
-        background:#EFEFEC;
+        background:#eeeeee;
         overflow: hidden;
         .head{
             z-index: 10;
@@ -96,10 +89,13 @@ export default {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-bottom: 1px solid rgba(10,10,10,1);
+            background:#eeeeee;
             .title{
                 font-family:PingFang-SC-Medium;
-                font-weight:bold;
+                font-weight:bolder;
                 color:rgba(10,10,10,1);
+                
                 .title-1{
                     font-weight:bolder;
                     font-size:.46rem;
@@ -114,6 +110,17 @@ export default {
                 margin-top: .2rem;
                 padding-bottom: .2rem;
                 background: white;
+                .tit{
+                    width:100%;
+                    height:.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family:PingFang-SC-Medium;
+                    font-weight:bolder;
+                    color:rgb(95, 92, 92);
+                    font-size:.34rem;
+                }
                 .cover{
                     width: 100%;
                     height: 7.08rem;

@@ -7,35 +7,56 @@
 
 */
 import Mock from "mockjs"
-
-import Api from "../api/community/friends";
+//获取花友圈数据
+import Apifriends from "../api/community/friends";
+//获取附近数据
+import Apinearby from "../api/community/nearby"
+//获取搜索数据
 import ApiSearch from "../api/community/search"
-
-// 获取数据
-Mock.mock(/\/friendsArticle/,"post",Api.article)
-Mock.mock(/\/searchArticle/,"post",ApiSearch.search)
+//获取点赞数据
+import Apipraise from "../api/community/praise"
+//获取搜索历史数据
+import ApiHistory from "../api/community/searchHistory"
+//获取搜索的热点
+import ApiHot from "../api/community/searchHot"
+//上传后的返回信息
+import ApiPublish from "../api/community/publish"
+//文章详情
+import ApiArticleAt from "../api/community/articleAt"
 //修改数据
 // Mock.mock(/\/ModifyShop/,"post",Api.modifyShop)
 import ApiArticle from "../api/article";
 import ApiMylist from "../api/mylist";
 import ApiRegister from "../api/userinfo";
 
-<<<<<<< HEAD
-//获取文章数据
-Mock.mock(/\/article/,"post",ApiArticle.article)
-Mock.mock(/\/mylist/,"get",ApiMylist.myList)
-=======
 import ApiDiscount from "../api/discount";
 import ApiScar from "../api/scar"
-import Mock from "mockjs"
+
+// 获取首页花友圈数据
+Mock.mock(/\/community\/article\/friends/,"post",Apifriends.article)
+//获取附近的数据
+Mock.mock(/\/community\/article\/nearby/,"post",Apinearby.article)
+//点赞
+Mock.mock(/\/community\/article\/praise/,"post",Apipraise.pariseRes)
+//搜索历史
+Mock.mock(/\/community\/search\/history/,"post",ApiHistory.history)
+//搜索热点
+Mock.mock(/\/community\/search\/hot/,"post",ApiHot.hot)
+//动态实时搜索
+Mock.mock(/\/community\/search\/search/,"post",ApiSearch.search)
+//搜索结果
+Mock.mock(/\/community\/search\/result/,"post",ApiSearch.search)
+// 上传后的返回信息
+Mock.mock(/\/community\/article\/publish/,"post",ApiPublish.publish)
+Mock.mock(/\/community\/article\/article/,"post",ApiArticleAt.article)
+
 //获取文章数据
 Mock.mock(/\/article/,"get",ApiArticle.article)
 Mock.mock(/\/mylist/, "get", ApiMylist.myList)
 //商品数据
-Mock.mock(/\/discount/, "post", ApiDiscount.discount)
+Mock.mock(/\/discount/,"post", ApiDiscount.discount)
 Mock.mock(/\/find/,"get",ApiDiscount.find)
 Mock.mock(/\/scar/,"get",ApiScar.scar)
->>>>>>> master
 
 
 Mock.mock(/\/userinfo/,"get",ApiRegister.userList)

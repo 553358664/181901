@@ -7,9 +7,9 @@ export default {
   }) {
     axios({
         method: "post",
-        url: "/friendsArticle",
+        url: "/community/article/friends",
         data:{
-          PageIndex:JSON.stringify(state.pageindex),
+          PageIndex:state.pageIndex,
           PageSize:10
         }
       })
@@ -21,13 +21,20 @@ export default {
   handleGoodsUpdate({dispatch}){
     dispatch("handleArticle")
   },
+  handleNearUpdate({dispatch}){
+    dispatch("handleNearItems")
+  },
   //附近获得数据
   handleNearItems({
-    commit
+    commit,state
   }) {
     axios({
         method: "post",
-        url: "/friendsArticle"
+        url: "/community/article/nearby",
+        data:{
+          PageIndex:state.pageIndexN,
+          PageSize:10
+        }
       })
       .then((data) => {
         commit("handleNearItems", data)
@@ -39,46 +46,121 @@ export default {
       url:"/friendsArticle?"+num
     })
   },
-  //点赞获得的数据
-  handlePraise({commit,dispatch}, {id,praise}) {
-    axios({
-      method:"post",
-      url:'/article',
-      data:{
-        
-      }
-    })
-      .then((params) => {
-        dispatch("handleArticle",params)
+  //花友圈点赞获得的数据
+  handlePraiseF({commit,dispatch},data) {
+    let uId= localStorage.getItem("userId")
+    if(uId){
+      axios({
+        method:"post",
+        url:'/community/article/praise',
+        data:{
+          articleId:data.articleId,
+          userId :data.userId
+        }
       })
+      .then((params) => {
+        commit("handlePraiseF",params)      
+      })
+    }else{
+      commit("handlePraiseF")
+    }    
+  },
+  //附近点赞
+  handlePraiseN({commit,dispatch},data) {
+    let uId= localStorage.getItem("userId")
+    if(uId){
+      axios({
+        method:"post",
+        url:'/community/article/praise',
+        data:{
+          articleId:data.articleId,
+          userId :data.userId
+        }
+      })
+      .then((params) => {
+        commit("handlePraiseN",params)
+      })
+    }else{
+      commit("handlePraiseN")
+    }    
   },
   //上传文章
   handlepublish({commit}, params) {
     axios({
       method: "post",
-      url: "article",
+      url: "/community/article/publish",
       data:{
-        content:params.content
+        articleContent:params.content,
+        articleTitle:params.title,
+        userId:params.userId
       }
     })
-  },
-  //搜索文章
-  handleSearch({commit}, params) {
-    axios.post('/searchArticle',{
-      fuzzyQuery:params
-    })
     .then((data)=>{
-      commit("handleSearch",data)
+      console.log(data)
+      commit("handlepublish",data)
     })
   },
   //用户搜索输入时获取相关的内容
   handleTouchUp({commit},params){
-    axios.post('/searchArticle',{
+    axios.post('/community/search/search',{
         list:params
     })
     .then((data)=>{
         commit("handleTouchUp",data)
     })
+  },
+  handleHistory({commit}){
+    let uId= localStorage.getItem("userId")
+    if(uId){
+      axios.post('/community/search/history')
+      .then((data)=>{
+        commit("handleHistory",data)
+      })
+    }   
+  },
+  handleHot({commit}){
+    axios.post('/community/search/hot')
+    .then((data)=>{
+      commit("handleHot",data)
+    })
+  },
+  handleDel({commit}){
+    commit("handleDel")
+  },
+  //搜索文章
+  handleSearch({commit},params){
+    axios({
+        method:"post",
+        url:"/community/search/result",
+        data:{
+          fuzzyQuery:params
+        }
+    })
+    .then((data)=>{  
+        data.map((item)=>{
+            item.speard = false;
+        })
+        commit("handleSearch",data);  
+    })
+  },
+  //文章详情
+  handleSearchAt({commit},params){
+    axios({
+        method:"post",
+        url:"/community/article/article",
+        data:{
+          articleId:params.articleId,
+          userId:params.userId
+        }
+    })
+    .then((data)=>{  
+      console.log(data)
+            data.speard = false;
+        commit("handleSearchAt",data);  
+    })
+  },
+  changespeard({commit}){
+    commit("changespeard")
   }
 }
 
