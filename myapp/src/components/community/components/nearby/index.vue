@@ -4,7 +4,7 @@
             
             <li class="nearbyLi" v-for="(item,index) in nearItems" :key="index">
                 <router-link :to="{name:'searchArticle'}">
-                <div class="nearbyImg" @click="handleSearch(item.articleId)">
+                <div class="nearbyImg" @click="handleSearchAt(item.articleId)">
                    <img :src="item.articleCover" alt=""> 
                 </div> 
                 </router-link>
@@ -70,7 +70,8 @@ export default {
     ...Vuex.mapActions({
       handleNearItems: "community/handleNearItems",
       handleGoodsUpdate:"community/handleNearUpdate",
-      handlePraiseN:"community/handlePraiseN"
+      handlePraiseN:"community/handlePraiseN",
+      handleSearchAt:"community/handleSearchAt"
     })
   },
   mounted(){

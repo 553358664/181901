@@ -23,11 +23,8 @@ const store = new Vuex.Store({
 
         Myarticle,
         scar,
-<<<<<<< HEAD
         searchActicle
         // Mylist
-=======
->>>>>>> master
     }
 })
 
