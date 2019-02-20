@@ -1,4 +1,3 @@
-import {pathParams} from "../utils/database";
 const Mock  = require("mockjs");
 let data = Mock.mock({
     "data|10":[

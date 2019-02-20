@@ -1,5 +1,5 @@
 <template>
-    <div class="loginSearch"> 
+    <div class="torSearch"> 
         <input-com/>   
         <list-com/>
     </div>
@@ -12,8 +12,4 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
-    .loginSearch{
-        height:100%;
-    }
-</style>
+

@@ -1,5 +1,6 @@
 <template>
     <div id="footer">
+            <img src="../../assets/community/qiu/hover.png" class="friendsPoint" v-drap="this.flag" @click="handlePublish()">
         <ul>
             <li v-for="(item,index) in navs" :key="index">
                 <router-link :to="{name:item.name}">
@@ -12,9 +13,48 @@
 </template>
 
 <script>
+import Vue from "vue"
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+import { Toast } from 'mint-ui';
+Vue.use(Mint);
 export default {
+    directives: {
+    //浮点的拖拽
+        drap(el) {
+        el.addEventListener("touchstart", function(e) {
+            let disX = e.targetTouches[0].clientX - el.offsetLeft;
+            let disY = e.targetTouches[0].clientY - el.offsetTop;
+            function handleMove(e) {
+            let x = e.targetTouches[0].clientX - disX;
+            let y = e.targetTouches[0].clientY - disY;
+            let l = Math.max(Math.min(e.targetTouches[0].pageX-e.targetTouches[0].radiusX/2,x),0)
+            el.style.left = l + "px";
+            el.style.top = y + "px";
+            }
+            document.addEventListener("touchmove", handleMove);
+            document.addEventListener("touchend", function() {
+            document.removeEventListener("touchmove", handleMove);
+            });
+        });
+        }
+    },
+    methods:{
+        handlePublish(){
+            let userId = localStorage.getItem("userId")
+            // if(userId){
+                this.$router.push("/publish")
+            // }else{
+            //     Toast({
+            //         message:"请先登陆",
+            //         duration: 3000
+            //     }) 
+            // }
+        }
+    },
     data(){
         return {
+            flag :true,
             navs:[
                 {
                     name:"community",
@@ -44,7 +84,16 @@ export default {
 
 <style scoped lang="scss">
     $color:#F44C36;
+    .friendsPoint {
+    z-index: 999;
+    position: absolute; /*定位*/
+    top:-2rem;
+    right: 0;
+    height: 0.84rem;
+    width: 0.84rem;
+  }
     #footer{
+        position: relative;
         width: 100%;
         height: .98rem;
         position: fixed;
@@ -69,10 +118,12 @@ export default {
      #footer>ul>li>a>i{
          font-size: .38rem;
      }
-    #footer>ul>li>a>span{
-        font-size: .23rem;
+   a{
+        font-size: .24rem;
         font-family:PingFang-SC-Medium;
         font-weight:SC-Medium;
+        font-weight:500;
+        color:rgba(8,8,8,1);
     }
     #footer>ul>li>.router-link-active{
         color: $color;

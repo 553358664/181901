@@ -9,7 +9,7 @@
         </div>
         <div class="myarticle wrraper" ref="myarticleWrapper">
             <ul class="content">
-                <li v-for="(item,index) in articleList">
+                <li v-for="(item,index) in articleList" :key="index">
                     <div class="cover">
                         <img :src="item.articleCover">
                     </div>

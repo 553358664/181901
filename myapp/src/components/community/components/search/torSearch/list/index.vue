@@ -1,19 +1,50 @@
 <template>
-    <div class="searchIndex">
-        <history-com/>
+  <div class="searchList">
+    
+      <ul class="searchMain">       
+        <li class="searchCentent" v-for="(item,index) in list" :key="index" @click="handleSearch(item.articleTitle)">
+          <router-link :to="{name:'searchArticle'}">
+            {{item.articleTitle}}     
+          </router-link>
+        </li>
+      </ul>   
+        <history-com/>   
         <hot-com/>
-    </div>    
+  </div>
 </template>
 <script>
+import Vuex from "vuex";
 export default {
-    components:{
-        "hot-com":()=>import("./hot"),
-        "history-com":()=>import("./history")
-    }
-}
+  computed: {
+    ...Vuex.mapState({
+      list: state => state.community.fuzzyQuery
+    })
+  },
+  components: {
+    "history-com": () => import("./history"),
+    "hot-com": () => import("./hot")
+  },
+  methods:{
+    ...Vuex.mapActions({
+      handleSearch:"community/handleSearch"
+    })
+  }
+};
 </script>
 <style scoped lang="scss">
-    .searchIndex{
-        height:100%
-    }
+.searchMain {
+  width: 100%;
+  overflow: hidden;
+  zoom: 1;
+  .searchCentent {
+    width: 100%;
+    height: 0.9rem;
+    box-shadow: 0.01rem 0.02rem 0.04rem 0rem rgba(0, 0, 0, 0.06);
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(254, 114, 104, 1);
+    line-height: 0.9rem;
+    padding-left: 0.3rem;
+  }
+}
 </style>

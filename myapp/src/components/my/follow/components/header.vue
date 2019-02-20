@@ -3,7 +3,6 @@
         <img class="back" :src="back" @click="handleback()"/>       
         <p>关注</p>
     </div>
-    </div>
 </template>
 
 <script>

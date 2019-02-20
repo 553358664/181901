@@ -6,7 +6,7 @@ import Router from 'vue-router'
 //1，社区
 import community from "./community"
 // import community from "../components/community";
-// //2.我的
+//2.我的
 import My from "./my";
 // import My from "../components/my";
 //3.商城

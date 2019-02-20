@@ -7,9 +7,6 @@
 import Header from "./components/header"
 
 export default {
-    // created:{
-        
-    // },
     components:{
         "Header-com":Header
     }
@@ -17,7 +14,7 @@ export default {
 </script>
 <style scoped >
 .community{
-       width:100%;
+    width:100%;
     height:100% 
 }
 

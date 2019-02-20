@@ -4,7 +4,6 @@ import My from "../../components/my"
 import Follow from "../../components/my/follow";
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
-// import Draft from "../../components/my/draft";
 
 //个人信息 详细信息
 import PersonalInfo from "../../components/my/personalInfo";
@@ -12,12 +11,14 @@ import Details from "../../components/my/details"
 import sMall from "../../components/small"
 import sCar from "../../components/scar"
 
+import Draft from "../../components/my/draft";
 //消息 文章 订单 好友 设置
 import Mymessage from "../../components/my/message"
 import Myarticle from "../../components/my/article"
 import Myorder from "../../components/my/order"
 import Myfriends from "../../components/my/friends"
 import Myset from "../../components/my/set"
+
 
 //设置3级页面
 import Opinion from "../../components/my/set/opinion"
@@ -64,11 +65,15 @@ export default (
       component: Fans
     },
     {
+      path: "/draft",
+      name: "draft",
+      component: Draft
+    },
+    {
       path: "/collection",
       name: "collection",
       component: Collection
     },
-    
      //my部分的三级级页面路由：详细信息
     {
       path: "/personalInfo",
