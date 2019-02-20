@@ -9,17 +9,7 @@ axios.interceptors.request.use((config)=>{
  }
  return config;
 })
-//响应拦截
-axios.interceptors.response.use((res)=>{
- if(res.status == 200){
-     return res.data;
- }
 
-    if(config.method == "post"){
-        config.data = qs.stringify(config.data);
-    }
-    return config;
-})
 ////响应拦截
 axios.interceptors.response.use((res)=>{
 	console.log(res,333333)
