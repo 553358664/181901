@@ -19,10 +19,10 @@ import "./common/js/flexble";
 
 import "./mock";
 
-
 Vue.config.productionTip = false
+Vue.use(VueDnd)
 
-
+ master
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
