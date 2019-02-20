@@ -122,7 +122,7 @@ export default {
 	            
 	        }).then((data)=>{
 	        	
-	        	if(data.data.length==0){
+	        	if(data.length==0){
 	        		this.sendAuthCode = false;
 		            this.auth_time = 30;
 		            var auth_timetimer =  setInterval(()=>{
@@ -133,7 +133,7 @@ export default {
 		                }
 		            }, 1000);
 		            //console.log(data,99999,data.status);
-		            this.vCode = data.status;
+		            this.vCode = 2333;
 		           // console.log(this.vCode,88888);
 		            
 		            Toast({
@@ -181,7 +181,7 @@ export default {
 	        		})
 			        .then((data)=>{
 			        	
-			            if(data.status==201){
+			            if(data.id){
 			            	//console.log(data,33333333)
 			            	Toast({
 				                message:"注册成功，去登录",

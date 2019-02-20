@@ -79,11 +79,12 @@ export default {
 	            
 	        })
 	        .then((data)=>{
-	           console.log(data.data[0])
-	           if(data.data[0].password==this.password1){
-	           	localStorage.setItem("username",this.username.username)
+	        	console.log(data)
+	          
+	           if(data[0].password==this.password1){
+	           					localStorage.setItem("username",this.username.username)
 	           	Toast({
-	                message:"注册成功，去登录",
+	                message:"登录成功，去逛逛",
 	                duration: 1000
 	        	})
             	setTimeout(()=>{

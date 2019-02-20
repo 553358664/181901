@@ -1,4 +1,8 @@
-import {pathParams} from "../utils/database";
+const qs = require("querystring");
+
+const pathParams = (url)=>{
+    return qs.parse(url);
+}
 const Mock  = require("mockjs");
 let data = Mock.mock({
     "data|5":[
