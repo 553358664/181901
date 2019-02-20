@@ -28,6 +28,15 @@ module.exports = {
           "^/my":""
         }
       },
+      // https://www.easy-mock.com/mock/5c355e6bb554ff01c79970fa/example
+      //模拟数据 easy-mock ——lllll
+      "/user":{
+        target:"https://www.easy-mock.com",
+        changeOrigin:true,
+        pathRewrite:{
+          "^/user":""
+        }
+      },
         //接入图灵机器人
         //http://openapi.tuling123.com/openapi/api/v2?key=430a4686bbbb417f891a24ccf16728ca&userid=1&info=%2211%22
         "/chat":{

@@ -17,7 +17,7 @@ let data = Mock.mock({
         }
     ]
 })
-//console.log(data)
+console.log(data)
 let userList = data.data
 const userinfo = (config)=>{
     return userList
@@ -46,31 +46,82 @@ const userAdd = (config)=>{
 		username:username,
 		password:password
 	}
-	arr= arr.push(userinfo);
+	var brr = [];
+	brr.push(userinfo);
+	arr = arr.concat(brr);
 	return true
 }
-//console.log(arr)
+console.log(arr,"111")
 const loginInfo = (config)=>{
 	var username = config.body.substr(5,11);
 	var len = config.body.length;
 	var password = config.body.substr(16,len-16);
 	console.log(username,password,arr);
-	for(var i = 0;i < arr.data.length;i ++){
-		if(arr.data[i].username == username){
-			if(arr.data[i].password==password){
-				return 22
+	console.log(arr);
+	var aaa="";
+	for(var i = 0;i < arr.length;i ++){
+		console.log("yhmyy11")
+		console.log(arr[i].username);
+		if(arr[i].username == username){
+			console.log("yhmyy");
+			console.log(arr[i].password);
+			if(arr[i].password==password){
+				console.log(arr[i].password);
+				aaa = "22";
+				return aaa;
 			}else{
-				return 33;
+				aaa = "33"
 			}
 			
 		}else{
-			return 44;
+			aaa = "44"
 		}
 	} 
+	return aaa
+}
+
+console.log(arr,"111")
+
+const moCode = (config)=>{
+	console.log(config);
+	var ccc=""
+	var username = config.body.split("=")[1]
+	for(var i = 0;i < arr.length;i ++){
+		if(arr[i].username == username){
+			ccc = "22"
+			return ccc;
+			
+		}else{
+			ccc = "44";
+		}
+	} 
+	return ccc
+}
+const moInfo = (config)=>{
+	console.log(config);
+	var ddd=""
+	var username = config.body.substr(5,11);
+	var len = config.body.length;
+	var password = config.body.substr(16,len-16);
+	console.log(username,password)
+	for(var i = 0;i < arr.length;i ++){
+		if(arr[i].username == username){
+			arr[i].password = password;
+			ddd = "22"
+			return ddd
+			
+		}else{
+			ddd= "33"
+		}
+	} 
+	return ddd;
+
 }
 export default {
     userinfo,
     register,
     userAdd,
-    loginInfo
+    loginInfo,
+    moInfo,
+    moCode
 }

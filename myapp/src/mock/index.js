@@ -66,10 +66,7 @@ Mock.mock(/\/scar/,"get",ApiScar.scar)
 
 Mock.mock(/\/userinfo/,"get",ApiRegister.userList)
 Mock.mock(/\/register/,"post",ApiRegister.register)
-
-
- 
-
 Mock.mock(/\/loginInfo/,"post",ApiRegister.loginInfo)
 Mock.mock(/\/userAdd/,"post",ApiRegister.userAdd)
-
+Mock.mock(/\/moCode/,"post",ApiRegister.moCode)
+Mock.mock(/\/moInfo/,"post",ApiRegister.moInfo)
