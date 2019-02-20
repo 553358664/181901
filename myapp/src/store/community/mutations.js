@@ -70,5 +70,7 @@ export default {
     },
     attentionList(state,params){
         state.attention=params;
+        state.commentList = params.commentList
+        console.log(state.commentList)
     }
 }

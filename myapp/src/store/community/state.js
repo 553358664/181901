@@ -21,5 +21,6 @@ export default {
     searchArticle:[],
     publishCode:0,
     articleList:[],
-    attention:[]
+    attention:[],
+    commentList:[]
 }
