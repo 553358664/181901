@@ -94,38 +94,69 @@ export default {
 		    })
 			}
 		},
-    	getAuthCode() {
-    		axios({
-	            method:"get",
-	            				url:"http://localhost:3000/userlist?username="+this.username,
-	            
-	        }).then((data)=>{
-	        	if(data.data.length!=0){
-	        		this.sendAuthCode = false;
-		            this.auth_time = 30;
-		            var auth_timetimer =  setInterval(()=>{
-		                this.auth_time--;
-		                if(this.auth_time<=0){
-		                    this.sendAuthCode = true;
-		                    clearInterval(auth_timetimer);
-		                }
-		            }, 1000);
-//		            console.log(data,99999,data.status);
-		            this.vCode = data.status;
-//		            console.log(this.vCode,88888);
-		            Toast({
-		                message:"您的验证码为"+this.vCode,
-		                duration: 3000
-		            })
-	        	}else{
-	        		Toast({
-		                message:"用户名不存在",
-		                duration: 1000
-		        	})
-	        	}
-	        })
-            
-        },
+		getAuthCode(){
+			axios.post("/moCode",{
+						username:this.username,
+		            	
+					}).then((data)=>{
+						console.log(data)
+						if(data== "22"){
+			        		this.sendAuthCode = false;
+				            this.auth_time = 30;
+				            var auth_timetimer =  setInterval(()=>{
+				                this.auth_time--;
+				                if(this.auth_time<=0){
+				                    this.sendAuthCode = true;
+				                    clearInterval(auth_timetimer);
+				                }
+				            }, 1000);
+		//		            console.log(data,99999,data.status);
+				            this.vCode = 7887;
+		//		            console.log(this.vCode,88888);
+				            Toast({
+				                message:"您的验证码为"+this.vCode,
+				                duration: 3000
+				            })
+			        	}else{
+			        		Toast({
+				                message:"用户名不存在",
+				                duration: 1000
+				        	})
+			        	}
+					})
+		},
+//  	getAuthCode() {
+//  		axios({
+//	            method:"get",
+//	            				url:"http://localhost:3000/userlist?username="+this.username,
+//	            
+//	        }).then((data)=>{
+//	        	if(data.length!=0){
+//	        		this.sendAuthCode = false;
+//		            this.auth_time = 30;
+//		            var auth_timetimer =  setInterval(()=>{
+//		                this.auth_time--;
+//		                if(this.auth_time<=0){
+//		                    this.sendAuthCode = true;
+//		                    clearInterval(auth_timetimer);
+//		                }
+//		            }, 1000);
+////		            console.log(data,99999,data.status);
+//		            this.vCode = 7887;
+////		            console.log(this.vCode,88888);
+//		            Toast({
+//		                message:"您的验证码为"+this.vCode,
+//		                duration: 3000
+//		            })
+//	        	}else{
+//	        		Toast({
+//		                message:"用户名不存在",
+//		                duration: 1000
+//		        	})
+//	        	}
+//	        })
+//          
+//      },
 		handleVcode(){
 			if(this.tCode == this.vCode){
 				this.tShow= true;
@@ -145,37 +176,55 @@ export default {
     	checkForm(){
     		
     		if(this.userFlag && this.pwdFlag && this.pwdFlag1){
-    			
-    		      		axios({
-	            method:"get",
-	            				url:"http://localhost:3000/userlist?username="+this.username,
-	  
-	            
-	        })
-	        .then((aaaa)=>{
-	        	//通过id进行修改
-//	        	console.log(aaaa.data[0].id)
-	        	axios({
-	        		method:"patch",
-	        		url:"http://localhost:3000/userlist/"+aaaa.data[0].id,
-	        		data:{
-	        			
-	        			"password":this.password1
-	        		}
-	        	}).then((data)=>{
-//	        		console.log(data)
-	        		if(data.status==200){
-	        			Toast({
+    			let configData = this.username + this.password1
+    			axios.post("/moInfo",{
+						data:configData
+		            	
+					}).then((data)=>{
+						console.log(data);
+						if(data =="22"){
+							Toast({
 				                message:"修改成功，去登录",
 				                duration: 1000
 				        	})
 			            	setTimeout(()=>{
 			            		this.$router.replace("/login")
 			            	},3000)
-	        		}
-	        	})
-	           
-	          })
+						}
+						
+					})
+    			
+//  		      		axios({
+//	            method:"get",
+//	            				url:"http://localhost:3000/userlist?username="+this.username,
+//	  
+//	            
+//	        })
+//	        .then((aaaa)=>{
+//	        	console.log(aaaa,"oooooooo")
+//	        	//通过id进行修改
+////	        	console.log(aaaa.data[0].id)
+//	        	axios({
+//	        		method:"patch",
+//	        		url:"http://localhost:3000/userlist/"+aaaa[0].id,
+//	        		data:{
+//	        			
+//	        			"password":this.password1
+//	        		}
+//	        	}).then((data)=>{
+//	        		console.log(data,"qqqqqqqqqq")
+//	        		if(data.password==this.password1){
+//	        			Toast({
+//				                message:"修改成功，去登录",
+//				                duration: 1000
+//				        	})
+//			            	setTimeout(()=>{
+//			            		this.$router.replace("/login")
+//			            	},3000)
+//	        		}
+//	        	})
+//	           
+//	          })
 	        
 	        }else{
 	        	Toast({

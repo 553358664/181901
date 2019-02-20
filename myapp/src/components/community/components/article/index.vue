@@ -32,7 +32,6 @@ import Vuex from "vuex";
 export default {
     filters:{
         Castration(c,i){
-            console.log(i)
             if( c.length>40){
                 if(i.speard==false){
                     return c.slice(0,40)+"..."

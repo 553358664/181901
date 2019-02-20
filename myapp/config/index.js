@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       "/api":{
-    		target:"https://www.easy-mock.com",
+    		target:"https://10.9.30.235:8080",
     		changeOrigin:true,
     		pathRewrite:{
     		    "^/api":""
@@ -26,6 +26,15 @@ module.exports = {
         changeOrigin:true,
         pathRewrite:{
           "^/my":""
+        }
+      },
+      // https://www.easy-mock.com/mock/5c355e6bb554ff01c79970fa/example
+      //模拟数据 easy-mock ——lllll
+      "/user":{
+        target:"https://www.easy-mock.com",
+        changeOrigin:true,
+        pathRewrite:{
+          "^/user":""
         }
       },
         //接入图灵机器人

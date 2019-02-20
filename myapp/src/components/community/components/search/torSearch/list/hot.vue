@@ -8,10 +8,10 @@
         class="searchList"
         v-for="(item,index) in hot"
         :key="index"
-        @click="handleSearch(item.Record)"
+        @click="handleSearch(item)"
       >
       <router-link :to="{name:'searchArticle'}">
-      {{item.Record}}
+      {{item}}
       </router-link>
       </li>
     </ul>

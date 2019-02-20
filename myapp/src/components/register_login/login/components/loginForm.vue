@@ -63,41 +63,62 @@ export default {
 	},
     	checkForm(){
     		if(this.userFlag.userFlag && this.pwdFlag ){
-    			var data={
-    				username:this.username.username,
-		            password:this.password
-    			}
+    			let configData = this.username.username + this.password1
+    			axios.post("/loginInfo",{data:configData})
+			        .then((data)=>{
+			        	console.log(data,"dengl")
+			            if(data == '22'){
+			            	console.log(data,33333333)
+							localStorage.setItem("username",this.username.username)
+			            	
+			            	Toast({
+				                message:"登录成功，去逛逛",
+				                duration: 1000
+				        	})
+			            	setTimeout(()=>{
+			            		this.$router.replace("/")
+			            	},3000)
+			            		
+			            	
+			            }else{
+			            	Toast({
+				               message:"注册失败",
+				                duration: 1000
+				        	})
+			            }
+			        })
 //  			axios.post("/register",{
 //						username:this.username.username,
 //		            	password:this.password
 //					}).then((data)=>{
 //						console.log(data,"mock")
 //					});
-    			axios({
-	            method:"get",
-	            url:"http://localhost:3000/userlist?username="+this.username.username,
-	            
-	        })
-	        .then((data)=>{
-	           console.log(data.data[0])
-	           if(data.data[0].password==this.password1){
-	           	localStorage.setItem("username",this.username.username)
-	           	Toast({
-	                message:"注册成功，去登录",
-	                duration: 1000
-	        	})
-            	setTimeout(()=>{
-            		this.$router.replace("/")
-            	},3000)
-			            		
-	           }else{
-	           		Toast({
-	                message:"用户名密码不匹配，请检查",
-	                duration: 1000
-	        	})
-				
-	           }
-	        })
+//  			axios({
+//	            method:"get",
+//	            url:"http://localhost:3000/userlist?username="+this.username.username,
+//	            
+//	        })
+//	        .then((data)=>{
+//	        	console.log(data)
+//	          
+//	           if(data[0].password==this.password1){
+//	           					localStorage.setItem("username",this.username.username)
+//	           	Toast({
+//	                message:"登录成功，去逛逛",
+//	                duration: 1000
+//	        	})
+//          	setTimeout(()=>{
+//          		this.$router.replace("/")
+//          	},3000)
+//			            		
+//	           }else{
+//	           		Toast({
+//	                message:"用户名密码不匹配，请检查",
+//	                duration: 1000
+//	        	})
+//				
+//	           }
+//	        })
 	        
     	}else{
     		Toast({
