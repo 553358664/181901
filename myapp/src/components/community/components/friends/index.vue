@@ -88,7 +88,7 @@ export default {
       });
     }
     this.scroll.on("pullingUp", () => {
-      this.handleGoodsUpdate();
+      this.u();
     });
   }
 };

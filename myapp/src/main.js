@@ -13,16 +13,11 @@ import "./common/css/iconfont/iconfont.css";
 // import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
 // import "../node_modules/touchjs/dist/touch-0.2.14.js"
-// Vue.config.productionTip = false
+import "./mock";
+Vue.config.productionTip = false
 // Vue.use(VueDnd)
 
-
-import "./mock";
-
-Vue.config.productionTip = false
-Vue.use(VueDnd)
-
- master
+//  master
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
