@@ -15,7 +15,6 @@ let data = Mock.mock({
 })
 
 let friendArticke = data.articles;
-console.log(friendArticke)
 const article =(config)=>{
     return friendArticke
 }

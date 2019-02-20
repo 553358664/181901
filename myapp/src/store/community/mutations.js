@@ -21,9 +21,9 @@ export default {
     handlePraiseF(state,params){
         if(Object.prototype.toString.call(arguments[1])=="[object Undefined]"){
             state.yn--            
-        }else{           
-            state.articleList[getNum(state.articleList,params)].praiseCount = params.praiseCount                      
-            state.articleList[getNum(state.articleList,params)].praiseShow = params.praiseShow         
+        }else{       
+            state.articleListA[getNum(state.articleListA,params)].praiseCount = params.praiseCount                      
+            state.articleListA[getNum(state.articleListA,params)].praiseShow = params.praiseShow         
         }        
     },
     handlePraiseN(state,params){

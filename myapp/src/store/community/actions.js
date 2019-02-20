@@ -168,8 +168,8 @@ export default {
             url:"/myattention"
         })
         .then((data)=>{         
-          console.log(data.data);
-          commit("attentionList",data.data)
+          console.log(data);
+          commit("attentionList",data)
         })
     }
 }
