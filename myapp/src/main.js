@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from "./store";
+import oBserver from "./common/js/observer";
+Vue.prototype.Observer = oBserver;
 //修改全局mint-ui的scss文件
 import "./common/css/my-mint.scss";
 import "./common/css/liuna-mint.scss"

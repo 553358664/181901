@@ -18,17 +18,22 @@
 
 <script>
 export default {
+    created(){
+        this.name=this.$route.params.name
+    },
      data(){
         return{
-            iconRight:require('@/assets/my/icon_grxx_jt@2x.png')
+            iconRight:require('@/assets/my/icon_grxx_jt@2x.png'),
+            name:""
         }
     },
     methods:{
         //跳到聊天界面
         handleClick(){
-            this.$router.push({path:'/chatbox'});
+            this.$router.push({name:'chatbox',params:{name:this.name}});
         }
     }
+
 }
 </script>
 

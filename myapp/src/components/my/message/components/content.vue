@@ -37,7 +37,7 @@ export default {
             scrollY:true,
             click:true
         })
-        // console.log(this.scroll);
+        console.log(this.scroll);
     },
     created(){
         this.$store.dispatch("my/handleGet")

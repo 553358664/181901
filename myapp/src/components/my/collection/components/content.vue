@@ -2,7 +2,7 @@
     <div class="wrapper" ref="collectionWrapper">
          <ul class="content">
             <li v-for="(item,index) in myList">               
-                <router-link :to="{}">                                       
+                <router-link :to="{name:'myarticle'}">                                       
                         <span><img :src="item.cover"/></span>
                         <div class="article">
                             <p class="title">{{item.title}}</p>
@@ -20,7 +20,8 @@ import BScroll from "better-scroll";
 export default {
     mounted(){
         this.scroll = new BScroll(this.$refs.collectionWrapper,{
-            scrollY:true
+            scrollY:true,
+            click:true
         })
         // console.log(this.scroll);
     },

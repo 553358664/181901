@@ -3,7 +3,7 @@
          <ul class="content ful">
             <li v-for="(item,index) in myList">                            
                     <div>
-                         <router-link :to="{name:router}">
+                         <router-link :to="{name:'details',params:{name:item.username,src:item.headPic}}">
                              <span><img :src="item.headPic"/></span>                                            
                              <span>{{item.username}}</span>                     
                          </router-link>   
