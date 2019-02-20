@@ -29,6 +29,7 @@
 <script>
 import Swiper from "swiper";
 import Vuex from "vuex";
+import "swiper/dist/css/swiper.min.css";
 export default {
    data() {
     return {
@@ -45,9 +46,9 @@ export default {
     this.handleNewTop(this.newTop)
     new Swiper(this.$refs.banner, {
       loop: true,
-      autoplay: {
-        disableOnInteraction: false
-      },
+      // autoplay: {
+      //   disableOnInteraction: false
+      // },
       preventClicks: false,
       pagination: {
         el: ".banner-pagination",

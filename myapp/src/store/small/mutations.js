@@ -1,7 +1,7 @@
 export default {
   //ma 主页楼梯导航
   handleNewTop(state, params) {
-
+    state.scrollHeight=[]
     state.scrollHeight.push(params)
   },
   handleOtherTop(state, params) {
@@ -15,7 +15,6 @@ export default {
     state.scrollHeight.push(params)
   },
   handleFlowerTop(state, params) {
-   
     //params -= 500
     params *= .72
     state.scrollHeight.push(params)
@@ -23,8 +22,8 @@ export default {
   //wjl hccs
   handleModify(state, params) {
 
-    state.result = params.data.data;
-    state.flowerName = params.data.data2;
+    state.result = params.data;
+    state.flowerName = params.data2;
   },
   handleMod(state, params) {
     state.result = [...state.result, ...params.data];
