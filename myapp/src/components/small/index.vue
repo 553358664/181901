@@ -70,7 +70,6 @@ export default {
       this.scroll.scrollTo(0, -this.scrollHeight[index],1000);
     },
   },
- 
 };
 </script>
 <style lang="scss">

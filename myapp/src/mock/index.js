@@ -60,7 +60,7 @@ Mock.mock(/\/mylist/, "get", ApiMylist.myList)
 Mock.mock(/\/myattention/, "get", ApiMyAttention.attention)
 
 //商品数据
-Mock.mock(/\/discount/,"post", ApiDiscount.discount)
+Mock.mock(/\/discount/, "post", ApiDiscount.discount)
 Mock.mock(/\/find/,"get",ApiDiscount.find)
 Mock.mock(/\/scar/,"get",ApiScar.scar)
 

@@ -8,26 +8,6 @@
               <h2>{{item.goodsName}}</h2>
               <h3>{{item.goodsPrice|price}}</h3>
             </router-link>
-        <!--  <router-link :to="{name:'goodsDetail'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>9.9元包邮 | 心想事橙</h2>
-          <h3>9.9元/束</h3>
-        </router-link>
-        <router-link :to="{name:'goodsDetail'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>9.9元包邮 | 心想事橙</h2>
-          <h3>9.9元/束</h3>
-        </router-link>
-        <router-link :to="{name:'goodsDetail'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>9.9元包邮 | 心想事橙</h2>
-          <h3>9.9元/束</h3>
-        </router-link>
-        <router-link :to="{name:'goodsDetail'}">
-          <img src="@/assets/small/shopHome/nav_1.png" alt>
-          <h2>9.9元包邮 | 心想事橙</h2>
-          <h3>9.9元/束</h3>
-        </router-link>-->
       </div>
     </div>
   </div>

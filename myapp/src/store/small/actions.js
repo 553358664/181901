@@ -39,7 +39,7 @@ export default {
 			url: "/discount",
 		})
 			.then((data) => {
-				commit("handleDiscountM",data.data)
+				commit("handleDiscountM",data)
 			})
 	},
 	handleDetail({ commit, state }, params) {
@@ -52,7 +52,7 @@ export default {
 			} */
 		})
 			.then((data) => {
-				commit("handleDetailM",data.data)
+				commit("handleDetailM",data)
 			})
 	},
 }
