@@ -9,7 +9,7 @@ export default {
         data: {}
       })
       .then((data) => {
-        commit("handleSCarM", data.data)
+        commit("handleSCarM", data)
       })
   },
   handleAddSCar({
