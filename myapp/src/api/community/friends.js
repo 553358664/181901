@@ -1,6 +1,6 @@
 const Mock  = require("mockjs");
 let data = Mock.mock({
-    "article|10":[
+    "article":{"friendsArticleList|10":[
         {
             "articleId|+1":1,
             "articleCover":"@Image('360x480','#c33', '#ffffff','花友圈')",
@@ -10,7 +10,7 @@ let data = Mock.mock({
             "praiseCount|0-100":10,
             "praiseShow|1":false
         }
-    ]
+    ]}
 })
 
 let friendArticke = data.article;

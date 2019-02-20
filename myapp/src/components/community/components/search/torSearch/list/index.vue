@@ -1,12 +1,12 @@
 <template>
   <div class="searchList">
     
-      <ul class="searchMain">       
-        <li class="searchCentent" v-for="(item,index) in list" :key="index" @click="handleSearch(item.articleTitle)">
-          <router-link :to="{name:'searchArticle'}">
-            {{item.articleTitle}}     
-          </router-link>
-        </li>
+      <ul class="searchMain">
+         <router-link :to="{name:'searchArticle'}">      
+          <li class="searchCentent" v-for="(item,index) in list" :key="index" @click="handleSearch(item)">         
+            {{item}}              
+          </li>
+        </router-link>
       </ul>   
         <history-com/>   
         <hot-com/>

@@ -5,9 +5,9 @@
       <img src="../../../../../../assets/community/qiu/del.png" alt @click="handleDel()">
     </div>
     <ul class="searchMain">
-      <li class="searchList" v-for="(item,index) in my" :key="index" ref="list" @click="handleSearch(item.Record)">
+      <li class="searchList" v-for="(item,index) in my" :key="index" ref="list" @click="handleSearch(item)">
         <router-link :to="{name:'searchArticle'}">
-          {{item.Record}}
+          {{item}}
         </router-link>
       </li>        
     </ul>

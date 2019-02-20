@@ -4,16 +4,19 @@ export default {
   handleArticle({
     commit,state
   }) {
+    let uId= localStorage.getItem("userId")
     axios({
         method: "post",
-        url: "/community/article/friends",
+        url: "http://10.9.30.235:8080/community/article/friends",
         data:{
-          PageIndex:state.pageIndex,
-          PageSize:10
+          userId:uId,
+          pageIndex:state.pageIndexF,
+          pageSize:10
         }
       })
       .then((data) => {
-        commit("handleArticle", data)
+        console.log(data)
+        commit("handleArticle", data.friendsArticleList)
       })
   },
   //下拉获取数据
@@ -27,16 +30,18 @@ export default {
   handleNearItems({
     commit,state
   }) {
+    let uId= localStorage.getItem("userId")
     axios({
         method: "post",
-        url: "/community/article/nearby",
+        url: "http://10.9.30.235:8080/community/article/nearby",
         data:{
-          PageIndex:state.pageIndexN,
-          PageSize:10
+          userId:uId,
+          pageIndex:state.pageIndexN,
+          pageSize:10
         }
       })
       .then((data) => {
-        commit("handleNearItems", data)
+        commit("handleNearItems",data.nearbyArticleList)
       })
   },
   handleDraft({commit},num){
@@ -51,13 +56,14 @@ export default {
     if(uId){
       axios({
         method:"post",
-        url:'/community/article/praise',
+        url:'http://10.9.30.235:8080/community/article/praise',
         data:{
           articleId:data.articleId,
           userId :data.userId
         }
       })
       .then((params) => {
+        console.log(params.praiseShow)
         commit("handlePraiseF",params)      
       })
     }else{
@@ -70,7 +76,7 @@ export default {
     if(uId){
       axios({
         method:"post",
-        url:'/community/article/praise',
+        url:'http://10.9.30.235:8080/community/article/praise',
         data:{
           articleId:data.articleId,
           userId :data.userId
@@ -87,7 +93,7 @@ export default {
   handlepublish({commit}, params) {
     axios({
       method: "post",
-      url: "/community/article/publish",
+      url: "http://10.9.30.235:8080/community/article/publish",
       data:{
         articleContent:params.content,
         articleTitle:params.title,
@@ -95,32 +101,37 @@ export default {
       }
     })
     .then((data)=>{
-      console.log(data)
       commit("handlepublish",data)
     })
   },
   //用户搜索输入时获取相关的内容
   handleTouchUp({commit},params){
-    axios.post('/community/search/search',{
-        list:params
+    let uId= localStorage.getItem("userId")
+    
+    axios.post('http://10.9.30.235:8080/community/search/search',{
+      fuzzyQuery:params,
+      uId:uId
     })
     .then((data)=>{
-        commit("handleTouchUp",data)
+
+        commit("handleTouchUp",data.search)
     })
   },
   handleHistory({commit}){
     let uId= localStorage.getItem("userId")
     if(uId){
-      axios.post('/community/search/history')
+      axios.post('http://10.9.30.235:8080/community/search/history',{
+        userId:uId
+      })
       .then((data)=>{
-        commit("handleHistory",data)
+        commit("handleHistory",data.searchHistory)
       })
     }   
   },
   handleHot({commit}){
-    axios.post('/community/search/hot')
+    axios.post('http://10.9.30.235:8080/community/search/hot')
     .then((data)=>{
-      commit("handleHot",data)
+      commit("handleHot",data.searchHot)
     })
   },
   handleDel({commit}){
@@ -128,25 +139,29 @@ export default {
   },
   //搜索文章
   handleSearch({commit},params){
+    let uId= localStorage.getItem("userId")
     axios({
         method:"post",
-        url:"/community/search/result",
+        url:"http://10.9.30.235:8080/community/search/result",
         data:{
-          fuzzyQuery:params
+          userId :uId,
+          articleTitle:params
         }
     })
     .then((data)=>{  
-        data.map((item)=>{
+      console.log(data)
+        data.searchResult.map((item)=>{
             item.speard = false;
         })
-        commit("handleSearch",data);  
+        
+        commit("handleSearch",data.searchResult);  
     })
   },
   //文章详情
   handleSearchAt({commit},params){
     axios({
         method:"post",
-        url:"/community/article/article",
+        url:"http://10.9.30.235:8080/community/article/article",
         data:{
           articleId:params.articleId,
           userId:params.userId
@@ -168,7 +183,6 @@ export default {
             url:"/myattention"
         })
         .then((data)=>{         
-          console.log(data);
           commit("attentionList",data)
         })
     }

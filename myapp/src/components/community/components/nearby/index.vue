@@ -18,13 +18,13 @@
                         </div> 
                         <p class="userName">{{item.userName}}</p>  
                         <div class="userPraise">
-                            <div class="praiseImg" @click="handlePraiseN(item.articleId,userId)">
+                            <div class="praiseImg" @click="handlePraiseN({articleId:item.articleId,userId:userId})">
                                 <img
-                                    src="../../../../assets\community\qiu/content_icon_like.png"
+                                    src="../../../../assets\community\qiu/content_icon-like2.png"
                                     alt
                                     v-if="item.praiseShow"
                                 >
-                                <img src="../../../../assets\community\qiu\content_icon-like2.png" alt v-else>
+                                <img src="../../../../assets\community\qiu\content_icon_like.png" alt v-else>
                             </div>
                             <span class="praiseNum">{{item.praiseCount}}</span>
                         </div>                     

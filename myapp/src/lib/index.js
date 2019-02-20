@@ -12,9 +12,9 @@ axios.interceptors.request.use((config)=>{
 
 ////响应拦截
 axios.interceptors.response.use((res)=>{
-	console.log(res,333333)
+	// console.log(res,333333)
     if(res.status == 200 || res.status == 201){
-    	console.log(res,"res")
+    	// console.log(res,"res")
         return res.data;
     }
 

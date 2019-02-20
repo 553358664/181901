@@ -17,7 +17,7 @@ let data = Mock.mock({
         }
     ]
 })
-console.log(data)
+// console.log(data)
 let userList = data.data
 const userinfo = (config)=>{
     return userList
@@ -51,7 +51,7 @@ const userAdd = (config)=>{
 	arr = arr.concat(brr);
 	return true
 }
-console.log(arr,"111")
+// console.log(arr,"111")
 const loginInfo = (config)=>{
 	var username = config.body.substr(5,11);
 	var len = config.body.length;
@@ -80,7 +80,7 @@ const loginInfo = (config)=>{
 	return aaa
 }
 
-console.log(arr,"111")
+// console.log(arr,"111")
 
 const moCode = (config)=>{
 	console.log(config);
