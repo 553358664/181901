@@ -19,15 +19,7 @@ module.exports = {
     		}
     	},
       
-      //模拟数据 easy-mock ——liuna
-      //https://www.easy-mock.com/mock/5c37efe8c0c3ac784264cd1c/example/my
-      "/my":{
-        target:"https://www.easy-mock.com",
-        changeOrigin:true,
-        pathRewrite:{
-          "^/my":""
-        }
-      },
+      
         //接入图灵机器人
         //http://openapi.tuling123.com/openapi/api/v2?key=430a4686bbbb417f891a24ccf16728ca&userid=1&info=%2211%22
         "/chat":{

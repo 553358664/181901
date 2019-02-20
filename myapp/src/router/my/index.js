@@ -4,7 +4,7 @@ import My from "../../components/my"
 import Follow from "../../components/my/follow";
 import Fans from "../../components/my/fans";
 import Collection from "../../components/my/collection";
-// import Draft from "../../components/my/draft";
+import Draft from "../../components/my/draft";
 
 //个人信息 详细信息
 import PersonalInfo from "../../components/my/personalInfo";
@@ -68,6 +68,11 @@ export default (
       name: "collection",
       component: Collection
     },
+    {
+      path: "/draft",
+      name: "draft",
+      component: Draft
+    },
     
      //my部分的三级级页面路由：详细信息
     {
@@ -76,12 +81,12 @@ export default (
       component: PersonalInfo
     },
     {
-      path: "/details",
+      path: "/details/:name/:src",
       name: "details",
       component: Details
     },
     {
-      path: "/chatbox",
+      path: "/chatbox/:name",
       name: "chatbox",
       component: Chatbox,
       meta: {

@@ -2,10 +2,10 @@
     <div class="wrapper" ref="fansWrapper">
          <ul class="content">
             <li v-for="(item,index) in myList">               
-                 <div>
-                    <router-link :to="{name:'details'}">
-                        <span><img :src="item.headPic"/></span>                                            
-                        <span>{{item.username}}</span>                     
+                 <div >
+                    <router-link :to="{name:'details',params:{name:item.username,src:item.headPic}}" >
+                        <span><img :src="item.headPic" /></span>                                            
+                        <span ref="a">{{item.username}}</span>                     
                     </router-link>   
                     <p class="ok" @click="handleFollow($event)">关注</p> 
                  </div>
@@ -24,7 +24,6 @@ export default {
             scrollY:true,
             click:true
         })
-        // console.log(this.scroll);
     },
      created(){
         this.$store.dispatch("my/handleGet")     
@@ -46,8 +45,9 @@ export default {
                  e.target.innerHTML="取消关注"
             }
         
-       }
+       },
     }
+    
     
 }
 </script>

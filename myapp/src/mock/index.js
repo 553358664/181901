@@ -1,6 +1,7 @@
 import ApiArticle from "../api/article";
 import ApiMylist from "../api/mylist";
 import ApiRegister from "../api/userinfo";
+import ApiMy from "../api/my";
 
 import ApiDiscount from "../api/discount";
 import ApiScar from "../api/scar"
@@ -17,4 +18,6 @@ Mock.mock(/\/scar/,"get",ApiScar.scar)
 Mock.mock(/\/userinfo/,"get",ApiRegister.userList)
 Mock.mock(/\/register/,"post",ApiRegister.register)
 
+//获取粉丝 关注 个人信息 数据
+Mock.mock(/\/my/, "get", ApiMy.my)
  

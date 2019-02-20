@@ -1,11 +1,12 @@
 <template>
-  <div class="friend">
+  <div class="draft">
     <div class="header">
       <img class="back" :src="back" @click="handleback()">
-      <p class="info-middle">我的好友</p>
+      <p class="info-middle">草稿箱</p>
     </div>
-     <div class="content">
-      <img class="friendimg" :src="friendimg">
+
+    <div class="content">
+      <img class="draftimg" :src="draftimg">
     </div>
   </div>
 </template>
@@ -19,13 +20,13 @@ export default {
   data() {
     return {
       back: require("@/assets/my/icon_wd_jt@2x.png"),
-      friendimg: require("@/assets/my/friend.jpg")
+      draftimg: require("@/assets/my/cgx.png")
     };
   }
 };
 </script>
 <style lang="scss" scoped>
-.friend {
+.draft {
   width: 100%;
   height: 100%;
   .header {
@@ -48,6 +49,7 @@ export default {
       font-size: 0.32rem;
     }
   }
+
   .content {
     width: 100%;
     height:10rem;
@@ -55,11 +57,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    .friendimg{
-      width:6rem;
-      height:8rem;
-    }
   }
-  
 }
 </style>

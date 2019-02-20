@@ -3,11 +3,14 @@ import axios from "axios";
 export default {
     handleGet({commit}){
         axios({
-            method:"post",
-            url:"/my/mock/5c37efe8c0c3ac784264cd1c/example/my",
+            // method:"post",
+            // url:"/my/mock/5c37efe8c0c3ac784264cd1c/example/my",
+            method:"get",
+            url:"/my"
         })
         .then((data)=>{
-            commit("handleGet",data.data.data)
+            commit("handleGet",data.data)
         })
+       
     }
 }
