@@ -3,7 +3,7 @@
         <!-- 注册验证-->
         <div class="formContent">
             <div><label><span><img src="../../../../assets/welogreg/register/icon_sj@2x.png"></span></label><input type="text" placeholder="请输入手机号" id="username" v-model="username" @blur="handleUsername()" autocomplete="off"></div>
-            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode" @blur="handleVcode()" v-model="tCode"></section>    
+            <div><section><label><span><img src="../../../../assets/welogreg/register/icon_yam@2x.png"></span></label><input type="text" placeholder="填写验证码" id="ecode"  v-model="tCode"></section>    
             	<span v-show="sendAuthCode" class="auth_text auth_text_blue"  @click="getAuthCode">获取验证码</span>
     <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue">{{auth_time}} </span> 秒之后重新获取</span>
 </div>
@@ -55,17 +55,14 @@ export default {
 	
     },
     methods:{
-//  	...Vuex.mapMutations({
-//  		handleUsername:"register_login/handleUsername",
-//  		handlePassword1:"register_login/handlePassword1",
-//
-//  	}),
+
     	...Vuex.mapActions({
-//  		addUser:"register_login/addUser",
+
     		
     	}),
     	handleUsername(){
-    	var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+			
+    		var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
     		if(reg.test(this.username)){
     			this.userFlag = true;
     			this.tShow = true;
@@ -74,12 +71,7 @@ export default {
     			setTimeout(()=>{
     				this.tShow = false;
     			},2000)
-//  			axios.post("/register",{
-//						username:this.username,
-//		            	
-//					}).then((data)=>{
-//						console.log(data,"mock")
-//					});
+
     		}else{
     			this.userFlag = false;
     			
@@ -87,7 +79,25 @@ export default {
 		                message:"手机号不符合规范",
 		                duration: 1000
 		            })
-    		}
+			}
+			axios.post("http://10.9.30.235:8080/checkname",{
+						username:this.username,
+		            	
+					}).then((data)=>{
+						console.log(data)
+						if(!data.code){
+							Toast({
+				                message:"用户名已存在",
+				                duration: 1000
+				        	})
+				           
+						}else{
+							
+							var aaa = "1111"
+						}   
+				         
+					});
+			
 	    },
 	    handlePassword1(){
 			var reg = /^\w{6,12}$/;
@@ -98,13 +108,7 @@ export default {
 				setTimeout(()=>{
     				this.tShow = false;
     			},2000)
-//				axios({
-//		            method:"get",
-//		            url:"/userinfo"
-//		        })
-//		        .then((data)=>{   
-//		            console.log(data)
-//		        })
+
 			}else{
 				this.pwdFlag = false;
 				
@@ -116,11 +120,12 @@ export default {
 			}
 		},
     	getAuthCode() {
-      	  			axios.post("/register",{
+      	  			axios.post("http://10.9.30.235:8080/sms",{
 						username:this.username,
 		            	
 					}).then((data)=>{
-						if(!data){
+						console.log(data)
+						if(data){
 							this.sendAuthCode = false;
 				            this.auth_time = 30;
 				            var auth_timetimer =  setInterval(()=>{
@@ -130,100 +135,48 @@ export default {
 				                    clearInterval(auth_timetimer);
 				                }
 				            }, 1000);
-				            //console.log(data,99999,data.status);
-				            this.vCode = 2333;
-				           // console.log(this.vCode,88888);
-				            
-				            Toast({
-				                message:"您的验证码为"+this.vCode,
-				                duration: 3000
-				            })
-			        	}else{
-			        		
-			        		
-			        		Toast({
+				           
+						}else{
+							Toast({
 				                message:"用户名已存在",
 				                duration: 1000
 				        	})
-			        	
-								}
+						}   
+				         
 					});
-//  		axios({
-//	            method:"get",
-//	            				url:"http://localhost:3000/userlist?username="+this.username,
-//	            
-//	        }).then((data)=>{
-//	        	
-//	        	if(data.length==0){
-//	        		this.sendAuthCode = false;
-//		            this.auth_time = 30;
-//		            var auth_timetimer =  setInterval(()=>{
-//		                this.auth_time--;
-//		                if(this.auth_time<=0){
-//		                    this.sendAuthCode = true;
-//		                    clearInterval(auth_timetimer);
-//		                }
-//		            }, 1000);
-//		            //console.log(data,99999,data.status);
-//		            this.vCode = 2333;
-//		           // console.log(this.vCode,88888);
-//		            
-//		            Toast({
-//		                message:"您的验证码为"+this.vCode,
-//		                duration: 3000
-//		            })
-//	        	}else{
-//	        		
-//	        		
-//	        		Toast({
-//		                message:"用户名已存在",
-//		                duration: 1000
-//		        	})
-//	        	}
-//	        })
-//          
+
         },
-		handleVcode(){
-			if(this.tCode == this.vCode){
-				this.tShow= true;
-	        	this.tishi = "验证码输入正确";
-				this.flagCode=true;
-				setTimeout(()=>{
-    				this.tShow = false;
-    			},2000)
-			}else{
-				this.flagCode=false;
-				Toast({
-		                message:"验证码输入不正确",
-		                duration: 1000
-		        	})
-			}
-		},
     	checkForm(){
     		
     		if(this.userFlag && this.pwdFlag && this.pwdFlag1){
-					 let configData = this.username + this.password1
-					 axios.post("/userAdd",{data:configData})
-			        .then((data)=>{
-			        	console.log(data,"useradd")
-			            if(data){
-			            	//console.log(data,33333333)
-			            	Toast({
-				                message:"注册成功，去登录",
-				                duration: 1000
-				        	})
-			            	setTimeout(()=>{
-			            		this.$router.replace("/login")
-			            	},3000)
-			            		
-			            	
-			            }else{
-			            	Toast({
-				               message:"注册失败",
-				                duration: 1000
-				        	})
-			            }
-			        })
+				
+				axios({
+					method:"get",
+					url:"http://10.9.30.235:8080/user/register?username=" +this.username+"&password="+this.password1+"&code="+this.tCode
+					// data:{
+					// 	username:"18240395386",
+					// 	password:"123456",
+					// 	code:"817587"
+					// }
+				})
+				.then((data)=>{
+					console.log(data)
+					if(data.code=="1"){
+						Toast({
+							message:"注册成功，去登录",
+							duration: 1000
+						})
+						setTimeout(()=>{
+							this.$router.replace("/login")
+						},3000)
+					}else{
+						Toast({
+							message:"注册失败",
+							duration: 1000
+						})
+					}
+				})
+			
 	        }else{
 	        	Toast({
 	               message:"请检查信息是否填写正确",
@@ -234,8 +187,7 @@ export default {
     	handlePassword2(){
     		if(this.password1 == this.password2){
     			this.pwdFlag1 = true;
-//  			this.tishi = "验证码输入正确";
-//				this.flagCode=true;
+
     		}else{
     			this.pwdFlag1 = false;
     			Toast({

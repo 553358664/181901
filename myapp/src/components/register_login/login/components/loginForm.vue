@@ -55,70 +55,39 @@ export default {
 			this.pwdFlag = false;
 			this.tShow.tShow = true;
 			this.tishi.tishi = "密码格式为6-12位数字字母下划线";
-//			Toast({
-//		                message:"密码格式为6-12位数字字母下划线",
-//		                duration: 1000
-//		    })
+
 		}
 	},
     	checkForm(){
     		if(this.userFlag.userFlag && this.pwdFlag ){
-    			let configData = this.username.username + this.password1
-    			axios.post("/loginInfo",{data:configData})
+    			axios.post("http://10.9.30.235:8080/user/login",{
+					username:this.username.username,
+					password:this.password1
+				})
 			        .then((data)=>{
 			        	console.log(data,"dengl")
-			            if(data == '22'){
-			            	console.log(data,33333333)
-							localStorage.setItem("username",this.username.username)
+			            if(data.code == '1'){
+			            	//console.log(data,33333333)
+							localStorage.setItem("userId",data.userId);
+							localStorage.setItem("token",data.token);
 			            	
 			            	Toast({
 				                message:"登录成功，去逛逛",
 				                duration: 1000
 				        	})
 			            	setTimeout(()=>{
-			            		this.$router.replace("/")
+			            		this.$router.replace("/community")
 			            	},3000)
 			            		
 			            	
 			            }else{
 			            	Toast({
-				               message:"注册失败",
+				               message:"注册失败，请检查信息填写是否正确",
 				                duration: 1000
 				        	})
 			            }
 			        })
-//  			axios.post("/register",{
-//						username:this.username.username,
-//		            	password:this.password
-//					}).then((data)=>{
-//						console.log(data,"mock")
-//					});
-//  			axios({
-//	            method:"get",
-//	            url:"http://localhost:3000/userlist?username="+this.username.username,
-//	            
-//	        })
-//	        .then((data)=>{
-//	        	console.log(data)
-//	          
-//	           if(data[0].password==this.password1){
-//	           					localStorage.setItem("username",this.username.username)
-//	           	Toast({
-//	                message:"登录成功，去逛逛",
-//	                duration: 1000
-//	        	})
-//          	setTimeout(()=>{
-//          		this.$router.replace("/")
-//          	},3000)
-//			            		
-//	           }else{
-//	           		Toast({
-//	                message:"用户名密码不匹配，请检查",
-//	                duration: 1000
-//	        	})
-//				
-//	           }
-//	        })
+
 	        
     	}else{
     		Toast({
@@ -130,9 +99,7 @@ export default {
     	},
     	...Vuex.mapMutations({
     		handleUsername:"register_login/handleUsername",
-//  		handlePassword1:"register_login/handlePassword1",
-    		
-//  		addUser:"register_login/addUser"
+
     	}),
     	}}
 
