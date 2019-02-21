@@ -10,7 +10,7 @@
 import Vuex from "vuex";
 export default {
   created() {
-    this.handleContent();
+    // this.handleContent();
   },
   computed: {
     ...Vuex.mapState({

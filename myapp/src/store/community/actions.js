@@ -177,6 +177,7 @@ export default {
   changespeard({commit}){
     commit("changespeard")
   },
+<<<<<<< HEAD
   attentionList({commit}){
     let uId= localStorage.getItem("userId")
       axios({
@@ -193,4 +194,22 @@ export default {
         commit("attentionList",data.attentionArticleList)
       })
   }
+=======
+    attentionList({commit}){
+      let uId= localStorage.getItem("userId")
+        axios({
+          method:"post",
+            url:"http://10.9.30.235:8080/community/article/attention",
+            data:{
+              pageIndex:1,
+              pageSize:1,
+              userId:uId
+            }
+        })
+        .then((data)=>{   
+          console.log(data)      
+          commit("attentionList",data.attentionArticleList)
+        })
+    }
+>>>>>>> qiu
 }

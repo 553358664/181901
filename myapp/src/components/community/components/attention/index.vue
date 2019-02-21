@@ -1,7 +1,7 @@
 <template>
   <div class="attention wrapper" ref="attentionWrapper">
-    <keep-alive class="keepalive content">
-      <component :is="comName"></component>
+    <keep-alive class="keepalive">
+      <component :is="comName" class="content"></component>
     </keep-alive>
   </div>
 </template>
