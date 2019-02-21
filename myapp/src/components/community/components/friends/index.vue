@@ -41,7 +41,7 @@ import Vuex from "vuex";
 import BScroll from "better-scroll";
 export default {
     created(){
-        // this.handleArticle()
+        this.handleArticle()
     },
   computed: {
     //获取花友圈的数据

@@ -1,6 +1,6 @@
 <template>
     <div class="noLoignBtn">
-        <router-link to="/">暂不登录</router-link>
+        <router-link to="/community">暂不登录</router-link>
     </div>
 </template>
 <script>

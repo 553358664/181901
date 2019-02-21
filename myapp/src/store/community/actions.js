@@ -181,15 +181,16 @@ export default {
       let uId= localStorage.getItem("userId")
         axios({
           method:"post",
-            url:"/community/article/attention",
+            url:"http://10.9.30.235:8080/community/article/attention",
             data:{
               pageIndex:1,
               pageSize:1,
               userId:uId
             }
         })
-        .then((data)=>{         
-          commit("attentionList",data)
+        .then((data)=>{   
+          console.log(data)      
+          commit("attentionList",data.attentionArticleList)
         })
     }
 }
