@@ -12,7 +12,7 @@
           <span class="fabulousnum" slot="Fabulous">{{item.praiseCount}}</span>
           <span class="collectionnum" slot="Collection">{{item.collectCount}}</span>
           <span class="commentnum" slot="Forward">{{item.commentCount}}</span>
-          <div v-for="(i,d) in commentList" :key="d">
+          <div v-for="(i,d) in item.commentList" :key="d">
             <span class="commenter" slot="commenter1">{{i.userName}}:</span>
             <span class="content" slot="comment1">{{i.articleContent}}</span>
           </div>

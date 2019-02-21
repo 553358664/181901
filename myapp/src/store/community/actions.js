@@ -189,7 +189,7 @@ export default {
           }
       })
       .then((data)=>{   
-        console.log(data.attentionArticleList)      
+        // console.log(data.attentionArticleList)      
         commit("attentionList",data.attentionArticleList)
       })
   }

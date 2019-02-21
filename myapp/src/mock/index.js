@@ -57,7 +57,7 @@ import ApiScar from "../api/scar"
 // Mock.mock(/\/mylist/, "get", ApiMylist.myList)
 
 // //获取关注数据
-Mock.mock(/\/myattention/, "get", ApiMyAttention.attention)
+Mock.mock(/\community\/article\/attention/, "post", ApiMyAttention.attention)
 
 //商品数据
 Mock.mock(/\/discount/, "post", ApiDiscount.discount)
