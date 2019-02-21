@@ -35,7 +35,8 @@
                 </li>
             </ul>
         </div>
-        <router-link to="/"><div class="quit">退出当前账号</div></router-link>
+        <router-link to="/"><div class="quit" v-show="username!==''?testing:!testing">退出当前账号</div></router-link>
+        <router-link to="/login"><div class="testlogin"  v-show="username==''?testing:!testing">请登录</div></router-link>
     </div>
 </template>
 
@@ -48,9 +49,21 @@ Vue.use(MintUI);
 import { Switch,Toast } from 'mint-ui';
 Vue.component("Switch-com", Switch);
 export default {
+    created(){
+       let  arr=JSON.parse(localStorage.getItem("username"));
+       console.log(arr);
+       if(arr){
+           this.username=arr;
+       }else{
+           this.username=""
+       }
+    },
     data(){
         return{
-            flag:true
+            flag:true,            
+            testing:"true",
+            username:""
+            
         }
     },
     methods:{
@@ -118,7 +131,7 @@ export default {
             }
         }
     }
-    .quit{
+    .quit,.testlogin{
         width: 100%;
         height: .98rem;
         background:rgba(244,76,54,1);

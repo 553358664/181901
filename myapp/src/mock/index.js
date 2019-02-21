@@ -10,21 +10,6 @@ import Mock from "mockjs"
 
 //获取花友圈数据
 // import Apifriends from "../api/community/friends";
-<<<<<<< HEAD
-//获取附近数据
-// import Apinearby from "../api/community/nearby"
-//获取搜索数据
-// import ApiSearch from "../api/community/search"
-//获取点赞数据
-// import Apipraise from "../api/community/praise"
-//获取搜索历史数据
-// import ApiHistory from "../api/community/searchHistory"
-//获取搜索的热点
-// import ApiHot from "../api/community/searchHot"
-//上传后的返回信息
-// import ApiPublish from "../api/community/publish"
-//文章详情
-=======
 // //获取附近数据
 // import Apinearby from "../api/community/nearby"
 // //获取搜索数据
@@ -38,7 +23,6 @@ import Mock from "mockjs"
 // //上传后的返回信息
 // import ApiPublish from "../api/community/publish"
 // //文章详情
->>>>>>> qiu
 // import ApiArticleAt from "../api/community/articleAt"
 //修改数据
 // Mock.mock(/\/ModifyShop/,"post",Api.modifyShop)
