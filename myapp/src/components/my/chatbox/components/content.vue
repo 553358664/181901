@@ -29,6 +29,7 @@ import Vue from "vue"
 import Vuex from "vuex";
 import BScroll from "better-scroll";
 export default {
+   
   mounted(){
         this.scroll = new BScroll(this.$refs.newsWrapper,{
             scrollY:true,

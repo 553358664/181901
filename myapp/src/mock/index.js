@@ -14,7 +14,7 @@ import Mock from "mockjs"
 // import Apinearby from "../api/community/nearby"
 //获取搜索数据
 // import ApiSearch from "../api/community/search"
-// 获取点赞数据
+//获取点赞数据
 // import Apipraise from "../api/community/praise"
 //获取搜索历史数据
 // import ApiHistory from "../api/community/searchHistory"
@@ -26,6 +26,7 @@ import Mock from "mockjs"
 // import ApiArticleAt from "../api/community/articleAt"
 //修改数据
 // Mock.mock(/\/ModifyShop/,"post",Api.modifyShop)
+
 import ApiArticle from "../api/article";
 import ApiMylist from "../api/mylist";
 import ApiRegister from "../api/userinfo";
@@ -78,4 +79,3 @@ Mock.mock(/\/register/,"post",ApiRegister.register)
 
 //获取粉丝 关注 个人信息 数据
 Mock.mock(/\/my/, "get", ApiMy.my)
- 

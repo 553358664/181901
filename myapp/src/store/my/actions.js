@@ -10,9 +10,6 @@ export default {
         })
         .then((data)=>{
             commit("handleGet",data)
-           
-        },()=>{
-            console.log("err")
         })
        
     }
