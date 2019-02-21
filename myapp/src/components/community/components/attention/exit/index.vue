@@ -1,25 +1,23 @@
 <template>
   <div class="exit">
     <ul class="exitcontent">
-      <li v-for="(item,index) in attention">
+      <li v-for="(item,index) in attention" :key="index">
         <User-com>
-          <img class="portrait" slot="userImg" :src="item.userImg">
+          <img class="portrait" slot="userImg" :src="item.usePhoto">
           <span  class="topname" slot="userName">{{item.userName}}</span>
-          <img  class="cover" slot="coverImg" :src="item.coverImg">
+          <img  class="cover" slot="coverImg" :src="item.articleCover">
         </User-com>
         <Article-com>
-          <span class="describe1span" slot="content">{{item.content}}</span>
-          <span class="fabulousnum" slot="Fabulous">{{item.Fabulous}}</span>
-          <span class="collectionnum" slot="Collection">{{item.Collection}}</span>
-          <span class="commentnum" slot="Forward">{{item.Forward}}</span>
-          <span class="commenter" slot="commenter1">{{item.comment[0].name}}:</span>
-          <span class="content" slot="comment1">{{item.comment[0].cctent}}</span>
-          <span class="commenter" slot="commenter2">{{item.comment[1].name}}:</span>
-          <span class="content" slot="comment2">{{item.comment[1].cctent}}</span>
-          <span class="commenter" slot="commenter3">{{item.comment[2].name}}:</span>
-          <span class="content" slot="comment3">{{item.comment[2].cctent}}</span>
-          <span class="data" slot="createTime1">{{item.createTime1}}</span>
-          <span class="data" slot="createTime2">{{item.createTime2}}</span>
+          <span class="describe1span" slot="content">{{item.articleContent}}</span>
+          <span class="fabulousnum" slot="Fabulous">{{item.praiseCount}}</span>
+          <span class="collectionnum" slot="Collection">{{item.collectCount}}</span>
+          <span class="commentnum" slot="Forward">{{item.commentCount}}</span>
+          <div v-for="(i,d) in item.commentList" :key="d">
+            <span class="commenter" slot="commenter1">{{i.userName}}:</span>
+            <span class="content" slot="comment1">{{i.articleContent}}</span>
+          </div>
+          <!-- <span class="data" slot="createTime1">{{item.createTime1}}</span>
+          <span class="data" slot="createTime2">{{item.createTime2}}</span> -->
         </Article-com>
       </li>
     </ul>
