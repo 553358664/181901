@@ -1,13 +1,18 @@
 <template>
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/> 
-        <p>张良</p>
+        <p>{{username}}</p>
         <img class="more" :src="more"/>  
     </div>
 </template>
 
 <script>
 export default {
+    created(){
+        this.$store.dispatch("my/handleGet")    
+        this.username=this.$route.params.name;
+    },
+   
     methods: {
         handleback(){
             this.$router.back();
@@ -16,7 +21,8 @@ export default {
      data(){
        return{
            back:require('@/assets/my/icon_wd_jt@2x.png'),
-           more:require('@/assets/my/icon_gwc_more@2x.png')
+           more:require('@/assets/my/icon_gwc_more@2x.png'),
+           name:""
        }
    }
 }

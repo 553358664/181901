@@ -7,29 +7,32 @@
 
 */
 import Mock from "mockjs"
+
 //获取花友圈数据
-import Apifriends from "../api/community/friends";
+// import Apifriends from "../api/community/friends";
 //获取附近数据
-import Apinearby from "../api/community/nearby"
+// import Apinearby from "../api/community/nearby"
 //获取搜索数据
-import ApiSearch from "../api/community/search"
+// import ApiSearch from "../api/community/search"
 //获取点赞数据
-import Apipraise from "../api/community/praise"
+// import Apipraise from "../api/community/praise"
 //获取搜索历史数据
-import ApiHistory from "../api/community/searchHistory"
+// import ApiHistory from "../api/community/searchHistory"
 //获取搜索的热点
-import ApiHot from "../api/community/searchHot"
+// import ApiHot from "../api/community/searchHot"
 //上传后的返回信息
-import ApiPublish from "../api/community/publish"
+// import ApiPublish from "../api/community/publish"
 //文章详情
-import ApiArticleAt from "../api/community/articleAt"
+// import ApiArticleAt from "../api/community/articleAt"
 //修改数据
 // Mock.mock(/\/ModifyShop/,"post",Api.modifyShop)
+
 import ApiArticle from "../api/article";
 import ApiMylist from "../api/mylist";
 import ApiRegister from "../api/userinfo";
 import ApiMyAttention from "../api/attention";
 
+import ApiMy from "../api/my";
 
 import ApiDiscount from "../api/discount";
 import ApiScar from "../api/scar"
@@ -53,8 +56,8 @@ import ApiScar from "../api/scar"
 // Mock.mock(/\/community\/article\/article/,"post",ApiArticleAt.article)
 
 // //获取文章数据
-// Mock.mock(/\/article/,"get",ApiArticle.article)
-// Mock.mock(/\/mylist/, "get", ApiMylist.myList)
+Mock.mock(/\/article/,"get",ApiArticle.article)
+Mock.mock(/\/mylist/, "get", ApiMylist.myList)
 
 // //获取关注数据
 Mock.mock(/\community\/article\/attention/, "post", ApiMyAttention.attention)
@@ -70,3 +73,9 @@ Mock.mock(/\/scar/,"get",ApiScar.scar)
 // Mock.mock(/\/userAdd/,"post",ApiRegister.userAdd)
 // Mock.mock(/\/moCode/,"post",ApiRegister.moCode)
 // Mock.mock(/\/moInfo/,"post",ApiRegister.moInfo)
+
+Mock.mock(/\/userinfo/,"get",ApiRegister.userList)
+Mock.mock(/\/register/,"post",ApiRegister.register)
+
+//获取粉丝 关注 个人信息 数据
+Mock.mock(/\/my/, "get", ApiMy.my)

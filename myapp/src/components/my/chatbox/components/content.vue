@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" ref="newsWrapper">
     <ul class="content">
       <li v-for="(item,index) in messageList">
         <!-- <img :src="headPic"/> -->
@@ -25,7 +25,18 @@
 */
 
 import axios from "axios";
+import Vue from "vue"
+import Vuex from "vuex";
+import BScroll from "better-scroll";
 export default {
+   
+  mounted(){
+        this.scroll = new BScroll(this.$refs.newsWrapper,{
+            scrollY:true,
+            click:true
+        })
+        console.log(this.scroll);
+    },
   data() {
     return {
       //输入数据，双向绑定
@@ -72,13 +83,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  font-size: 0.22rem;
+.wrapper {
   width: 100%;
   height: 100%;
-  padding: 0.24rem;
-  position:fixed;
-  top:1.1rem;
+  background: #fcfcfa;
+  font-size: 0.3rem;
+  position: fixed;
+  top: 1.1rem;
+}
+.wrapper > .content {
+  font-size: 0.22rem;
+  padding: 0 0.24rem;
+  width: 100%;
+  height: max-content;
+  background: #fcfcfa;
 }
 
 .content > li {

@@ -57,6 +57,7 @@ export default {
     created(){
         //模拟数据注释防止报错
         this.handleAtData();
+        
     },
     methods:{
         //获取文章数据

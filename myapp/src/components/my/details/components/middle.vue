@@ -3,7 +3,7 @@
         <div class="middle-info">
             <span><img :src="headPic"/></span>
             <div class="middle-info-r">
-                <span>{{username}}</span>
+                <span v-model="username">{{username}}</span>
                 <span>ID号：{{myList.ID}}</span>
                 <span>地址：{{myList.adress}}</span>
             </div>
@@ -18,10 +18,20 @@
 </template>
 
 <script>
+/**
+ * 
+ *  created () {
+       this.Observer.$on("two",(val)=>{
+           this.name = val;
+       })
+    },
+ */
 import Vuex from "vuex";
 export default {
     created(){
-        this.$store.dispatch("my/handleGet")     
+        this.$store.dispatch("my/handleGet")    
+        this.username=this.$route.params.name;
+        this.headPic = this.$route.params.src;
     },
     computed:{
         ...Vuex.mapState({
