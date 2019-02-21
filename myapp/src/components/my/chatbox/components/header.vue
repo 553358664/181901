@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <img class="back" :src="back" @click="handleback()"/> 
-        <p>{{name}}</p>
+        <p>{{username}}</p>
         <img class="more" :src="more"/>  
     </div>
 </template>
@@ -9,8 +9,10 @@
 <script>
 export default {
     created(){
-        this.name=this.$route.params.name;
+        this.$store.dispatch("my/handleGet")    
+        this.username=this.$route.params.name;
     },
+   
     methods: {
         handleback(){
             this.$router.back();

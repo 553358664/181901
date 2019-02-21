@@ -3,7 +3,7 @@
     <ul class="content ful">
       <li v-for="(item,index) in myList">
         <mt-cell-swipe  :right="delButton">
-          <router-link :to="{name:router}">
+          <router-link :to="{name:'chatbox',params:{name:item.username}}">
             <span class="headpic">
               <img :src="item.headPic">
             </span>
@@ -37,7 +37,7 @@ export default {
             scrollY:true,
             click:true
         })
-        console.log(this.scroll);
+        // console.log(this.scroll);
     },
     created(){
         this.$store.dispatch("my/handleGet")

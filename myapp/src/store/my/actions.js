@@ -9,7 +9,7 @@ export default {
             url:"/my"
         })
         .then((data)=>{
-            commit("handleGet",data.data)
+            commit("handleGet",data)
         })
        
     }

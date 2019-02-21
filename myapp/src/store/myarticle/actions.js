@@ -2,7 +2,7 @@ import axios from "axios";
 export default {
     handleAtList({commit}){
         axios({
-            method:"post",
+            method:"get",
             url:"/article"
         })
         .then((data)=>{   
