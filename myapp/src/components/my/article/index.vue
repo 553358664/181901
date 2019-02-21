@@ -53,10 +53,12 @@ export default {
             click:true,
         });
         this.scroll.on("pullingUp", () => {});
+        console.log(this.articleList)
     },
     created(){
         //模拟数据注释防止报错
         this.handleAtData();
+        // console.log(this.handleAtData())
     },
     methods:{
         //获取文章数据
