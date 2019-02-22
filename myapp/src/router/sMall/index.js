@@ -1,6 +1,7 @@
 import sMall from "../../components/small/"
 import goodsDetail from "../../components/small/goodsDetail.vue"
 import submitOrder from "../../components/small/submitOrder.vue"
+import justBuy from "../../components/small/submitOrder.vue"
 //王金利 商城 调试路由
 import jxhq from "../../components/small/wang/jxhq";
 import dpxx from "../../components/small/wang/dpxx";

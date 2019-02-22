@@ -2,18 +2,18 @@ export default {
   handleSCarM(state, params) {
     state.sCarList = params
   },
-  handleReduce(state, index) {
-    if (state.sCarList[index].goodsNum <= 1) {
+  handleReduceM(state, index) {
+    /* if (state.sCarList[index].goodsNum <= 1) {
       state.sCarList[index].goodsNum = 1
     } else {
       state.sCarList[index].goodsNum--
-    }
+    } */
   },
-  handleAdd(state, index) {
-    state.sCarList[index].goodsNum++;
+  handleAddM(state, index) {
+    
   },
-  handleCheck(state, index) {
-    state.sCarList[index].flagCheck = !state.sCarList[index].flagCheck;
+  handleCheckM(state, index) {
+    //state.sCarList[index].flagCheck = !state.sCarList[index].flagCheck;
     var flag = true;
     state.sCarList.map((item) => {
       if (!item.flagCheck) {
@@ -38,7 +38,7 @@ export default {
         if (state.sCarList[i].flagCheck) {
           state.ifChecked = true;
          return
-       }
+        }
       }
       state.ifChecked=false;
   }

@@ -1,7 +1,7 @@
 <template>
   <div id="goodsSlogan">
-    <h1>{{goodsDetail.goodsName}}</h1>
-    <h2>{{goodsDetail.goodsDescription}}</h2>
+    <h1>{{goodsDetail.name}}</h1>
+    <h2>{{goodsDetail.description}}</h2>
   </div>
 </template>
 <script>

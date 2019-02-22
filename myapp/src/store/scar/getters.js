@@ -4,7 +4,7 @@ export default {
         let orderSpend = 0;
         state.sCarList.map((item) => {
             if (item.flagCheck) {
-                orderSpend += ((item.goodsNum*(item.goodsPrice*10))/10)
+                orderSpend += ((item.number*(item.discountPrice*10))/10)
             }
         })
         return orderSpend

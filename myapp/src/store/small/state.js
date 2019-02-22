@@ -9,4 +9,8 @@ export default {
     goodsDetail: [],
     goodsSelect: [],
     sCar: [],
+    series1: [],
+    series2: [],
+    series3: [],
+    series4: [],
 }

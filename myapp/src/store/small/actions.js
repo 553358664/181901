@@ -36,20 +36,75 @@ export default {
 	handleDiscount({ commit, state },params) {
 		axios({
 			method: "post",
-			url: "/discount",
+			url: "http://10.9.30.238:8080/findGoodsList",
+			data: {
+				model_id:1,
+			}
 		})
 			.then((data) => {
 				commit("handleDiscountM",data)
 			})
 	},
+	handleNature1({ commit, state },params) {
+		axios({
+			method: "post",
+			url: "http://10.9.30.238:8080/findSeries",
+			data: {
+				model_id:2,
+				series:params
+			}
+		})
+			.then((data) => {
+				commit("handleNature1",data)
+			})
+	},
+	handleNature2({ commit, state },params) {
+		axios({
+			method: "post",
+			url: "http://10.9.30.238:8080/findSeries",
+			data: {
+				model_id:2,
+				series:params
+			}
+		})
+			.then((data) => {
+				commit("handleNature2",data)
+			})
+	},
+	handleNature3({ commit, state },params) {
+		axios({
+			method: "post",
+			url: "http://10.9.30.238:8080/findSeries",
+			data: {
+				model_id:2,
+				series:params
+			}
+		})
+			.then((data) => {
+				commit("handleNature3",data)
+			})
+	},
+	handleNature4({ commit, state },params) {
+		axios({
+			method: "post",
+			url: "http://10.9.30.238:8080/findSeries",
+			data: {
+				model_id:2,
+				series:params
+			}
+		})
+			.then((data) => {
+				commit("handleNature4",data)
+			})
+	},
 	handleDetail({ commit, state }, params) {
 	
 		axios({
-			method: "get",
-			url: "/find?"+params,
-			/* data: {
-				goodsId:params
-			} */
+			method: "post",
+			url: "http://10.9.30.238:8080/findGoodsById",
+			 data: {
+				id:params
+			} 
 		})
 			.then((data) => {
 				commit("handleDetailM",data)

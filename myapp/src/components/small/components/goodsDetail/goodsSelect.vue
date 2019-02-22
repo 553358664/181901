@@ -4,21 +4,21 @@
     <div class="goodsIntro">
       <div class="goodsMain">
         <div class="goodsPic">
-          <img :src="goodsDetail.goodsImg" alt>
+          <img :src="goodsDetail.img" alt>
         </div>
         <div class="goodsInfo">
-          <h1>{{goodsDetail.goodsName}}</h1>
-          <h2>{{goodsDetail.goodsPrice|price}}</h2>
+          <h1>{{goodsDetail.name}}</h1>
+          <h2>{{goodsDetail.price|price}}</h2>
         </div>
       </div>
       <div class="border"></div>
       <div class="Kind">
         <h3>规格:</h3>
         <ul>
-          <label v-for="(item,index) in goodsDetail.goods">
+          <label v-for="(item,index) in goodsDetail.colorList">
             <li :class="index==checkIndex?'active':''" @click="handleClick(index)">
               <input type="radio" name="kind">
-              {{item.name}}
+              {{item}}
             </li>
           </label>
         </ul>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="selectFooter" @click="handleOk">
-      <router-link :to="select&&checkIndex>0?'/submitOrder':''">确定</router-link>
+      <router-link :to="select&&checkIndex>-1?'/submitOrder':''">确定</router-link>
     </div>
   </div>
 </template>
@@ -95,13 +95,13 @@ export default {
         });
       }
       var obj = {};
-      obj.goodsId = this.goodsDetail.goodsId;
-      obj.goodsName = this.goodsDetail.goodsName;
-      obj.goodsPrice = this.goodsDetail.goodsPrice;
-      obj.goodsOldPrice = this.goodsDetail.goodsOldPrice;
-      obj.goodsNum = Number(this.number);
-      obj.goodsImg = this.goodsDetail.goodsImg;
-      obj.goodsSize = this.goodsDetail.goods[this.checkIndex].name;
+      obj.goodId = this.goodsDetail.id;
+      obj.name = this.goodsDetail.name;
+      obj.discountPrice = this.goodsDetail.discountPrice;
+      obj.price = this.goodsDetail.price;
+      obj.number = Number(this.number);
+      obj.goodsImg = this.goodsDetail.img;
+      obj.color = this.goodsDetail.colorList[this.checkIndex];
       //obj.kind=this.goodsDetail.goods
       if(this.select){
         this.handleSelect(obj);

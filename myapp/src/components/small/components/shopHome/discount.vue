@@ -3,10 +3,10 @@
     <h1>限时特惠</h1>
     <div class="wrapper" ref="dicountWrapper">
       <div class="discountGoods content">
-            <router-link  v-for="(item,index) in discount" :key="item.id" :to="'/goodsDetail/'+item.goodsId">
-              <img :src="item.goodsImg">
-              <h2>{{item.goodsName}}</h2>
-              <h3>{{item.goodsPrice|price}}</h3>
+            <router-link  v-for="(item,index) in discount" :key="item.id" :to="'/goodsDetail/'+item.id">
+              <img :src="item.img">
+              <h2>{{item.name}}</h2>
+              <h3>{{item.discountPrice|price}}</h3>
             </router-link>
       </div>
     </div>
