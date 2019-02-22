@@ -113,11 +113,10 @@ export default {
     })
   },
   mounted() {
-     setTimeout(()=>{
-        this.flowerTop = this.$refs.flower.offsetTop;
-    this.handleFlowerTop(this.flowerTop);
-    },1000)
-   
+    setTimeout(()=>{
+      this.flowerTop = this.$refs.flower.offsetTop;
+      this.handleFlowerTop(this.flowerTop);
+    },1000)   
     //console.log(this.flowerTop)
   },
   created() {
