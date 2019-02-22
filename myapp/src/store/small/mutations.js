@@ -6,7 +6,7 @@ export default {
   },
   handleOtherTop(state, params) {
     //params -= 840;
-    params *= .95
+    params *= .87
     state.scrollHeight.push(params)
   },
   handleDiscountTop(state, params) {
@@ -33,8 +33,20 @@ export default {
   handleDiscountM(state, params) {
     state.discount = params
   },
+  handleNature1(state, params) {
+    state.series1 = params
+  },
+  handleNature2(state, params) {
+    state.series2 = params
+  },
+  handleNature3(state, params) {
+    state.series3 = params
+  },
+  handleNature4(state, params) {
+    state.series4 = params
+  },
   handleDetailM(state, params) {
-    state.goodsDetail = params[0]
+    state.goodsDetail = params
   },
   handleSelect(state, params) {
     state.goodsSelect = []
