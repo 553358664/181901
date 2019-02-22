@@ -36,7 +36,7 @@ export default {
 	handleDiscount({ commit, state },params) {
 		axios({
 			method: "post",
-			url: "http://10.9.30.238:8080/findGoodsList",
+			url: "http://10.9.30.238:8080/flower7-mall/findGoodsList",
 			data: {
 				model_id:1,
 			}
@@ -48,7 +48,7 @@ export default {
 	handleNature1({ commit, state },params) {
 		axios({
 			method: "post",
-			url: "http://10.9.30.238:8080/findSeries",
+			url: "http://10.9.30.238:8080/flower7-mall/findSeries",
 			data: {
 				model_id:2,
 				series:params
@@ -61,7 +61,7 @@ export default {
 	handleNature2({ commit, state },params) {
 		axios({
 			method: "post",
-			url: "http://10.9.30.238:8080/findSeries",
+			url: "http://10.9.30.238:8080/flower7-mall/findSeries",
 			data: {
 				model_id:2,
 				series:params
@@ -74,7 +74,7 @@ export default {
 	handleNature3({ commit, state },params) {
 		axios({
 			method: "post",
-			url: "http://10.9.30.238:8080/findSeries",
+			url: "http://10.9.30.238:8080/flower7-mall/findSeries",
 			data: {
 				model_id:2,
 				series:params
@@ -87,7 +87,7 @@ export default {
 	handleNature4({ commit, state },params) {
 		axios({
 			method: "post",
-			url: "http://10.9.30.238:8080/findSeries",
+			url: "http://10.9.30.238:8080/flower7-mall/findSeries",
 			data: {
 				model_id:2,
 				series:params
@@ -101,7 +101,7 @@ export default {
 	
 		axios({
 			method: "post",
-			url: "http://10.9.30.238:8080/findGoodsById",
+			url: "http://10.9.30.238:8080/flower7-mall/findGoodsById",
 			 data: {
 				id:params
 			} 

@@ -120,7 +120,7 @@ export default {
      setTimeout(()=>{
         this.flowerTop = this.$refs.flower.offsetTop;
         this.handleFlowerTop(this.flowerTop);
-    },900)
+    },300)
    
     //console.log(this.flowerTop)
   },

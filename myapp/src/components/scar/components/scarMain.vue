@@ -56,6 +56,9 @@ import { Checklist } from "mint-ui";
 Vue.component(Checklist.name, Checklist); */
 import Vuex from "vuex";
 export default {
+  created(){
+    this.ifChecked();
+  },
   updated() {
     this.ifChecked();
   },

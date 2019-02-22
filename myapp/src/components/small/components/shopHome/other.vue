@@ -29,7 +29,7 @@ export default {
     setTimeout(()=>{
        this.otherTop = this.$refs.other.offsetTop;
     this.handleOtherTop(this.otherTop)
-    },1000)
+    },300)
    
   },
   methods: {
