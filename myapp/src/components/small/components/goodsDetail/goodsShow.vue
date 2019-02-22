@@ -1,11 +1,11 @@
 <template>
   <div id="goodsShow">
     <div class="left">
-      <span class="price">{{goodsDetail.goodsPrice|price}}</span>
+      <span class="price">{{goodsDetail.price|price}}</span>
       <span class="point">.</span>
-      <span class="priceDecimal">{{goodsDetail.goodsPrice|priceDecimal}}</span>
+      <span class="priceDecimal">{{goodsDetail.discountPrice|priceDecimal}}</span>
       <div class="group">
-        <span class="oldPrice">{{goodsDetail.goodsOldPrice|oldPrice}}</span>
+        <span class="oldPrice">{{goodsDetail.price|oldPrice}}</span>
         <span>5人拼团价</span>
       </div>
     </div>

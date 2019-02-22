@@ -7,7 +7,7 @@
     <div class="wrapper" ref="detailsWrapper">
       <div class="content">
         <div class="goods">
-          <img :src="goodsDetail.goodsImg" alt>
+          <img :src="goodsDetail.img">
         </div>
         <GoodsShow-com></GoodsShow-com>
         <GoodsSlogan-com></GoodsSlogan-com>

@@ -16,9 +16,11 @@
           <h3>微信支付</h3>
         </h2>
       </div>
-      <router-link to="/payOk">
-        确认付款
+      <router-link to="/payOk" >
+      <div @click="handleCartPay()">
+         <span>确认付款</span>
         <span>{{result|price}}</span>
+      </div>
       </router-link>
     </mt-popup>
     <Header-com></Header-com>
@@ -83,7 +85,10 @@ export default {
   methods: {
     handleSubmit() {
       this.flag = true;
-    }
+    },
+    ...Vuex.mapActions({
+      handleCartPay:"scar/handleCartPay"
+    })
   }
 };
 </script>
@@ -117,6 +122,10 @@ export default {
     color: rgba(254, 254, 254, 1);
     line-height: 0.8rem;
     margin: 0 auto;
+      div{
+        display: flex;
+        justify-content: center;  
+      }
   }
   div {
     display: flex;

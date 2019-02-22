@@ -47,6 +47,11 @@ export default {
       ifChecked:state => state.scar.ifChecked,
     })
   },
+  beforeRouteLeave(to,from,next){
+    next();
+    this.handleLeave();
+    
+  },
   created() {
     this.handleSCar();
   },
@@ -59,7 +64,8 @@ export default {
   methods: {
     ...Vuex.mapActions({
       handleSCar: "scar/handleSCar",
-      handleToOrder: "scar/handleToOrder"
+      handleToOrder: "scar/handleToOrder",
+      handleLeave:"scar/handleLeave"
     }),
     ...Vuex.mapMutations({}),
    

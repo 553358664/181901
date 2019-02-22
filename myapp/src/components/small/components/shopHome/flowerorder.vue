@@ -10,16 +10,16 @@
       <h3>每周一花的小幸福，新用户送花瓶</h3>
       <div class="flowers"> 
         <router-link
-          v-for="(item,index) in discount"
+          v-for="(item,index) in series1"
           :key="item.id"
-          :to="'/goodsDetail/'+item.goodsId"
+          :to="'/goodsDetail/'+item.id"
           class="flowersSmall flowersBig"
         >
-          <img :src="item.goodsImg">
+          <img :src="item.img">
           <div>
-            <h4>{{item.goodsName}}</h4>
-            <h5>{{item.goodsDescription}}</h5>
-            <h6>{{item.goodsPrice|price}}</h6>
+            <h4>{{item.name}}</h4>
+            <h5>{{item.description}}</h5>
+            <h6>{{item.discountPrice|price}}</h6>
           </div>
         </router-link>
       </div>
@@ -33,16 +33,16 @@
       <h3>有故事的主题花，含进口花材</h3>
        <div class="flowers"> 
         <router-link
-          v-for="(item,index) in discount"
+          v-for="(item,index) in series2"
           :key="item.id"
-          :to="'/goodsDetail/'+item.goodsId"
+          :to="'/goodsDetail/'+item.id"
           class="flowersSmall flowersBig"
         >
-          <img :src="item.goodsImg">
+          <img :src="item.img">
           <div>
-            <h4>{{item.goodsName}}</h4>
-            <h5>{{item.goodsDescription}}</h5>
-            <h6>{{item.goodsPrice|price}}</h6>
+            <h4>{{item.name}}</h4>
+            <h5>{{item.description}}</h5>
+            <h6>{{item.discountPrice|price}}</h6>
           </div>
         </router-link>
       </div>
@@ -55,16 +55,16 @@
       <h3>古灵精怪小时髦*大异其趣</h3>
        <div class="flowers"> 
         <router-link
-          v-for="(item,index) in discount"
+          v-for="(item,index) in series3"
           :key="item.id"
-          :to="'/goodsDetail/'+item.goodsId"
+          :to="'/goodsDetail/'+item.id"
           class="flowersSmall"
         >
-          <img :src="item.goodsImg">
+          <img :src="item.img">
           <div>
-            <h4>{{item.goodsName}}</h4>
-            <h5>{{item.goodsDescription}}</h5>
-            <h6>{{item.goodsPrice|price}}</h6>
+            <h4>{{item.name}}</h4>
+            <h5>{{item.description}}</h5>
+            <h6>{{item.discountPrice|price}}</h6>
           </div>
         </router-link>
       </div>
@@ -77,16 +77,16 @@
       <h3>精选全球进口花束，低成本享用进口花材</h3>
       <div class="flowers"> 
         <router-link
-          v-for="(item,index) in discount"
+          v-for="(item,index) in series4"
           :key="item.id"
-          :to="'/goodsDetail/'+item.goodsId"
+          :to="'/goodsDetail/'+item.id"
           class="flowersSmall"
         >
-          <img :src="item.goodsImg">
+          <img :src="item.img">
           <div>
-            <h4>{{item.goodsName}}</h4>
-            <h5>{{item.goodsDescription}}</h5>
-            <h6>{{item.goodsPrice|price}}</h6>
+            <h4>{{item.name}}</h4>
+            <h5>{{item.description}}</h5>
+            <h6>{{item.discountPrice|price}}</h6>
           </div>
         </router-link>
       </div>
@@ -109,25 +109,36 @@ export default {
   },
   computed: {
     ...Vuex.mapState({
-      discount: state => state.small.discount
+      discount: state => state.small.discount,
+      series1: state => state.small.series1,
+      series2: state => state.small.series2,
+      series3: state => state.small.series3,
+      series4: state => state.small.series4,
     })
   },
   mounted() {
-    setTimeout(()=>{
-      this.flowerTop = this.$refs.flower.offsetTop;
-      this.handleFlowerTop(this.flowerTop);
-    },1000)   
+     setTimeout(()=>{
+        this.flowerTop = this.$refs.flower.offsetTop;
+        his.handleFlowerTop(this.flowerTop);
+    },900)
+   
     //console.log(this.flowerTop)
   },
   created() {
-    this.handleDiscount();
+    this.handleNature1(1);
+    this.handleNature2(2);
+    this.handleNature3(3);
+    this.handleNature4(4);
   },
   methods: {
     ...Vuex.mapMutations({
       handleFlowerTop: "small/handleFlowerTop"
     }),
     ...Vuex.mapActions({
-      handleDiscount: "small/handleDiscount"
+      handleNature1: "small/handleNature1",
+      handleNature2: "small/handleNature2",
+      handleNature3: "small/handleNature3",
+      handleNature4: "small/handleNature4",
     })
   }
 };

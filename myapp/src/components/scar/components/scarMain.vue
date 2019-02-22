@@ -2,45 +2,48 @@
   <div id="sCarMain">
     <div class="shopName">
       <div class="check" :class="checkAll?'noBorder':''" @click="handleCheckAll(),ifChecked()">
-            <img src="@/assets/scar/check.png" v-show="checkAll">
-          </div>
-      <div class="shopPic"><img src="@/assets/small/submitOrder/icon_shop.png" alt></div>
-      花7的店
+        <img src="@/assets/scar/check.png" v-show="checkAll">
+      </div>
+      <div class="shopPic">
+        <img src="@/assets/small/submitOrder/icon_shop.png" alt>
+      </div>花7的店
     </div>
     <ul class="order">
       <!-- <mt-checklist v-model="value" :options="options"></mt-checklist> -->
       <li v-for="(item,index) in sCarList">
         <div class="goodsItem">
-          <div class="check" :class="item.flagCheck?'noBorder':''" @click="handleCheck(index),ifChecked()">
+          <div
+            class="check"
+            :class="item.flagCheck?'noBorder':''"
+            @click="handleCheck(index),ifChecked()"
+          >
             <img src="@/assets/scar/check.png" v-show="item.flagCheck" alt>
           </div>
           <div class="goods">
             <div class="goodsPic">
-            <img :src=item.goodsImg>
-          </div>
-          <div class="left">
-            <div class="goodsName">{{item.goodsName}}</div>
-            <div class="goodsKind">{{item.goodsSize}}</div>
-          </div>
-          <div class="right">
-            <div class="goodsPrice">{{item.goodsPrice|price}}</div>
-            <div class="goodsOldPrice">{{item.goodsOldPrice|price}}</div>
-            <div class="goodsNum">{{item.goodsNum |num}}</div>
-          </div>
+              <img :src="item.goodsImg">
+            </div>
+            <div class="left">
+              <div class="goodsName">{{item.name}}</div>
+              <div class="goodsKind">{{item.color}}</div>
+            </div>
+            <div class="right">
+              <div class="goodsPrice">{{item.discountPrice|price}}</div>
+              <div class="goodsOldPrice">{{item.price|price}}</div>
+              <div class="goodsNum">{{item.number|num}}</div>
+            </div>
           </div>
         </div>
         <div class="count">
-          <div class="del"> 
-            删除
-          </div>
+          <div class="del" @click="handleDel(index)">删除</div>
           <div class="changeNum">
             <button @click="handleReduce(index)">-</button>
-            <input type="text" :value="item.goodsNum">
+            <input type="text" :value="item.number">
             <button @click="handleAdd(index)">+</button>
           </div>
           <h2>
             小计:
-            <span class="countPrice">{{item.goodsNum|countPrice(item.goodsPrice)}}</span>
+            <span class="countPrice">{{item.number|countPrice(item.discountPrice)}}</span>
           </h2>
         </div>
       </li>
@@ -53,14 +56,14 @@ import { Checklist } from "mint-ui";
 Vue.component(Checklist.name, Checklist); */
 import Vuex from "vuex";
 export default {
-  updated(){
-  this.ifChecked()
+  updated() {
+    this.ifChecked();
   },
-  computed:{
+  computed: {
     ...Vuex.mapState({
-      sCarList:state=>state.scar.sCarList,
-      checkAll:state=>state.scar.checkAll
-    }),
+      sCarList: state => state.scar.sCarList,
+      checkAll: state => state.scar.checkAll
+    })
   },
   filters: {
     price(val) {
@@ -74,36 +77,40 @@ export default {
       return "￥" + Number(n * p).toFixed(2);
     }
   },
-  methods:{
+  methods: {
     ...Vuex.mapMutations({
-        handleReduce:"scar/handleReduce",
-        handleAdd:"scar/handleAdd",
-        handleCheck:"scar/handleCheck",
-        handleCheckAll:"scar/handleCheckAll",
-        ifChecked:"scar/ifChecked"
+      ifChecked: "scar/ifChecked",
+     handleCheckAll: "scar/handleCheckAll",
+    }),
+    ...Vuex.mapActions({
+      
+      handleCheck: "scar/handleCheck",
+      handleReduce: "scar/handleReduce",
+      handleAdd: "scar/handleAdd",
+      handleDel:"scar/handleDel"
     })
   }
 };
 </script>
 <style lang="scss" scoped>
- .check{
-    display:inline-block;
-      width:.33rem;
-      height:.33rem;
-      border-radius: 50%;
-      background:#fff;
-      margin-top:.65rem;
-      margin-right:.1rem;
-      border:.02rem solid #777;
-      vertical-align: bottom;
-      img{
-        width:100%;
-        height:100%;
-      }
-    }
-   .noBorder{
-    border:none;
-    }
+.check {
+  display: inline-block;
+  width: 0.33rem;
+  height: 0.33rem;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: 0.65rem;
+  margin-right: 0.1rem;
+  border: 0.02rem solid #777;
+  vertical-align: bottom;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.noBorder {
+  border: none;
+}
 .changeNum {
   vertical-align: bottom;
   height: 0.33rem;
@@ -135,24 +142,24 @@ export default {
   padding: 0.31rem 0 0.31rem 0.26rem;
   .shopName {
     margin-bottom: 0.34rem;
-    
+
     .shopPic {
       display: inline-block;
       width: 0.3rem;
       height: 0.3rem;
       vertical-align: bottom;
-      img{
-        width:100%;
-        height:100%;
+      img {
+        width: 100%;
+        height: 100%;
       }
     }
   }
   .order li {
-    width:100%;
+    width: 100%;
     margin-bottom: 0.37rem;
   }
-  .goodsItem{
-    display:flex;
+  .goodsItem {
+    display: flex;
   }
   .goods {
     display: flex;
@@ -162,7 +169,7 @@ export default {
     font-size: 0.2rem;
     background: #f7f7f7;
     padding: 0.1rem 0.27rem 0.1rem 0;
-    width:7rem;
+    width: 7rem;
     .goodsPic {
       img {
         width: 1.63rem;
@@ -172,7 +179,7 @@ export default {
     }
     .left {
       margin-left: 0.14rem;
-      width:3.8rem;
+      width: 3.8rem;
       height: 100%;
       .goodsName {
         font-size: 0.22rem;
@@ -201,8 +208,8 @@ export default {
     justify-content: flex-end;
     line-height: 0.27rem;
     .del {
-      flex:1;
-      margin-left:0.6rem;
+      flex: 1;
+      margin-left: 0.6rem;
       font-size: 0.2rem;
       font-family: PingFang-SC-Regular;
       font-weight: bold;

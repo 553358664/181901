@@ -11,24 +11,19 @@
             <img :src="item.goodsImg">
           </div>
           <div class="left">
-            <div class="goodsName">{{item.goodsName}}</div>
-            <div class="goodsKind">{{item.goodsSize}}</div>
+            <div class="goodsName">{{item.name}}</div>
+            <div class="goodsKind">{{item.color}}</div>
           </div>
           <div class="right">
-            <div class="goodsPrice">{{item.goodsPrice|price}}</div>
-            <div class="goodsOldPrice">{{item.goodsOldPrice|price}}</div>
-            <div class="goodsNum">{{item.goodsNum|num}}</div>
+            <div class="goodsPrice">{{item.discountPrice|price}}</div>
+            <div class="goodsOldPrice">{{item.price|price}}</div>
+            <div class="goodsNum">{{item.number|num}}</div>
           </div>
         </div>
         <div class="count">
-          <div class="changeNum">
-            <button @click="handleReduce(index)">-</button>
-            <input type="text" :value="item.goodsNum">
-            <button @click="handleAdd(index)">+</button>
-          </div>
           <h2>
             小计:
-            <span class="countPrice">{{item.goodsNum|countPrice(item.goodsPrice)}}</span>
+            <span class="countPrice">{{item.number|countPrice(item.discountPrice)}}</span>
           </h2>
         </div>
       </li>

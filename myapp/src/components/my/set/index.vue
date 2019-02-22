@@ -49,7 +49,7 @@ Vue.use(MintUI);
 import { Switch,Toast } from 'mint-ui';
 Vue.component("Switch-com", Switch);
 export default {
-    reated(){
+    created(){
        let  arr=JSON.parse(localStorage.getItem("username"));
        console.log(arr);
        if(arr){
