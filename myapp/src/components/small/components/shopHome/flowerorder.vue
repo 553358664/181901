@@ -119,7 +119,7 @@ export default {
   mounted() {
      setTimeout(()=>{
         this.flowerTop = this.$refs.flower.offsetTop;
-        his.handleFlowerTop(this.flowerTop);
+        this.handleFlowerTop(this.flowerTop);
     },900)
    
     //console.log(this.flowerTop)

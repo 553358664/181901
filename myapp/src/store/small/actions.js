@@ -6,7 +6,6 @@ export default {
 					url:"/api/mock/5c3465e17db0f179db202941/example/flower"
 				})
 				.then((data)=>{
-					console.log(data,11111111111)
 					this.result = data.data.data;
 					this.flowerName = data.data.data2;
 					commit("handleModify", data);

@@ -149,7 +149,6 @@ export default {
         }
     })
     .then((data)=>{  
-      console.log(data)
         data.searchResult.map((item)=>{
             item.speard = false;
         })
