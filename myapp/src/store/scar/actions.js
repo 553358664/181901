@@ -140,14 +140,13 @@ export default {
      })
    },
   handleLeave({ commit, state }) {
-    let arr = [];
+    let obj = [];
     for (let i = 0; i < state.sCarList.length; i++){
-      var obj = {};
-      obj.id = state.sCarList[i].id,
-      obj.flagCheck= state.sCarList[i].flagCheck 
-      arr.push(obj)
+      var obj2 = {};
+      obj2.id = state.sCarList[i].id,
+      obj2.flagCheck= state.sCarList[i].flagCheck 
+      obj.push(obj2)
     }
-    console.log(arr)
     axios({
       method: "post",
       url: "http://10.9.30.238:8080/updateCartAll",

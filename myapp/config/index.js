@@ -12,14 +12,12 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       "/api":{
-    		target:"https://10.9.30.235:8080",
+    		target:"https://www.easy-mock.com",
     		changeOrigin:true,
     		pathRewrite:{
     		    "^/api":""
     		}
     	},
-      
-
         //接入图灵机器人
         //http://openapi.tuling123.com/openapi/api/v2?key=430a4686bbbb417f891a24ccf16728ca&userid=1&info=%2211%22
         "/chat":{
